@@ -1,0 +1,115 @@
+<div class="card">
+    <div class="card-header card-header-menu">
+        <h6>Food intake</h6>
+        <div class="d-flex">
+            <span class="minimize">
+                <a data-bs-target="#calorie_card_content"
+                   data-bs-toggle="collapse">
+                    <i class="fa-solid fa-circle-minus"></i>
+                </a>
+            </span>
+            <div class="dropdown">
+                <i aria-expanded="false"
+                   class="fa-solid fa-circle-chevron-down"
+                   data-bs-toggle="dropdown"
+                   id="dropdown_calories_menu"
+                   role="button"></i>
+                <ul aria-labelledby="dropdown_steps_menu"
+                    class="dropdown-menu">
+                    <li class="d-flex">
+                        <a class="dropdown-item"
+                           href="{% url 'add-calorie-intake' %}">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            <span class="p-2">Add new</span>
+                        </a>
+                    </li>
+                    {% if calories_list %}
+                        <li>
+                            <a class="dropdown-item" href="{% url 'export-food-intake' %}">
+                                <i class="fa-solid fa-cloud-arrow-down"></i>
+                                <span class="px-2">Export records</span>
+                            </a>
+                        </li>
+                        <!--<li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa-solid fa-share-nodes"></i>
+                                <span class="px-2">
+                                    Share your progress
+                                </span>
+                            </a>
+                        </li>-->
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- calorie_card_content -->
+    <div class="collapse show" id="calorie_card_content">
+        <div class="card-body collapse show">
+            {% if calories_list %}
+                <div>
+                    <canvas id="myCalories"></canvas>
+                </div>
+            {% else %}
+                <div class="alert alert-warning" role="alert">
+                    <p class="mb-0">
+                        No records found. Start adding your food intake.
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+        <!-- End card body -->
+        {% if calories_list %}
+            <div class="card-footer">
+                <div class="float-end">
+                    <a href="{% url 'calorie-intake-datestamp-index' %}">View all</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% block scripts %}
+    <script>
+        const myCalories = new Chart(
+            document.getElementById('myCalories'),
+            {
+                type: 'line',
+                data: {
+                    labels: [{% for i in calories_list %}'{{ i.datestamp|date:"Y-m-d" }}', {% endfor %}],
+                    datasets: [
+                        {
+                            data: [{% for i in calories_list %}{{ i.total_calories }}, {% endfor %}],
+                            //data: [8000, 250, 7200]
+                            label: '',
+                            backgroundColor: '#dd7e77',
+                            pointRadius: 6,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    tooltips: {
+                        enabled: false,
+                        display: false,
+                    },
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        title: {
+                            display: false,
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                display: false
+                            }
+                        }
+                    },
+                }
+            }
+        );
+    </script>
+{% endblock scripts %}

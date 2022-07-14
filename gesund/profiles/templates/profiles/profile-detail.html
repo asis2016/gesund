@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container-fluid" id="profile-container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-page-header">
+                <h2>My Profile</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                        <li aria-current="page" class="breadcrumb-item active">My Profile</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {% include './profile-sidebar.html' %}
+        {# main column #}
+        <div class="col-lg-8 mt-4">
+            <!-- General settings -->
+            <div class="card">
+                <div class="card-header card-header-menu">
+                    General settings
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">
+                            First name
+                        </label>
+                        <div class="col-sm-6 disabled">
+                            <input type="text"
+                                   class="form-control"
+                                   disabled
+                                   value={% firstof profile_obj.first_name 'undefined' %}>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-4 col-form-label">
+                            Last name
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text"
+                                   class="form-control"
+                                   disabled
+                                   value={% firstof profile_obj.last_name 'undefined' %}>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-4 col-form-label">
+                            Date of birth
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text"
+                                   class="form-control"
+                                   disabled
+                                   value={% firstof profile_obj.dob|date:'Y-m-d' 'undefined' %}>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-4 col-form-label">
+                            City
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text"
+                                   class="form-control"
+                                   disabled
+                                   value={% firstof profile_obj.city 'undefined' %}>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-4 col-form-label">
+                            Gender
+                        </label>
+                        <div class="col-sm-4">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                       id="inlineRadio1" value="option1">
+                                <label class="form-check-label">
+                                    Female
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                       id="inlineRadio2" value="option2">
+                                <label class="form-check-label">
+                                    Male
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-4 col-form-label">
+                            Height
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="text"
+                                   class="form-control"
+                                   disabled
+                                   value={% firstof profile_obj.height 'undefined' %}>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Ends General settings -->
+
+            <!-- Daily goal settings -->
+            <div class="card mt-4">
+                <div class="card-header card-header-menu">
+                    Daily goal settings
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">
+                            Calorie
+                        </label>
+                        <div class="col-sm-4">
+                            <input class="form-control"
+                                   type="text"
+                                   value={% firstof profile_obj.daily_calorie_goal 'undefined' %}>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-4 col-form-label">
+                            Steps
+                        </label>
+                        <div class="col-sm-4">
+                            <input class="form-control"
+                                   type="text"
+                                   value={% firstof profile_obj.daily_step_goal '0' %}>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-4 col-form-label">
+                            Water (ltrs)
+                        </label>
+                        <div class="col-sm-4">
+                            <input class="form-control"
+                                   type="text"
+                                   value={% firstof profile_obj.daily_water_intake_goal '0' %}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Ends Daily goal settings -->
+
+            <div class="mt-4 float-end">
+                <a href="#" class="btn btn-secondary">Update profile</a>
+            </div>
+        </div>
+        {# main column #}
+
+    </div>
+</div>
+{% endblock main %}

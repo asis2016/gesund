@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '/css/jquery.datetimepicker.min.css' %}">
+{% endblock head %}
+
+{% block main %}
+    <div class="container-fluid" id="challenges-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-page-header">
+                    <h2>Challenges</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Add a challenge
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header card-header-menu">
+                        Add a new challenge
+                    </div>
+                    <form action="" method="post">
+
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                {{ form.errors }}
+                            </div>
+                        {% endif %}
+
+
+                        <div class="card-body">
+
+                            todo
+
+                            todo
+                            <div>
+                                {% csrf_token %}
+
+
+                                <input type="text"
+                                       name="start_date"
+                                       value="2022-04-09 14:06">
+                                <br>
+
+                                <select name="challenge" required="" id="id_challenge">
+                                    <option value="NO_ALCOHOL" selected="">No fast food</option>
+
+                                    <option value="NO_ALCOHOL">No alcohol</option>
+
+                                    <option value="NO_CHOCOLATE">No chocolate</option>
+
+                                    <option value="NO_FAST_FOOD">No fast food</option>
+
+                                    <option value="NO_SMOKING">No smoking</option>
+
+                                    <option value="NO_SUGAR">No sugar</option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-secondary" type="submit">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                <span class="p-2">Save changes</span>
+                            </button>
+                            <a class="float-end" href="{% url 'weight-index' %}">
+                                Go back to the challenge list
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock main %}
+
+{% block scripts %}
+    <script src="{% static '/js/jquery.datetimepicker.full.min.js' %}"></script>
+    <script>
+        jQuery('#id_datetimepicker').datetimepicker({
+            format: 'Y-m-d H:i',
+            lang: 'en'
+        });
+    </script>
+{% endblock scripts %}
+

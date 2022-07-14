@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="container-fluid" id="challenge-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-page-header">
+                    <h2>Challenges</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tracker</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Challenges</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header card-header-menu justify-content-end">
+                        <a class="btn btn-info btn-sm" href="{% url 'add-challenge' %}">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            <span class="px-2">Add a challenge</span>
+                        </a>
+                    </div>
+                    {# --- Card body starts --- #}
+                    <div class="card-body">
+                        {% if challenge_list %}
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Start date</th>
+                                    <th>Challenges</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in challenge_list %}
+                                    <tr class="{% if i.status %}text-success{% endif %}">
+                                        <td class="align-middle">{{ i.id }}</td>
+                                        <td class="align-middle">
+                                            {{ i.start_date|date:"Y-m-d - H:i:s" }}
+                                        </td>
+                                        <td class="align-middle">
+                                            {{ i.get_challenge_display }}
+                                        </td>
+                                        <td class="align-middle">
+                                            {{ i.status|yesno:"Active, Inactive" }}
+                                        </td>
+                                        <td>
+                                            <div class="float-end">
+                                                <a href="#"
+                                                   class="btn btn-warning btn-sm">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    <span class="px-1">Update</span>
+                                                </a>
+                                                <a href="#"
+                                                   class="btn btn-danger btn-sm ml-2">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                    <span class="px-1">Delete</span>
+                                                </a>
+                                                <a href="#"
+                                                   class="btn btn-secondary btn-sm ml-2">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                    <span class="px-1">
+                                                    {% if i.status %}
+                                                        Deactivate
+                                                    {% else %}
+                                                        Activate
+                                                    {% endif %}
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-warning" role="alert">
+                                <p class="mb-0">
+                                    No records found. Start adding a challenge.
+                                </p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {# --- Card body ends --- #}
+                    {# --- Card footer starts --- #}
+                    {% if challenge_list %}
+                        <div class="card-footer">
+                            {% include 'pagination.html' %}
+                        </div>
+                    {% endif %}
+                    {# --- Footer ends --- #}
+                </div>
+            </div>
+
+
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="alert alert-primary" role="alert">
+                            Did you know?
+                        </div>
+                        <img src="{% static '/images/wine.png' %}" class="img-fluid" alt="">
+                        <p>
+                            <b>Did you know?</b>
+                        </p>
+                        <p>
+                            Drinking lorem ipsum ...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if challenge_list_chart %}
+            <div class="row mt-4 mb-4">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header card-header-menu">
+                            Challenge history
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChallenges"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock main %}
+
+{% block scripts %}
+    <script>
+        const myChallenges = new Chart(
+            document.getElementById('myChallenges'),
+            {
+                type: 'bar',
+                data: {
+                    labels: [{% for i in challenge_list_chart %}'{{ i.start_date|date:"Y-m-d" }}', {% endfor %}],
+                    datasets: [{
+                        label: '',
+                        backgroundColor: '#90EE90',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [{% for i in challenge_list_chart %}{{ i.id }}, {% endfor %}],
+                    }]
+                },
+                options: {}
+            }
+        );
+    </script>
+{% endblock scripts %}

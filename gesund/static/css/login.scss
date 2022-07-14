@@ -1,0 +1,64 @@
+/*
+    Author      : Ashish S. Maharjan
+    Author URI  : https://github.com/asis2016/
+    Description : This theme is designed for Gesund App.
+    Source      : Bootstrap v5.1.3 (https://getbootstrap.com/)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500&display=swap');
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  text-align: center;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+
+  checkbox {
+    font-weight: 400;
+  }
+
+  .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+
+    &:focus {
+      z-index: 2;
+    }
+  }
+
+  input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .errors {
+    .errorlist {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

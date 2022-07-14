@@ -1,0 +1,12 @@
+{% if goals_reminder_alert == 'no' and profile_reminder_alert == 'yes' %}
+    <div class="alert alert-success"
+         role="alert"
+         id="alert-goals-reminder">
+        <h6 class="alert-heading">
+            Now, let's update your profile 😊
+        </h6>
+        <p class="mb-0">
+            <a class="" href="{% url 'profile-index' %}">Set it now</a>
+        </p>
+    </div>
+{% endif %}

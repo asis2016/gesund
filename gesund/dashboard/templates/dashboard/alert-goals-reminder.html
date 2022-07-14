@@ -1,0 +1,15 @@
+{% if goals_reminder_alert == 'yes' %}
+    <div class="alert alert-success"
+         role="alert"
+         id="alert-goals-reminder">
+        <h4 class="alert-heading">Welcome {{ user.username }}!</h4>
+        <p>You've successfully joined to Gesund App.</p>
+        <hr>
+        <p>
+            Now, its time to set your Gesund goals.
+        </p>
+        <p class="mb-0">
+            <a href="{% url 'goals-index' %}">Set it now</a>
+        </p>
+    </div>
+{% endif %}

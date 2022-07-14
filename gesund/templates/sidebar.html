@@ -1,0 +1,147 @@
+{% load static %}
+{% load active_link_tags %}
+<!-- Sidebar lg -->
+<div class="sidebar sidebar-main d-flex flex-column flex-shrink-0 p-3 toggled" id="sidebar-lg">
+    <a href="{% url 'dashboard' %}"
+       class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <span class="fs-4">Gesund App</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+            <a href="{% url 'dashboard' %}" class="nav-link">
+                <i class="fa-solid fa-gauge"></i><span class="link-text">Home</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'steps-index' %}" class="nav-link">
+                <i class="fa-solid fa-shoe-prints"></i><span class="pl-3">Step Tracker</span>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" href="{% url 'calorie-intake-datestamp-index' %}">
+                <i class="fa-solid fa-apple-whole"></i><span class="pl-3">Calorie Tracker</span>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" href="{% url 'pomodoros-index' %}">
+                <i class="fa-solid fa-hourglass"></i><span class="pl-3">Pomodoros</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'water-index' %}" class="nav-link">
+                <i class="fa-solid fa-droplet"></i><span class="pl-3">Water Tracker</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'weight-index' %}" class="nav-link">
+                <i class="fa-solid fa-weight-scale"></i><span class="pl-3">Weight Tracker</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'about' %}" class="nav-link">
+                <i class="fa-solid fa-info-circle"></i><span class="pl-3">About</span>
+            </a>
+        </li>
+        <li class="li-divider">
+        </li>
+        <li>
+            <a href="{% url 'leaderboards-index' %}" class="nav-link">
+                <i class="fa-solid fa-crown"></i>
+                <span class="pl-3">
+                Leaderboards
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'xps-index' %}"
+               class="{% active_link 'xps-index' 'active' %} nav-link">
+                <i class="fa-solid fa-bolt"></i>
+                <span class="pl-3">
+                XPs
+                </span>
+            </a>
+        </li>
+        <li class="d-none">
+            <a href="{% url 'challenges-index' %}" class="nav-link">
+                <i class="fa-solid fa-stopwatch-20"></i><span class="pl-3">Challenges</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- Sidebar lg ends -->
+
+<!-- Sidebar sm -->
+<div class="sidebar d-flex flex-column flex-shrink-0 p-2 toggled" id="sidebar-sm">
+    <a href="{% url 'dashboard' %}"
+       class="d-flex align-items-center
+     mb-3 me-md-auto text-white text-decoration-none">
+        <img src="{% static 'images/logo.png' %}" alt="" class="logo">
+    </a>
+    <ul class="mb-auto">
+        <li>
+            {% url 'dashboard' as url %}
+            <a href="{{ url }}"
+               class="nav-link {% if request.path == url %}active{% endif %}">
+                <i class="fa-solid fa-gauge"></i>
+                <br>
+                <span class="menu-text">Home</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'steps-index' %}"
+               class="nav-link {% active_link 'steps-index' 'active' %}">
+                <i class="fa-solid fa-shoe-prints"></i>
+                <br>
+                <span class="menu-text">Steps</span>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link {% active_link 'calorie-intake-datestamp-index' 'active' %}"
+               href="{% url 'calorie-intake-datestamp-index' %}">
+                <i class="fa-solid fa-apple-whole"></i>
+                <br>
+                <span class="menu-text">Calories</span>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" href="{% url 'pomodoros-index' %}">
+                <i class="fa-solid fa-hourglass"></i>
+                <br>
+                <span class="menu-text">Pomodoro</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'water-index' %}"
+               class="nav-link {% active_link 'water-index' 'active' %}">
+                <i class="fa-solid fa-droplet"></i>
+                <br>
+                <span class="menu-text">Water</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'weight-index' %}"
+               class="nav-link {% active_link 'weight-index' 'active' %}">
+                <i class="fa-solid fa-weight-scale"></i>
+                <br>
+                <span class="menu-text">Weight</span>
+            </a>
+        </li>
+        <li class="d-none">
+            <a href="{% url 'challenges-index' %}" class="nav-link">
+                <i class="fa-solid fa-stopwatch-20"></i>
+                <br>
+                <span class="menu-text">Challenges</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'about' %}"
+               class="nav-link {% active_link 'about' 'active' %}">
+                <i class="fa-solid fa-info-circle"></i>
+                <br>
+                <span class="menu-text">About</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- Sidebar sm ends -->

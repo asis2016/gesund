@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="container-fluid steps-container-update" id="steps-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-page-header">
+                    <h2>Profile</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tracker</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Update profile</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 mt-4">
+                <div class="card">
+                    <div class="card-header card-header-menu">
+                        Update your profile
+                    </div>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" for="id_name">
+                                    Full name
+                                </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control"
+                                           id="id_name"
+                                           name="name"
+                                           required
+                                           type="text"
+                                           value="{{ profile_obj.name }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3">
+                                <label class="col-sm-4 col-form-label" for="id_datestamp">
+                                    Gender
+                                </label>
+                                <div class="col-sm-12">
+                                    <select name="gender" id="id_gender" class="form-select">
+                                        {% if profile_obj.gender %}
+                                            <option value="F" {% if profile_obj.gender == 'F' %}selected{% endif %}>
+                                                Female
+                                            </option>
+                                            <option value="M" {% if profile_obj.gender == 'M' %}selected{% endif %}>
+                                                Male
+                                            </option>
+                                        {% else %}
+                                            <option value="" selected="">---------</option>
+                                            <option value="F">Female</option>
+                                            <option value="M">Male</option>
+                                        {% endif %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3">
+                                <label class="col-sm-4 col-form-label" for="id_datestamp">
+                                    Birth Date
+                                </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control"
+                                           id="id_datestamp"
+                                           name="dob"
+                                           required
+                                           type="text"
+                                           value="{{ profile_obj.dob }}">
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <label class="col-sm-4 col-form-label" for="id_country">
+                                    Country (residing)
+                                </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control"
+                                           id="id_country"
+                                           name="country"
+                                           required
+                                           type="text"
+                                           value="{{ profile_obj.country }}">
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <label class="col-sm-4 col-form-label" for="id_height">
+                                    Height (cm)
+                                </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control"
+                                           id="id_height"
+                                           name="height"
+                                           required
+                                           type="number"
+                                           value="{{ profile_obj.height }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-warning" type="submit">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <span class="p-2">Update changes</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="container-fluid calories-container-delete" id="calories-container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="card">
+                        <div class="card-header card-header-menu bg-danger">
+                            <h6>Are you sure you want to delete the following record?</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                <b>{{ calories_intake_obj.food }}</b>
+                            </p>
+                            <p>
+                                Date: {{ calories_intake_obj.datestamp|date:'Y-m-d' }}
+                            </p>
+                            <p>
+                                {{ calories_intake_obj.calories }} cal.
+                            </p>
+                            <p>
+                                {{ calories_intake_obj.consume }} gm consumption.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="float-end">
+                                <a href="{% url 'calorie-intake-datestamp-index' %}" class="btn btn-secondary">
+                                    <i class="fa-solid fa-angle-left"></i>
+                                    <span class="p-2">No, take me back</span>
+                                </a>
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    <span class="p-2">Yes. Delete it!</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

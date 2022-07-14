@@ -1,0 +1,106 @@
+{% extends 'base-login.html' %}
+{% load static %}
+
+{% block title %}
+    Signup
+{% endblock title %}
+
+{% block head %}
+    <link href="{% static 'css/screen.css' %}" rel="stylesheet" type="text/css">
+{% endblock head %}
+
+{% block main %}
+    <div class="container" id="registration">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-sm-12">
+                <div class="py-4">
+                    <h2 class="text-center">Sign up</h2>
+                </div>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.errors }}
+                        </div>
+                    {% endif %}
+                    <!-- email -->
+                    <div class="mb-3">
+                        <label for="id_email"
+                               class="form-label">
+                            Email
+                        </label>
+                        <input aria-describedby="emailHelp"
+                               class="form-control"
+                               type="text"
+                               name="email"
+                               autocomplete="off"
+                               required
+                               value="mhrj.asis@gmail.com"
+                               id="id_email">
+                        <div id="emailHelp" class="form-text">
+                            Required. E.g., user@example.com
+                        </div>
+                    </div>
+
+                    <!-- username -->
+                    <div class="mb-3">
+                        <label for="id_username"
+                               class="form-label">
+                            Username
+                        </label>
+                        <input aria-describedby="usernameHelp"
+                               class="form-control"
+                               type="text"
+                               name="username"
+                               maxlength="150"
+                               autocomplete="off"
+                               required
+                               value="user1000"
+                               id="id_username">
+                        <div id="usernameHelp" class="form-text">
+                            Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+                        </div>
+                    </div>
+                    {#password#}
+                    <div class="mb-3">
+                        <label for="id_password1" class="form-label">Password</label>
+                        <input class="form-control"
+                               type="password"
+                               name="password1"
+                               autocomplete="new-password"
+                               required
+                               value="Pass@123"
+                               id="id_password1">
+                        <div class="pt-2" class="form-text">
+                            <ul>
+                                <li>Your password can’t be too similar to your other personal information.</li>
+                                <li>Your password must contain at least 8 characters.</li>
+                                <li>Your password can’t be a commonly used password.</li>
+                                <li>Your password can’t be entirely numeric.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_password2" class="form-label">Password confirmation</label>
+                        <input aria-describedby="passwordHelp"
+                               class="form-control"
+                               type="password"
+                               name="password2"
+                               autocomplete="new-password"
+                               required
+                               value="Pass@123"
+                               id="id_password2">
+                        <div id="passwordHelp" class="form-text">
+                            Enter the same password as before, for verification.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">
+                        Sign up!
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock main %}

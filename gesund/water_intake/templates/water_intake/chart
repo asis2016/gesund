@@ -1,0 +1,18 @@
+<script>
+    const myWaterIntakeHistory = new Chart(
+        document.getElementById('myWaterIntakeHistory'),
+        {
+            type: 'line',
+            data: {
+                labels: [{% for i in water_intake_list_chart %}'{{ i.datestamp|date:"d-m" }}', {% endfor %}],
+                datasets: [{
+                    label: '',
+                    backgroundColor: '#90EE90',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [{% for i in water_intake_list_chart %}{{ i.drink_progress }}, {% endfor %}],
+                }]
+            },
+            options: {}
+        }
+    );
+</script>

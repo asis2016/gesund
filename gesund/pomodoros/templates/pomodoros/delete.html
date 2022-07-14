@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="container-fluid" id="pomodoro-container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="card">
+                        <div class="card-header card-header-menu bg-danger">
+                            <h6>Are you sure you want to delete the following record?</h6>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Datestamp</th>
+                                    <th>Pomodoro (in minutes)</th>
+                                    <th>Break (in minutes)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>{{ pomodoro_obj.id }}</td>
+                                    <td>{{ pomodoro_obj.datestamp|date:'Y-m-d' }}</td>
+                                    <td>{{ pomodoro_obj.pomodoro_minutes }}</td>
+                                    <td>{{ pomodoro_obj.break_minutes }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <p>
+                                            <b>Remarks:</b>
+                                        </p>
+                                        <p>
+                                            {{ pomodoro_obj.remarks }}
+                                        </p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer">
+                            <div class="float-end">
+                                <a href="{% url 'pomodoros-index' %}" class="btn btn-secondary">
+                                    <i class="fa-solid fa-angle-left"></i>
+                                    <span class="p-2">No, take me back</span>
+                                </a>
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    <span class="p-2">Yes. Delete it!</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

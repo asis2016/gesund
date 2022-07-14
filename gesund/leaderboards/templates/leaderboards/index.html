@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load user_levels %}
+
+{% block main %}
+    <div class="container-fluid" id="leaderboards-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-page-header">
+                    <h2>Leaderboard</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tracker</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Leaderboard</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 mt-4">
+                <div class="card">
+                    {# --- Card body starts --- #}
+                    <div class="card-body">
+                        {% if xp_list %}
+                            <table class="table table-hover data-table-list mb-0">
+                                <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>User</th>
+                                    <th>XP</th>
+                                    <th>Level</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in xp_list %}
+                                    <tr>
+                                        <td id="rank-{{ forloop.counter }}">
+                                            {{ forloop.counter }}
+                                        </td>
+                                        <td>
+                                            {{ i.username }}
+                                        </td>
+                                        <td>
+                                            {{ i.total_xp }}
+                                        </td>
+                                        <td>
+                                            {{ i.total_xp|level }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-warning" role="alert">
+                                <p class="mb-0">
+                                    No records found.
+                                </p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {# --- Card body ends --- #}
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock main %}
+
+{% block scripts %}
+    <script>
+        $("#rank-1").html('<i class="fa-solid fa-crown fa-border-style" style="color: #FFD700"></i>');
+        $("#rank-2").html('<i class="fa-solid fa-crown fa-border-style" style="color: #C0C0C0"></i>');
+        $("#rank-3").html('<i class="fa-solid fa-crown fa-border-style" style="color: #CD7F32"></i>');
+    </script>
+{% endblock scripts %}

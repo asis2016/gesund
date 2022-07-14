@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+    <style>
+        .action-buttons {
+            justify-content: space-between;
+        }
+
+        .action-buttons a {
+            width: 90%;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    </style>
+
+    <div class="container-fluid" id="calories-container-datestamp-collection">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-page-header">
+                    <h2>Food intake</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tracker</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Steps counter</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 mt-4">
+                <div class="card sm">
+                    <div class="card-header">
+                        <h6 class="mb-0">
+                            As of {{ datestamp }}
+                        </h6>
+                    </div>
+                    {# --- Card body starts --- #}
+                    <div class="card-body p-0">
+                        {% if calories_list %}
+                            <table class="table table-striped mb-0">
+                                <tbody>
+                                {% for i in calories_list %}
+                                    <tr>
+                                        <td class="py-2">
+                                            <p class="d-flex m-0">
+                                                <span><b>Food</b></span>
+                                            </p>
+                                            <p class="d-flex mt-1 m-0">
+                                                <span style="width: 180px;">{{ i.food }}</span>
+                                            </p>
+                                            <p class=" d-flex mt-2 m-0">
+                                                <span class="w-50"><b>Consume</b></span>
+                                                <span class="w-50">{{ i.consume }} gm</span>
+                                            </p>
+                                            <p class=" d-flex mt-2 m-0">
+                                                <span class="w-50"><b>Calories</b></span>
+                                                <span class="w-50">{{ i.calories }} cal</span>
+                                            </p>
+                                            <p class=" d-flex mt-2 m-0">
+                                                <span class="w-50"><b>Protein</b></span>
+                                                <span class="w-50">{{ i.protein }} cal</span>
+                                            </p>
+                                            <p class=" d-flex mt-2 m-0">
+                                                <span class="w-50"><b>Fat</b></span>
+                                                <span class="w-50">{{ i.fat }} cal</span>
+                                            </p>
+                                            <p class=" d-flex mt-2 m-0">
+                                                <span class="w-50"><b>Carb</b></span>
+                                                <span class="w-50">{{ i.carb }} cal</span>
+                                            </p>
+                                            <p class=" d-flex mt-2 m-0">
+                                                <span class="w-50"><b>Sugar</b></span>
+                                                <span class="w-50">{{ i.sugar }} cal</span>
+                                            </p>
+                                            <p class=" d-flex mt-2 m-0">
+                                                <span class="w-50"><b>Fiber</b></span>
+                                                <span class="w-50">{{ i.fiber }} cal</span>
+                                            </p>
+                                            <hr>
+                                            <!--Action buttons-->
+                                            <p class=" d-flex mb-1 action-buttons">
+                                                <a href="{% url 'update-calorie-intake' i.pk %}"
+                                                   class="btn btn-sm btn-warning">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </a>
+                                                <a href="{% url 'delete-calorie-intake' i.pk %}"
+                                                   class="btn btn-sm btn-danger">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </a>
+                                            </p>
+                                            <!-- Ends action buttons -->
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-warning" role="alert">
+                                <p class="mb-0">
+                                    No records found. Start adding your food intake.
+                                </p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {# --- Card body ends --- #}
+                    {# --- Card footer starts --- #}
+                    {% if calories_list %}
+                        <div class="card-footer">
+                            {% include 'pagination.html' %}
+                        </div>
+                    {% endif %}
+                    {# --- Footer ends --- #}
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+
+{% endblock main %}

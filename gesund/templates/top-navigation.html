@@ -1,0 +1,120 @@
+{% load active_link_tags %}
+<!-- Top navigation LG-->
+<div class="bg-white mb-4 pt-1 pb-1 shadow" id="top-nagivation-lg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-9 col-3">
+                <ul class="float-end mb-0 list-unstyled">
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                            {{ user.username }}
+                        </span>
+
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{% url 'profile-index' %}">
+                                <i class="fa-solid fa-address-card"></i>
+                                <span class="px-1">My Profile</span>
+                            </a>
+                            <a class="dropdown-item" href="{% url 'goals-index' %}">
+                                <i class="fa-solid fa-bars-progress"></i>
+                                <span class="px-1">My Goals</span>
+                            </a>
+                            <a class="dropdown-item" href="{% url 'history-index' %}">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <span class="px-1">History</span>
+                            </a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">
+                                <i class="fa-solid fa-power-off"></i>
+                                <span class="px-1">Logout</span>
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top navigation LG ends-->
+
+<!-- Top Navigation SM-->
+<nav class="navbar mb-4 shadow" id="top-navigation-sm">
+    <div id="menu">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <div class="user-level">
+        <a href="{% url 'leaderboards-index' %}"
+           class="{% active_link 'leaderboards-index' 'active' %}">
+            <i class="fa-solid fa-crown"></i>
+        </a>
+    </div>
+
+    <div>
+        <a href="{% url 'xps-index' %}"
+           class="{% active_link 'xps-index' 'active' %}">
+            <i class="fa-solid fa-bolt"></i>
+        </a>
+    </div>
+
+    <div class="btn-group" id="menu-profile">
+        <a href="#"
+           class="{% active_link 'profile-index' 'active' %}
+                    {% active_link 'goals' 'active' %}
+                    {% active_link 'history-index' 'active' %}"
+           data-bs-toggle="dropdown">
+            <i class="fa-solid fa-circle-user" aria-expanded="false"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li class="dropdown-item">
+                Welcome <b>{{ user.username }}</b>
+            </li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li>
+                <a class="dropdown-item" href="{% url 'profile-index' %}">
+                    <i class="fa-solid fa-address-card"></i>
+                    <span class="px-1">My Profile</span>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="{% url 'goals-index' %}">
+                    <i class="fa-solid fa-bars-progress"></i>
+                    <span class="px-1">My Goals</span>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="{% url 'history-index' %}">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span class="px-1">History</span>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="#"></a>
+            </li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li>
+                <a class="dropdown-item" href="{% url 'password_change' %}">
+                    <i class="fa-solid fa-key"></i>
+                    <span class="px-1">Change Password</span>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="{% url 'logout' %}">
+                    <i class="fa-solid fa-power-off"></i>
+                    <span class="px-1">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Top Navigation ends-->

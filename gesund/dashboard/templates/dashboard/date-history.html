@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-header card-header-menu">
+        <div>
+            <h6>Dates history</h6>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Activity</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    <small>Last login</small>
+                </td>
+                <td>
+                    <small>{{ user.last_login|date:"Y-m-d, H:i a" }}</small>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <small>Date joined</small>
+                </td>
+                <td>
+                    <small>{{ user.date_joined|date:"Y-m-d, H:i a" }}</small>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

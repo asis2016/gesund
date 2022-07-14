@@ -1,0 +1,76 @@
+{% load static %}
+<div class="card">
+    <div class="card-header card-header-menu">
+        <h6>Weight (BMI)</h6>
+        <div class="d-flex">
+            <span class="minimize">
+                <a data-bs-target="#bmi_card_content" data-bs-toggle="collapse">
+                    <i class="fa-solid fa-circle-minus"></i>
+                </a>
+            </span>
+            <div class="dropdown">
+                <i aria-expanded="false"
+                   class="fa-solid fa-circle-chevron-down"
+                   data-bs-toggle="dropdown"
+                   id="dropdown_calories_menu"
+                   role="button"></i>
+                <ul aria-labelledby="dropdown_steps_menu" class="dropdown-menu">
+                    <li class="d-flex">
+                        <a class="dropdown-item" href="{% url 'add-calorie-intake' %}">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            <span class="p-2">Update your weight</span>
+                        </a>
+                    </li>
+                    {% if weight_list %}
+                        <li>
+                            <a class="dropdown-item" href="{% url 'export-weights' %}">
+                                <i class="fa-solid fa-cloud-arrow-down"></i>
+                                <span class="px-2">Export records</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- bmi_card_content -->
+    <div class="collapse show" id="bmi_card_content">
+        <div class="card-body collapse show">
+            {% if weight_list %}
+                <div class="text-center">
+                    <h1>{{ bmi }}</h1>
+                    <p>{{ bmi_interpretation }}</p>
+                </div>
+                <hr>
+                <table class="table table-hover">
+                    <tbody>
+                    {% for i in weight_list %}
+                        <tr>
+                            <td class="align-middle">
+                                {{ i.datestamp|date:"Y-m-d" }}
+                            </td>
+                            <td class="align-middle">
+                                {{ i.weight }} kg
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="alert alert-warning" role="alert">
+                    <p class="mb-0">
+                        No records found. Start adding your weight.
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+        {% if weight_list %}
+            <div class="card-footer">
+                <div class="float-end">
+                    <a href="{% url 'weight-index' %}">View all</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <!-- ends bmi_card_content -->
+</div>

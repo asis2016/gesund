@@ -1,0 +1,18 @@
+<script>
+    const myWeight = new Chart(
+        document.getElementById('myWeight'),
+        {
+            type: 'line',
+            data: {
+                labels: [{% for i in weight_list_chart %}'{{ i.datestamp|date:"d-m" }}', {% endfor %}],
+                datasets: [{
+                    label: '',
+                    backgroundColor: '#90EE90',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [{% for i in weight_list_chart %}{{ i.weight }}, {% endfor %}],
+                }]
+            },
+            options: {}
+        }
+    );
+</script>

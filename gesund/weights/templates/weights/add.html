@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="container-fluid weight-container-add" id="weight-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-page-header">
+                    <h2>Weight tracker</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tracker</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Add weight
+                            </li>
+                        </ol>
+                    </nav>>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 mt-4">
+                <div class="card">
+                    <div class="card-header card-header-menu">
+                        Add your weight
+                    </div>
+                    <form method="POST">
+                        <div class="card-body">
+                            {% csrf_token %}
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" for="id_datestamp">
+                                    Datestamp
+                                </label>
+                                <div class="col-sm-6">
+                                    <input autocomplete="off"
+                                           class="form-control"
+                                           id="id_datestamp"
+                                           name="datestamp"
+                                           placeholder="2022-01-23"
+                                           required
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3">
+                                <label class="col-sm-4 col-form-label"
+                                       for="id_weight">
+                                    Weight (kg)
+                                </label>
+                                <div class="col-sm-6">
+                                    <input autocomplete="off"
+                                           class="form-control"
+                                           id="id_weight"
+                                           name="weight"
+                                           placeholder="1.0"
+                                           type="number"
+                                           required
+                                           step="any">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-success" type="submit">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                <span class="p-2">Save changes</span>
+                            </button>
+                            <!-- go back -->
+                            <a class="float-end go-back-to-list go-back-lg"
+                               href="{% url 'weight-index' %}">
+                                Go back to the weight list
+                            </a>
+                            <a class="btn btn-secondary go-back-sm"
+                               href="{% url 'weight-index' %}">
+                                <i class="fa-solid fa-angle-left"></i>
+                                <span class="p-2">Go back</span>
+                            </a>
+                            <!-- go back ends -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        $("#id_datestamp").val(get_today);
+        $("#id_weight").focus();
+    </script>
+{% endblock scripts %}
+

@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header card-header-menu">
+        <h6>Daily goals</h6>
+        <div class="d-flex">
+            <span class="minimize">
+                <a href="#"
+                   data-bs-target="#daily_goals_card_content"
+                   data-bs-toggle="collapse">
+                    <i class="fa-solid fa-circle-minus"></i>
+                </a>
+            </span>
+        </div>
+    </div>
+    <!-- daily_goals_card_content -->
+    <div class="collapse show" id="daily_goals_card_content">
+        <div class="card-body collapse show">
+            {#        todo #}
+            <style>
+                .progress {
+                    height: 1.2rem;
+                }
+
+                .progress span {
+                    color: white;
+                    font-weight: 300;
+                    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+                }
+            </style>
+            {% if goals_daily %}
+                {% for i in goals_daily %}
+                    <div class="pb-3">
+                        <p>{{ i.2 }}</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-{{ i.1 }}"
+                                 role="progressbar"
+                                 style="width: {{ i.0 }}%;">
+                                <span>{{ i.0 }}%</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-warning" role="alert">
+                    <p class="mb-0">
+                        No records found. Start following your goals.
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- ends daily_goals_card_content -->
+</div>

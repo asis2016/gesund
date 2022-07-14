@@ -1,0 +1,13 @@
+{
+  "name": "Gesund APP",
+  "short_name": "Gesund",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A gesund application.",
+  "icons": [{
+      "src": "images/android-launchericon-192-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }]
+}

@@ -1,0 +1,16 @@
+<script>
+    const myStepsProgress = new Chart(
+        document.getElementById('myStepsProgress'),
+        {
+            type: 'line',
+            data: {
+                labels: [{% for i in steps_list_chart %}'{{ i.datestamp|date:"d-m" }}', {% endfor %}],
+                datasets: [{ label: '',backgroundColor: '#90EE90',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [{% for i in steps_list_chart %}{{ i.step_count }}, {% endfor %}],}]
+
+            },
+            options: {}
+        }
+    );
+</script>

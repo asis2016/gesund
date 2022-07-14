@@ -1,0 +1,112 @@
+<!-- pagination lg -->
+<div class="pagination" id="pagination-lg">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination mb-0">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">&laquo; <span>first</span></a>
+            </li>
+            <li class="page-item">
+                <a class="page-link"
+                   href="?page={{ page_obj.previous_page_number }}">
+                    previous
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#">&laquo; first</a>
+            </li>
+            <li class="page-item disabled">
+                <a class="page-link disabled" href="#">
+                    previous
+                </a>
+            </li>
+            {% endif %}
+            <li class="page-item">
+                <a class="page-link">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </a>
+            </li>
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                    next
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                    last &raquo;
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#">next</a>
+            </li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">last &raquo;</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+<!-- pagination lg ends -->
+
+<!-- pagination sm -->
+<div class="pagination-sm mt-2" id="pagination-sm">
+    <div>
+        <!-- has previous -->
+        {% if page_obj.has_previous %}
+        <a class="btn btn-secondary btn-sm"
+           href="?page={{ page_obj.previous_page_number }}">
+            < Prev
+        </a>
+        </li>
+        {% else %}
+        <a class="btn btn-secondary btn-sm disabled">
+            < Prev
+        </a>
+        {% endif %}
+
+        <!-- has next -->
+        {% if page_obj.has_next %}
+        <a class="btn btn-secondary btn-sm"
+           href="?page={{ page_obj.next_page_number }}">
+            Next >
+        </a>
+        {% else %}
+        <a class="btn btn-secondary btn-sm disabled">
+            Next >
+        </a>
+        {% endif %}
+    </div>
+    <div>
+        {% if page_obj.has_previous %}
+        <a class="btn btn-secondary btn-sm"
+           href="?page=1">
+            << First
+        </a>
+        {% else %}
+        <a class="btn btn-secondary btn-sm disabled">
+            << First
+        </a>
+        {% endif %}
+
+        <!-- has next-->
+        {% if page_obj.has_next %}
+        <a class="btn btn-secondary btn-sm"
+           href="?page={{ page_obj.paginator.num_pages }}">
+            Last >>
+        </a>
+        {% else %}
+        <a class="btn btn-secondary btn-sm disabled">
+            Last >>
+        </a>
+        {% endif %}
+    </div>
+    <div>
+        <div class="alert alert-secondary" role="alert">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </div>
+    </div>
+</div>
+<!-- pagination sm ends -->

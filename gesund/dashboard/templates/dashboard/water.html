@@ -1,0 +1,102 @@
+<div class="card">
+    <div class="card-header card-header-menu">
+        <h6>Water intake</h6>
+        <div class="d-flex">
+            <span class="minimize">
+                <a href="#"
+                   data-bs-target="#water_card_content"
+                   data-bs-toggle="collapse">
+                    <i class="fa-solid fa-circle-minus"></i>
+                </a>
+            </span>
+            <div class="dropdown">
+                <i aria-expanded="false"
+                   class="fa-solid fa-circle-chevron-down"
+                   data-bs-toggle="dropdown"
+                   id="dropdown_water_menu"
+                   role="button"></i>
+                <ul aria-labelledby="dropdown_water_menu"
+                    class="dropdown-menu">
+                    <li class="d-flex">
+                        <a class="dropdown-item"
+                           href="{% url 'add-water-progress' %}">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            <span class="p-2">Add new</span>
+                        </a>
+                    </li>
+                    {% if water_intake_list %}
+                        <li>
+                            <a class="dropdown-item" href="{% url 'export-water-intake' %}">
+                                <i class="fa-solid fa-cloud-arrow-down"></i>
+                                <span class="px-2">Export records</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- water_card_content -->
+    <div class="collapse show" id="water_card_content">
+        <div class="card-body collapse show">
+            {% if water_intake_list %}
+                {#                todo#}
+                <style>
+                    .progress {
+                        height: 1.2rem;
+                    }
+
+                    .progress span {
+                        color: white;
+                        font-weight: 300;
+                        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+                    }
+                </style>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>L</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in water_intake_list %}
+                        <tr>
+                            <td class="align-middle">
+                                {{ i.0|date:"Y-m-d" }}
+                            </td>
+                            <td class="align-middle">
+                                {{ i.1 }} L
+                            </td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar bg-{{ i.3 }}"
+                                         role="progressbar"
+                                         style="width: {{ i.2 }}%;">
+                                        <span>{{ i.2 }}%</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="alert alert-warning" role="alert">
+                    <p class="mb-0">
+                        No records found. Start adding your water intake.
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+        <!-- End card body -->
+        {% if water_intake_list %}
+            <div class="card-footer">
+                <div class="float-end">
+                    <a href="{% url 'water-index' %}">View all</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <!-- ends water_card_content -->
+</div>

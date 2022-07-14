@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div id="dashboard-container" class="container-fluid">
+        {% if user.is_authenticated %}
+            {% comment %}{{ user.username }}{% endcomment %}
+        {% endif %}
+
+        <!-- reminders -->
+        {% include './alert-goals-reminder.html' %}
+        {% include './alert-profile-reminder.html' %}
+
+        <!-- Quick stats -->
+        {% include 'dashboard/quick-stats.html' %}
+
+        <div class="row">
+            <!-- Daily goals -->
+            <div class="col-lg-7 mt-5" id="dashboard-daily-goals">
+                {% include 'dashboard/daily-goals.html' %}
+            </div>
+            <!-- BMI -->
+            <div class="col-lg-5 col-weight-info mt-5" id="dashboard-bmi">
+                {% include 'dashboard/bmi.html' %}
+            </div>
+        </div>
+
+        <!--Challenges-->
+        {% include 'dashboard/challenges.html' %}
+
+        <div class="row">
+            <!--Calories-->
+            <div class="col-lg-6 mt-5" id="dashboard-calories">
+                {% include 'dashboard/calories.html' %}
+            </div>
+            <!--Water-->
+            <div class="col-lg-6 mt-5" id="dashboard-water">
+                {% include 'dashboard/water.html' %}
+            </div>
+        </div>
+
+        <div class="row">
+            <!--Steps-->
+            <div class="col-lg-6 mt-5" id="dashboard-steps">
+                {% include 'dashboard/steps.html' %}
+            </div>
+            <!-- Date history -->
+            <div class="col-lg-6 mt-5" id="dashboard-history">
+                {% include 'dashboard/date-history.html' %}
+            </div>
+        </div>
+
+        <div class="row">
+            <!--Pomodoro-->
+            <div class="col-lg-6 mt-5 d-none" id="dashboard-pomodoro">
+                {% include 'dashboard/pomodoros.html' %}
+            </div>
+        </div>
+
+        <div class="mt-5"></div>
+    </div>
+{% endblock main %}
+

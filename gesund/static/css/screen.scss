@@ -1,0 +1,1125 @@
+/*
+    Author      : Ashish S. Maharjan
+    Author URI  : https://github.com/asis2016/
+    Description : This theme is designed for Gesund App.
+*/
+
+@import "base.scss";
+
+@media screen and (max-width: 767px) {
+  /* sidebar -------------------------------------------------------------------------- */
+  #sidebar-lg {
+    display: none !important;
+  }
+
+  #sidebar-sm {
+    //width: 100px;
+    //width: 70px;
+    width: 75px;
+    /*overflow-y: scroll;*/
+
+    .logo {
+      height: 50px;
+      //padding-left: 20px;
+      padding-left: 6px;
+      margin-top: 5px !important;
+    }
+
+    ul {
+      padding-left: 0;
+      text-align: center;
+      /*border-top: 1px solid red;*/
+
+      li {
+        margin-bottom: .3rem;
+
+        &:first-child {
+          margin-top: 1rem;
+        }
+
+        .nav-link {
+          padding-left: 0;
+          padding-right: 0;
+
+          .menu-text {
+            font-size: 14px;
+          }
+
+          color: $grey_500;
+        }
+
+        .active {
+          color: #ffffff;
+
+          i {
+            font-size: 1.2rem;
+          }
+
+          .menu-text {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+
+  }
+
+  .sidebar {
+    display: none !important;
+  }
+
+  .toggled {
+    display: block !important;
+  }
+
+  /* calories-container -------------------------------------------------------------------------- */
+  #calories-container {
+    .row:first-child {
+      .col-page-header {
+        nav {
+          display: none;
+        }
+      }
+    }
+
+    .row:nth-child(2) {
+      .col-lg-8 {
+        margin-top: .5rem !important;
+
+        .card-header-menu {
+          justify-content: normal !important;
+          background: none;
+
+          .btn {
+            width: 100%;
+          }
+        }
+
+        .card-body {
+          padding: 0.1rem;
+
+          .table {
+            th:first-child, td:first-child {
+              display: none;
+            }
+
+            tbody {
+              td:nth-child(3) span {
+                display: none;
+              }
+
+              td:nth-child(4) {
+                span {
+                  display: none;
+                }
+
+                a {
+                  padding: 0.2rem 0.4rem;
+                }
+              }
+            }
+          }
+
+          .alert {
+            margin: 1rem;
+          }
+
+          .card-footer {
+          }
+
+          .list-group {
+            overflow: hidden;
+          }
+        }
+
+        .row:nth-child(2) {
+          .col-lg-4 {
+            margin-top: 1.5rem;
+          }
+        }
+
+        .row:nth-child(3) {
+          margin-top: 1.5rem !important;
+        }
+
+      }
+    }
+
+
+    // add.html
+    &.calories-container-add, &.calories-container-update {
+      .row:nth-child(2) {
+        .col-lg-6 {
+          margin-top: .5rem !important;
+        }
+      }
+
+      .card-footer {
+        a, .btn {
+          width: 100%;
+        }
+
+        .go-back-lg {
+          display: none;
+        }
+
+        .go-back-sm {
+          margin-top: .5rem;
+        }
+      }
+
+      #food-modal {
+        i {
+          position: absolute;
+          right: -7px;
+          font-size: 2.2rem;
+          color: red;
+          top: -7px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      #modal-food-search {
+        .modal-body {
+          padding: 0;
+        }
+
+        .modal-close {
+          position: absolute;
+          z-index: 999;
+          right: -7px;
+          top: -12px;
+          color: red;
+          font-size: 2rem;
+        }
+      }
+    }
+
+    // delete.html
+    &.steps-container-delete {
+      .card-footer {
+        a, button {
+          width: 100%;
+        }
+
+        button {
+          margin-top: .5rem;
+        }
+      }
+    }
+  }
+
+  /* change-password-container -------------------------------------------------------------------------- */
+  #change-password-container {
+    .row:first-child {
+      .col-page-header {
+        nav {
+          display: none;
+        }
+      }
+    }
+
+    .row:nth-child(2) {
+      .col-lg-8 {
+        margin-top: .5rem !important;
+
+        .card-body {
+          .alert {
+            margin: 1rem;
+          }
+        }
+
+        .card-footer {
+          .btn-success {
+            width: 100%;
+          }
+
+          .btn-secondary {
+            margin-top: .5rem;
+            width: 100%;
+          }
+
+          .go-back-lg {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  /* change-password-done-container -------------------------------------------------------------------------- */
+  #change-password-done-container {
+    .row:first-child {
+      .col-page-header {
+        nav {
+          display: none;
+        }
+      }
+    }
+
+    .row:nth-child(2) {
+      .col-lg-8 {
+        margin-top: .5rem !important;
+      }
+    }
+
+  }
+
+  /* dashboard-container -------------------------------------------------------------------------- */
+
+  #dashboard-container {
+    .alert-warning {
+      margin-bottom: 0;
+    }
+
+    #dashboard-daily-goals {
+      margin-top: 0 !important;
+
+      p {
+        margin-bottom: 0.4rem !important;
+      }
+
+      .card-header-menu .minimize {
+        padding-right: 0;
+      }
+
+    }
+
+    #dashboard-history {
+      .card-body {
+        padding: 0;
+
+        .table {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    #dashboard-steps {
+      .card-body {
+        padding: 0;
+
+        .alert {
+          margin: 1rem;
+        }
+      }
+    }
+
+    #dashboard-water {
+      .card-body {
+        padding: 0;
+
+        .alert {
+          margin: 1rem;
+        }
+
+        .table {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  #quick-stats {
+    display: none;
+  }
+
+  #dashboard-challenge {
+    display: none;
+  }
+
+  #dashboard-daily-goals,
+  #dashboard-bmi,
+  #dashboard-calories,
+  #dashboard-water,
+  #dashboard-steps,
+  #dashboard-pomodoro,
+  #dashboard-history {
+    margin-top: 1.5rem !important;
+  }
+
+  /* calories-container -------------------------------------------------------------------------- */
+  #calories-container {
+    .row:first-child {
+      .col-page-header {
+        nav {
+          display: none;
+        }
+      }
+    }
+
+    .row:nth-child(2) {
+      .col-lg-8 {
+        margin-top: .5rem !important;
+
+        .card-header-menu {
+          justify-content: normal !important;
+          background: none;
+
+          .btn {
+            width: 100%;
+          }
+        }
+
+        .card-body {
+          padding: 0.1rem;
+
+          .table {
+            th:first-child, td:first-child {
+              display: none;
+            }
+
+            tbody {
+              td:nth-child(3) span {
+                display: none;
+              }
+
+              td:nth-child(4) {
+                span {
+                  display: none;
+                }
+
+                a {
+                  padding: 0.2rem 0.4rem;
+                }
+              }
+            }
+          }
+
+          .alert {
+            margin: 1rem;
+          }
+
+          .card-footer {
+          }
+        }
+
+        .row:nth-child(2) {
+          .col-lg-4 {
+            margin-top: 1.5rem;
+          }
+        }
+
+        .row:nth-child(3) {
+          margin-top: 1.5rem !important;
+        }
+
+      }
+    }
+
+
+    // add.html
+    &.steps-container-add, &.steps-container-update {
+      .row:nth-child(2) {
+        .col-lg-6 {
+          margin-top: .5rem !important;
+        }
+      }
+
+      .card-footer {
+        a, .btn {
+          width: 100%;
+        }
+
+        .go-back-lg {
+          display: none;
+        }
+
+        .go-back-sm {
+          margin-top: .5rem;
+        }
+      }
+    }
+
+    // delete.html
+    &.calories-container-delete {
+      .card-footer {
+        a, button {
+          width: 100%;
+        }
+
+        button {
+          margin-top: .5rem;
+        }
+      }
+    }
+  }
+
+  /* calories-container-datestamp-collection -------------------------------------------------------------------------- */
+  #calories-container-datestamp-collection {
+    .row:first-child {
+      .col-page-header {
+        nav {
+          display: none;
+        }
+      }
+    }
+
+    .row:nth-child(2) {
+      .col-lg-8 {
+        margin-top: .5rem !important;
+
+        .card-header-menu {
+          justify-content: normal !important;
+          background: none;
+
+          .btn {
+            width: 100%;
+          }
+        }
+
+        .card-body {
+          padding: 0.1rem;
+
+          .alert {
+            margin: 1rem;
+          }
+
+          .card-footer {
+          }
+        }
+
+        .row:nth-child(2) {
+          .col-lg-4 {
+            margin-top: 1.5rem;
+          }
+        }
+
+        .row:nth-child(3) {
+          margin-top: 1.5rem !important;
+        }
+
+      }
+    }
+
+
+    // add.html
+    &.steps-container-add, &.steps-container-update {
+      .row:nth-child(2) {
+        .col-lg-6 {
+          margin-top: .5rem !important;
+        }
+      }
+
+      .card-footer {
+        a, .btn {
+          width: 100%;
+        }
+
+        .go-back-lg {
+          display: none;
+        }
+
+        .go-back-sm {
+          margin-top: .5rem;
+        }
+      }
+    }
+
+    // delete.html
+    &.steps-container-delete {
+      .card-footer {
+        a, button {
+          width: 100%;
+        }
+
+        button {
+          margin-top: .5rem;
+        }
+      }
+    }
+  }
+
+  /* history-container -------------------------------------------------------------------------- */
+  #history-container {
+    nav {
+      display: none;
+    }
+  }
+
+  /* goals-container -------------------------------------------------------------------------- */
+  #goals-container {
+
+    nav {
+      display: none;
+    }
+
+    &.goals-container-index {
+      .btn {
+        width: 100% !important;
+      }
+
+    }
+
+    &.goals-container-index .btn {
+      width: 100% !important;
+    }
+  }
+
+  /* leaderboards-container -------------------------------------------------------------------------- */
+  #leaderboards-container {
+    .row:first-child {
+      .col-page-header {
+        nav {
+          display: none;
+        }
+      }
+    }
+
+    .row:nth-child(2) {
+      .col-lg-8 {
+        margin-top: .5rem !important;
+
+        .card-body {
+          padding: 0.2rem;
+          overflow: scroll;
+
+          th {
+            font-size: 90%;
+          }
+
+          td i {
+            font-size: 90% !important;
+          }
+
+          td {
+            font-size: 90%;
+          }
+
+          .card {
+            overflow: scroll;
+          }
+        }
+      }
+    }
+  }
+
+  /* profile-container -------------------------------------------------------------------------- */
+  #profile-container {
+    nav {
+      display: none;
+    }
+
+    .row:nth-child(2) {
+      .col-lg-4 {
+        margin-top: .5rem !important;
+
+        .card-body {
+          padding: 1rem 1rem 0 1rem !important;
+
+          .list-group-item:last-child {
+            .profile-bmi {
+              text-align: right;
+            }
+          }
+
+
+        }
+      }
+
+      .col-lg-8 {
+        margin-top: 1rem !important;
+      }
+    }
+  }
+
+  /* water-intake -------------------------------------------------------------------------- */
+  #water-container {
+    .row:first-child {
+      .col-page-header {
+        nav {
+          display: none;
+        }
+      }
+    }
+
+    .row:nth-child(2) {
+      .col-lg-8 {
+        margin-top: .5rem !important;
+
+        .card-header-menu {
+          justify-content: normal !important;
+          background: none;
+
+          .btn {
+            width: 100%;
+          }
+        }
+
+        .card-body {
+          padding: 0.1rem;
+
+          .table {
+            th:first-child, td:first-child {
+              display: none;
+            }
+
+            tbody {
+              td:nth-child(3) span {
+                display: none;
+              }
+
+              td:nth-child(4) {
+                span {
+                  display: none;
+                }
+
+                a {
+                  padding: 0.2rem 0.4rem;
+                }
+              }
+            }
+          }
+
+          .alert {
+            margin: 1rem;
+          }
+
+          .card-footer {
+          }
+        }
+
+
+        .row:nth-child(2) {
+          .col-lg-4 {
+            margin-top: 2rem;
+          }
+        }
+
+        .row:nth-child(3) {
+          margin-top: 2rem !important;
+        }
+
+      }
+    }
+
+    // add.html
+    &.water-container-add, &.water-container-update {
+      .row:nth-child(2) {
+        .col-lg-6 {
+          margin-top: .5rem !important;
+        }
+      }
+
+      .card-footer {
+        a, .btn {
+          width: 100%;
+        }
+
+        .go-back-lg {
+          display: none;
+        }
+
+        .go-back-sm {
+          margin-top: .5rem;
+        }
+      }
+    }
+
+    // delete.html
+    &.water-container-delete {
+      .card-footer {
+        a, button {
+          width: 100%;
+        }
+
+        button {
+          margin-top: .5rem;
+        }
+      }
+    }
+  }
+
+  /* weight -------------------------------------------------------------------------- */
+  #weight-container {
+    .row:first-child {
+      .col-page-header {
+        nav {
+          display: none;
+        }
+      }
+    }
+
+    .row:nth-child(2) {
+      .col-lg-8 {
+        margin-top: .5rem !important;
+
+        .card-header-menu {
+          justify-content: normal !important;
+          background: none;
+
+          .btn {
+            width: 100%;
+          }
+        }
+
+        .card-body {
+          padding: 0.1rem;
+
+          .table {
+            th:first-child, td:first-child {
+              display: none;
+            }
+
+            tbody {
+              td:nth-child(3) span {
+                display: none;
+              }
+
+              td:nth-child(4) {
+                span {
+                  display: none;
+                }
+
+                a {
+                  padding: 0.2rem 0.4rem;
+                }
+              }
+            }
+          }
+
+          .alert {
+            margin: 1rem;
+          }
+
+          .card-footer {
+          }
+        }
+
+
+        .row:nth-child(2) {
+          .col-lg-4 {
+            margin-top: 2rem;
+          }
+        }
+
+        .row:nth-child(3) {
+          margin-top: 2rem !important;
+        }
+
+      }
+    }
+
+    // add.html
+    &.weight-container-add, &.weight-container-update {
+      .row:nth-child(2) {
+        .col-lg-6 {
+          margin-top: .5rem !important;
+        }
+      }
+
+      .card-footer {
+        a, .btn {
+          width: 100%;
+        }
+
+        .go-back-lg {
+          display: none;
+        }
+
+        .go-back-sm {
+          margin-top: .5rem;
+        }
+      }
+    }
+
+    // delete.html
+    &.weight-container-delete {
+      .card-footer {
+        a, button {
+          width: 100%;
+        }
+
+        button {
+          margin-top: .5rem;
+        }
+      }
+    }
+  }
+
+  /* xps-container -------------------------------------------------------------------------- */
+  #xps-container {
+    .row:first-child {
+      .col-page-header {
+        nav {
+          display: none;
+        }
+      }
+    }
+
+    .row:nth-child(2) {
+      .col-lg-8 {
+        margin-top: .5rem !important;
+
+        .card-body {
+          padding: 0.2rem;
+        }
+      }
+    }
+  }
+
+  /* registration -------------------------------------------------------------------------- */
+  #registration {
+    font-size: 13px;
+
+    .col-sm-12 {
+      padding: 0rem 1rem;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+
+  /* steps-container -------------------------------------------------------------------------- */
+  #steps-container {
+    .row:first-child {
+      .col-page-header {
+        nav {
+          display: none;
+        }
+      }
+    }
+
+    .row:nth-child(2) {
+      .col-lg-8 {
+        margin-top: .5rem !important;
+
+        .card-header-menu {
+          justify-content: normal !important;
+          background: none;
+
+          .btn {
+            width: 100%;
+          }
+        }
+
+        .card-body {
+          padding: 0.1rem;
+
+          .table {
+            th:first-child, td:first-child {
+              display: none;
+            }
+
+            tbody {
+              td:nth-child(3) span {
+                display: none;
+              }
+
+              td:nth-child(4) {
+                span {
+                  display: none;
+                }
+
+                a {
+                  padding: 0.2rem 0.4rem;
+                }
+              }
+            }
+          }
+
+          .alert {
+            margin: 1rem;
+          }
+
+          .card-footer {
+          }
+        }
+
+        .row:nth-child(2) {
+          .col-lg-4 {
+            margin-top: 1.5rem;
+          }
+        }
+
+        .row:nth-child(3) {
+          margin-top: 1.5rem !important;
+        }
+
+      }
+    }
+
+
+    // add.html
+    &.steps-container-add, &.steps-container-update {
+      .row:nth-child(2) {
+        .col-lg-6 {
+          margin-top: .5rem !important;
+        }
+      }
+
+      .card-footer {
+        a, .btn {
+          width: 100%;
+        }
+
+        .go-back-lg {
+          display: none;
+        }
+
+        .go-back-sm {
+          margin-top: .5rem;
+        }
+      }
+    }
+
+    // delete.html
+    &.steps-container-delete {
+      .card-footer {
+        a, button {
+          width: 100%;
+        }
+
+        button {
+          margin-top: .5rem;
+        }
+      }
+    }
+  }
+
+  /* top-navigation -------------------------------------------------------------------------- */
+  #top-navigation-sm {
+    background-color: $light_grey;
+    height: 3rem;
+    color: #cbcbcb;
+    border-bottom: 1px solid rgb(54 61 71 / 10%);
+    padding: 0 1rem;
+
+    #menu i, .fa-crown, .fa-bolt, #menu-profile .fa-circle-user {
+      font-size: 1.3rem;
+      color: #cbcbcb;
+    }
+
+    .active i {
+      color: #FFFFFF !important;
+    }
+
+    #menu-profile {
+      .dropdown-menu {
+        min-width: 200px !important;
+      }
+
+      .dropdown-menu[data-bs-popper] {
+        right: 0 !important;
+        left: unset !important;
+      }
+    }
+
+
+  }
+
+  #top-nagivation-lg {
+    display: none;
+  }
+
+  #ui-datepicker-div {
+    font-size: 12px;
+  }
+
+  .btn-secondary.disabled:hover {
+    cursor: crosshair;
+  }
+
+  // Pagination
+  .pagination-sm {
+    width: 100%;
+
+    div:first-child {
+      display: flex;
+      justify-content: space-between;
+
+      .btn {
+        width: 50%;
+        margin: 2px;
+      }
+    }
+
+    div:nth-child(2) {
+      display: flex;
+      justify-content: space-between;
+
+      .btn {
+        width: 50%;
+        margin: 2px;
+      }
+    }
+
+    div:nth-child(3) {
+      .alert {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 5px;
+        justify-content: center !important;
+        font-style: italic;
+      }
+    }
+  }
+
+  //Pagination
+  #pagination-lg {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  /* sidebar -------------------------------------------------------------------------- */
+  #sidebar-lg {
+    .nav-link {
+      color: white;
+
+      &:hover {
+        font-size: 1.1rem;
+      }
+    }
+
+    .li-divider {
+      border: 1px solid $light_grey;
+      margin: 10px 0 10px 0;
+    }
+  }
+
+  #calories-container {
+    // Add.html
+    &.calories-container-add {
+      .card {
+        .go-back-sm {
+          display: none;
+        }
+      }
+    }
+  }
+
+  //Top navigation
+  #top-navigation-sm {
+    display: none;
+  }
+
+  #sidebar-sm {
+    display: none !important;
+  }
+
+  #pagination-sm {
+    display: none;
+  }
+
+  #steps-container {
+    // Add.html
+    &.steps-container-add {
+      .card {
+        .go-back-sm {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+
+}

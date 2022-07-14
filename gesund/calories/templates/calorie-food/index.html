@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="container-fluid" id="calorie-food-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-page-header">
+                    <h2>Food list</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tracker</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Food list</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header card-header-menu justify-content-end">
+                    </div>
+                    <div class="card-body">
+                        {% if food_list %}
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Food</th>
+                                    <th>Calories</th>
+                                    <th>Protein</th>
+                                    <th>Fat</th>
+                                    <th>Carbs</th>
+                                    <th>Sugar</th>
+                                    <th>Fiber</th>
+                                    <th>Category</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in food_list %}
+                                    <tr>
+                                        <td>{{ i.id }}</td>
+                                        <td>
+                                            <p>{{ i.food }}</p>
+                                            <p>
+                                                {{ i.description }}
+                                            </p>
+                                        </td>
+                                        <td>{{ i.calories }}</td>
+                                        <td>{{ i.protein }}</td>
+                                        <td>{{ i.fat }}</td>
+                                        <td>{{ i.carb }}</td>
+                                        <td>{{ i.sugar }}</td>
+                                        <td>{{ i.fiber }}</td>
+                                        <td>{{ i.category.category }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-warning" role="alert">
+                                <p class="mb-0">
+                                    No records found.
+                                </p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

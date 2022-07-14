@@ -1,0 +1,403 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="container-fluid calories-container-add" id="calories-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-page-header">
+                    <h2>Calorie Intake</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tracker</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Add food
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 mt-4">
+                <div class="card">
+                    <div class="card-header card-header-menu">
+                        Add your food intake
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <!--Datestamp-->
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" for="id_datestamp">
+                                    Datestamp
+                                </label>
+                                <div class="col-sm-6">
+                                    <input autocomplete="off"
+                                           class="form-control"
+                                           id="id_datestamp"
+                                           name="datestamp"
+                                           placeholder="2022-01-23"
+                                           required
+                                           type="text">
+                                </div>
+                            </div>
+                            <!-- Search -->
+                            <div class="form-group row mt-3">
+                                <label class="col-sm-4 col-form-label" for="search_term">
+                                    Search food
+                                </label>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <div class="input-group">
+                                                <input autocomplete="off"
+                                                       class="form-control"
+                                                       id="search_term"
+                                                       name="search_term"
+                                                       placeholder="search for the food."
+                                                       type="text">
+                                                <a href="#" class="btn btn-secondary" id="search">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                    </i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <a href=""
+                                               id="food-add" class="btn btn-secondary">
+                                                +
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Food -->
+                            <div class="form-group row mt-3 form-group-id">
+                                <label class="col-sm-4 col-form-label" for="id_food_intake">
+                                    Food
+                                    <span class="px-1">
+                                        <i class="fa-solid fa-circle-info"
+                                           data-toggle="modal"
+                                           data-target="#modal-food-info"></i>
+                                    </span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <input autocomplete="off"
+                                           class="form-control"
+                                           id="id_food_intake"
+                                           name="food"
+                                           placeholder="Select or enter your food here."
+                                           required
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <!-- Food id -->
+                            <input type="text"
+                                   id="id_food"
+                                   name="food_detail_ref"
+                                   class="d-none">
+
+                            <!-- Food description -->
+                            <input type="text"
+                                   id="id_description"
+                                   name="description"
+                                   class="d-none">
+
+                            <!-- Consumption -->
+                            <div class="form-group row mt-3 form-group-id">
+                                <label class="col-sm-4 col-form-label" for="id_consume">
+                                    Consumption (gm)
+                                </label>
+                                <div class="col-sm-6">
+                                    <input autocomplete="off"
+                                           class="form-control"
+                                           id="id_consume"
+                                           name="consume"
+                                           placeholder="100"
+                                           required
+                                           step="any"
+                                           type="number">
+                                </div>
+                            </div>
+
+                            <hr>
+                            <div class="form-group row mt-2">
+                                <!-- calories -->
+                                <div class="col">
+                                    <div class="row">
+                                        <label class="col-sm-4 col-form-label" for="id_calories">
+                                            Calories
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input autocomplete="off"
+                                                   class="form-control"
+                                                   id="id_calories"
+                                                   name="calories"
+                                                   placeholder="1.0"
+                                                   step="any"
+                                                   type="number">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- protein -->
+                                <div class="col">
+                                    <div class="row">
+                                        <label class="col-sm-4 col-form-label" for="id_protein">
+                                            Protein
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input autocomplete="off"
+                                                   class="form-control"
+                                                   id="id_protein"
+                                                   name="protein"
+                                                   placeholder="1.0"
+                                                   step="any"
+                                                   type="number">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3">
+                                <!-- fat -->
+                                <div class="col">
+                                    <div class="row">
+                                        <label class="col-sm-4 col-form-label" for="id_fat">
+                                            Fat
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input autocomplete="off"
+                                                   class="form-control"
+                                                   id="id_fat"
+                                                   name="fat"
+                                                   placeholder="1.0"
+                                                   step="any"
+                                                   type="number">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- carb -->
+                                <div class="col">
+                                    <div class="row">
+                                        <label class="col-sm-4 col-form-label" for="id_carb">
+                                            Carb
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input autocomplete="off"
+                                                   class="form-control"
+                                                   id="id_carb"
+                                                   name="carb"
+                                                   placeholder="1.0"
+                                                   step="any"
+                                                   type="number">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3">
+                                <div class="col">
+                                    <!-- sugar -->
+                                    <div class="row">
+                                        <label class="col-sm-4 col-form-label" for="id_sugar">
+                                            Sugar
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input autocomplete="off"
+                                                   class="form-control"
+                                                   id="id_sugar"
+                                                   name="sugar"
+                                                   placeholder="1.0"
+                                                   step="any"
+                                                   type="number">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <!-- fiber -->
+                                    <div class="row">
+                                        <label class="col-sm-4 col-form-label" for="id_fiber">
+                                            fiber
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input autocomplete="off"
+                                                   class="form-control"
+                                                   id="id_fiber"
+                                                   name="fiber"
+                                                   placeholder="1.0"
+                                                   step="any"
+                                                   type="number">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-success" type="submit">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                <span class="p-2">Save changes</span>
+                            </button>
+                            <!-- go back -->
+                            <a class="float-end go-back-to-list go-back-lg"
+                               href="{% url 'calorie-intake-datestamp-index' %}">
+                                Go back to the calorie intake
+                            </a>
+                            <a class="btn btn-secondary go-back-sm"
+                               href="{% url 'calorie-intake-datestamp-index' %}">
+                                <i class="fa-solid fa-angle-left"></i>
+                                <span class="p-2">Go back</span>
+                            </a>
+                            <!-- go back ends -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        {% include './modal-food-search.html' %}
+        {% include './modal-food-info.html' %}
+    </div>
+
+
+{% endblock main %}
+
+{% block scripts %}
+    <script>
+        let id = '';
+        let food = '';
+        let calories = '';
+        let protein = '';
+        let fat = '';
+        let carb = '';
+        let sugar = '';
+        let fiber = '';
+        let description = '';
+        let consume = '';
+
+        /**
+         * datestamp equals today's date.
+         */
+        $("#id_datestamp").val(get_today);
+        $("#search_term").focus();
+
+        /**
+         * Search result clicked!
+         */
+        function search_clicked(id) {
+            $.ajax({
+                url: URL + "food-calories/" + id,
+                type: "GET",
+                contentType: "application/json",
+                dataType: 'json',
+                success: function (response) {
+                    food = response.food;
+                    calories = response.calories;
+                    protein = response.protein;
+                    fat = response.fat;
+                    carb = response.carb;
+                    sugar = response.sugar;
+                    fiber = response.fiber;
+                    description = response.description;
+
+                    // Fill up form elements.
+                    $("#id_food_intake").val(description);
+                    $("#id_food").val(id);
+                    $("#id_description").val(description);
+
+                    // Fill up modal-food-info elements.
+                    $("#food-modalinfo").text(food);
+                    $("#id-modalinfo").text(id);
+                    $("#modal-food-searchinfo").text(food);
+                    $("#calories-modalinfo").text(calories);
+                    $("#protein-modalinfo").text(protein);
+                    $("#fat-modalinfo").text(fat);
+                    $("#carb-modalinfo").text(carb);
+                    $("#sugar-modalinfo").text(sugar);
+                    $("#fiber-modalinfo").text(fiber);
+
+
+                    $("#description-modalinfo").text(description);
+                }
+            });
+
+            $("#modal-food-search").modal("hide");
+            $("#id_consume").focus();
+        }
+
+        /**
+         * Updating consumption per gm.
+         * */
+        $("#id_consume").keyup(function () {
+
+            consume = $("#id_consume").val();
+
+            // calculate consumption
+            function calc(qty) {
+                return ((qty / 100) * consume).toFixed(2);
+            }
+
+            $("#id_calories").val(calc(calories));
+            $("#id_protein").val(calc(protein));
+            $("#id_fat").val(calc(fat));
+            $("#id_carb").val(calc(carb));
+            $("#id_sugar").val(calc(sugar));
+            $("#id_fiber").val(calc(fiber));
+        });
+
+        /**
+         * Search food.
+         * */
+        $("#search").click(function () {
+            let search_term = $("#search_term").val();
+            $.ajax({
+                url: URL + "food-calories/?search=" + search_term,
+                type: "GET",
+                contentType: "application/json",
+                dataType: 'json',
+                success: function (response) {
+                    //console.log(response);
+                    let innerHTML = '';
+
+                    for (let i = 0; i < response.length; i++) {
+                        innerHTML += "<a href='#' class='list-group-item list-group-item-action' onclick='search_clicked(" + response[i].id + ")'>" + response[i].food + "</a>";
+                    }
+                    $("#modal-content").html(innerHTML);
+                }
+            });
+
+            // modal pop-up
+            $("#modal-food-search").modal('show');
+
+        });
+
+        // Clear
+        $("#clear-search").click(function () {
+            console.log('clicking...');
+            $("#id_search").val('');
+            $("#id_search-label").text('');
+            $("#id_id").val('');
+            $("#id_description").text('');
+            $("#id_calories").val('');
+            $("#id_protein").val('');
+            $("#id_fat").val('');
+            $("#id_carb").val('');
+            $("#id_sugar").val('');
+            $("#id_fiber").val('');
+            $("#id_category").val('');
+            return false;
+        });
+
+        //
+        $("#modal-food-search .modal-close").click(function () {
+            $("#modal-food-search").modal('hide');
+        });
+
+    </script>
+{% endblock scripts %}
