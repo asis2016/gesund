@@ -1,17 +1,35 @@
 $(function () {
     $("#id_datestamp").datepicker({
         dateFormat: "yy-mm-dd"
-    });
+    })
+
+    let toggle_local_value = localStorage.getItem("toggle")
+
+    if (toggle_local_value === "yes") {
+        $(".sidebar").addClass("toggled")
+    }
+
+    if (toggle_local_value === "no") {
+        $('.sidebar').removeClass('toggled')
+    }
+
 
     // Toggle the side navigation
     $("#menu").on('click', function (e) {
-        $("body").toggleClass("sidebar-toggled");
-        $(".sidebar").toggleClass("toggled");
+        //$("body").toggleClass("sidebar-toggled")
+
+        $(".sidebar").toggleClass("toggled")
+
         if ($(".sidebar").hasClass("toggled")) {
-            $('.sidebar .collapse').collapse('hide');
+            $('.sidebar').collapse('hide')
         }
-        ;
+
+        // toggle in local storage
+        let toggle_status = $(".sidebar").hasClass("toggled")
+        toggle_status ? localStorage.setItem("toggle", "yes") : localStorage.setItem("toggle", "no")
     });
+
+
 });
 
 //tooltips
