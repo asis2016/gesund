@@ -73,7 +73,7 @@
 
 {% block scripts %}
     <script>
-        const givenTime = '25:00';
+        const givenTime = '00:05';
 
 
         let isPaused = false
@@ -147,7 +147,7 @@
 
                     // When timer completes
                     if (minutes == 0 && seconds == 0) {
-                        console.log("you complited 50 sec")
+                        console.log("COMPLETED!")
                         clearInterval(interval)
 
                         if (!isStartEnabled) {
@@ -164,6 +164,9 @@
                             isStopEnabled = false
                             $("#stop").prop("disabled", true)
                         }
+
+                        const audio = new Audio("/static/audio/timer.mp3");
+                        audio.play()
                     }
 
                     $("#countdown").html(minutes + ':' + seconds)
