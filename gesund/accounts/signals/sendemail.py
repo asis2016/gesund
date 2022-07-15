@@ -27,8 +27,8 @@ def send_email(sender, instance, created, **kwargs):
 
         msg.send()
 
-    except:
-        print('something is wrong')
+    except Exception as e:
+        raise e
 
 #
 #

@@ -6,5 +6,8 @@ class AccountsConfig(AppConfig):
     name = 'accounts'
 
     def ready(self):
-        import accounts.signals
+        from .signals import goals
+        from .signals import history
+        from .signals import profiles
+        from .signals import xps
         from .signals import sendemail
