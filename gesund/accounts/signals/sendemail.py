@@ -10,25 +10,26 @@ from django.template.loader import get_template
 @receiver(post_save, sender=User)
 def send_email(sender, instance, created, **kwargs):
     """ Sends email after account is created. """
-    subject = 'Thank you for registering with Gesund App'
-    from_email = settings.EMAIL_HOST_USER
-    to = instance.email
+    if created:
+        subject = 'Thank you for registering with Gesund App'
+        from_email = settings.EMAIL_HOST_USER
+        to = instance.email
 
-    try:
-        d = {'username': instance.username}
-        plaintext = get_template('accounts/send-email.txt')
-        htmly = get_template('accounts/send-email.html')
+        try:
+            d = {'username': instance.username}
+            plaintext = get_template('accounts/send-email.txt')
+            htmly = get_template('accounts/send-email.html')
 
-        text_content = plaintext.render(d)  # 'This is an important message.'
-        html_content = htmly.render(d)  # '<p>This is an <strong>important</strong> message.</p>'
+            text_content = plaintext.render(d)  # 'This is an important message.'
+            html_content = htmly.render(d)  # '<p>This is an <strong>important</strong> message.</p>'
 
-        msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-        msg.attach_alternative(html_content, "text/html")
+            msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+            msg.attach_alternative(html_content, "text/html")
 
-        msg.send()
+            msg.send()
 
-    except Exception as e:
-        raise e
+        except Exception as e:
+            raise e
 
 #
 #
