@@ -264,8 +264,6 @@
         {% include './modal-food-search.html' %}
         {% include './modal-food-info.html' %}
     </div>
-
-
 {% endblock main %}
 
 {% block scripts %}
@@ -292,7 +290,7 @@
          */
         function search_clicked(id) {
             $.ajax({
-                url: URL + "food-calories/" + id,
+                url: "{{ REST_API_URL }}/food-calories/" + id,
                 type: "GET",
                 contentType: "application/json",
                 dataType: 'json',
@@ -357,7 +355,7 @@
         $("#search").click(function () {
             let search_term = $("#search_term").val();
             $.ajax({
-                url: URL + "food-calories/?search=" + search_term,
+                url: "{{ REST_API_URL }}/food-calories/?search=" + search_term,
                 type: "GET",
                 contentType: "application/json",
                 dataType: 'json',

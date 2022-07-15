@@ -1,5 +1,6 @@
 .idea/
 resources/
 gesund/.env
+/gesund/.env.server
 /gesund/venv/
 __pycache__/

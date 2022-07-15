@@ -81,15 +81,15 @@
     </div>
 
     {# test #}
-        {% for i in challenge_list_chart %}
-            {{ i }}
-        {% endfor %}
+    {% for i in challenge_list_chart %}
+        {{ i }}
+    {% endfor %}
 
     {{ challenge_list_chart }}
 {% endblock main %}
 
 {% block scripts %}
-    <script src="{% static '/js/jquery.datetimepicker.full.min.js' %}"></script>
+    <!-- <script src="{% static '/js/jquery.datetimepicker.full.min.js' %}"></script> -->
     <script>
         jQuery('#id_datetimepicker').datetimepicker({
             format: 'Y-m-d H:i',

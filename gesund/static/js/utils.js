@@ -7,9 +7,3 @@ const get_today = () => {
     let datestamp = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + fullDate.getDate();
     return datestamp;
 }
-
-/**
- * Get API URLS
- * */
-const API_URL = "http://192.168.2.110:8000/api/v1/"
-const URL = API_URL

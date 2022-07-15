@@ -16,7 +16,7 @@ DEBUG = True
 
 #
 load_dotenv('.env')
-API_URL = os.environ.get('API_URL')
+REST_API_URL = os.environ.get('REST_API_URL')
 DB_DATABASE = os.environ.get('DB_DATABASE')
 DB_USER = os.environ.get('DB_USER')
 DB_PASS = os.environ.get('DB_PASS')
@@ -163,9 +163,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-###
+#
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
+    'http://127.0.0.1:8000',
 )
 
 LOGIN_REDIRECT_URL = 'dashboard'

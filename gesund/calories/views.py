@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.urls import reverse_lazy
-from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
+
 from .models import CalorieIntake
 
 
@@ -17,6 +19,7 @@ class CalorieIntakeCreateView(CreateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(CalorieIntakeCreateView, self).get_context_data(*args, **kwargs)
+        context['REST_API_URL'] = settings.REST_API_URL
         return context
 
 
