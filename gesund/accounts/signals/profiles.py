@@ -8,5 +8,4 @@ from profiles.models import Profile
 def create_profile(sender, instance, created, **kwargs):
     """ Create profile after user instance creation. """
     if created:
-        print(f'{instance} created. profiles.')
         Profile.objects.create(author=instance)

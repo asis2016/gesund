@@ -8,8 +8,6 @@ from history.models import History
 def create_history(sender, instance, created, **kwargs):
     """ Records history after account creation. """
     if created:
-        print(f'{instance} account created. history')
-
         _app = 'Account'
         _action = 'CREATE'
         _description = f'{instance} account created.'

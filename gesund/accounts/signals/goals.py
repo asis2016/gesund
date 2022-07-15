@@ -8,5 +8,4 @@ from goals.models import Goals
 def create_goals(sender, instance, created, **kwargs):
     """ Create goals after user instance creation. """
     if created:
-        print(f'{instance} created. goals.')
         Goals.objects.create(author=instance)
