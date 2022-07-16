@@ -6,7 +6,7 @@ from rest_framework.generics import ListCreateAPIView, ListAPIView, RetrieveAPIV
 
 class PomodoroListCreateAPIView(ListCreateAPIView):
     """ Lists or Create pomodoro(s). """
-    permission_classes = (permissions.IsAuthenticated)
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Pomodoro.objects.all()
     serializer_class = PomodoroSerializer
 
