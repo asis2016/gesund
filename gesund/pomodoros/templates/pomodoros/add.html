@@ -65,11 +65,7 @@
 
 {% block scripts %}
     <script>
-    console.log(Cookies.get('csrftoken'))
-    </script>
-
-    <script>
-        const GIVEN_TIME = "0:02";
+        const GIVEN_TIME = "0:05";
         const TOKEN = "{{ TOKEN }}"
         const REST_API_URL = "{{ REST_API_URL }}"
         const UID = "{{ UID }}"
@@ -115,21 +111,22 @@
          * Save pomodoro
          * */
         const savePomodoro = () => {
-            var settings = {
-                "url": "https://gesund.amaharjan.online/api/v1/pomodoro/",
+            let settings = {
+                "url": `${REST_API_URL}/pomodoro/`,
                 "method": "POST",
                 "timeout": 0,
                 "headers": {
-                    "Authorization": "Basic aW5mbzpIM2xsX1dvMjJfMQ==",
-                    "Content-Type": "application/json"
+                    "Authorization": `Basic ${TOKEN}`,
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "Tj1fjXUPVEL2lgTO3Q6OZ58ROLphV9S0yU0KntYeXAegAOBfHToLEkVrFcivabzP"
                 },
                 "data": JSON.stringify({
-                    "datestamp": "2022-06-16",
+                    "datestamp": get_today(),
                     "pomodoro": 1,
                     "short_break": 0,
                     "long_break": 0,
-                    "remarks": "yo yo",
-                    "author": "10"
+                    "remarks": "One pomodoro completed!",
+                    "author": UID
                 }),
             };
 
