@@ -115,15 +115,15 @@
          * Save pomodoro
          * */
         const savePomodoro = () => {
-            let settings = {
-                "url": `${REST_API_URL}/pomodoro/`,
+            var settings = {
+                "url": "https://gesund.amaharjan.online/api/v1/pomodoro/",
                 "method": "POST",
                 "timeout": 0,
                 "headers": {
-                    "Authorization": `Basic ${TOKEN}`,
+                    "Authorization": "Basic aW5mbzpIM2xsX1dvMjJfMQ==",
                     "Content-Type": "application/json"
                 },
-                "data": JSON.stringify(    {
+                "data": JSON.stringify({
                     "datestamp": "2022-06-16",
                     "pomodoro": 1,
                     "short_break": 0,
