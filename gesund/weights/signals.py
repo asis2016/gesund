@@ -1,7 +1,8 @@
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from .models import Weight
 from history.models import History
+
+from .models import Weight
 
 
 @receiver(post_save, sender=Weight)

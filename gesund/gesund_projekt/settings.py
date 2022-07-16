@@ -20,6 +20,8 @@ REST_API_URL = os.environ.get('REST_API_URL')
 DB_DATABASE = os.environ.get('DB_DATABASE')
 DB_USER = os.environ.get('DB_USER')
 DB_PASS = os.environ.get('DB_PASS')
+REST_API_BEARER_TOKEN = os.environ.get('REST_API_BEARER_TOKEN')
+CORS_ORIGIN_WHITELIST_ENV = os.environ.get('CORS_ORIGIN_WHITELIST_ENV')
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS_ENV').split()
 
@@ -164,10 +166,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-)
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:8000',
+#     'http://127.0.0.1:8000',
+# )
+
+CORS_ORIGIN_WHITELIST = CORS_ORIGIN_WHITELIST_ENV.split()
 
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'login'

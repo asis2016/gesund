@@ -268,6 +268,8 @@
 
 {% block scripts %}
     <script>
+        const REST_API_URL = '{{ REST_API_URL }}'
+
         let id = '';
         let food = '';
         let calories = '';
@@ -290,7 +292,7 @@
          */
         function search_clicked(id) {
             $.ajax({
-                url: "{{ REST_API_URL }}/food-calories/" + id,
+                url: `${REST_API_URL}/food-calories/${id}`,
                 type: "GET",
                 contentType: "application/json",
                 dataType: 'json',
@@ -355,7 +357,7 @@
         $("#search").click(function () {
             let search_term = $("#search_term").val();
             $.ajax({
-                url: "{{ REST_API_URL }}/food-calories/?search=" + search_term,
+                url: `${REST_API_URL}/food-calories/?search=${search_term}`,
                 type: "GET",
                 contentType: "application/json",
                 dataType: 'json',

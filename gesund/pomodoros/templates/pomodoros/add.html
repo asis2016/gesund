@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block main %}
-
-    <div class="container-fluid" id="weight-container">
+    <div class="container-fluid pomodoro-container-add" id="pomodoro-container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="col-page-header">
-                    <h2>Pomodoros</h2>
+                    <h2>Pomodoro</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pomodoro</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Add pomodoro
                             </li>
@@ -20,76 +20,145 @@
             </div>
         </div>
 
-        <style>
-
-            .card-body {
-                display: flex;
-                text-align: center;
-                justify-content: center;
-            }
-
-            #main {
-                border: 5px solid #121212;
-                border-radius: 50% 50%;
-                height: 200px;
-                width: 200px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            #countdown {
-                font-size: 3.5rem;
-            }
-
-        </style>
-
-        <div class="row mt-4">
-            <div class="col-lg-6">
-
-
-                <div class="card">
-
+        <div class="row">
+            <div class="col-lg-6 mt-4">
+                <div class="card pomodoro-card">
+                    <div class="card-header card-header-menu">
+                        Add your pomodoro
+                    </div>
                     <div class="card-body">
-
                         <div>
-                            <div id="main">
+                            <div id="main" class="mb-3">
                                 <div id="countdown"></div>
                             </div>
-                            <hr>
-
-                            <button id="start">Start</button>
-                            <button id="pause" disabled>Pause</button>
-                            <button id="stop" disabled>Stop</button>
+                            <button id="start" class="btn">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                            <button id="pause" class="btn" disabled>
+                                <i class="fa-solid fa-pause"></i>
+                            </button>
+                            <button id="stop" class="btn" disabled>
+                                <i class="fa-solid fa-stop"></i>
+                            </button>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <!-- go back -->
+                        <a class="float-end go-back-to-list go-back-lg"
+                           href="{% url 'pomodoro-index' %}">
+                            Go back to the pomodoro list
+                        </a>
+                        <a class="btn btn-secondary go-back-sm"
+                           href="{% url 'pomodoro-index' %}">
+                            <i class="fa-solid fa-angle-left"></i>
+                            <span class="p-2">Go back</span>
+                        </a>
+                        <!-- go back ends -->
+                    </div>
                 </div>
-
-
+                <div class="pomodoro-alert">
+                </div>
             </div>
         </div>
     </div>
 {% endblock main %}
 
 {% block scripts %}
-    <script>
-        const givenTime = '00:05';
 
+    <script>
+        const GIVEN_TIME = "0:05";
+        const TOKEN = "{{ TOKEN }}"
+        const REST_API_URL = "{{ REST_API_URL }}"
+        const UID = "{{ UID }}"
+        const AUDIO = "/static/audio/timer.mp3"
 
         let isPaused = false
         let isStartEnabled = true
         let isPauseEnabled = false
         let isStopEnabled = false
 
+        $("#countdown").html(GIVEN_TIME)
 
-        $("#countdown").html(givenTime)
+        /**
+         * Pomodoro alert
+         * */
+        const pomodoroAlert = (status) => {
+            let alertStatus
+            let msg
+
+            if (status === "start") {
+                alertStatus = "alert-info"
+                msg = "Pomodoro started! Focus on your task."
+            }
+
+            if (status === "success") {
+                alertStatus = "alert-success"
+                msg = "Nice! One pomodoro completed."
+            }
+
+            let _html = `<div class="alert ${alertStatus} mt-3" role="alert"><p class="m-0">${msg}</p></div>`
+            $(".pomodoro-alert").html(_html)
+        }
+
+        /**
+         * Ringtone
+         * */
+        const playRingtone = () => {
+            const audio = new Audio(AUDIO)
+            audio.play()
+        }
+
+        /**
+         * Save pomodoro
+         * */
+        const savePomodoro = () => {
+            let settings = {
+                "url": `${REST_API_URL}/pomodoro/`,
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Authorization": `Basic ${TOKEN}`,
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "datestamp": get_today(),
+                    "pomodoro": 1,
+                    "short_break": 0,
+                    "long_break": 0,
+                    "remarks": "One pomodoro completed!",
+                    "author": UID
+                }),
+            };
+
+            $.ajax(settings).done(function () {
+                pomodoroAlert('success')
+            }).fail(function (jqXHR, textStatus) {
+                console.log(`status: ${jqXHR.status} > ${jqXHR.statusText}`)
+            })
+        }
+
+        /**
+         * Get Pomodoro
+         * */
+        const getPomodoro = () => {
+            var settings = {
+                "url": `${REST_API_URL}/pomodoro/`,
+                "method": "GET",
+                "timeout": 0,
+                "headers": {
+                    "Authorization": `Basic ${TOKEN}`,
+                },
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+        }
 
         /**
          * Start
          * */
         $("#start").click(function () {
-            console.log("started...")
-
             isStartEnabled = false
             $("#start").prop("disabled", true)
 
@@ -103,16 +172,14 @@
                 $("#stop").prop("disabled", false)
             }
 
-            (!isPaused) ? startTimer(givenTime) : isPaused = false;
-
+            (!isPaused) ? startTimer(GIVEN_TIME) : isPaused = false;
+            pomodoroAlert('start')
         })
 
         /**
          * Pause
          * */
         $("#pause").click(function () {
-            console.log("paused...")
-
             isPauseEnabled = false
             $("#pause").prop("disabled", true)
 
@@ -124,14 +191,44 @@
             isPaused = true;
         })
 
-        // var interval;
-        function startTimer(timer2) {
+        /**
+         * When timer is 00:00
+         * */
+        const endTimer = (minutes, seconds, interval) => {
+            if (minutes == 0 && seconds == 0) {
+                clearInterval(interval)
+
+                if (!isStartEnabled) {
+                    isStartEnabled = true
+                    $("#start").prop("disabled", false)
+                }
+
+                if (isPauseEnabled) {
+                    isPauseEnabled = false
+                    $("#pause").prop("disabled", true)
+                }
+
+                if (isStopEnabled) {
+                    isStopEnabled = false
+                    $("#stop").prop("disabled", true)
+                }
+
+                playRingtone()
+                savePomodoro()
+
+                $("#countdown").html(GIVEN_TIME)
+            }
+        }
+
+        /**
+         * Start timer
+         * */
+        const startTimer = (timer2) => {
             let interval = setInterval(function () {
 
                 if (!isPaused) {
                     let timer = timer2.split(":")
 
-                    //by parsing integer, I avoid all extra string processing
                     let minutes = parseInt(timer[0], 10)
                     let seconds = parseInt(timer[1], 10)
 
@@ -143,34 +240,11 @@
 
                     seconds = (seconds < 0) ? 59 : seconds;
                     seconds = (seconds < 10) ? '0' + seconds : seconds;
-                    //minutes = (minutes < 10) ?  minutes : minutes;
-
-                    // When timer completes
-                    if (minutes == 0 && seconds == 0) {
-                        console.log("COMPLETED!")
-                        clearInterval(interval)
-
-                        if (!isStartEnabled) {
-                            isStartEnabled = true
-                            $("#start").prop("disabled", false)
-                        }
-
-                        if (isPauseEnabled) {
-                            isPauseEnabled = false
-                            $("#pause").prop("disabled", true)
-                        }
-
-                        if (isStopEnabled) {
-                            isStopEnabled = false
-                            $("#stop").prop("disabled", true)
-                        }
-
-                        const audio = new Audio("/static/audio/timer.mp3");
-                        audio.play()
-                    }
 
                     $("#countdown").html(minutes + ':' + seconds)
                     timer2 = minutes + ':' + seconds;
+
+                    endTimer(minutes, seconds, interval)
                 }
             }, 1000)
         }
@@ -180,8 +254,9 @@
          * */
         $("#stop").click(function () {
             location.reload()
+            //$(".pomodoro-alert").hide()
             /** console.log("stopped!")
-             $("#countdown").html(givenTime)
+             $("#countdown").html(GIVEN_TIME)
              clearInterval(interval)
              */
         })

@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+    <div class="container-fluid" id="weight-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-page-header">
+                    <h2>Pomodoros</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Add pomodoro
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <style>
+
+            .card-body {
+                display: flex;
+                text-align: center;
+                justify-content: center;
+            }
+
+            #main {
+                border: 5px solid #121212;
+                border-radius: 50% 50%;
+                height: 200px;
+                width: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #countdown {
+                font-size: 3.5rem;
+            }
+
+        </style>
+
+        <div class="row mt-4">
+            <div class="col-lg-6">
+
+
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <div>
+                            <div id="main">
+                                <div id="countdown"></div>
+                            </div>
+                            <hr>
+
+                            <button id="start">Start</button>
+                            <button id="pause" disabled>Pause</button>
+                            <button id="stop" disabled>Stop</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock main %}
+
+{% block scripts %}
+    <script>
+        const givenTime = '00:05';
+
+
+        let isPaused = false
+        let isStartEnabled = true
+        let isPauseEnabled = false
+        let isStopEnabled = false
+
+
+        $("#countdown").html(givenTime)
+
+        /**
+         * Start
+         * */
+        $("#start").click(function () {
+            console.log("started...")
+
+            isStartEnabled = false
+            $("#start").prop("disabled", true)
+
+            if (!isPauseEnabled) {
+                isPauseEnabled = true
+                $("#pause").prop("disabled", false)
+            }
+
+            if (!isStopEnabled) {
+                isStopEnabled = true
+                $("#stop").prop("disabled", false)
+            }
+
+            (!isPaused) ? startTimer(givenTime) : isPaused = false;
+
+        })
+
+        /**
+         * Pause
+         * */
+        $("#pause").click(function () {
+            console.log("paused...")
+
+            isPauseEnabled = false
+            $("#pause").prop("disabled", true)
+
+            if (!isStartEnabled) {
+                isStartEnabled = true
+                $("#start").prop("disabled", false)
+            }
+
+            isPaused = true;
+        })
+
+        // var interval;
+        function startTimer(timer2) {
+            let interval = setInterval(function () {
+
+                if (!isPaused) {
+                    let timer = timer2.split(":")
+
+                    //by parsing integer, I avoid all extra string processing
+                    let minutes = parseInt(timer[0], 10)
+                    let seconds = parseInt(timer[1], 10)
+
+                    --seconds;
+
+                    minutes = (seconds < 0) ? --minutes : minutes;
+
+                    if (minutes < 0) clearInterval(interval)
+
+                    seconds = (seconds < 0) ? 59 : seconds;
+                    seconds = (seconds < 10) ? '0' + seconds : seconds;
+                    //minutes = (minutes < 10) ?  minutes : minutes;
+
+                    // When timer completes
+                    if (minutes == 0 && seconds == 0) {
+                        console.log("COMPLETED!")
+                        clearInterval(interval)
+
+                        if (!isStartEnabled) {
+                            isStartEnabled = true
+                            $("#start").prop("disabled", false)
+                        }
+
+                        if (isPauseEnabled) {
+                            isPauseEnabled = false
+                            $("#pause").prop("disabled", true)
+                        }
+
+                        if (isStopEnabled) {
+                            isStopEnabled = false
+                            $("#stop").prop("disabled", true)
+                        }
+
+                        const audio = new Audio("/static/audio/timer.mp3");
+                        audio.play()
+                    }
+
+                    $("#countdown").html(minutes + ':' + seconds)
+                    timer2 = minutes + ':' + seconds;
+                }
+            }, 1000)
+        }
+
+        /**
+         * Stop
+         * */
+        $("#stop").click(function () {
+            location.reload()
+            /** console.log("stopped!")
+             $("#countdown").html(givenTime)
+             clearInterval(interval)
+             */
+        })
+    </script>
+{% endblock scripts %}

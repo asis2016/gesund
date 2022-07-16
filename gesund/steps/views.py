@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 from .models import Steps
 
 
@@ -13,17 +14,7 @@ class StepsListView(LoginRequiredMixin, ListView):
     template_name = 'steps/index.html'
 
     def get_queryset(self):
-        x = Steps.objects.filter(author=self.request.user).order_by('-datestamp')
-        print(list(x))
-        _x = list(x)
-        print(_x)
-
-        for i in _x:
-            print(i)
-
-
-
-        return x
+        return Steps.objects.filter(author=self.request.user).order_by('-datestamp')
 
     def get_context_data(self, **kwargs):
         context = super(StepsListView, self).get_context_data(**kwargs)

@@ -597,6 +597,133 @@
     }
   }
 
+  /* pomodoro-container -------------------------------------------------------------------------- */
+  #pomodoro-container {
+    nav {
+      display: none;
+    }
+
+    .row:nth-child(2) {
+      .col-lg-8 {
+        margin-top: .5rem !important;
+
+        .card-header-menu {
+          justify-content: normal !important;
+          background: none;
+
+          .btn {
+            width: 100%;
+          }
+        }
+
+        .card-body {
+          padding: 0.1rem;
+
+          .table {
+            tbody {
+              td:nth-child(3) span {
+                display: none;
+              }
+
+              td:nth-child(4) {
+                span {
+                  display: none;
+                }
+
+                a {
+                  padding: 0.2rem 0.4rem;
+                }
+              }
+            }
+          }
+
+          .alert {
+            margin: 1rem;
+          }
+
+          .card-footer {
+          }
+        }
+      }
+    }
+
+    .row:nth-child(2) {
+      .col-lg-4 {
+        margin-top: 2rem;
+      }
+    }
+
+    .row:nth-child(3) {
+      margin-top: 2rem !important;
+    }
+
+    // add.html & update.html
+    &.pomodoro-container-add, &.pomodoro-container-update {
+      .row:nth-child(2) {
+        .col-lg-6 {
+          margin-top: .5rem !important;
+        }
+      }
+
+      .card-footer {
+        a, .btn {
+          width: 100%;
+        }
+
+        .go-back-lg {
+          display: none;
+        }
+
+        .go-back-sm {
+          margin-top: .5rem;
+        }
+      }
+    }
+
+    // add.html
+    &.pomodoro-container-add {
+
+      .pomodoro-card {
+        .card-body {
+          display: flex;
+          text-align: center;
+          justify-content: center;
+
+          #main {
+            border: 5px solid #121212;
+            border-radius: 50% 50%;
+            height: 200px;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            #countdown {
+              font-size: 3.5rem;
+            }
+          }
+
+          .btn {
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+
+    // delete.html
+    &.pomodoro-container-delete {
+      .card-footer {
+        a, button {
+          width: 100%;
+        }
+
+        button {
+          margin-top: .5rem;
+        }
+      }
+    }
+  }
+
   /* profile-container -------------------------------------------------------------------------- */
   #profile-container {
     nav {
@@ -735,12 +862,8 @@
 
   /* weight -------------------------------------------------------------------------- */
   #weight-container {
-    .row:first-child {
-      .col-page-header {
-        nav {
-          display: none;
-        }
-      }
+    nav {
+      display: none;
     }
 
     .row:nth-child(2) {
@@ -803,7 +926,7 @@
       }
     }
 
-    // add.html
+    // add.html & update.html
     &.weight-container-add, &.weight-container-update {
       .row:nth-child(2) {
         .col-lg-6 {
@@ -1024,7 +1147,7 @@
     cursor: crosshair;
   }
 
-  // Pagination
+  /* pagination -------------------------------------------------------------------------- */
   .pagination-sm {
     width: 100%;
 
