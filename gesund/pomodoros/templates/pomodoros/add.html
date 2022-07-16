@@ -28,6 +28,7 @@
                     </div>
                     <div class="card-body">
                         <div>
+                            {% csrf_token %}
                             <div id="main" class="mb-3">
                                 <div id="countdown"></div>
                             </div>
@@ -41,6 +42,7 @@
                                 <i class="fa-solid fa-stop"></i>
                             </button>
                         </div>
+
                     </div>
                     <div class="card-footer">
                         <!-- go back -->
@@ -71,6 +73,8 @@
         const UID = "{{ UID }}"
         const AUDIO = "/static/audio/timer.mp3"
 
+
+        let csrf_token = $("[name='csrfmiddlewaretoken']").attr("value")
         let isPaused = false
         let isStartEnabled = true
         let isPauseEnabled = false
@@ -118,7 +122,7 @@
                 "headers": {
                     "Authorization": `Basic ${TOKEN}`,
                     "Content-Type": "application/json",
-                    "X-CSRFToken": "Tj1fjXUPVEL2lgTO3Q6OZ58ROLphV9S0yU0KntYeXAegAOBfHToLEkVrFcivabzP"
+                    "X-CSRFToken": csrf_token
                 },
                 "data": JSON.stringify({
                     "datestamp": get_today(),
