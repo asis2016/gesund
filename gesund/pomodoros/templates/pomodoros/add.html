@@ -14,7 +14,8 @@
                 <div class="col-page-header">
                     <h2>
                         Pomodoro
-                        <span class="modal-info" data-toggle="modal" data-target="#pomodoro-info-modal">
+                        <span class="modal-info" data-bs-toggle="modal"
+                              data-bs-target="#pomodoro-info-modal">
                             <i class="fa-solid fa-circle-info"></i>
 
                     </h2>
@@ -78,36 +79,35 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade"
-         id="pomodoro-info-modal"
-         tabindex="-1"
-         role="dialog"
-         aria-labelledby="pomodoro-info-modal"
+    <div class="modal fade" id="pomodoro-info-modal" tabindex="-1" aria-labelledby="pomodoro-info-modal"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
+                    <h5 class="modal-title">
                         What is Pomodoro?
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Il_pomodoro.jpg/220px-Il_pomodoro.jpg"
-                             alt="">
-                    </p>
-                    <p>
-                        The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late
-                        1980s.
-                    </p>
-                    <p>
-                        It uses a kitchen timer to break work into intervals, typically 25 minutes in length, separated
-                        by short breaks. Each interval is known as a pomodoro, from the Italian word for tomato, after
-                        the tomato-shaped kitchen timer Cirillo used as a university student.
-                    </p>
+                    <div class="modal-body">
+                        <p>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Il_pomodoro.jpg/220px-Il_pomodoro.jpg"
+                                 alt="">
+                        </p>
+                        <p>
+                            The Pomodoro Technique is a time management method developed by Francesco Cirillo in the
+                            late
+                            1980s.
+                        </p>
+                        <p>
+                            It uses a kitchen timer to break work into intervals, typically 25 minutes in length,
+                            separated
+                            by short breaks. Each interval is known as a pomodoro, from the Italian word for tomato,
+                            after
+                            the tomato-shaped kitchen timer Cirillo used as a university student.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
