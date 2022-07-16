@@ -64,6 +64,9 @@
 {% endblock main %}
 
 {% block scripts %}
+    <script>
+    console.log(Cookies.get('csrftoken'))
+    </script>
 
     <script>
         const GIVEN_TIME = "0:05";
