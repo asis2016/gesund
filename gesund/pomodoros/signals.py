@@ -1,6 +1,7 @@
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from history.models import History
+from xps.models import XP
 
 from .models import Pomodoro
 
@@ -29,3 +30,11 @@ def history_pomodoro_delete(sender, instance, **kwargs):
     _description = f'{instance.pomodoro} pomodoro deleted.'
     _author = instance.author
     History.objects.create(app=_app, action=_action, description=_description, author=_author)
+
+
+@receiver(post_save, sender=Pomodoro)
+def create_pomodoro_xp(sender, instance, created, **kwargs):
+    if created:
+        """ Creates XP after creating pomodoro instance. """
+        # 1 pomodoro = 25 minutes = 25 xps
+        XP.objects.create(xp=25, author=instance.author)

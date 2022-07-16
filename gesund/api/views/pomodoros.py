@@ -1,7 +1,8 @@
 from api.serializers import PomodoroSerializer
 from pomodoros.models import Pomodoro
 from rest_framework import permissions
-from rest_framework.generics import ListCreateAPIView, ListAPIView, RetrieveAPIView
+
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 
 class PomodoroListCreateAPIView(ListCreateAPIView):
@@ -11,17 +12,7 @@ class PomodoroListCreateAPIView(ListCreateAPIView):
     serializer_class = PomodoroSerializer
 
 
-class PomodoroListAPIView(ListAPIView):
-    """ Lists all pomodoro taken. """
+class PomodoroRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    """ Retrieve, update or destroy pomodoro(s). """
+    queryset = Pomodoro.objects.all()
     serializer_class = PomodoroSerializer
-
-    def get_queryset(self):
-        return Pomodoro.objects.all()
-
-
-class PomodoroRetrieveAPIView(RetrieveAPIView):
-    """ Retrieve pomodoro by id. """
-    serializer_class = PomodoroSerializer
-
-    def get_queryset(self):
-        return Pomodoro.objects.all().filter(author=self.request.user)

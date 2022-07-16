@@ -8,7 +8,7 @@ class PomodoroUpdateView(UpdateView):
     model = Pomodoro
     context_object_name = 'pomodoro_obj'
     template_name = 'pomodoros/update.html'
-    fields = ('datestamp', 'pomodoro_minutes', 'break_minutes', 'remarks')
+    fields = ('datestamp', 'short_break', 'long_break', 'remarks')
 
     def form_valid(self, form):
         form.instance.author = self.request.user

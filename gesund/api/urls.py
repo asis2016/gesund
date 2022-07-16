@@ -14,6 +14,7 @@ urlpatterns = [
     path('calories-intake/<int:pk>/', CalorieIntakeRetrieveUpdateDestroyAPIView.as_view()),
 
     path('pomodoro/', PomodoroListCreateAPIView.as_view()),
+    path('pomodoro/<int:pk>/', PomodoroRetrieveUpdateDestroyAPIView.as_view()),
 
     # profile
     path('profile/', ProfileListCreateAPIView.as_view()),

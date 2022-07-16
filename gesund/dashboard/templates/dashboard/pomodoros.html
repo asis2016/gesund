@@ -77,7 +77,7 @@
             datasets: [{
                 label: 'Pomodoro(minutes)',
                 backgroundColor: '#6fbf73',
-                data: [{% for i in pomodoro_list_chart %}{{ i.pomodoro_minutes }}, {% endfor %}],
+                data: [{% for i in pomodoro_list_chart %}{{ i.short_break }}, {% endfor %}],
             },
                 {
                     label: 'Break taken(minutes)',
