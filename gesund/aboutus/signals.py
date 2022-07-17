@@ -6,8 +6,8 @@ from .models import ContactUs
 
 
 @receiver(post_save, sender=ContactUs)
-def history_calories_create(sender, instance, created, **kwargs):
-    """ Records history after creating calories. """
+def history_contactus_create(sender, instance, created, **kwargs):
+    """ Records history after creating contact us. """
     if created:
         _app = 'Contact Admin'
         _action = 'MESSAGE SENT'
