@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<div class="container-fluid" id="about-container">
-    <h1>About Gesund App</h1>
-    <p>
-        This project is carried out as master thesis at university of koblenz-landau.
-    </p>
-</div>
+    <div class="container-fluid" id="about-container">
+        <h1>About Gesund App</h1>
+        <p>
+            This project is carried out as master thesis at university of koblenz-landau.
+        </p>
+        <p>
+            <a href="{% url 'contact-us' %}">Contact us if any questions.</a>
+        </p>
+    </div>
 {% endblock main %}
