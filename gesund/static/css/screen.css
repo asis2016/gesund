@@ -449,6 +449,9 @@
   #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body .btn {
     font-size: 1.3rem;
   }
+  #pomodoro-container.list-by-date-pomodoro-container table .btn-warning span {
+    display: none;
+  }
   #pomodoro-container.pomodoro-container-delete .card-footer a, #pomodoro-container.pomodoro-container-delete .card-footer button {
     width: 100%;
   }

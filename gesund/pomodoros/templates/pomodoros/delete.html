@@ -1,3 +1,4 @@
+{# this file is obsolete. #}
 {% extends 'base.html' %}
 
 {% block main %}
@@ -36,10 +37,11 @@
                                     <i class="fa-solid fa-angle-left"></i>
                                     <span class="p-2">No, take me back</span>
                                 </a>
-                                <button type="submit" class="btn btn-danger">
+                                <a href="{% url 'detail-pomodoro' pomodoro_obj.id %}"
+                                   class="btn btn-danger mt-2">
                                     <i class="fa-solid fa-trash-can"></i>
                                     <span class="p-2">Yes. Delete it!</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -743,6 +743,17 @@
       }
     }
 
+    // list_by_date.html
+    &.list-by-date-pomodoro-container {
+
+      table {
+        .btn-warning span {
+          display: none;
+        }
+      }
+
+    }
+
     // delete.html
     &.pomodoro-container-delete {
       .card-footer {
