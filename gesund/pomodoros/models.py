@@ -6,7 +6,8 @@ from django.urls import reverse
 class Pomodoro(models.Model):
     """Pomodoro model."""
     id = models.AutoField(primary_key=True, editable=False)
-    datestamp = models.DateField(blank=True, null=True)
+    datestamp = models.DateField(auto_now=True)
+    timestamp = models.TimeField(auto_now=True)
     pomodoro = models.IntegerField(blank=True, null=True)
     short_break = models.IntegerField(blank=True, null=True)
     long_break = models.IntegerField(blank=True, null=True)

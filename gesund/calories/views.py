@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
@@ -23,7 +24,7 @@ class CalorieIntakeCreateView(CreateView):
         return context
 
 
-class CaloriesIntakeDatestampListView(ListView):
+class CaloriesIntakeDatestampListView(LoginRequiredMixin, ListView):
     """ Get total calories intake ordered by date. """
     context_object_name = 'calories_list'
     model = CalorieIntake
@@ -37,7 +38,7 @@ class CaloriesIntakeDatestampListView(ListView):
                 WHERE author_id = %s GROUP BY datestamp ORDER BY datestamp DESC''', [usr])
 
 
-class CaloriesIntakeDatestampCollectionListView(ListView):
+class CaloriesIntakeDatestampCollectionListView(LoginRequiredMixin, ListView):
     """ Get calories intake on datestamp by food ASC. """
     context_object_name = 'calories_list'
     model = CalorieIntake

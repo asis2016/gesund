@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block main %}
-
     <div class="container-fluid calories-container-index" id="calories-container">
         <div class="row">
             <div class="col-lg-12">
@@ -52,7 +51,7 @@
                                         <td>
                                             <div class="float-end">
                                                 <a class="btn btn-warning btn-sm"
-                                                   href="{% url 'calorie-intake-datestamp-collection-index' i.datestamp|date:"Y-m-d" %}">
+                                                   href="{% url 'calorie-intake-datestamp-collection-index' i.datestamp|date:'Y-m-d' %}">
                                                     <i class="fa-solid fa-link"></i>
                                                     <span class="px-1">View</span>
                                                 </a>

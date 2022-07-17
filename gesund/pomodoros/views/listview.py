@@ -5,14 +5,18 @@ from pomodoros.models import Pomodoro
 
 
 class PomodoroListView(LoginRequiredMixin, ListView):
-    """List all pomodoro."""
+    """ List all pomodoro by group of datestamp ."""
     context_object_name = 'pomodoro_list'
     model = Pomodoro
     paginate_by = 10
     template_name = 'pomodoros/index.html'
 
     def get_queryset(self):
-        return Pomodoro.objects.all().filter(author=self.request.user).order_by('-datestamp')
+        usr = self.request.user.id
+        return Pomodoro.objects.raw('''SELECT id, datestamp, 
+                sum(pomodoro) as total_pomodoro
+                FROM pomodoros_pomodoro  
+                WHERE author_id = %s GROUP BY datestamp ORDER BY datestamp DESC''', [usr])
 
     def get_context_data(self, **kwargs):
         context = super(PomodoroListView, self).get_context_data(**kwargs)
