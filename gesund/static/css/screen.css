@@ -413,22 +413,34 @@
   #pomodoro-container.pomodoro-container-add .card-footer .go-back-sm, #pomodoro-container.pomodoro-container-update .card-footer .go-back-sm {
     margin-top: 0.5rem;
   }
-  #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body {
+  #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body .form-group-main .col-main {
     display: flex;
-    text-align: center;
     justify-content: center;
   }
-  #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body #main {
+  #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body .form-group-main .col-main #main {
     border: 5px solid #121212;
     border-radius: 50% 50%;
-    height: 200px;
-    width: 200px;
+    height: 180px;
+    width: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body #main #countdown {
-    font-size: 3.5rem;
+  #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body .form-group-main .col-main #main #countdown {
+    font-size: 3rem;
+  }
+  #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body .form-group-action .col-action {
+    display: flex;
+    justify-content: space-between;
+  }
+  #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body .form-group-action .btn {
+    border: 1px solid #9e9e9e;
+    text-align: center;
+    align-items: center;
+    height: 50px;
+    width: 70px;
+    margin-left: 0.5rem;
+    font-size: 1rem;
   }
   #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body .btn {
     font-size: 1.3rem;

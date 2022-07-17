@@ -685,21 +685,41 @@
 
       .pomodoro-card {
         .card-body {
-          display: flex;
-          text-align: center;
-          justify-content: center;
+          .form-group-main {
+            .col-main {
+              display: flex;
+              justify-content: center;
 
-          #main {
-            border: 5px solid #121212;
-            border-radius: 50% 50%;
-            height: 200px;
-            width: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+              #main {
+                border: 5px solid #121212;
+                border-radius: 50% 50%;
+                height: 180px;
+                width: 180px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
-            #countdown {
-              font-size: 3.5rem;
+                #countdown {
+                  font-size: 3rem;
+                }
+              }
+            }
+          }
+
+          .form-group-action {
+            .col-action {
+              display: flex;
+              justify-content: space-between;
+            }
+
+            .btn {
+              border: 1px solid $grey_500;
+              text-align: center;
+              align-items: center;
+              height: 50px;
+              width: 70px;
+              margin-left: 0.5rem;
+              font-size: 1rem;
             }
           }
 

@@ -33,23 +33,48 @@
                         Add your pomodoro
                     </div>
                     <div class="card-body">
-                        <div>
-                            {% csrf_token %}
-                            <div id="main" class="mb-3">
-                                <div id="countdown"></div>
+                        {% csrf_token %}
+                        {# main > countdown #}
+                        <div class="form-group row mt-2 form-group-main">
+                            <div class="col-sm-6 col-main">
+                                <div id="main">
+                                    <div id="countdown"></div>
+                                </div>
                             </div>
-                            <button id="start" class="btn">
-                                <i class="fa-solid fa-play"></i>
-                            </button>
-                            <button id="pause" class="btn" disabled>
-                                <i class="fa-solid fa-pause"></i>
-                            </button>
-                            <button id="stop" class="btn" disabled>
-                                <i class="fa-solid fa-stop"></i>
-                            </button>
                         </div>
 
+                        {# Remarks #}
+                        <div class="form-group row mt-1">
+                            <label class="col-sm-4 col-form-label"
+                                   for="id_message">
+                                Remarks
+                            </label>
+                            <div class="col-sm-6">
+                                    <textarea class="form-control"
+                                              name="message"
+                                              id="id_message"
+                                              rows="3"
+                                              placeholder="What are you working on?"
+                                              required></textarea>
+                            </div>
+                        </div>
+
+                        {# Action buttons #}
+                        <div class="form-group row mt-3 form-group-action">
+                            <div class="col-sm-6 col-action">
+                                <button id="start" class="btn">
+                                    <i class="fa-solid fa-play"></i>
+                                </button>
+                                <button id="pause" class="btn" disabled>
+                                    <i class="fa-solid fa-pause"></i>
+                                </button>
+                                <button id="stop" class="btn" disabled>
+                                    <i class="fa-solid fa-stop"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="card-footer">
                         <!-- go back -->
                         <a class="float-end go-back-to-list go-back-lg"
