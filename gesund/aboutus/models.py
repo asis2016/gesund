@@ -6,7 +6,7 @@ from django.urls import reverse
 class ContactUs(models.Model):
     """ Contact Us model. """
     id = models.AutoField(primary_key=True, editable=False)
-    datestamp = models.DateTimeField(auto_now=True)
+    datestamp = models.DateField(auto_now=True)
     subject = models.CharField(max_length=100)
     message = models.TextField()
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
