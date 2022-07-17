@@ -46,6 +46,7 @@
                                                 </span>
                                             </p>
                                             <p class="m-0">
+                                                {{ i.remarks }}
 
                                             </p>
                                             <p class="m-0">
@@ -84,10 +85,10 @@
 
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-success" type="submit">
+                        <a class="btn btn-info" href="{% url 'add-pomodoro' %}">
                             <i class="fa-solid fa-floppy-disk"></i>
                             <span class="p-2">Add another pomodoro</span>
-                        </button>
+                        </a>
                         <!-- go back -->
                         <a class="float-end go-back-to-list go-back-lg" href="/steps/">
                             Go back to the steps list

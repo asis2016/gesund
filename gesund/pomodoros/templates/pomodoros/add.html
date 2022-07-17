@@ -37,7 +37,8 @@
                         {# main > countdown #}
                         <div class="form-group row mt-2 form-group-main">
                             <div class="col-sm-6 col-main">
-                                <div id="main" style="background: url({% static 'images/tomato.png' %}) no-repeat center; background-size: contain;">
+                                <div id="main"
+                                     style="background: url({% static 'images/tomato.png' %}) no-repeat center; background-size: contain;">
                                     <div id="countdown"></div>
                                 </div>
                             </div>
@@ -46,14 +47,14 @@
                         {# Remarks #}
                         <div class="form-group row form-group-remarks">
                             <label class="col-sm-4 col-form-label"
-                                   for="id_message">
+                                   for="id_remarks">
                                 Remarks
                             </label>
                             <div class="col-sm-6">
                                     <textarea class="form-control"
-                                              name="message"
-                                              id="id_message"
-                                              rows="3"
+                                              name="remarks"
+                                              id="id_remarks"
+                                              rows="2"
                                               placeholder="What are you working on?"
                                               required></textarea>
                             </div>
@@ -103,4 +104,5 @@
     </script>
 {% endblock scripts %}
 
-<a href="https://www.flaticon.com/free-icons/tomato" title="tomato icons">Tomato icons created by Pixel perfect - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/tomato" title="tomato icons">Tomato icons created by Pixel perfect -
+    Flaticon</a>

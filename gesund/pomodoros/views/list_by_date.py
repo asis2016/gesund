@@ -12,7 +12,7 @@ class PomodoroListViewByDate(LoginRequiredMixin, ListView):
     """ List all pomodoros by datestamp. """
     context_object_name = 'pomodoro_list'
     model = Pomodoro
-    paginate_by = 10
+    paginate_by = 5
     template_name = 'pomodoros/list_by_date.html'
 
     def get_queryset(self):

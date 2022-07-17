@@ -56,11 +56,10 @@ const savePomodoro = () => {
         "url": `${REST_API_URL}/pomodoro/`, "method": "POST", "timeout": 0, "headers": {
             "Authorization": `Basic ${TOKEN}`, "Content-Type": "application/json", "X-CSRFToken": csrf_token
         }, "data": JSON.stringify({
-            "datestamp": get_today(),
             "pomodoro": 1,
             "short_break": 0,
             "long_break": 0,
-            "remarks": "One pomodoro completed!",
+            "remarks": $("#id_remarks").val(),
             "author": UID
         }),
     };
@@ -149,6 +148,7 @@ const endTimer = (minutes, seconds, interval) => {
         savePomodoro()
 
         $("#countdown").html(GIVEN_TIME)
+        $("#id_remarks").val("")
     }
 }
 
