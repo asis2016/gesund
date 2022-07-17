@@ -9,26 +9,21 @@
                 </a>
             </span>
             <div class="dropdown">
-                <i aria-expanded="false"
-                   class="fa-solid fa-circle-chevron-down"
-                   data-bs-toggle="dropdown"
+                <a href="#"
+                   role="button"
                    id="dropdown_calories_menu"
-                   role="button"></i>
+                   aria-expanded="false"
+                   data-bs-toggle="dropdown"
+                   class="text-white">
+                    <i class="fa-solid fa-circle-chevron-down"></i>
+                </a>
                 <ul aria-labelledby="dropdown_steps_menu" class="dropdown-menu">
                     <li class="d-flex">
                         <a class="dropdown-item" href="{% url 'add-weight' %}">
                             <i class="fa-solid fa-circle-plus"></i>
-                            <span class="p-2">Update your weight</span>
+                            <span class="p-2">Update weight</span>
                         </a>
                     </li>
-                    {% if weight_list %}
-                        <li>
-                            <a class="dropdown-item" href="{% url 'export-weights' %}">
-                                <i class="fa-solid fa-cloud-arrow-down"></i>
-                                <span class="px-2">Export records</span>
-                            </a>
-                        </li>
-                    {% endif %}
                 </ul>
             </div>
         </div>

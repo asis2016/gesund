@@ -1,8 +1,12 @@
 $(function () {
+
     $("#id_datestamp").datepicker({
         dateFormat: "yy-mm-dd"
     })
 
+    /**
+     * toggle localstorage
+     * */
     let toggle_local_value = localStorage.getItem("toggle")
 
     if (toggle_local_value === "yes") {
@@ -13,8 +17,10 @@ $(function () {
         $('.sidebar').removeClass('toggled')
     }
 
-
-    // Toggle the side navigation
+    /**
+     * Toggle the side navigation
+     * */
+    //
     $("#menu").on('click', function (e) {
         //$("body").toggleClass("sidebar-toggled")
 

@@ -80,9 +80,10 @@
                                 <label class="col-sm-4 col-form-label" for="id_food_intake">
                                     Food
                                     <span class="px-1">
-                                        <i class="fa-solid fa-circle-info"
-                                           data-toggle="modal"
-                                           data-target="#modal-food-info"></i>
+                                        <a href="#" role="button" class="text-dark" data-bs-toggle="modal"
+                                           data-bs-target="#modal-food-info">
+                                            <i class="fa-solid fa-circle-info"></i>
+                                        </a>
                                     </span>
                                 </label>
                                 <div class="col-sm-6">
@@ -295,7 +296,7 @@
                 url: `${REST_API_URL}/food-calories/${id}`,
                 type: "GET",
                 contentType: "application/json",
-                dataType: 'json',
+                dataType: "JSON",
                 success: function (response) {
                     food = response.food;
                     calories = response.calories;
@@ -360,30 +361,30 @@
                 url: `${REST_API_URL}/food-calories/?search=${search_term}`,
                 type: "GET",
                 contentType: "application/json",
-                dataType: 'json',
+                dataType: "JSON",
                 success: function (response) {
-                    //console.log(response);
                     let innerHTML = '';
 
                     for (let i = 0; i < response.length; i++) {
                         innerHTML += "<a href='#' class='list-group-item list-group-item-action' onclick='search_clicked(" + response[i].id + ")'>" + response[i].food + "</a>";
                     }
+
                     $("#modal-content").html(innerHTML);
                 }
             });
 
             // modal pop-up
-            $("#modal-food-search").modal('show');
+            $("#modal-food-search").modal("show");
 
         });
 
         // Clear
         $("#clear-search").click(function () {
-            console.log('clicking...');
-            $("#id_search").val('');
-            $("#id_search-label").text('');
+            console.log("clicking...");
+            $("#id_search").val("")
+            $("#id_search-label").text("")
             $("#id_id").val('');
-            $("#id_description").text('');
+            $("#id_description").text("")
             $("#id_calories").val('');
             $("#id_protein").val('');
             $("#id_fat").val('');
@@ -392,11 +393,6 @@
             $("#id_fiber").val('');
             $("#id_category").val('');
             return false;
-        });
-
-        //
-        $("#modal-food-search .modal-close").click(function () {
-            $("#modal-food-search").modal('hide');
         });
 
     </script>

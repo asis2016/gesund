@@ -7,6 +7,20 @@
         .col-page-header i {
             font-size: 1rem;
         }
+
+        .modal-body {
+            text-align: center;
+        }
+
+        .modal-body img {
+            margin-bottom: 1rem;
+            height: 200px;
+            width: 200px;
+        }
+
+        .modal-body p {
+            text-align: justify;
+        }
     </style>
     <div class="container-fluid pomodoro-container-add" id="pomodoro-container">
         <div class="row">
@@ -79,39 +93,8 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="pomodoro-info-modal" tabindex="-1" aria-labelledby="pomodoro-info-modal"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        What is Pomodoro?
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-body">
-                        <p>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Il_pomodoro.jpg/220px-Il_pomodoro.jpg"
-                                 alt="">
-                        </p>
-                        <p>
-                            The Pomodoro Technique is a time management method developed by Francesco Cirillo in the
-                            late
-                            1980s.
-                        </p>
-                        <p>
-                            It uses a kitchen timer to break work into intervals, typically 25 minutes in length,
-                            separated
-                            by short breaks. Each interval is known as a pomodoro, from the Italian word for tomato,
-                            after
-                            the tomato-shaped kitchen timer Cirillo used as a university student.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include './modal-pomodoro-info.html' %}
+
 {% endblock main %}
 
 {% block scripts %}

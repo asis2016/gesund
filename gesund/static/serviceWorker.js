@@ -1,7 +1,6 @@
 const staticGesund = "gesund-app-v1"
 const assets = [
     "/static/css/base.css",
-    "/static/css/bootstrap.min.css",
     "/static/css/login.css",
     "/static/css/screen.css",
     "/static/css/style.css",

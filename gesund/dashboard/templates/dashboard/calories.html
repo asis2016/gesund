@@ -9,11 +9,14 @@
                 </a>
             </span>
             <div class="dropdown">
-                <i aria-expanded="false"
-                   class="fa-solid fa-circle-chevron-down"
-                   data-bs-toggle="dropdown"
+                <a href="#"
+                   role="button"
                    id="dropdown_calories_menu"
-                   role="button"></i>
+                   aria-expanded="false"
+                   data-bs-toggle="dropdown"
+                   class="text-white">
+                    <i class="fa-solid fa-circle-chevron-down"></i>
+                </a>
                 <ul aria-labelledby="dropdown_steps_menu"
                     class="dropdown-menu">
                     <li class="d-flex">
@@ -70,46 +73,48 @@
 </div>
 
 {% block scripts %}
-    <script>
-        const myCalories = new Chart(
-            document.getElementById('myCalories'),
-            {
-                type: 'line',
-                data: {
-                    labels: [{% for i in calories_list %}'{{ i.datestamp|date:"Y-m-d" }}', {% endfor %}],
-                    datasets: [
-                        {
-                            data: [{% for i in calories_list %}{{ i.total_calories }}, {% endfor %}],
-                            //data: [8000, 250, 7200]
-                            label: '',
-                            backgroundColor: '#dd7e77',
-                            pointRadius: 6,
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    tooltips: {
-                        enabled: false,
-                        display: false,
+    {% if calories_list %}
+        <script>
+            const myCalories = new Chart(
+                document.getElementById('myCalories'),
+                {
+                    type: 'line',
+                    data: {
+                        labels: [{% for i in calories_list %}'{{ i.datestamp|date:"Y-m-d" }}', {% endfor %}],
+                        datasets: [
+                            {
+                                data: [{% for i in calories_list %}{{ i.total_calories }}, {% endfor %}],
+                                //data: [8000, 250, 7200]
+                                label: '',
+                                backgroundColor: '#dd7e77',
+                                pointRadius: 6,
+                            }
+                        ]
                     },
-                    plugins: {
-                        legend: {
+                    options: {
+                        responsive: true,
+                        tooltips: {
+                            enabled: false,
                             display: false,
                         },
-                        title: {
-                            display: false,
-                        }
-                    },
-                    scales: {
-                        x: {
-                            ticks: {
-                                display: false
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
+                            title: {
+                                display: false,
                             }
-                        }
-                    },
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    display: false
+                                }
+                            }
+                        },
+                    }
                 }
-            }
-        );
-    </script>
+            );
+        </script>
+    {% endif %}
 {% endblock scripts %}

@@ -10,11 +10,14 @@
                 </a>
             </span>
             <div class="dropdown">
-                <i aria-expanded="false"
-                   class="fa-solid fa-circle-chevron-down"
-                   data-bs-toggle="dropdown"
+                <a href="#"
+                   role="button"
                    id="dropdown_water_menu"
-                   role="button"></i>
+                   aria-expanded="false"
+                   data-bs-toggle="dropdown"
+                   class="text-white">
+                    <i class="fa-solid fa-circle-chevron-down"></i>
+                </a>
                 <ul aria-labelledby="dropdown_water_menu"
                     class="dropdown-menu">
                     <li class="d-flex">
@@ -24,14 +27,16 @@
                             <span class="p-2">Add new</span>
                         </a>
                     </li>
-                    {% if water_intake_list %}
+
+                    <!-- if water_intake_list
                         <li>
-                            <a class="dropdown-item" href="{% url 'export-water-intake' %}">
+                            <a class="dropdown-item" href=" url 'export-water-intake' ">
                                 <i class="fa-solid fa-cloud-arrow-down"></i>
                                 <span class="px-2">Export records</span>
                             </a>
                         </li>
-                    {% endif %}
+                    endif -->
+
                 </ul>
             </div>
         </div>

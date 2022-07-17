@@ -1,7 +1,7 @@
 {
   "name": "Gesund APP",
   "short_name": "Gesund",
-  "start_url": ".",
+  "start_url": "https://gesund.amaharjan.online",
   "display": "standalone",
   "background_color": "#fff",
   "description": "A gesund application.",
