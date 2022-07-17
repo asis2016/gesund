@@ -26,12 +26,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="col-page-header">
-                    <h2>
-                        Pomodoro
-                        <span class="modal-info" data-bs-toggle="modal"
-                              data-bs-target="#pomodoro-info-modal">
-                            <i class="fa-solid fa-circle-info"></i>
-
+                    <h2 data-bs-toggle="modal" data-bs-target="#pomodoro-info-modal">
+                        Pomodoro <i class="fa-solid fa-circle-info"></i>
                     </h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
@@ -123,7 +119,7 @@
 
             if (status === "start") {
                 alertStatus = "alert-info"
-                msg = "Pomodoro started! Focus on your task."
+                msg = "Pomodoro started, focus on your task."
             }
 
             if (status === "success") {
@@ -131,7 +127,7 @@
                 msg = "Nice! One pomodoro completed."
             }
 
-            let _html = `<div class="alert ${alertStatus} mt-3" role="alert"><p class="m-0">${msg}</p></div>`
+            let _html = `<div class="alert ${alertStatus}" role="alert"><p class="m-0">${msg}</p></div>`
             $(".pomodoro-alert").html(_html)
         }
 
