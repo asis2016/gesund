@@ -691,19 +691,32 @@
               justify-content: center;
 
               #main {
-                border: 5px solid #121212;
-                border-radius: 50% 50%;
+                //border: 5px solid #121212;
+                //border-radius: 50% 50%;
+                //height: 180px;
+                //width: 180px;
+                //display: flex;
+                //justify-content: center;
+                //align-items: center;
+
                 height: 180px;
-                width: 180px;
+                width: 200px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
 
                 #countdown {
-                  font-size: 3rem;
+                  font-size: 2.5rem;
+                  padding-top: 40px;
+                  font-weight: 400;
+                  color: white;
                 }
               }
             }
+          }
+
+          .form-group-remarks {
+            margin-top: 1rem !important;
           }
 
           .form-group-action {

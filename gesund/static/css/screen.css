@@ -418,16 +418,20 @@
     justify-content: center;
   }
   #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body .form-group-main .col-main #main {
-    border: 5px solid #121212;
-    border-radius: 50% 50%;
     height: 180px;
-    width: 180px;
+    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body .form-group-main .col-main #main #countdown {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    padding-top: 40px;
+    font-weight: 400;
+    color: white;
+  }
+  #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body .form-group-remarks {
+    margin-top: 1rem !important;
   }
   #pomodoro-container.pomodoro-container-add .pomodoro-card .card-body .form-group-action .col-action {
     display: flex;

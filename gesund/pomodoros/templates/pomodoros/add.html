@@ -37,14 +37,14 @@
                         {# main > countdown #}
                         <div class="form-group row mt-2 form-group-main">
                             <div class="col-sm-6 col-main">
-                                <div id="main">
+                                <div id="main" style="background: url({% static 'images/tomato.png' %}) no-repeat center; background-size: contain;">
                                     <div id="countdown"></div>
                                 </div>
                             </div>
                         </div>
 
                         {# Remarks #}
-                        <div class="form-group row mt-1">
+                        <div class="form-group row form-group-remarks">
                             <label class="col-sm-4 col-form-label"
                                    for="id_message">
                                 Remarks
@@ -102,3 +102,5 @@
         {% include './add_pomodoro.js' %}
     </script>
 {% endblock scripts %}
+
+<a href="https://www.flaticon.com/free-icons/tomato" title="tomato icons">Tomato icons created by Pixel perfect - Flaticon</a>
