@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 
@@ -11,11 +12,17 @@ class AboutTemplateView(LoginRequiredMixin, TemplateView):
 
 
 class ContactUsCreateView(LoginRequiredMixin, CreateView):
-    """ Create contactus. """
+    """ Create contact us. """
     model = ContactUs
     template_name = 'contactus/add.html'
     fields = ('subject', 'message')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        return super().form_valid(form)
+        super().form_valid(form)
+        return redirect('contact-us-success')
+
+
+class ContactUsSuccessTemplateView(LoginRequiredMixin, TemplateView):
+    """ Contact us success page."""
+    template_name = 'contactus/contact_us_success.html'
