@@ -8,59 +8,13 @@
     Author URI  : https://github.com/asis2016/
     Description : This theme is designed for Gesund App.
 */
+/*
+    Author      : Ashish S. Maharjan
+    Author URI  : https://github.com/asis2016/
+    Description : This theme is designed for Gesund App.
+*/
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500&display=swap");
 @media screen and (max-width: 767px) {
-  /* sidebar -------------------------------------------------------------------------- */
-  #sidebar-lg {
-    display: none !important;
-  }
-
-  #sidebar-sm {
-    width: 75px;
-    /*overflow-y: scroll;*/
-  }
-  #sidebar-sm .logo {
-    height: 50px;
-    padding-left: 6px;
-    margin-top: 5px !important;
-  }
-  #sidebar-sm ul {
-    padding-left: 0;
-    text-align: center;
-    /*border-top: 1px solid red;*/
-  }
-  #sidebar-sm ul li {
-    margin-bottom: 0.3rem;
-  }
-  #sidebar-sm ul li:first-child {
-    margin-top: 1rem;
-  }
-  #sidebar-sm ul li .nav-link {
-    padding-left: 0;
-    padding-right: 0;
-    color: #9e9e9e;
-  }
-  #sidebar-sm ul li .nav-link .menu-text {
-    font-size: 14px;
-  }
-  #sidebar-sm ul li .active {
-    color: #ffffff;
-  }
-  #sidebar-sm ul li .active i {
-    font-size: 1.2rem;
-  }
-  #sidebar-sm ul li .active .menu-text {
-    font-size: 15px;
-  }
-
-  .sidebar {
-    display: none !important;
-  }
-
-  .toggled {
-    display: block !important;
-  }
-
   /* calories-container -------------------------------------------------------------------------- */
   #calories-container .row:first-child .col-page-header nav {
     display: none;
@@ -734,18 +688,6 @@
   }
 }
 @media screen and (min-width: 768px) {
-  /* sidebar -------------------------------------------------------------------------- */
-  #sidebar-lg .nav-link {
-    color: white;
-  }
-  #sidebar-lg .nav-link:hover {
-    font-size: 1.1rem;
-  }
-  #sidebar-lg .li-divider {
-    border: 1px solid #6c757d;
-    margin: 10px 0 10px 0;
-  }
-
   #calories-container.calories-container-add .card .go-back-sm {
     display: none;
   }
@@ -770,5 +712,69 @@
     font-size: 3.5rem;
   }
 }
+@media screen and (max-width: 767px) {
+  #sidebar-lg {
+    display: none !important;
+  }
 
-/*# sourceMappingURL=screen.css.map */
+  #sidebar-sm {
+    width: 75px;
+  }
+  #sidebar-sm .logo {
+    height: 50px;
+    padding-left: 6px;
+    margin-top: 5px !important;
+  }
+  #sidebar-sm ul {
+    padding-left: 0;
+    text-align: center;
+    /*border-top: 1px solid red;*/
+  }
+  #sidebar-sm ul li {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  #sidebar-sm ul li:first-child {
+    margin-top: 2rem;
+  }
+  #sidebar-sm ul li .nav-link {
+    padding-left: 0;
+    padding-right: 0;
+    color: #9e9e9e;
+  }
+  #sidebar-sm ul li .nav-link .menu-text {
+    font-size: 14px;
+  }
+  #sidebar-sm ul li .active {
+    color: #ffffff;
+  }
+  #sidebar-sm ul li .active i {
+    font-size: 1.2rem;
+  }
+  #sidebar-sm ul li .active .menu-text {
+    font-size: 15px;
+  }
+
+  .sidebar {
+    display: none !important;
+  }
+
+  .toggled {
+    display: block !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  /* sidebar -------------------------------------------------------------------------- */
+  #sidebar-lg .nav-link {
+    color: white;
+  }
+  #sidebar-lg .nav-link:hover {
+    font-size: 1.1rem;
+  }
+  #sidebar-lg .li-divider {
+    border: 1px solid #6c757d;
+    margin: 10px 0 10px 0;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

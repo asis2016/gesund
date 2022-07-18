@@ -7,71 +7,6 @@
 @import "base.scss";
 
 @media screen and (max-width: 767px) {
-  /* sidebar -------------------------------------------------------------------------- */
-  #sidebar-lg {
-    display: none !important;
-  }
-
-  #sidebar-sm {
-    //width: 100px;
-    //width: 70px;
-    width: 75px;
-    /*overflow-y: scroll;*/
-
-    .logo {
-      height: 50px;
-      //padding-left: 20px;
-      padding-left: 6px;
-      margin-top: 5px !important;
-    }
-
-    ul {
-      padding-left: 0;
-      text-align: center;
-      /*border-top: 1px solid red;*/
-
-      li {
-        margin-bottom: .3rem;
-
-        &:first-child {
-          margin-top: 1rem;
-        }
-
-        .nav-link {
-          padding-left: 0;
-          padding-right: 0;
-
-          .menu-text {
-            font-size: 14px;
-          }
-
-          color: $grey_500;
-        }
-
-        .active {
-          color: #ffffff;
-
-          i {
-            font-size: 1.2rem;
-          }
-
-          .menu-text {
-            font-size: 15px;
-          }
-        }
-      }
-    }
-
-  }
-
-  .sidebar {
-    display: none !important;
-  }
-
-  .toggled {
-    display: block !important;
-  }
-
   /* calories-container -------------------------------------------------------------------------- */
   #calories-container {
     .row:first-child {
@@ -269,7 +204,6 @@
   }
 
   /* dashboard-container -------------------------------------------------------------------------- */
-
   #dashboard-container {
     .alert-warning {
       margin-bottom: 0;
@@ -599,71 +533,68 @@
 
   /* pomodoro-container -------------------------------------------------------------------------- */
   #pomodoro-container {
-    nav {
-      display: none;
+    // .row-first
+    .row-first {
+      nav {
+        display: none;
+      }
     }
 
-    .row:nth-child(2) {
-      .col-lg-8 {
+    // .row-second
+    .row-second {
+      .col-first {
         margin-top: .5rem !important;
 
-        .card-header-menu {
-          justify-content: normal !important;
-          background: none;
+        .card {
+          .card-header-menu {
+            justify-content: normal !important;
+            background: none;
 
-          .btn {
-            width: 100%;
-          }
-        }
-
-        .card-body {
-          padding: 0.1rem;
-
-          .table {
-            tbody {
-              td:nth-child(3) span {
-                display: none;
-              }
-
-              td:nth-child(4) {
-                span {
-                  display: none;
-                }
-
-                a {
-                  padding: 0.2rem 0.4rem;
-                }
-              }
+            .btn {
+              width: 100%;
             }
           }
 
-          .alert {
-            margin: 1rem;
-          }
+          .card-body {
+            padding: 0.1rem;
 
-          .card-footer {
+            .table {
+              tbody {
+                td:nth-child(3) span {
+                  display: none;
+                }
+
+                td:nth-child(4) {
+                  span {
+                    display: none;
+                  }
+
+                  a {
+                    padding: 0.2rem 0.4rem;
+                  }
+                }
+              }
+            }
+
+            .alert {
+              margin: 1rem;
+            }
           }
         }
       }
-    }
 
-    .row:nth-child(2) {
-      .col-lg-4 {
-        margin-top: 2rem;
+      .col-second {
+        margin-top: 1rem !important;
       }
     }
 
-    .row:nth-child(3) {
-      margin-top: 2rem !important;
+    // .row-third
+    .row-third {
+      margin-top: 1rem !important;
     }
 
     // add.html & update.html
     &.pomodoro-container-add, &.pomodoro-container-update {
-      .row:nth-child(2) {
-        .col-lg-6 {
-          margin-top: .5rem !important;
-        }
-      }
 
       .card-footer {
         a, .btn {
@@ -682,7 +613,6 @@
 
     // add.html
     &.pomodoro-container-add {
-
       .pomodoro-card {
         .card-body {
           .form-group-main {
@@ -915,7 +845,6 @@
 
     // .row-second
     .row-second {
-
       .col-first {
         margin-top: .5rem !important;
 
@@ -970,24 +899,6 @@
     // .row-third
     .row-third {
       margin-top: 1rem !important;
-    }
-
-
-    .row:nth-child(2) {
-      .col-lg-8 {
-
-
-        .row:nth-child(2) {
-          .col-lg-4 {
-            margin-top: 2rem;
-          }
-        }
-
-        .row:nth-child(3) {
-          margin-top: 2rem !important;
-        }
-
-      }
     }
 
     // add.html & update.html
@@ -1253,23 +1164,6 @@
 }
 
 @media screen and (min-width: 768px) {
-
-  /* sidebar -------------------------------------------------------------------------- */
-  #sidebar-lg {
-    .nav-link {
-      color: white;
-
-      &:hover {
-        font-size: 1.1rem;
-      }
-    }
-
-    .li-divider {
-      border: 1px solid $light_grey;
-      margin: 10px 0 10px 0;
-    }
-  }
-
   #calories-container {
     // Add.html
     &.calories-container-add {
