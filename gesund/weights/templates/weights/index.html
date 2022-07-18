@@ -3,7 +3,8 @@
 
 {% block main %}
     <div class="container-fluid" id="weight-container">
-        <div class="row">
+        <!-- .row-first -->
+        <div class="row row-first">
             <div class="col-lg-12">
                 <div class="col-page-header">
                     <h2>Weight tracker</h2>
@@ -17,9 +18,11 @@
                 </div>
             </div>
         </div>
+        <!-- ends .row-first -->
 
-        <div class="row">
-            <div class="col-lg-8 mt-4">
+        <!-- .row-second -->
+        <div class="row row-second">
+            <div class="col-lg-8 mt-4 col-first">
                 <div class="card">
                     <div class="card-header card-header-menu justify-content-end">
                         <a class="btn btn-primary btn-sm" href="{% url 'add-weight' %}">
@@ -85,7 +88,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 mt-4">
+            <div class="col-lg-4 mt-4 col-second">
                 <div class="card">
                     <div class="card-body">
                         <div class="alert alert-primary" role="alert">
@@ -102,9 +105,11 @@
                 </div>
             </div>
         </div>
+        <!-- ends .row-second -->
 
+        <!-- .row-third -->
         {% if weight_list_chart %}
-            <div class="row mt-4 mb-4">
+            <div class="row mt-4 mb-4 row-third">
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header card-header-menu">
@@ -117,6 +122,7 @@
                 </div>
             </div>
         {% endif %}
+        <!-- ends .row-third -->
     </div>
 {% endblock main %}
 

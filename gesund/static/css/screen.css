@@ -534,36 +534,42 @@
   }
 
   /* weight -------------------------------------------------------------------------- */
-  #weight-container nav {
+  #weight-container .row-first nav {
     display: none;
   }
-  #weight-container .row:nth-child(2) .col-lg-8 {
+  #weight-container .row-second .col-first {
     margin-top: 0.5rem !important;
   }
-  #weight-container .row:nth-child(2) .col-lg-8 .card-header-menu {
+  #weight-container .row-second .col-first .card .card-header-menu {
     justify-content: normal !important;
     background: none;
   }
-  #weight-container .row:nth-child(2) .col-lg-8 .card-header-menu .btn {
+  #weight-container .row-second .col-first .card .card-header-menu .btn {
     width: 100%;
   }
-  #weight-container .row:nth-child(2) .col-lg-8 .card-body {
+  #weight-container .row-second .col-first .card .card-body {
     padding: 0.1rem;
   }
-  #weight-container .row:nth-child(2) .col-lg-8 .card-body .table th:first-child, #weight-container .row:nth-child(2) .col-lg-8 .card-body .table td:first-child {
+  #weight-container .row-second .col-first .card .card-body .table th:first-child, #weight-container .row-second .col-first .card .card-body .table td:first-child {
     display: none;
   }
-  #weight-container .row:nth-child(2) .col-lg-8 .card-body .table tbody td:nth-child(3) span {
+  #weight-container .row-second .col-first .card .card-body .table tbody td:nth-child(3) span {
     display: none;
   }
-  #weight-container .row:nth-child(2) .col-lg-8 .card-body .table tbody td:nth-child(4) span {
+  #weight-container .row-second .col-first .card .card-body .table tbody td:nth-child(4) span {
     display: none;
   }
-  #weight-container .row:nth-child(2) .col-lg-8 .card-body .table tbody td:nth-child(4) a {
+  #weight-container .row-second .col-first .card .card-body .table tbody td:nth-child(4) a {
     padding: 0.2rem 0.4rem;
   }
-  #weight-container .row:nth-child(2) .col-lg-8 .card-body .alert {
+  #weight-container .row-second .col-first .card .card-body .alert {
     margin: 1rem;
+  }
+  #weight-container .row-second .col-second {
+    margin-top: 1rem !important;
+  }
+  #weight-container .row-third {
+    margin-top: 1rem !important;
   }
   #weight-container .row:nth-child(2) .col-lg-8 .row:nth-child(2) .col-lg-4 {
     margin-top: 2rem;
