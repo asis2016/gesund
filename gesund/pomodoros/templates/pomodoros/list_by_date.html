@@ -21,8 +21,9 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-8 mt-4">
+        <!-- .row-second -->
+        <div class="row row-second">
+            <div class="col-lg-8 mt-4 col-first">
                 <div class="card">
                     <div class="card-header card-header-menu justify-content-end text-dark text-center">
                         <b>As of {{ datestamp }}</b>
@@ -103,7 +104,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 mt-4 col-second">
                 <div class="card">
                     <div class="card-body">
                         <div class="alert alert-primary" role="alert">
@@ -121,20 +122,7 @@
             </div>
         </div>
 
-        {% if pomodoro_list %}
-            <div class="row mt-4 mb-4">
-                <div class="col-lg-8">
-                    <div class="card">
-                        <div class="card-header card-header-menu">
-                            Pomodoro history
-                        </div>
-                        <div class="card-body">
-                            <canvas id="myPomodoro"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
+        <div class="spacer mb-4"></div>
     </div>
 {% endblock main %}
 

@@ -125,59 +125,6 @@
     margin-top: 0.5rem !important;
   }
 
-  /* dashboard-container -------------------------------------------------------------------------- */
-  #dashboard-container .alert-warning {
-    margin-bottom: 0;
-  }
-  #dashboard-container #dashboard-daily-goals {
-    margin-top: 0 !important;
-  }
-  #dashboard-container #dashboard-daily-goals p {
-    margin-bottom: 0.4rem !important;
-  }
-  #dashboard-container #dashboard-daily-goals .card-header-menu .minimize {
-    padding-right: 0;
-  }
-  #dashboard-container #dashboard-history .card-body {
-    padding: 0;
-  }
-  #dashboard-container #dashboard-history .card-body .table {
-    margin-bottom: 0;
-  }
-  #dashboard-container #dashboard-steps .card-body {
-    padding: 0;
-  }
-  #dashboard-container #dashboard-steps .card-body .alert {
-    margin: 1rem;
-  }
-  #dashboard-container #dashboard-water .card-body {
-    padding: 0;
-  }
-  #dashboard-container #dashboard-water .card-body .alert {
-    margin: 1rem;
-  }
-  #dashboard-container #dashboard-water .card-body .table {
-    margin-bottom: 0;
-  }
-
-  #quick-stats {
-    display: none;
-  }
-
-  #dashboard-challenge {
-    display: none;
-  }
-
-  #dashboard-daily-goals,
-#dashboard-bmi,
-#dashboard-calories,
-#dashboard-water,
-#dashboard-steps,
-#dashboard-pomodoro,
-#dashboard-history {
-    margin-top: 1.5rem !important;
-  }
-
   /* calories-container -------------------------------------------------------------------------- */
   #calories-container .row:first-child .col-page-header nav {
     display: none;
@@ -654,38 +601,6 @@
   .btn-secondary.disabled:hover {
     cursor: crosshair;
   }
-
-  /* pagination -------------------------------------------------------------------------- */
-  .pagination-sm {
-    width: 100%;
-  }
-  .pagination-sm div:first-child {
-    display: flex;
-    justify-content: space-between;
-  }
-  .pagination-sm div:first-child .btn {
-    width: 50%;
-    margin: 2px;
-  }
-  .pagination-sm div:nth-child(2) {
-    display: flex;
-    justify-content: space-between;
-  }
-  .pagination-sm div:nth-child(2) .btn {
-    width: 50%;
-    margin: 2px;
-  }
-  .pagination-sm div:nth-child(3) .alert {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding: 5px;
-    justify-content: center !important;
-    font-style: italic;
-  }
-
-  #pagination-lg {
-    display: none;
-  }
 }
 @media screen and (min-width: 768px) {
   #calories-container.calories-container-add .card .go-back-sm {
@@ -700,10 +615,6 @@
     display: none !important;
   }
 
-  #pagination-sm {
-    display: none;
-  }
-
   #steps-container.steps-container-add .card .go-back-sm {
     display: none;
   }
@@ -712,6 +623,11 @@
     font-size: 3.5rem;
   }
 }
+/*
+    Author      : Ashish S. Maharjan
+    Author URI  : https://github.com/asis2016/
+    Description : This theme is designed for Gesund App.
+*/
 @media screen and (max-width: 767px) {
   #sidebar-lg {
     display: none !important;
@@ -774,6 +690,103 @@
   #sidebar-lg .li-divider {
     border: 1px solid #6c757d;
     margin: 10px 0 10px 0;
+  }
+}
+/*
+    Author      : Ashish S. Maharjan
+    Author URI  : https://github.com/asis2016/
+    Description : This theme is designed for Gesund App.
+*/
+@media screen and (max-width: 767px) {
+  #dashboard-container .alert-warning {
+    margin-bottom: 0;
+  }
+  #dashboard-container #dashboard-daily-goals {
+    margin-top: 0 !important;
+  }
+  #dashboard-container #dashboard-daily-goals p {
+    margin-bottom: 0.4rem !important;
+  }
+  #dashboard-container #dashboard-daily-goals .card-header-menu .minimize {
+    padding-right: 0;
+  }
+  #dashboard-container #dashboard-history .card-body {
+    padding: 0;
+  }
+  #dashboard-container #dashboard-history .card-body .table {
+    margin-bottom: 0;
+  }
+  #dashboard-container #dashboard-steps .card-body {
+    padding: 0;
+  }
+  #dashboard-container #dashboard-steps .card-body .alert {
+    margin: 1rem;
+  }
+  #dashboard-container #dashboard-water .card-body {
+    padding: 0;
+  }
+  #dashboard-container #dashboard-water .card-body .alert {
+    margin: 1rem;
+  }
+  #dashboard-container #dashboard-water .card-body .table {
+    margin-bottom: 0;
+  }
+  #dashboard-container #quick-stats {
+    display: none;
+  }
+  #dashboard-container #dashboard-challenge {
+    display: none;
+  }
+  #dashboard-container #dashboard-daily-goals,
+#dashboard-container #dashboard-bmi,
+#dashboard-container #dashboard-calories,
+#dashboard-container #dashboard-water,
+#dashboard-container #dashboard-steps,
+#dashboard-container #dashboard-pomodoro,
+#dashboard-container #dashboard-history {
+    margin-top: 1.5rem !important;
+  }
+}
+/*
+    Author      : Ashish S. Maharjan
+    Author URI  : https://github.com/asis2016/
+    Description : This theme is designed for Gesund App.
+*/
+@media screen and (max-width: 767px) {
+  #pagination-lg {
+    display: none;
+  }
+
+  #pagination-sm {
+    width: 100%;
+  }
+  #pagination-sm div:first-child {
+    display: flex;
+    justify-content: space-between;
+  }
+  #pagination-sm div:first-child .btn {
+    width: 50%;
+    margin: 2px;
+  }
+  #pagination-sm div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+  }
+  #pagination-sm div:nth-child(2) .btn {
+    width: 50%;
+    margin: 2px;
+  }
+  #pagination-sm div:nth-child(3) .alert {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    justify-content: center !important;
+    font-style: italic;
+  }
+}
+@media screen and (min-width: 768px) {
+  #pagination-sm {
+    display: none;
   }
 }
 

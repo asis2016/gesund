@@ -1,0 +1,83 @@
+/*
+    Author      : Ashish S. Maharjan
+    Author URI  : https://github.com/asis2016/
+    Description : This theme is designed for Gesund App.
+*/
+
+@media screen and (max-width: 767px) {
+  #dashboard-container {
+    .alert-warning {
+      margin-bottom: 0;
+    }
+
+    #dashboard-daily-goals {
+      margin-top: 0 !important;
+
+      p {
+        margin-bottom: 0.4rem !important;
+      }
+
+      .card-header-menu .minimize {
+        padding-right: 0;
+      }
+
+    }
+
+    #dashboard-history {
+      .card-body {
+        padding: 0;
+
+        .table {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    #dashboard-steps {
+      .card-body {
+        padding: 0;
+
+        .alert {
+          margin: 1rem;
+        }
+      }
+    }
+
+    #dashboard-water {
+      .card-body {
+        padding: 0;
+
+        .alert {
+          margin: 1rem;
+        }
+
+        .table {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    #quick-stats {
+      display: none;
+    }
+
+    #dashboard-challenge {
+      display: none;
+    }
+
+    #dashboard-daily-goals,
+    #dashboard-bmi,
+    #dashboard-calories,
+    #dashboard-water,
+    #dashboard-steps,
+    #dashboard-pomodoro,
+    #dashboard-history {
+      margin-top: 1.5rem !important;
+    }
+
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+}

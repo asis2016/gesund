@@ -203,78 +203,6 @@
 
   }
 
-  /* dashboard-container -------------------------------------------------------------------------- */
-  #dashboard-container {
-    .alert-warning {
-      margin-bottom: 0;
-    }
-
-    #dashboard-daily-goals {
-      margin-top: 0 !important;
-
-      p {
-        margin-bottom: 0.4rem !important;
-      }
-
-      .card-header-menu .minimize {
-        padding-right: 0;
-      }
-
-    }
-
-    #dashboard-history {
-      .card-body {
-        padding: 0;
-
-        .table {
-          margin-bottom: 0;
-        }
-      }
-    }
-
-    #dashboard-steps {
-      .card-body {
-        padding: 0;
-
-        .alert {
-          margin: 1rem;
-        }
-      }
-    }
-
-    #dashboard-water {
-      .card-body {
-        padding: 0;
-
-        .alert {
-          margin: 1rem;
-        }
-
-        .table {
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
-
-  #quick-stats {
-    display: none;
-  }
-
-  #dashboard-challenge {
-    display: none;
-  }
-
-  #dashboard-daily-goals,
-  #dashboard-bmi,
-  #dashboard-calories,
-  #dashboard-water,
-  #dashboard-steps,
-  #dashboard-pomodoro,
-  #dashboard-history {
-    margin-top: 1.5rem !important;
-  }
-
   /* calories-container -------------------------------------------------------------------------- */
   #calories-container {
     .row:first-child {
@@ -1122,45 +1050,6 @@
     cursor: crosshair;
   }
 
-  /* pagination -------------------------------------------------------------------------- */
-  .pagination-sm {
-    width: 100%;
-
-    div:first-child {
-      display: flex;
-      justify-content: space-between;
-
-      .btn {
-        width: 50%;
-        margin: 2px;
-      }
-    }
-
-    div:nth-child(2) {
-      display: flex;
-      justify-content: space-between;
-
-      .btn {
-        width: 50%;
-        margin: 2px;
-      }
-    }
-
-    div:nth-child(3) {
-      .alert {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        padding: 5px;
-        justify-content: center !important;
-        font-style: italic;
-      }
-    }
-  }
-
-  //Pagination
-  #pagination-lg {
-    display: none;
-  }
 }
 
 @media screen and (min-width: 768px) {
@@ -1184,10 +1073,6 @@
     display: none !important;
   }
 
-  #pagination-sm {
-    display: none;
-  }
-
   #steps-container {
     // Add.html
     &.steps-container-add {
@@ -1202,5 +1087,4 @@
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
-
 }
