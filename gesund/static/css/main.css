@@ -731,8 +731,8 @@
     /*border-top: 1px solid red;*/
   }
   #sidebar-sm ul li {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
   }
   #sidebar-sm ul li:first-child {
     margin-top: 2rem;
