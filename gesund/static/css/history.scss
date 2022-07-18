@@ -5,62 +5,9 @@
     Source: https://bootsnipp.com/snippets/OzQj
 */
 
-@media (max-width: 767px) {
 
-  .timeline {
-    padding: 5px 5px 5px 0;
-  }
 
-  ul.timeline {
 
-    li {
-      .timeline-badge {
-        width: 30px;
-        height: 30px;
-        left: 5px;
-        margin-left: 0;
-        top: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        line-height: 0;
-
-        i {
-          font-size: 1rem;
-        }
-      }
-    }
-
-    .timeline-panel {
-      float: right;
-      width: calc(100% - 55px);
-      width: -moz-calc(100% - 55px);
-      width: -webkit-calc(100% - 55px);
-      padding: 10px !important;
-
-      &:before {
-        border-left-width: 0;
-        border-right-width: 15px;
-        left: -15px;
-        right: auto;
-        top: 15px;
-      }
-
-      &:after {
-        border-left-width: 0;
-        border-right-width: 14px;
-        left: -14px;
-        right: auto;
-        top: 16px;
-      }
-    }
-
-    &:before {
-      left: 20px;
-    }
-
-  }
-}
 
 #history-container {
   .bg-CREATE, .bg-REWARDED {
@@ -195,5 +142,69 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 767px) {
+
+  /* history-container -------------------------------------------------------------------------- */
+  #history-container {
+    nav {
+      display: none;
+    }
+  }
+
+  .timeline {
+    padding: 5px 5px 5px 0;
+  }
+
+  ul.timeline {
+
+    li {
+      .timeline-badge {
+        width: 30px;
+        height: 30px;
+        left: 5px;
+        margin-left: 0;
+        top: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 0;
+
+        i {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .timeline-panel {
+      float: right;
+      width: calc(100% - 55px);
+      width: -moz-calc(100% - 55px);
+      width: -webkit-calc(100% - 55px);
+      padding: 10px !important;
+
+      &:before {
+        border-left-width: 0;
+        border-right-width: 15px;
+        left: -15px;
+        right: auto;
+        top: 15px;
+      }
+
+      &:after {
+        border-left-width: 0;
+        border-right-width: 14px;
+        left: -14px;
+        right: auto;
+        top: 16px;
+      }
+    }
+
+    &:before {
+      left: 20px;
+    }
+
   }
 }

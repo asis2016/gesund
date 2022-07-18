@@ -4,7 +4,8 @@
 
 {% block main %}
     <div class="container-fluid" id="leaderboards-container">
-        <div class="row">
+        <!-- .row-first -->
+        <div class="row row-first">
             <div class="col-lg-12">
                 <div class="col-page-header">
                     <h2>Leaderboard</h2>
@@ -18,9 +19,11 @@
                 </div>
             </div>
         </div>
+        <!-- ends .row-first -->
 
-        <div class="row">
-            <div class="col-lg-8 mt-4">
+        <!-- .row-second -->
+        <div class="row row-second">
+            <div class="col-lg-8 mt-4 col-first">
                 <div class="card">
                     {# --- Card body starts --- #}
                     <div class="card-body">
@@ -65,7 +68,9 @@
                 </div>
             </div>
         </div>
+        <!-- ends .row-second -->
 
+        <div class="spacer mb-4"></div>
     </div>
 {% endblock main %}
 

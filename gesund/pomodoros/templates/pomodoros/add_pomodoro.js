@@ -30,8 +30,8 @@ const pomodoroAlert = (status) => {
         msg = "Nice! One pomodoro completed."
     }
 
-    let _html = `<div class="alert ${alertStatus}" role="alert"><p class="m-0">${msg}</p></div>`
-    $(".pomodoro-alert").html(_html)
+    const _HTML = `<div class="alert ${alertStatus}" role="alert"><p class="m-0">${msg}</p></div>`
+    $(".pomodoro-alert").html(_HTML)
 }
 
 /**
@@ -56,11 +56,7 @@ const savePomodoro = () => {
         "url": `${REST_API_URL}/pomodoro/`, "method": "POST", "timeout": 0, "headers": {
             "Authorization": `Basic ${TOKEN}`, "Content-Type": "application/json", "X-CSRFToken": csrf_token
         }, "data": JSON.stringify({
-            "pomodoro": 1,
-            "short_break": 0,
-            "long_break": 0,
-            "remarks": $("#id_remarks").val(),
-            "author": UID
+            "pomodoro": 1, "short_break": 0, "long_break": 0, "remarks": $("#id_remarks").val(), "author": UID
         }),
     };
 

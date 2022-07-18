@@ -1,0 +1,22 @@
+/* goals-container -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  #goals-container {
+    // .row-first
+    .row-first {
+      nav {
+        display: none;
+      }
+    }
+  }
+
+  .goals-container-index {
+    .btn {
+      width: 100% !important;
+    }
+  }
+
+  .goals-container-index .btn {
+    width: 100% !important;
+  }
+
+}

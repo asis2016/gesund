@@ -1,0 +1,40 @@
+/* leaderboards-container -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 767px) {
+  #leaderboards-container {
+    // .row-first
+    .row-first {
+      nav {
+        display: none;
+      }
+    }
+
+    // .row-second
+    .row-second {
+      .col-first {
+        margin-top: .5rem !important;
+
+        .card-body {
+          padding: 0.2rem;
+          overflow: scroll;
+
+          th {
+            font-size: 90%;
+          }
+
+          td i {
+            font-size: 90% !important;
+          }
+
+          td {
+            font-size: 90%;
+          }
+
+          .card {
+            overflow: scroll;
+          }
+        }
+      }
+    }
+  }
+}
