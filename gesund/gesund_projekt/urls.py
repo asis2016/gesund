@@ -1,6 +1,6 @@
-from django.contrib import admin
-from django.urls import include, path, re_path
 from dashboard.views import DashboardTemplateview
+from django.contrib import admin
+from django.urls import include, path
 
 urlpatterns = [
     path('', DashboardTemplateview.as_view(), name='dashboard'),
@@ -21,6 +21,7 @@ urlpatterns = [
     path('history/', include('history.urls')),
     path('leaderboards/', include('leaderboards.urls')),
     path('pomodoros/', include('pomodoros.urls')),
+    path('post-pilot-test-questionnaire/', include('postpilottest.urls')),
     path('profile/', include('profiles.urls')),
     path('steps/', include('steps.urls')),
     path('steps/', include('steps.urls')),

@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'history.apps.HistoryConfig',
     'leaderboards.apps.LeaderboardsConfig',
     'pomodoros.apps.PomodorosConfig',
+    'postpilottest.apps.PostpilottestConfig',
     'profiles.apps.ProfilesConfig',
     'steps.apps.StepsConfig',
     'water_intake.apps.WaterIntakeConfig',

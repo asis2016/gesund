@@ -3,8 +3,8 @@
     Author URI  : https://github.com/asis2016/
     Description : This theme is designed for Gesund App.
 */
-/* about-container -------------------------------------------------------------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500&display=swap");
+/* about-container -------------------------------------------------------------------------- */
 #about-container p {
   text-align: justify;
 }
@@ -26,18 +26,8 @@
     margin-top: 0.5rem;
   }
 }
-/*
-    Author      : Ashish S. Maharjan
-    Author URI  : https://github.com/asis2016/
-    Description : This theme is designed for Gesund App.
-*/
-/*
-    Author      : Ashish S. Maharjan
-    Author URI  : https://github.com/asis2016/
-    Description : This theme is designed for Gesund App.
-*/
+/* change-password-container -------------------------------------------------------------------------- */
 @media screen and (max-width: 767px) {
-  /* change-password-container -------------------------------------------------------------------------- */
   #change-password-container .row:first-child .col-page-header nav {
     display: none;
   }
@@ -57,15 +47,22 @@
   #change-password-container .row:nth-child(2) .col-lg-8 .card-footer .go-back-lg {
     display: none;
   }
-
-  /* change-password-done-container -------------------------------------------------------------------------- */
+}
+/* change-password-done-container -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
   #change-password-done-container .row:first-child .col-page-header nav {
     display: none;
   }
   #change-password-done-container .row:nth-child(2) .col-lg-8 {
     margin-top: 0.5rem !important;
   }
-
+}
+/*
+    Author      : Ashish S. Maharjan
+    Author URI  : https://github.com/asis2016/
+    Description : This theme is designed for Gesund App.
+*/
+@media screen and (max-width: 767px) {
   /* profile-container -------------------------------------------------------------------------- */
   #profile-container nav {
     display: none;
@@ -272,6 +269,33 @@
 #dashboard-container #dashboard-pomodoro,
 #dashboard-container #dashboard-history {
     margin-top: 1.5rem !important;
+  }
+}
+/* top-navigation -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  #top-navigation-lg {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  #top-navigation-lg {
+    border-bottom: 1px solid #363D47;
+    z-index: 1034;
+    background-color: #6c757d;
+    color: #ffffff !important;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0.5rem 0.5rem;
+  }
+  #top-navigation-lg .navbar-nav .nav-item a {
+    color: #fff;
   }
 }
 /*
