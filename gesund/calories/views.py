@@ -42,7 +42,7 @@ class CaloriesIntakeDatestampCollectionListView(LoginRequiredMixin, ListView):
     """ Get calories intake on datestamp by food ASC. """
     context_object_name = 'calories_list'
     model = CalorieIntake
-    paginate_by = 1
+    paginate_by = 2
     template_name = 'calories/index_datestamp_collection.html'
 
     def get_queryset(self):
@@ -64,6 +64,11 @@ class CalorieIntakeUpdateView(UpdateView):
     template_name = 'calories/update.html'
     fields = ('datestamp', 'food', 'consume', 'calories', 'protein', 'fat', 'carb', 'sugar', 'fiber', 'food_detail_ref',
               'description')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(CalorieIntakeUpdateView, self).get_context_data(*args, **kwargs)
+        context['REST_API_URL'] = settings.REST_API_URL
+        return context
 
     def form_valid(self, form):
         form.instance.author = self.request.user
