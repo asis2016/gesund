@@ -13,7 +13,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="#">Pomodoro</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'pomodoro-index' %}">Pomodoro</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Add pomodoro
                             </li>
@@ -39,6 +39,9 @@
                         {% csrf_token %}
                         {# main > countdown #}
                         <div class="form-group row mt-2 form-group-main">
+                            <label class="col-sm-4 col-form-label">
+                                Countdown
+                            </label>
                             <div class="col-sm-6 col-main">
                                 <div id="main"
                                      style="background: url({% static 'images/tomato.png' %}) no-repeat center; background-size: contain;">

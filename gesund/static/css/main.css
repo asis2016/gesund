@@ -599,6 +599,24 @@ text: 363D47
   }
 }
 /* pomodoro-container -------------------------------------------------------------------------- */
+.pomodoro-container-add .col-main {
+  display: flex;
+  justify-content: center;
+}
+.pomodoro-container-add .col-main #main {
+  height: 180px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pomodoro-container-add .col-main #main #countdown {
+  font-size: 2.5rem;
+  padding-top: 40px;
+  font-weight: 400;
+  color: white;
+}
+
 @media screen and (max-width: 767px) {
   #pomodoro-container .row-first nav {
     display: none;
@@ -648,22 +666,8 @@ text: 363D47
   .pomodoro-container-add .row-second .col-lg-6 {
     margin-top: 0.5rem !important;
   }
-  .pomodoro-container-add .row-second .col-lg-6 .pomodoro-card .card-body .form-group-main .col-main {
-    display: flex;
-    justify-content: center;
-  }
-  .pomodoro-container-add .row-second .col-lg-6 .pomodoro-card .card-body .form-group-main .col-main #main {
-    height: 180px;
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .pomodoro-container-add .row-second .col-lg-6 .pomodoro-card .card-body .form-group-main .col-main #main #countdown {
-    font-size: 2.5rem;
-    padding-top: 40px;
-    font-weight: 400;
-    color: white;
+  .pomodoro-container-add .row-second .col-lg-6 .pomodoro-card .card-body .form-group-main label {
+    display: none;
   }
   .pomodoro-container-add .row-second .col-lg-6 .pomodoro-card .card-body .form-group-remarks {
     margin-top: 1rem !important;
@@ -700,6 +704,23 @@ text: 363D47
   }
   .pomodoro-container-detail .row-second .col-first .card .card-footer button {
     margin-top: 0.5rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .pomodoro-container-add .col-main {
+    margin-bottom: 1.8rem !important;
+  }
+
+  .list-by-date-pomodoro-container .card-header-menu {
+    color: #fff !important;
+    font-size: 1.3rem;
+  }
+  .list-by-date-pomodoro-container .go-back-sm {
+    display: block;
+  }
+
+  .pomodoro-container-detail .btn-danger {
+    margin-top: 0 !important;
   }
 }
 /* goals-container -------------------------------------------------------------------------- */
