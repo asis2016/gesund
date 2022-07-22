@@ -1,83 +1,27 @@
 /* calories-container-datestamp-collection -------------------------------------------------------------------------- */
 #calories-container-datestamp-collection {
-  .row:first-child {
-    .col-page-header {
+  .action-buttons {
+    justify-content: space-between;
+  }
+
+  .action-buttons a {
+    width: 90%;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #calories-container-datestamp-collection {
+    .row-first {
       nav {
         display: none;
       }
     }
-  }
 
-  .row:nth-child(2) {
-    .col-lg-8 {
-      margin-top: .5rem !important;
-
-      .card-header-menu {
-        justify-content: normal !important;
-        background: none;
-
-        .btn {
-          width: 100%;
-        }
-      }
-
-      .card-body {
-        padding: 0.1rem;
-
-        .alert {
-          margin: 1rem;
-        }
-
-        .card-footer {
-        }
-      }
-
-      .row:nth-child(2) {
-        .col-lg-4 {
-          margin-top: 1.5rem;
-        }
-      }
-
-      .row:nth-child(3) {
-        margin-top: 1.5rem !important;
-      }
-
-    }
-  }
-
-
-  // add.html
-  &.steps-container-add, &.steps-container-update {
-    .row:nth-child(2) {
-      .col-lg-6 {
+    .row-second {
+      .col-first {
         margin-top: .5rem !important;
-      }
-    }
-
-    .card-footer {
-      a, .btn {
-        width: 100%;
-      }
-
-      .go-back-lg {
-        display: none;
-      }
-
-      .go-back-sm {
-        margin-top: .5rem;
-      }
-    }
-  }
-
-  // delete.html
-  &.steps-container-delete {
-    .card-footer {
-      a, button {
-        width: 100%;
-      }
-
-      button {
-        margin-top: .5rem;
       }
     }
   }

@@ -43,7 +43,7 @@ class CaloriesIntakeDatestampCollectionListView(LoginRequiredMixin, ListView):
     context_object_name = 'calories_list'
     model = CalorieIntake
     paginate_by = 1
-    template_name = 'calories/index-datestamp-collection.html'
+    template_name = 'calories/index_datestamp_collection.html'
 
     def get_queryset(self):
         datestamp = self.kwargs['datestamp']

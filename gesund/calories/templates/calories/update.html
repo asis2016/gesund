@@ -2,14 +2,8 @@
 {% load static %}
 
 {% block main %}
-    {#todo#}
-    <style>
-        .list-group {
-            overflow: hidden;
-        }
-    </style>
-    <div class="container-fluid calories-container-add" id="calories-container">
-        <div class="row">
+    <div class="container-fluid calories-container-update" id="calories-container">
+        <div class="row row-first">
             <div class="col-lg-12">
                 <div class="col-page-header">
                     <h2>Calorie Intake</h2>
@@ -26,8 +20,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-6 mt-4">
+        <div class="row row-second">
+            <div class="col-lg-6 mt-4 col-first">
                 <div class="card">
                     <div class="card-header card-header-menu">
                         Update your food intake
@@ -231,11 +225,11 @@
                             </button>
                             <!-- go back -->
                             <a class="float-end go-back-to-list go-back-lg"
-                               href="{% url 'calorie-intake-datestamp-index' %}">
+                               href="{% url 'calorie-intake-datestamp-collection-index' calories_obj.datestamp|date:'Y-m-d' %}">
                                 Go back to the calorie intake
                             </a>
                             <a class="btn btn-secondary go-back-sm"
-                               href="{% url 'calorie-intake-datestamp-index' %}">
+                               href="{% url 'calorie-intake-datestamp-collection-index' calories_obj.datestamp|date:'Y-m-d' %}">
                                 <i class="fa-solid fa-angle-left"></i>
                                 <span class="p-2">Go back</span>
                             </a>
@@ -245,19 +239,17 @@
                 </div>
             </div>
         </div>
+
+        <div class="spacer mb-4"></div>
     </div>
-
-
 {% endblock main %}
 
 {% block scripts %}
     <script>
-
         $(document).ready(function () {
-
+            const REST_API_URL = '{{ REST_API_URL }}'
             const id = {{ calories_obj.id }};
             const food_id = {{ calories_obj.food_detail_ref }};
-
             let calories = '';
             let protein = '';
             let fat = '';
@@ -270,7 +262,8 @@
              * Document ready load ajax!
              * */
             $.ajax({
-                url: URL + "food-calories/" + food_id,
+                //url:  + "food-calories/" + food_id,
+                url: `${REST_API_URL}/food-calories/${food_id}`,
                 type: "GET",
                 success: function (response) {
                     calories = response.calories;

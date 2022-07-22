@@ -326,6 +326,121 @@ text: 363D47
     margin-top: 0.5rem;
   }
 }
+/* calories-container -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  #calories-container .row-first nav {
+    display: none;
+  }
+  #calories-container .row-second .col-first {
+    margin-top: 0.5rem !important;
+  }
+  #calories-container .row-second .col-first .card .card-header-menu {
+    justify-content: normal !important;
+    background: none;
+  }
+  #calories-container .row-second .col-first .card .card-header-menu .btn {
+    width: 100%;
+  }
+  #calories-container .row-second .col-first .card .card-body {
+    padding: 0.1rem;
+  }
+  #calories-container .row-second .col-first .card .card-body .table th:first-child, #calories-container .row-second .col-first .card .card-body .table td:first-child {
+    display: none;
+  }
+  #calories-container .row-second .col-first .card .card-body .table tbody td:nth-child(3) span {
+    display: none;
+  }
+  #calories-container .row-second .col-first .card .card-body .table tbody td:nth-child(4) span {
+    display: none;
+  }
+  #calories-container .row-second .col-first .card .card-body .table tbody td:nth-child(4) a {
+    padding: 0.2rem 0.4rem;
+  }
+  #calories-container .row-second .col-first .card .card-body .alert {
+    margin: 1rem;
+  }
+  #calories-container .row-second .col-first .card .card-body .list-group {
+    overflow: hidden;
+  }
+  #calories-container .row-second .col-second {
+    margin-top: 1rem !important;
+  }
+  #calories-container .row-third {
+    margin-top: 1rem !important;
+  }
+  #calories-container.calories-container-add .row-second .col-first, #calories-container.calories-container-update .row-second .col-first {
+    margin-top: 0.5rem !important;
+  }
+  #calories-container.calories-container-add .card-footer a, #calories-container.calories-container-add .card-footer .btn, #calories-container.calories-container-update .card-footer a, #calories-container.calories-container-update .card-footer .btn {
+    width: 100%;
+  }
+  #calories-container.calories-container-add .card-footer .go-back-lg, #calories-container.calories-container-update .card-footer .go-back-lg {
+    display: none;
+  }
+  #calories-container.calories-container-add .card-footer .go-back-sm, #calories-container.calories-container-update .card-footer .go-back-sm {
+    margin-top: 0.5rem;
+  }
+  #calories-container.calories-container-add #food-modal i, #calories-container.calories-container-update #food-modal i {
+    position: absolute;
+    right: -7px;
+    font-size: 2.2rem;
+    color: red;
+    top: -7px;
+  }
+  #calories-container.calories-container-add #food-modal i:hover, #calories-container.calories-container-update #food-modal i:hover {
+    cursor: pointer;
+  }
+  #calories-container.calories-container-add #modal-food-search .modal-body, #calories-container.calories-container-update #modal-food-search .modal-body {
+    padding: 0;
+  }
+  #calories-container.calories-container-add #modal-food-search .modal-close, #calories-container.calories-container-update #modal-food-search .modal-close {
+    position: absolute;
+    z-index: 999;
+    right: -7px;
+    top: -12px;
+    color: red;
+    font-size: 2rem;
+  }
+
+  .calories-container-add .row-second .card .card-header-menu {
+    background: #6c757d !important;
+  }
+  .calories-container-add .row-second .card .card-body {
+    padding: 1rem !important;
+  }
+
+  .calories-container-update .row-second .card .card-header-menu {
+    background: #6c757d !important;
+  }
+  .calories-container-update .row-second .card .card-body {
+    padding: 1rem !important;
+  }
+
+  .calories-container-delete .card-footer a, .calories-container-delete .card-footer button {
+    width: 100% !important;
+  }
+  .calories-container-delete .card-footer button {
+    margin-top: 0.5rem;
+  }
+}
+/* calories-container-datestamp-collection -------------------------------------------------------------------------- */
+#calories-container-datestamp-collection .action-buttons {
+  justify-content: space-between;
+}
+#calories-container-datestamp-collection .action-buttons a {
+  width: 90%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 767px) {
+  #calories-container-datestamp-collection .row-first nav {
+    display: none;
+  }
+  #calories-container-datestamp-collection .row-second .col-first {
+    margin-top: 0.5rem !important;
+  }
+}
 /* change-password-container -------------------------------------------------------------------------- */
 @media screen and (max-width: 767px) {
   #change-password-container .row:first-child .col-page-header nav {
