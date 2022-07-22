@@ -1,8 +1,14 @@
-/*
-    Author      : Ashish S. Maharjan
-    Author URI  : https://github.com/asis2016/
-    Description : This theme is designed for Gesund App.
-*/
+/* sidebar -------------------------------------------------------------------------- */
+.sidebar {
+  background: #363D47;
+  color: #363D47;
+  width: 280px;
+  height: 100vh;
+
+  .nav-pills li span {
+    padding-left: 10px;
+  }
+}
 
 @media screen and (max-width: 767px) {
   #sidebar-lg {
@@ -69,8 +75,14 @@
 }
 
 @media screen and (min-width: 768px) {
-  /* sidebar -------------------------------------------------------------------------- */
+
   #sidebar-lg {
+    .logo {
+      height: 50px;
+      width: auto;
+      padding-right: .5rem;
+    }
+
     .nav-link {
       color: white;
 

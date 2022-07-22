@@ -191,3 +191,7 @@ DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 EMAIL_USE_SSL = True
 #
 RECEIVE_EMAIL_AT = os.environ.get('RECEIVE_EMAIL_AT')
+
+#
+handler404 = 'dashboard.views.error_404'
+handler500 = 'dashboard.views.error_500'

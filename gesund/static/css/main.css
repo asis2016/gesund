@@ -4,6 +4,306 @@
     Description : This theme is designed for Gesund App.
 */
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500&display=swap");
+/*
+    Author      : Ashish S. Maharjan
+    Author URI  : https://github.com/asis2016/
+    Description : This theme is designed for Gesund App.
+*/
+html {
+  height: -webkit-fill-available;
+}
+
+body {
+  min-height: -webkit-fill-available;
+  font-family: "Baloo Da 2";
+}
+
+main {
+  display: flex;
+  flex-wrap: nowrap;
+  height: -webkit-fill-available;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.b-example-divider {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: solid rgba(0, 0, 0, 0.15);
+  border-width: 1px 0;
+  box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1), inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+}
+
+.bi {
+  vertical-align: -0.125em;
+  pointer-events: none;
+  fill: currentColor;
+}
+
+.dropdown-toggle {
+  outline: 0;
+}
+
+.nav-flush .nav-link {
+  border-radius: 0;
+}
+
+/* btn-toggle */
+.btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: transparent;
+  border: 0;
+}
+.btn-toggle:hover, .btn-toggle:focus {
+  background-color: #d2f4ea;
+  color: rgba(0, 0, 0, 0.85);
+}
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform 0.35s ease;
+  transform-origin: 0.5em 50%;
+}
+
+.btn-toggle[aria-expanded=true] {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.btn-toggle[aria-expanded=true]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+  display: inline-flex;
+  padding: 0.1875rem 0.5rem;
+  margin-top: 0.125rem;
+  margin-left: 1.25rem;
+  text-decoration: none;
+}
+.btn-toggle-nav a a:hover, .btn-toggle-nav a a:focus {
+  background-color: #d2f4ea;
+}
+
+.scrollarea {
+  overflow-y: auto;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.lh-tight {
+  line-height: 1.25;
+}
+
+/*
+COLOR CODES ---------------
+light-green: #90EE90
+text: 363D47
+*/
+.light-green {
+  color: #90EE90;
+}
+
+.card-info {
+  background: #90EE90;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 0.25em;
+}
+.card-info div {
+  width: 80%;
+}
+.card-info .fa-solid {
+  font-size: 50px;
+}
+
+/* Card Header menu */
+.card-header-menu {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #6c757d;
+  color: #ffffff;
+}
+.card-header-menu h6 {
+  margin-bottom: 0px;
+}
+.card-header-menu .minimize {
+  align-items: center;
+  vertical-align: middle;
+  display: flex;
+  padding-right: 8px;
+}
+.card-header-menu .minimize a {
+  color: #fff;
+}
+.card-header-menu .minimize a:hover {
+  cursor: pointer;
+}
+
+.col-page-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-wrapper {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  background-color: #f4f6f9;
+}
+
+.top-navigation {
+  height: 50px;
+  background-color: #ffffff;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.profile-image img {
+  border-radius: 50%;
+}
+
+.data-table-list tbody tr td {
+  vertical-align: middle !important;
+}
+
+/* Dashboard page #dashboard-container */
+#dashboard-container .card .card-footer {
+  height: 45px;
+}
+#dashboard-container .row-challenge .card .card-body {
+  text-align: center;
+  background-color: #90EE90;
+}
+#dashboard-container .row-challenge .card .card-body img {
+  height: 50px;
+}
+#dashboard-container .row-challenge .card .card-body p {
+  margin-bottom: 0;
+}
+#dashboard-container .row-challenge .card .card-footer {
+  height: auto;
+}
+#dashboard-container .row-challenge .card .card-footer p {
+  margin-bottom: 0;
+}
+
+#profile-container .profile-img {
+  display: flex;
+  justify-content: center;
+}
+#profile-container .profile-img .profile-img-txt {
+  align-items: center;
+  background: #6c757d;
+  border: 5px solid #363D47;
+  border-radius: 50%;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  text-align: center;
+  width: 100px;
+}
+#profile-container .profile-img .profile-img-txt span {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+/*
+    Author      : Ashish S. Maharjan
+    Author URI  : https://github.com/asis2016/
+    Description : This theme is designed for Gesund App.
+*/
+@media screen and (max-width: 767px) {
+  /* registration -------------------------------------------------------------------------- */
+  #registration {
+    font-size: 13px;
+  }
+  #registration .col-sm-12 {
+    padding: 0rem 1rem;
+  }
+  #registration .btn {
+    width: 100%;
+  }
+
+  /* top-navigation -------------------------------------------------------------------------- */
+  #top-navigation-sm {
+    background-color: #6c757d;
+    height: 3rem;
+    color: #cbcbcb;
+    border-bottom: 1px solid rgba(54, 61, 71, 0.1);
+    padding: 0 1rem;
+  }
+  #top-navigation-sm #menu i, #top-navigation-sm .fa-crown, #top-navigation-sm .fa-bolt, #top-navigation-sm #menu-profile .fa-circle-user {
+    font-size: 1.3rem;
+    color: #cbcbcb;
+  }
+  #top-navigation-sm .active i {
+    color: #FFFFFF !important;
+  }
+  #top-navigation-sm #menu-profile .dropdown-menu {
+    min-width: 200px !important;
+  }
+  #top-navigation-sm #menu-profile .dropdown-menu[data-bs-popper] {
+    right: 0 !important;
+    left: unset !important;
+  }
+
+  #top-nagivation-lg {
+    display: none;
+  }
+
+  #ui-datepicker-div {
+    font-size: 12px;
+  }
+
+  .btn-secondary.disabled:hover {
+    cursor: crosshair;
+  }
+}
+@media screen and (min-width: 768px) {
+  .go-back-sm {
+    display: none;
+  }
+
+  #calories-container.calories-container-add .card .go-back-sm {
+    display: none;
+  }
+
+  #top-navigation-sm {
+    display: none;
+  }
+
+  #sidebar-sm {
+    display: none !important;
+  }
+
+  #steps-container.steps-container-add .card .go-back-sm {
+    display: none;
+  }
+
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
 /* about-container -------------------------------------------------------------------------- */
 #about-container p {
   text-align: justify;
@@ -57,101 +357,17 @@
     margin-top: 0.5rem !important;
   }
 }
-/*
-    Author      : Ashish S. Maharjan
-    Author URI  : https://github.com/asis2016/
-    Description : This theme is designed for Gesund App.
-*/
-@media screen and (max-width: 767px) {
-  /* profile-container -------------------------------------------------------------------------- */
-  #profile-container nav {
-    display: none;
-  }
-  #profile-container .row:nth-child(2) .col-lg-4 {
-    margin-top: 0.5rem !important;
-  }
-  #profile-container .row:nth-child(2) .col-lg-4 .card-body {
-    padding: 1rem 1rem 0 1rem !important;
-  }
-  #profile-container .row:nth-child(2) .col-lg-4 .card-body .list-group-item:last-child .profile-bmi {
-    text-align: right;
-  }
-  #profile-container .row:nth-child(2) .col-lg-8 {
-    margin-top: 1rem !important;
-  }
-
-  /* registration -------------------------------------------------------------------------- */
-  #registration {
-    font-size: 13px;
-  }
-  #registration .col-sm-12 {
-    padding: 0rem 1rem;
-  }
-  #registration .btn {
-    width: 100%;
-  }
-
-  /* top-navigation -------------------------------------------------------------------------- */
-  #top-navigation-sm {
-    background-color: #6c757d;
-    height: 3rem;
-    color: #cbcbcb;
-    border-bottom: 1px solid rgba(54, 61, 71, 0.1);
-    padding: 0 1rem;
-  }
-  #top-navigation-sm #menu i, #top-navigation-sm .fa-crown, #top-navigation-sm .fa-bolt, #top-navigation-sm #menu-profile .fa-circle-user {
-    font-size: 1.3rem;
-    color: #cbcbcb;
-  }
-  #top-navigation-sm .active i {
-    color: #FFFFFF !important;
-  }
-  #top-navigation-sm #menu-profile .dropdown-menu {
-    min-width: 200px !important;
-  }
-  #top-navigation-sm #menu-profile .dropdown-menu[data-bs-popper] {
-    right: 0 !important;
-    left: unset !important;
-  }
-
-  #top-nagivation-lg {
-    display: none;
-  }
-
-  #ui-datepicker-div {
-    font-size: 12px;
-  }
-
-  .btn-secondary.disabled:hover {
-    cursor: crosshair;
-  }
+/* sidebar -------------------------------------------------------------------------- */
+.sidebar {
+  background: #363D47;
+  color: #363D47;
+  width: 280px;
+  height: 100vh;
 }
-@media screen and (min-width: 768px) {
-  #calories-container.calories-container-add .card .go-back-sm {
-    display: none;
-  }
-
-  #top-navigation-sm {
-    display: none;
-  }
-
-  #sidebar-sm {
-    display: none !important;
-  }
-
-  #steps-container.steps-container-add .card .go-back-sm {
-    display: none;
-  }
-
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
+.sidebar .nav-pills li span {
+  padding-left: 10px;
 }
-/*
-    Author      : Ashish S. Maharjan
-    Author URI  : https://github.com/asis2016/
-    Description : This theme is designed for Gesund App.
-*/
+
 @media screen and (max-width: 767px) {
   #sidebar-lg {
     display: none !important;
@@ -204,7 +420,11 @@
   }
 }
 @media screen and (min-width: 768px) {
-  /* sidebar -------------------------------------------------------------------------- */
+  #sidebar-lg .logo {
+    height: 50px;
+    width: auto;
+    padding-right: 0.5rem;
+  }
   #sidebar-lg .nav-link {
     color: white;
   }
@@ -261,8 +481,7 @@
   #dashboard-container #dashboard-challenge {
     display: none;
   }
-  #dashboard-container #dashboard-daily-goals,
-#dashboard-container #dashboard-bmi,
+  #dashboard-container #dashboard-bmi,
 #dashboard-container #dashboard-calories,
 #dashboard-container #dashboard-water,
 #dashboard-container #dashboard-steps,
@@ -298,6 +517,23 @@
     color: #fff;
   }
 }
+/* pomodoro-container -------------------------------------------------------------------------- */
+.modal-info-i {
+  font-size: 1rem;
+}
+
+.modal-main .modal-body {
+  text-align: center;
+}
+.modal-main .modal-body img {
+  margin-bottom: 1rem;
+  height: 200px;
+  width: 200px;
+}
+.modal-main .modal-body p {
+  text-align: justify;
+}
+
 /*
     Author      : Ashish S. Maharjan
     Author URI  : https://github.com/asis2016/
@@ -338,6 +574,28 @@
 @media screen and (min-width: 768px) {
   #pagination-sm {
     display: none;
+  }
+}
+/* profile-container -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  #profile-container .row-first nav {
+    display: none;
+  }
+  #profile-container .row-second .col-first {
+    margin-top: 0.5rem !important;
+  }
+  #profile-container .row-second .col-first .card-body {
+    padding: 1rem;
+  }
+  #profile-container .row-second .col-first .card-body .list-group-item:last-child .profile-bmi {
+    text-align: right;
+  }
+  #profile-container .row-second .col-second .list-group-item:last-child {
+    padding: 0;
+    padding-top: 1rem;
+  }
+  #profile-container .row:nth-child(2) .col-lg-8 {
+    margin-top: 1rem !important;
   }
 }
 /* pomodoro-container -------------------------------------------------------------------------- */
@@ -454,15 +712,12 @@
     width: 100% !important;
   }
 
-  .goals-container-index .btn {
-    width: 100% !important;
+  .goals-container-update .row-second .col-lg-6 {
+    margin-top: 0.5rem !important;
   }
 }
 /*
-    Author      : Ashish S. Maharjan
-    Author URI  : https://github.com/asis2016/
-    Description : This theme is designed for Gesund App.
-    Source: https://bootsnipp.com/snippets/OzQj
+    Author URI  : https://bootsnipp.com/snippets/OzQj
 */
 #history-container .bg-CREATE, #history-container .bg-REWARDED {
   background: #198754 !important;
@@ -488,18 +743,27 @@
   left: 50%;
   margin-left: -1.5px;
 }
-#history-container .timeline li {
+#history-container .timeline > li {
   margin-bottom: 20px;
   position: relative;
 }
-#history-container .timeline libefore, #history-container .timeline li:after {
+#history-container .timeline > li:before,
+#history-container .timeline > li:after {
   content: " ";
   display: table;
 }
-#history-container .timeline li:after {
+#history-container .timeline > li:after {
   clear: both;
 }
-#history-container .timeline li .timeline-panel {
+#history-container .timeline > li:before,
+#history-container .timeline > li:after {
+  content: " ";
+  display: table;
+}
+#history-container .timeline > li:after {
+  clear: both;
+}
+#history-container .timeline > li > .timeline-panel {
   width: 46%;
   float: left;
   border: 1px solid #d4d4d4;
@@ -508,8 +772,9 @@
   position: relative;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  background: #fff;
 }
-#history-container .timeline li .timeline-panel:before {
+#history-container .timeline > li > .timeline-panel:before {
   position: absolute;
   top: 26px;
   right: -15px;
@@ -520,7 +785,7 @@
   border-bottom: 15px solid transparent;
   content: " ";
 }
-#history-container .timeline li .timeline-panel:after {
+#history-container .timeline > li > .timeline-panel:after {
   position: absolute;
   top: 27px;
   right: -14px;
@@ -531,17 +796,7 @@
   border-bottom: 14px solid transparent;
   content: " ";
 }
-#history-container .timeline li .timeline-panel .timeline-title {
-  margin-top: 0;
-  color: inherit;
-}
-#history-container .timeline li .timeline-panel .timeline-body p, #history-container .timeline li .timeline-panel .timeline-body ul {
-  margin-bottom: 0;
-}
-#history-container .timeline li .timeline-panel .timeline-body p + p {
-  margin-top: 5px;
-}
-#history-container .timeline li .timeline-badge {
+#history-container .timeline > li > .timeline-badge {
   color: #fff;
   width: 50px;
   height: 50px;
@@ -559,69 +814,81 @@
   border-bottom-right-radius: 50%;
   border-bottom-left-radius: 50%;
 }
-#history-container .timeline li.timeline-inverted .timeline-panel {
+#history-container .timeline > li.timeline-inverted > .timeline-panel {
   float: right;
 }
-#history-container .timeline li.timeline-inverted .timeline-panel:before {
+#history-container .timeline > li.timeline-inverted > .timeline-panel:before {
   border-left-width: 0;
   border-right-width: 15px;
   left: -15px;
   right: auto;
 }
-#history-container .timeline li.timeline-inverted .timeline-panel:after {
+#history-container .timeline > li.timeline-inverted > .timeline-panel:after {
   border-left-width: 0;
   border-right-width: 14px;
   left: -14px;
   right: auto;
 }
-
+#history-container .timeline-badge.primary {
+  background-color: #2e6da4 !important;
+}
+#history-container .timeline-badge.success {
+  background-color: #3f903f !important;
+}
+#history-container .timeline-badge.warning {
+  background-color: #f0ad4e !important;
+}
+#history-container .timeline-badge.danger {
+  background-color: #d9534f !important;
+}
+#history-container .timeline-badge.info {
+  background-color: #5bc0de !important;
+}
+#history-container .timeline-title {
+  margin-top: 0;
+  color: inherit;
+}
+#history-container .timeline-body > p,
+#history-container .timeline-body > ul {
+  margin-bottom: 0;
+}
+#history-container .timeline-body > p + p {
+  margin-top: 5px;
+}
 @media (max-width: 767px) {
-  /* history-container -------------------------------------------------------------------------- */
-  #history-container nav {
-    display: none;
+  #history-container ul.timeline:before {
+    left: 40px;
   }
-
-  .timeline {
-    padding: 5px 5px 5px 0;
+  #history-container ul.timeline > li > .timeline-panel {
+    width: calc(100% - 90px);
+    width: -moz-calc(100% - 90px);
+    width: -webkit-calc(100% - 90px);
   }
-
-  ul.timeline li .timeline-badge {
-    width: 30px;
-    height: 30px;
-    left: 5px;
+  #history-container ul.timeline > li > .timeline-badge {
+    left: 15px;
     margin-left: 0;
     top: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 0;
   }
-  ul.timeline li .timeline-badge i {
-    font-size: 1rem;
-  }
-  ul.timeline .timeline-panel {
+  #history-container ul.timeline > li > .timeline-panel {
     float: right;
-    width: calc(100% - 55px);
-    width: -moz-calc(100% - 55px);
-    width: -webkit-calc(100% - 55px);
-    padding: 10px !important;
   }
-  ul.timeline .timeline-panel:before {
+  #history-container ul.timeline > li > .timeline-panel:before {
     border-left-width: 0;
     border-right-width: 15px;
     left: -15px;
     right: auto;
-    top: 15px;
   }
-  ul.timeline .timeline-panel:after {
+  #history-container ul.timeline > li > .timeline-panel:after {
     border-left-width: 0;
     border-right-width: 14px;
     left: -14px;
     right: auto;
-    top: 16px;
   }
-  ul.timeline:before {
-    left: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .col-page-header nav {
+    display: none;
   }
 }
 /* leaderboards-container -------------------------------------------------------------------------- */
@@ -649,8 +916,8 @@
     overflow: scroll;
   }
 }
+/* steps-container -------------------------------------------------------------------------- */
 @media screen and (max-width: 767px) {
-  /* steps-container -------------------------------------------------------------------------- */
   #steps-container .row-first nav {
     display: none;
   }

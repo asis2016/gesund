@@ -28,4 +28,9 @@ urlpatterns = [
     path('water-tracker/', include('water_intake.urls')),
     path('weight/', include('weights.urls')),
     path('xps/', include('xps.urls')),
+
+    #
 ]
+
+#handler404 = "dashboard.views.error_404"
+#handler500 = "dashboard.views.error_500"

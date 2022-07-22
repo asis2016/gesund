@@ -3,7 +3,6 @@ from django.views.generic.edit import UpdateView
 from utils import get_age, get_bmi, get_bmi_interpretation, get_total_xp
 from weights.models import Weight
 
-from .exportdata import export_data
 from .models import Profile
 
 
@@ -52,8 +51,3 @@ class ProfileUpdateView(UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-
-
-def export_my_data(request):
-    response = export_data(request)
-    return response

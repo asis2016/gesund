@@ -1,14 +1,15 @@
-from django.db.models import Sum
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView
-from utils import get_bmi, get_bmi_interpretation, progress_level_percentage
 from calories.models import CalorieIntake
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Sum
+from django.shortcuts import render
+from django.views.generic import TemplateView
+from goals.models import Goals
 from pomodoros.models import Pomodoro
 from profiles.models import Profile
 from steps.models import Steps
+from utils import get_bmi, get_bmi_interpretation, progress_level_percentage
 from water_intake.models import WaterIntake
 from weights.models import Weight
-from goals.models import Goals
 
 
 class DashboardTemplateview(LoginRequiredMixin, TemplateView):
@@ -110,3 +111,13 @@ class DashboardTemplateview(LoginRequiredMixin, TemplateView):
             'datestamp')[:7]
 
         return context
+
+
+def error_404(request, exception):
+    data = {}
+    return render(request, 'errors/404.html', status=404)
+
+
+def error_500(request, *args, **argv):
+    data = {}
+    return render(request, 'errors/500.html', status=500)

@@ -1,0 +1,20 @@
+/* pomodoro-container -------------------------------------------------------------------------- */
+.modal-info-i {
+  font-size: 1rem;
+}
+
+.modal-main {
+  .modal-body {
+    text-align: center;
+  }
+
+  .modal-body img {
+    margin-bottom: 1rem;
+    height: 200px;
+    width: 200px;
+  }
+
+  .modal-body p {
+    text-align: justify;
+  }
+}

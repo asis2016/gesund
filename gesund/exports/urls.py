@@ -7,4 +7,5 @@ urlpatterns = [
     path('steps', export_steps, name='export-steps'),
     path('water-intake', export_water_intake, name='export-water-intake'),
     path('weights', export_weights, name='export-weights'),
+    path('export-my-data', export, name='export-my-data'),
 ]

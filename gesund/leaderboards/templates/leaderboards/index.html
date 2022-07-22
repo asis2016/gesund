@@ -44,7 +44,11 @@
                                             {{ forloop.counter }}
                                         </td>
                                         <td>
-                                            {{ i.username }}
+                                            {{ i.id }}
+                                            {% if i.id == user.id %}
+                                                (Me)
+                                            {% endif %}
+
                                         </td>
                                         <td>
                                             {{ i.total_xp }}

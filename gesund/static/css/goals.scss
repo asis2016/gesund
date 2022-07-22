@@ -15,8 +15,12 @@
     }
   }
 
-  .goals-container-index .btn {
-    width: 100% !important;
+  .goals-container-update {
+    .row-second {
+      .col-lg-6 {
+        margin-top: .5rem !important;
+      }
+    }
   }
 
 }

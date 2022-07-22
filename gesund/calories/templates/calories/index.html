@@ -10,7 +10,10 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="#">Tracker</a></li>
+                            <li class="breadcrumb-item">
+                                <a href="{% url 'calorie-intake-datestamp-index' %}">
+                                    Calorie tracker</a>
+                            </li>
                             <li class="breadcrumb-item active" aria-current="page">Food intake</li>
                         </ol>
                     </nav>

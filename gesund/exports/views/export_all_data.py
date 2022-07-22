@@ -1,6 +1,3 @@
-'''
-todo: export this .py into exports app
-'''
 import xlsxwriter
 from calories.models import CalorieIntake
 from django.http import HttpResponse

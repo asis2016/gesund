@@ -11,15 +11,18 @@ $light_grey: #6c757d;
 $grey_500: #9e9e9e;
 $ligh_green: #90EE90;
 
+@import "style.scss";
+@import "screen.scss";
 
 @import "about_us.scss";
 @import "change_password.scss";
 @import "change_password_done_container.scss";
-@import "screen.scss";
 @import "sidebar.scss";
 @import "dashboard.scss";
 @import "top_navigation.scss";
+@import "modal.scss";
 @import "pagination.scss";
+@import "profile.scss";
 @import "pomodoro.scss";
 @import "goals.scss";
 @import "history.scss";

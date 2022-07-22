@@ -1,4 +1,4 @@
-const GIVEN_TIME = "0:03"
+const GIVEN_TIME = "25:00"
 const BREAK_TIME = "0:02"
 const TOKEN = "{{ TOKEN }}"
 const REST_API_URL = "{{ REST_API_URL }}"

@@ -2,7 +2,7 @@
 
 {% block main %}
     <div class="container-fluid" id="profile-container">
-        <div class="row">
+        <div class="row row-first">
             <div class="col-lg-12">
                 <div class="col-page-header">
                     <h2>My Profile</h2>
@@ -16,9 +16,8 @@
             </div>
         </div>
 
-        <div class="row">
-            {# side column #}
-            <div class="col-lg-4 mt-4">
+        <div class="row row-second">
+            <div class="col-lg-4 mt-4 col-first">
                 <div class="card">
                     <div class="card-body">
                         {% if name_initials %}
@@ -62,7 +61,7 @@
             {# side column #}
 
             {# main column #}
-            <div class="col-lg-8 mt-4">
+            <div class="col-lg-8 mt-4 col-second">
                 <!-- Profile settings -->
                 <div class="card">
                     <div class="card-header card-header-menu">

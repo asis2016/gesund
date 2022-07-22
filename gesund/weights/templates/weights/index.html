@@ -10,8 +10,12 @@
                     <h2>Weight tracker</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="#">Tracker</a></li>
+                            <li class="breadcrumb-item">
+                                <a href="{% url 'dashboard' %}">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="{% url 'weight-index' %}">Weight</a>
+                            </li>
                             <li class="breadcrumb-item active" aria-current="page">Weight list</li>
                         </ol>
                     </nav>
@@ -44,7 +48,7 @@
                                 <tbody>
                                 {% for i in weight_list %}
                                     <tr>
-                                        <td>author: {{ i.author }}</td>
+                                        <td>{{ i.id }}</td>
                                         <td>
                                             <span class="datestamp">{{ i.datestamp|date:"Y-m-d" }}</span>
                                         </td>
