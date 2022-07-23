@@ -5,15 +5,12 @@
     Signup
 {% endblock title %}
 
-{% block head %}
-    <link href="{% static 'css/screen.css' %}" rel="stylesheet" type="text/css">
-{% endblock head %}
-
-{% block main %}
+{% block body %}
+    <body id="sign-up">
     <div class="container" id="registration">
         <div class="row">
             <div class="col-lg-6 offset-lg-3 col-sm-12">
-                <div class="py-4">
+                <div class="py-4 header">
                     <h2 class="text-center">Sign up</h2>
                 </div>
                 <form method="POST">
@@ -99,9 +96,10 @@
                                    value=""
                                    id="invalidCheck"
                                    required>
-                            <label class="form-check-label"
+                            {# todo: 1. modal popup. #}
+                            <label class="form-check-label label-terms-conditions"
                                    for="invalidCheck">
-                                I Agree to <a href="#">terms and conditions.</a>
+                                I Agree to the <a href="#">terms and conditions.</a>
                             </label>
                             <div class="invalid-feedback">
                                 You must agree before submitting.
@@ -117,5 +115,6 @@
             </div>
         </div>
     </div>
-
-{% endblock main %}
+    <div class="spacer"></div>
+    </body>
+{% endblock body %}

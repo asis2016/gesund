@@ -10,55 +10,127 @@
 html,
 body {
   height: 100%;
+  font-family: "Baloo Da 2";
 }
 
-body {
+.spacer {
+  padding-bottom: 2rem;
+}
+
+/* login.html -------------------------------------------------------------------------- */
+#login {
   text-align: center;
+
+  .form-signin {
+    padding: 15px;
+    margin: 0 auto;
+
+    checkbox {
+      font-weight: 400;
+    }
+
+    .form-control {
+      position: relative;
+      box-sizing: border-box;
+      height: auto;
+      padding: 10px;
+      font-size: 16px;
+
+      &:focus {
+        z-index: 2;
+      }
+    }
+
+    input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .errors {
+      .errorlist {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+      }
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
 }
 
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
 
-  checkbox {
-    font-weight: 400;
-  }
-
-  .form-control {
-    position: relative;
-    box-sizing: border-box;
-    height: auto;
-    padding: 10px;
-    font-size: 16px;
-
-    &:focus {
-      z-index: 2;
-    }
-  }
-
-  input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-
-  .errors {
-    .errorlist {
-      list-style: none;
-      padding: 0;
-      text-align: left;
-    }
+#password-reset,
+#password-reset-done,
+#password-reset-confirm,
+#password-reset-complete {
+  h1 {
+    font-size: 2rem;
   }
 
   .btn {
     width: 100%;
+  }
+}
+
+/* @media screen and (max-width: 767px) -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  #sign-up {
+    #registration {
+      font-size: 13px;
+
+      .header {
+        padding: 0.5rem !important;
+      }
+
+      .col-sm-12 {
+        padding: 0rem 1rem;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .label-terms-conditions {
+        padding-top: 4px;
+      }
+    }
+  }
+
+  #password-reset,
+  #password-reset-done,
+  #password-reset-confirm,
+  #password-reset-complete {
+    .container {
+      padding-top: 1rem;
+    }
+  }
+}
+
+/* @media screen and (min-width: 768px) -------------------------------------------------------------------------- */
+@media screen and (min-width: 768px) {
+  /* login.html -------------------------------------------------------------------------- */
+  #login {
+    .form-signin {
+      padding: 3rem;
+    }
+  }
+
+  #login,
+  #sign-up,
+  #password-reset,
+  #password-reset-done,
+  #password-reset-confirm,
+  #password-reset-complete {
+    display: flex;
+    align-items: center;
   }
 }
