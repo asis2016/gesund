@@ -1,0 +1,23 @@
+/* xps-container -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 767px) {
+  #xps-container {
+    // .row-first
+    .row-first {
+      nav {
+        display: none;
+      }
+    }
+
+    // .row-second
+    .row-second {
+      .col-first {
+        margin-top: .5rem !important;
+
+        .card-body {
+          padding: 0.2rem;
+        }
+      }
+    }
+  }
+}

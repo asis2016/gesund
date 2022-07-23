@@ -1,0 +1,139 @@
+/* dashboard -------------------------------------------------------------------------- */
+#dashboard-container {
+  #daily_goals_card_content,
+  #water_card_content {
+    .progress {
+      height: 1.2rem;
+    }
+
+    .progress span {
+      color: white;
+      font-weight: 300;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #dashboard-container {
+    .alert-warning {
+      margin-bottom: 0;
+    }
+
+    #dashboard-daily-goals {
+      margin-top: 0 !important;
+
+      p {
+        margin-bottom: 0.4rem !important;
+      }
+
+      .card-header-menu .minimize {
+        padding-right: 0;
+      }
+
+    }
+
+    #dashboard-history {
+      .card-body {
+        padding: 0;
+
+        .table {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    #dashboard-steps {
+      .card-body {
+        padding: 0;
+
+        .alert {
+          margin: 1rem;
+        }
+      }
+    }
+
+    #dashboard-water {
+      .card-body {
+        padding: 0;
+
+        .alert {
+          margin: 1rem;
+        }
+
+        .table {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    #quick-stats {
+      display: none;
+    }
+
+    #dashboard-challenge {
+      display: none;
+
+      .card {
+        .card-body {
+          text-align: center;
+          background-color: #90EE90;
+
+          img {
+            height: 50px;
+          }
+
+          p {
+            margin-bottom: 0;
+          }
+        }
+
+        .card-footer {
+          height: auto;
+
+          p {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    #dashboard-bmi,
+    #dashboard-calories,
+    #dashboard-water,
+    #dashboard-steps,
+    #dashboard-pomodoro,
+    #dashboard-history {
+      margin-top: 1.5rem !important;
+    }
+
+    .card {
+      .card-footer {
+        height: 45px;
+      }
+    }
+
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #dashboard-container {
+    #quick-stats {
+      .card-info {
+        background: #90EE90;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        border-radius: 0.25em;
+
+        div {
+          width: 80%;
+        }
+
+        .fa-solid {
+          font-size: 50px;
+        }
+      }
+    }
+  }
+}

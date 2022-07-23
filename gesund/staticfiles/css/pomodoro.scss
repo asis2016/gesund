@@ -1,0 +1,210 @@
+/* pomodoro-container -------------------------------------------------------------------------- */
+.pomodoro-container-add {
+  .col-main {
+    display: flex;
+    justify-content: center;
+
+    #main {
+      height: 180px;
+      width: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      #countdown {
+        font-size: 2.5rem;
+        padding-top: 40px;
+        font-weight: 400;
+        color: white;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #pomodoro-container {
+    // .row-first
+    .row-first {
+      nav {
+        display: none;
+      }
+    }
+
+    // .row-second
+    .row-second {
+      .col-first {
+        margin-top: .5rem !important;
+
+        .card {
+          .card-header-menu {
+            justify-content: normal !important;
+            background: none;
+
+            .btn {
+              width: 100%;
+            }
+          }
+
+          .card-body {
+            padding: 0.1rem;
+
+            .table {
+              tbody {
+                td:nth-child(3) span {
+                  display: none;
+                }
+
+                td:nth-child(4) {
+                  span {
+                    display: none;
+                  }
+
+                  a {
+                    padding: 0.2rem 0.4rem;
+                  }
+                }
+              }
+            }
+
+            .alert {
+              margin: 1rem;
+            }
+          }
+        }
+      }
+
+      .col-second {
+        margin-top: 1rem !important;
+      }
+    }
+
+    // .row-third
+    .row-third {
+      margin-top: 1rem !important;
+    }
+
+  }
+
+  // add.html & update.html
+  .pomodoro-container-add, .pomodoro-container-update {
+    .card-footer {
+      a, .btn {
+        width: 100%;
+      }
+
+      .go-back-lg {
+        display: none;
+      }
+
+      .go-back-sm {
+        margin-top: .5rem;
+      }
+    }
+  }
+
+  // add.html
+  .pomodoro-container-add {
+    .row-second {
+      .col-lg-6 {
+        margin-top: .5rem !important;
+
+        .pomodoro-card {
+          .card-body {
+            .form-group-main {
+              label {
+                display: none;
+              }
+            }
+
+            .form-group-remarks {
+              margin-top: 1rem !important;
+            }
+
+            .form-group-action {
+              .col-action {
+                display: flex;
+                justify-content: space-between;
+              }
+
+              .btn {
+                border: 1px solid $grey_500;
+                text-align: center;
+                align-items: center;
+                height: 50px;
+                width: 70px;
+                margin-left: 0.5rem;
+                font-size: 1rem;
+              }
+            }
+
+            .btn {
+              font-size: 1.3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // list_by_date.html
+  .list-by-date-pomodoro-container {
+    table {
+      .btn-warning span {
+        display: none;
+      }
+    }
+  }
+
+  // pomodoro-container-detail.html
+  .pomodoro-container-detail {
+    .row-second {
+      .col-first {
+        margin-top: .5rem !important;
+
+        .card {
+          .table {
+            margin-bottom: 0;
+          }
+
+          .card-footer {
+            a, button {
+              width: 100%;
+            }
+
+            button {
+              margin-top: .5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  .pomodoro-container-add {
+    .col-main {
+      margin-bottom: 1.8rem !important;
+    }
+  }
+
+
+  .list-by-date-pomodoro-container {
+
+    .card-header-menu {
+      color: #fff !important;
+      font-size: 1.3rem;
+    }
+
+    .go-back-sm {
+      display: block;
+    }
+  }
+
+  .pomodoro-container-detail {
+    .btn-danger {
+      margin-top: 0 !important;
+    }
+  }
+}

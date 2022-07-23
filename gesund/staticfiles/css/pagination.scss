@@ -1,0 +1,46 @@
+/* pagination -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  #pagination-lg {
+    display: none;
+  }
+
+  #pagination-sm {
+    width: 100%;
+
+    div:first-child {
+      display: flex;
+      justify-content: space-between;
+
+      .btn {
+        width: 50%;
+        margin: 2px;
+      }
+    }
+
+    div:nth-child(2) {
+      display: flex;
+      justify-content: space-between;
+
+      .btn {
+        width: 50%;
+        margin: 2px;
+      }
+    }
+
+    div:nth-child(3) {
+      .alert {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 5px;
+        justify-content: center !important;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #pagination-sm {
+    display: none;
+  }
+}

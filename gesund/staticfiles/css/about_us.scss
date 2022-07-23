@@ -1,0 +1,38 @@
+/* about-container -------------------------------------------------------------------------- */
+#about-container p {
+  text-align: justify;
+}
+
+@media screen and (max-width: 767px) {
+  #contactus-container {
+    // .row-first
+    .row-first {
+      nav {
+        display: none;
+      }
+    }
+
+    // .row-second
+    .row-second {
+      .col-first {
+        margin-top: .5rem !important;
+
+        .card {
+          .card-footer {
+            a, .btn {
+              width: 100%;
+            }
+
+            .go-back-lg {
+              display: none;
+            }
+
+            .go-back-sm {
+              margin-top: .5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

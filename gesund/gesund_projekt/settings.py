@@ -11,9 +11,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-!#y+jr)c0jd!h))mt=w@a07k5cmx47ls*#0hssnteiie*xod+5'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 #
 load_dotenv('.env')
 REST_API_URL = os.environ.get('REST_API_URL')
@@ -22,8 +19,16 @@ DB_USER = os.environ.get('DB_USER')
 DB_PASS = os.environ.get('DB_PASS')
 REST_API_BEARER_TOKEN = os.environ.get('REST_API_BEARER_TOKEN')
 CORS_ORIGIN_WHITELIST_ENV = os.environ.get('CORS_ORIGIN_WHITELIST_ENV')
+ENVIRONMENT = os.environ.get('ENVIRONMENT')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+if ENVIRONMENT == 'prod':
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS_ENV').split()
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -57,6 +62,7 @@ INSTALLED_APPS = [
     'water_intake.apps.WaterIntakeConfig',
     'weights.apps.WeightsConfig',
     'xps.apps.XpsConfig',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +70,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
 
     #
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 
     'django.middleware.common.CommonMiddleware',
@@ -161,8 +168,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+
 STATIC_URL = 'static/'
+
+if ENVIRONMENT == 'prod':
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

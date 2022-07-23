@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 from .models import Weight
 
 
@@ -19,6 +20,12 @@ class WeightListView(LoginRequiredMixin, ListView):
         context = super(WeightListView, self).get_context_data(**kwargs)
         context['weight_list_chart'] = Weight.objects.all().filter(author=self.request.user).order_by(
             'datestamp')
+
+        # todo: context random messages
+        context['random_message'] = {
+            "title": "title",
+            "msg": "message"
+        }
         return context
 
 
