@@ -19,8 +19,11 @@
     .row-second {
       .col-lg-6 {
         margin-top: .5rem !important;
+
+        .btn {
+          width: 100% !important;
+        }
       }
     }
   }
-
 }

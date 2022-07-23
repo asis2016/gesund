@@ -8,7 +8,9 @@
         <div class="row row-first">
             <div class="col-lg-12">
                 <div class="col-page-header">
-                    <h2>Leaderboard</h2>
+                    <h2 data-bs-toggle="modal" data-bs-target="#leaderboards-modal">
+                        Leaderboard <i class="fa-solid fa-circle-info modal-info-i"></i>
+                    </h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
@@ -76,6 +78,8 @@
 
         <div class="spacer mb-4"></div>
     </div>
+
+    {% include './modal_leaderboards.html' %}
 {% endblock main %}
 
 {% block scripts %}

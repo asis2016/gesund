@@ -1,9 +1,6 @@
 const staticGesund = "gesund-app-v1"
 const assets = [
-    "/static/css/base.css",
-    "/static/css/login.css",
-    "/static/css/screen.css",
-    "/static/css/style.css",
+    "/static/css/main.css",
 
     "/static/dist/fontawesome/css/all.min.css",
     "/static/dist/fontawesome/js/all.min.js",

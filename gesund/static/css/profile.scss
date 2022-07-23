@@ -1,4 +1,28 @@
 /* profile-container -------------------------------------------------------------------------- */
+#profile-container {
+  .profile-img {
+    display: flex;
+    justify-content: center;
+
+    .profile-img-txt {
+      align-items: center;
+      background: $light_grey;
+      border: 5px solid $dark_grey;
+      border-radius: 50%;
+      display: flex;
+      height: 100px;
+      justify-content: center;
+      text-align: center;
+      width: 100px;
+
+      span {
+        color: #fff;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 767px) {
   #profile-container {
     .row-first {

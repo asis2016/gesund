@@ -3,9 +3,44 @@
   #top-navigation-lg {
     display: none;
   }
+
+  /* top-navigation-sm -------------------------------------- */
+  #top-navigation-sm {
+    background-color: $light_grey;
+    height: 3rem;
+    color: #cbcbcb;
+    border-bottom: 1px solid rgb(54 61 71 / 10%);
+    padding: 0 1rem;
+
+    #menu i, .fa-crown, .fa-bolt, #menu-profile .fa-circle-user {
+      font-size: 1.3rem;
+      color: #cbcbcb;
+    }
+
+    .active i {
+      color: #FFFFFF !important;
+    }
+
+    #menu-profile {
+      .dropdown-menu {
+        min-width: 200px !important;
+      }
+
+      .dropdown-menu[data-bs-popper] {
+        right: 0 !important;
+        left: unset !important;
+      }
+    }
+
+
+  }
 }
 
 @media screen and (min-width: 768px) {
+  #top-navigation-sm {
+    display: none;
+  }
+
   #top-navigation-lg {
     border-bottom: 1px solid $dark_grey;
     z-index: 1034;

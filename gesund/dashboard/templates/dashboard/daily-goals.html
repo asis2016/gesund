@@ -14,18 +14,6 @@
     <!-- daily_goals_card_content -->
     <div class="collapse show" id="daily_goals_card_content">
         <div class="card-body collapse show">
-            {#        todo #}
-            <style>
-                .progress {
-                    height: 1.2rem;
-                }
-
-                .progress span {
-                    color: white;
-                    font-weight: 300;
-                    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-                }
-            </style>
             {% if goals_daily %}
                 {% for i in goals_daily %}
                     <div class="pb-3">
