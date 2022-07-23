@@ -16,7 +16,10 @@ def send_email(sender, instance, created, **kwargs):
         to = instance.email
 
         try:
-            d = {'username': instance.username}
+            d = {
+                'username': instance.username,
+                'user_id': instance.id
+            }
             plaintext = get_template('accounts/send-email.txt')
             htmly = get_template('accounts/send-email.html')
 

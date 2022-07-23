@@ -1,5 +1,1 @@
 Dear {{ username }} - Thank you for signing up with Gesund App and we are so happy that you are here.
-
-
-- images:
-https://gesund.amaharjan.online/static/images/email-signup/white_down.png
