@@ -1,9 +1,18 @@
+import random
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Steps
+
+did_you_know = [
+    ['title 1', 'content 1'],
+    ['title 2', 'content 2'],
+    ['title 3', 'content 3'],
+    ['title 4', 'content 4'],
+    ['title 5', 'content 5']
+]
 
 
 class StepsListView(LoginRequiredMixin, ListView):
@@ -20,6 +29,9 @@ class StepsListView(LoginRequiredMixin, ListView):
         context = super(StepsListView, self).get_context_data(**kwargs)
         context['steps_list_chart'] = Steps.objects.all().filter(author=self.request.user).order_by(
             'datestamp')
+
+        context['did_you_know'] = random.choice(did_you_know)
+
         return context
 
 

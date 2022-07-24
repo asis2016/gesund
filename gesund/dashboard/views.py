@@ -1,5 +1,6 @@
 from calories.models import CalorieIntake
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Avg
 from django.db.models import Sum
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -10,6 +11,42 @@ from steps.models import Steps
 from utils import get_bmi, get_bmi_interpretation, progress_level_percentage
 from water_intake.models import WaterIntake
 from weights.models import Weight
+
+
+def quick_stats(author):
+    avg_calories = CalorieIntake.objects.all().filter(author=author).aggregate(Avg('calories'))
+    avg_pomodoro = Pomodoro.objects.all().filter(author=author).aggregate(Avg('pomodoro'))
+    avg_steps = avg = Steps.objects.all().filter(author=author).aggregate(Avg('step_count'))
+    avg_water_intake = WaterIntake.objects.all().filter(author=author).aggregate(Avg('drink_progress'))
+
+    print(avg_water_intake)
+    avg = [
+        {
+            'icon': 'calories.png',
+            'average': round(avg_calories['calories__avg'], 2),
+            'description': 'Avg. calories taken.',
+            'unit': 'kcal'
+        },
+        {
+            'icon': 'stopwatch.png',
+            'average': round(avg_pomodoro['pomodoro__avg'], 2),
+            'description': 'Avg. pomodoro taken.',
+            'unit': 'pomodoro'
+        },
+        {
+            'icon': 'steps.png',
+            'average': round(avg_steps['step_count__avg'], 2),
+            'description': 'Avg. steps taken.',
+            'unit': 'steps'
+        },
+        {
+            'icon': 'water.png',
+            'average': round(avg_water_intake['drink_progress__avg'], 2),
+            'description': 'Avg. drink progress.',
+            'unit': 'L'
+        }
+    ]
+    return avg
 
 
 class DashboardTemplateview(LoginRequiredMixin, TemplateView):
@@ -81,6 +118,8 @@ class DashboardTemplateview(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(DashboardTemplateview, self).get_context_data(*args, **kwargs)
+
+        context['quick_stats'] = quick_stats(self.request.user)
 
         # Calories intake
         if CalorieIntake.objects.filter(author=self.request.user):

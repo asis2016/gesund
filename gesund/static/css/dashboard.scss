@@ -71,6 +71,36 @@
       display: none;
     }
 
+    #quick-stats-sm{
+      margin-bottom: 1.5rem;
+
+      .col-6:nth-child(1), .col-6:nth-child(2){
+        margin-bottom: 1.5rem;
+      }
+
+      .stat{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: $logo_color;
+        padding: 10px;
+        border-radius: 4px;
+        height: 150px;
+      }
+
+      .stat img{
+        height: 70px;
+      }
+
+      .stat h2{
+        font-size: 1.2rem;
+        margin-top: .5rem;
+        margin-bottom: 0;
+        color: #fff;
+      }
+    }
+
     #dashboard-challenge {
       display: none;
 
@@ -118,20 +148,30 @@
 
 @media screen and (min-width: 768px) {
   #dashboard-container {
+    #quick-stats-sm {
+      display: none;
+    }
+
     #quick-stats {
       .card-info {
-        background: #90EE90;
-        padding: 10px;
+        background: $logo_color;
+        padding: 20px;
         display: flex;
         align-items: center;
         border-radius: 0.25em;
+        color: #fff;
 
         div {
           width: 80%;
         }
 
-        .fa-solid {
-          font-size: 50px;
+        p {
+          margin: 0;
+          font-size: 1.2rem;
+        }
+
+        img {
+          height: 60px;
         }
       }
     }

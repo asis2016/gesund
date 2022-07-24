@@ -3,16 +3,12 @@
 
 {% block main %}
     <div id="dashboard-container" class="container-fluid">
-        {% if user.is_authenticated %}
-            {% comment %}{{ user.username }}{% endcomment %}
-        {% endif %}
-
         <!-- reminders -->
         {% include './alert-goals-reminder.html' %}
         {% include './alert-profile-reminder.html' %}
 
         <!-- Quick stats -->
-        {% include 'dashboard/quick-stats.html' %}
+        {% include 'dashboard/quick_stats.html' %}
 
         <div class="row">
             <!-- Daily goals -->

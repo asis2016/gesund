@@ -170,9 +170,9 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-
-if ENVIRONMENT == 'prod':
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# if ENVIRONMENT == 'prod':
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

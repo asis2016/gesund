@@ -2,20 +2,6 @@ const staticGesund = "gesund-app-v1"
 const assets = [
     "/static/css/main.css",
 
-    "/static/dist/fontawesome/css/all.min.css",
-    "/static/dist/fontawesome/js/all.min.js",
-    "/static/dist/fontawesome/webfonts/fa-brands-400.ttf",
-    "/static/dist/fontawesome/webfonts/fa-brands-400.woff2",
-    "/static/dist/fontawesome/webfonts/fa-regular-400.ttf",
-    "/static/dist/fontawesome/webfonts/fa-regular-400.woff2",
-    "/static/dist/fontawesome/webfonts/fa-solid-900.ttf",
-    "/static/dist/fontawesome/webfonts/fa-solid-900.woff2",
-    "/static/dist/fontawesome/webfonts/fa-v4compatibility.ttf",
-    "/static/dist/fontawesome/webfonts/fa-v4compatibility.woff2",
-
-    "/static/dist/jquery-ui-1.13.2/jquery-ui.min.css",
-    "/static/dist/jquery-ui-1.13.2/jquery-ui.min.js",
-
     "/static/images/android-chrome-96x96.png",
     "/static/images/android-launchericon-192-192.png",
     "/static/images/apple-touch-icon.png",

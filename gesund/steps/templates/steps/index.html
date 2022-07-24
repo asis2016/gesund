@@ -96,10 +96,12 @@
                         </div>
                         <img src="{% static '/images/wine.png' %}" class="img-fluid" alt="">
                         <p>
-                            <b>Did you know?</b>
+                            <b>
+                                {{ did_you_know.0 }}
+                            </b>
                         </p>
                         <p>
-                            Drinking lorem ipsum ...
+                            {{ did_you_know.1 }}
                         </p>
                     </div>
                 </div>

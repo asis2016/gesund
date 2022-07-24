@@ -1,0 +1,37 @@
+{% load static %}
+<!-- quick stats LG screen -->
+<div class="row" id="quick-stats">
+    <div class="col-12 mb-2">
+        <h4>Quick stats</h4>
+    </div>
+    {% for i in quick_stats %}
+        <div class="col-3">
+            <div class="card-info border-0">
+                <div>
+                    <h3>
+                        {{ i.average }}
+                    </h3>
+                    <p>
+
+                        {{ i.description }}
+                    </p>
+                </div>
+                <img src="{% static "images/" %}{{ i.icon }}" alt="{{ i.icon }}">
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<!-- ends quick stats LG screen -->
+
+<!-- quick stats SM screen -->
+<div class="row" id="quick-stats-sm">
+    {% for i in quick_stats %}
+        <div class="col-6 text-center">
+            <div class="stat">
+                <img src="{% static 'images/' %}{{ i.icon }}"  alt="{{ i.icon }}">
+                <h2>Avg of {{ i.average }} {{ i.unit }}</h2>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<!-- ends quick stats SM screen -->
