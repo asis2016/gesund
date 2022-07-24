@@ -71,14 +71,14 @@
       display: none;
     }
 
-    #quick-stats-sm{
+    #quick-stats-sm {
       margin-bottom: 1.5rem;
 
-      .col-6:nth-child(1), .col-6:nth-child(2){
+      .col-6:nth-child(1), .col-6:nth-child(2) {
         margin-bottom: 1.5rem;
       }
 
-      .stat{
+      .stat {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -89,13 +89,13 @@
         height: 150px;
       }
 
-      .stat img{
+      .stat img {
         height: 70px;
       }
 
-      .stat h2{
+      .stat h2 {
         font-size: 1.2rem;
-        margin-top: .5rem;
+        margin-top: .6rem;
         margin-bottom: 0;
         color: #fff;
       }
