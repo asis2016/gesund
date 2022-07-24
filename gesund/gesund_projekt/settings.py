@@ -22,10 +22,12 @@ CORS_ORIGIN_WHITELIST_ENV = os.environ.get('CORS_ORIGIN_WHITELIST_ENV')
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if ENVIRONMENT == 'prod':
-    DEBUG = False
-else:
-    DEBUG = True
+# if ENVIRONMENT == 'prod':
+#     DEBUG = False
+# else:
+#     DEBUG = True
+
+DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS_ENV').split()
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
@@ -62,7 +64,7 @@ INSTALLED_APPS = [
     'water_intake.apps.WaterIntakeConfig',
     'weights.apps.WeightsConfig',
     'xps.apps.XpsConfig',
-    #'whitenoise.runserver_nostatic',
+    # 'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +72,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
 
     #
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 
     'django.middleware.common.CommonMiddleware',
