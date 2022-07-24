@@ -14,34 +14,34 @@ from weights.models import Weight
 
 
 def quick_stats(author):
-    avg_calories = CalorieIntake.objects.all().filter(author=author).aggregate(Avg('calories'))
-    avg_pomodoro = Pomodoro.objects.all().filter(author=author).aggregate(Avg('pomodoro'))
-    avg_steps = avg = Steps.objects.all().filter(author=author).aggregate(Avg('step_count'))
-    avg_water_intake = WaterIntake.objects.all().filter(author=author).aggregate(Avg('drink_progress'))
+    avg_calories = CalorieIntake.objects.all().filter(author=author).aggregate(Avg('calories'))['calories__avg']
+    avg_pomodoros = Pomodoro.objects.all().filter(author=author).aggregate(Avg('pomodoro'))['pomodoro__avg']
+    avg_steps = Steps.objects.all().filter(author=author).aggregate(Avg('step_count'))['step_count__avg']
+    avg_water_intake = WaterIntake.objects.all().filter(author=author).aggregate(Avg('drink_progress'))[
+        'drink_progress__avg']
 
-    print(avg_water_intake)
     avg = [
         {
             'icon': 'calories.png',
-            'average': round(avg_calories['calories__avg'], 2),
+            'average': round(avg_calories, 2) if avg_calories is not None else '0',
             'description': 'Avg. calories taken.',
             'unit': 'kcal'
         },
         {
             'icon': 'stopwatch.png',
-            'average': round(avg_pomodoro['pomodoro__avg'], 2),
+            'average': round(avg_pomodoros, 2) if avg_pomodoros is not None else '0',
             'description': 'Avg. pomodoro taken.',
             'unit': 'pomodoro'
         },
         {
             'icon': 'steps.png',
-            'average': round(avg_steps['step_count__avg'], 2),
+            'average': round(avg_steps, 2) if avg_steps is not None else '0',
             'description': 'Avg. steps taken.',
             'unit': 'steps'
         },
         {
             'icon': 'water.png',
-            'average': round(avg_water_intake['drink_progress__avg'], 2),
+            'average': round(avg_water_intake, 2) if avg_water_intake is not None else '0',
             'description': 'Avg. drink progress.',
             'unit': 'L'
         }
