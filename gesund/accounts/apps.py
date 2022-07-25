@@ -11,3 +11,4 @@ class AccountsConfig(AppConfig):
         from .signals import profiles
         from .signals import xps
         from .signals import sendemail
+        from .signals import user_sign_log

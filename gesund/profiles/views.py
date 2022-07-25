@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import TemplateView
 from django.views.generic.edit import UpdateView
 from utils import get_age, get_bmi, get_bmi_interpretation, get_total_xp
@@ -6,7 +8,7 @@ from weights.models import Weight
 from .models import Profile
 
 
-class ProfileTemplateView(TemplateView):
+class ProfileTemplateView(LoginRequiredMixin, TemplateView):
     """ Profile templateview. """
     template_name = 'profiles/index.html'
 
@@ -41,12 +43,13 @@ class ProfileTemplateView(TemplateView):
         return context
 
 
-class ProfileUpdateView(UpdateView):
+class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """ Update profile. """
     model = Profile
     context_object_name = 'profile_obj'
     template_name = 'profiles/update.html'
-    fields = ('name', 'dob', 'gender', 'height')
+    fields = ('name', 'dob', 'gender', 'height',)
+    success_message = 'Profile updated successfully.'
 
     def form_valid(self, form):
         form.instance.author = self.request.user

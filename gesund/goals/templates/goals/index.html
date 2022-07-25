@@ -3,6 +3,12 @@
 
 {% block main %}
     <div class="container-fluid goals-container-index" id="goals-container">
+        <!-- toast -->
+        {% for i in messages %}
+            {% include 'toast.html' %}
+        {% endfor %}
+        <!-- ends toast -->
+
         <!-- .row-first -->
         <div class="row row-first">
             <div class="col-lg-12">

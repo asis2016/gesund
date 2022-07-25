@@ -3,14 +3,16 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
+from django.contrib.messages.views import SuccessMessageMixin
 
 from .models import CalorieIntake
 
 
-class CalorieIntakeCreateView(CreateView):
+class CalorieIntakeCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """ Create calorie intake. """
     model = CalorieIntake
     template_name = 'calories/add.html'
+    success_message = 'Food intake successfully.'
     fields = ('datestamp', 'food', 'consume', 'calories', 'protein', 'fat', 'carb', 'sugar', 'fiber', 'food_detail_ref',
               'description')
 

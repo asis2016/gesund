@@ -5,6 +5,7 @@ from .models import WaterIntake
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class WaterListView(LoginRequiredMixin, ListView):
@@ -25,13 +26,12 @@ class WaterListView(LoginRequiredMixin, ListView):
         return context
 
 
-class WaterIntakeCreateView(LoginRequiredMixin, CreateView):
+class WaterIntakeCreateView(LoginRequiredMixin,SuccessMessageMixin, CreateView):
     """ Create water intake. """
     model = WaterIntake
     template_name = 'water_intake/add.html'
     fields = ('datestamp', 'drink_progress')
-
-    success_message = ''
+    success_message = 'Water intake successfully.'
 
     def form_valid(self, form):
         form.instance.author = self.request.user

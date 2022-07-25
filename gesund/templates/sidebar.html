@@ -107,7 +107,8 @@
             </a>
         </li>
         <li>
-            <a class="nav-link" href="{% url 'pomodoro-index' %}">
+            <a class="nav-link {% active_link 'pomodoro-index' 'active' %}"
+               href="{% url 'pomodoro-index' %}">
                 <i class="fa-solid fa-hourglass"></i>
                 <br>
                 <span class="menu-text">Pomodoro</span>

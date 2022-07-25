@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import TemplateView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import UpdateView
 
 from .models import Goals
 
@@ -16,12 +16,13 @@ class GoalsTemplateView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class GoalsUpdateView(LoginRequiredMixin, UpdateView):
+class GoalsUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """ Update goals. """
     model = Goals
     context_object_name = 'goals_obj'
     template_name = 'goals/update.html'
     fields = ('calories', 'steps', 'water', 'weight',)
+    success_message = 'Goals updated successfully.'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
