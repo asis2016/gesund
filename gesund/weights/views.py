@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -29,11 +30,12 @@ class WeightListView(LoginRequiredMixin, ListView):
         return context
 
 
-class WeightCreateView(LoginRequiredMixin, CreateView):
+class WeightCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """ Create weight. """
     model = Weight
     template_name = 'weights/add.html'
     fields = ('datestamp', 'weight')
+    success_message = 'Weight added successfully.'
 
     def form_valid(self, form):
         form.instance.author = self.request.user

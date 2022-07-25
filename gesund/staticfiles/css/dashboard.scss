@@ -71,30 +71,30 @@
       display: none;
     }
 
-    #quick-stats-sm{
+    #quick-stats-sm {
       margin-bottom: 1.5rem;
 
-      .col-6:nth-child(1), .col-6:nth-child(2){
+      .col-6:nth-child(1), .col-6:nth-child(2) {
         margin-bottom: 1.5rem;
       }
 
-      .stat{
+      .stat {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         background-color: $logo_color;
-        padding: 10px;
+        padding: 5px;
         border-radius: 4px;
-        height: 150px;
+        height: 120px;
       }
 
-      .stat img{
-        height: 70px;
+      .stat img {
+        height: 40px;
       }
 
-      .stat h2{
-        font-size: 1.2rem;
+      .stat h2 {
+        font-size: 1rem;
         margin-top: .5rem;
         margin-bottom: 0;
         color: #fff;

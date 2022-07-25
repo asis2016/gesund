@@ -35,6 +35,8 @@ $(function () {
         toggle_status ? localStorage.setItem("toggle", "yes") : localStorage.setItem("toggle", "no")
     });
 
+    // toast
+    $(".liveToast").toast("show");
 
 });
 

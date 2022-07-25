@@ -1,5 +1,6 @@
 import random
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -35,11 +36,12 @@ class StepsListView(LoginRequiredMixin, ListView):
         return context
 
 
-class StepsCreateView(LoginRequiredMixin, CreateView):
+class StepsCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """ Create steps. """
     model = Steps
     template_name = 'steps/add.html'
     fields = ('datestamp', 'step_count')
+    success_message = 'Steps added successfully.'
 
     def form_valid(self, form):
         form.instance.author = self.request.user

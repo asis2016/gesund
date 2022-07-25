@@ -12,7 +12,6 @@
                         {{ i.average }}
                     </h3>
                     <p>
-
                         {{ i.description }}
                     </p>
                 </div>
@@ -28,7 +27,7 @@
     {% for i in quick_stats %}
         <div class="col-6 text-center">
             <div class="stat">
-                <img src="{% static 'images/' %}{{ i.icon }}"  alt="{{ i.icon }}">
+                <img src="{% static 'images/' %}{{ i.icon }}" alt="{{ i.icon }}">
                 <h2>Avg of {{ i.average }} {{ i.unit }}</h2>
             </div>
         </div>
