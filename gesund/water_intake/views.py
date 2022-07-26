@@ -1,11 +1,14 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect
-from django.views.generic import ListView
-from .models import WaterIntake
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.urls import reverse_lazy
+import random
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from utils import DID_YOU_KNOW
+
+from .models import WaterIntake
 
 
 class WaterListView(LoginRequiredMixin, ListView):
@@ -23,10 +26,11 @@ class WaterListView(LoginRequiredMixin, ListView):
         context = super(WaterListView, self).get_context_data(**kwargs)
         context['water_intake_list_chart'] = WaterIntake.objects.all().filter(author=self.request.user).order_by(
             'datestamp')
+        context['did_you_know'] = random.choice(DID_YOU_KNOW['water'])
         return context
 
 
-class WaterIntakeCreateView(LoginRequiredMixin,SuccessMessageMixin, CreateView):
+class WaterIntakeCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """ Create water intake. """
     model = WaterIntake
     template_name = 'water_intake/add.html'

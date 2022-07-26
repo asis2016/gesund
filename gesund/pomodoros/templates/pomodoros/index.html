@@ -87,16 +87,15 @@
 
             <div class="col-lg-4 mt-4 col-second">
                 <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Did you know?</h5>
+                    </div>
                     <div class="card-body">
-                        <div class="alert alert-primary" role="alert">
-                            Did you know?
-                        </div>
-                        <img src="{% static '/images/wine.png' %}" class="img-fluid" alt="">
-                        <p>
-                            <b>Did you know?</b>
-                        </p>
-                        <p>
-                            Drinking lorem ipsum ...
+                        <img src="{% static '/images/'  %}{{ did_you_know.img }}"
+                             class="img-fluid"
+                             alt="Did you know?">
+                        <p class="mb-0">
+                            {{ did_you_know.content|safe }}
                         </p>
                     </div>
                 </div>

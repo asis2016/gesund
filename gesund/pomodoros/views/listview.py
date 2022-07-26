@@ -1,7 +1,8 @@
+import random
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
-
 from pomodoros.models import Pomodoro
+from utils import DID_YOU_KNOW
 
 
 class PomodoroListView(LoginRequiredMixin, ListView):
@@ -22,4 +23,5 @@ class PomodoroListView(LoginRequiredMixin, ListView):
         context = super(PomodoroListView, self).get_context_data(**kwargs)
         context['pomodoro_list_chart'] = Pomodoro.objects.all().filter(author=self.request.user).order_by(
             'datestamp')
+        context['did_you_know'] = random.choice(DID_YOU_KNOW['pomodoro'])
         return context

@@ -102,21 +102,15 @@
 
             <div class="col-lg-4 mt-4 col-second">
                 <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Did you know?</h5>
+                    </div>
                     <div class="card-body">
-                        <p>
-                            <b>Did you know?</b>
-                        </p>
-                        <p>
-                            In the majority, an everyday water intake of 3.7 L for adult men and 2.7 L for adult women
-                            meet the daily water needs.
-                        </p>
-                        <img src="{% static '/images/water_intake_1.png' %}" class="img-fluid" alt="">
-                        <p>
-                            Fig. x Water intake requirements across the lifespan. Columns with dashed horizontal lines
-                            illustrate necessities for females.
-                        </p>
-                        <p>
-                            <i class="fa-solid fa-triangle-exclamation text-warning"></i> <a href="#" class="text-primary">Disclaimer</a>
+                        <img src="{% static '/images/'  %}{{ did_you_know.img }}"
+                             class="img-fluid"
+                             alt="Did you know?">
+                        <p class="mb-0">
+                            {{ did_you_know.content|safe }}
                         </p>
                     </div>
                 </div>
