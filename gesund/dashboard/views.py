@@ -127,7 +127,7 @@ class DashboardTemplateview(LoginRequiredMixin, TemplateView):
                 'datestamp').annotate(total_calories=Sum('calories')).order_by('-datestamp')[:7]
 
         # Steps
-        context['steps_list'] = Steps.objects.all().filter(author=self.request.user).order_by('-datestamp')[:7]
+        context['steps_list'] = Steps.objects.all().filter(author=self.request.user).order_by('-datestamp')
 
         # Water intake
         context['water_intake_list'] = self.water_intake_daily_progress()

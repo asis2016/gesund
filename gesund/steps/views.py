@@ -8,11 +8,27 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Steps
 
 did_you_know = [
-    ['title 1', 'content 1'],
-    ['title 2', 'content 2'],
-    ['title 3', 'content 3'],
-    ['title 4', 'content 4'],
-    ['title 5', 'content 5']
+    {
+        'img': 'steps_walking_1.png',
+        'content': 'Individuals who take more than 12,500 steps per day are likely to be classified as highly active people.'
+    },
+    {
+        'img': 'steps_walking_4.jpg',
+        'content': 'Individuals should accumulate at least 30 minutes of moderate-intensity activity (i.e., brisk walking) on a daily basis - Public health recommendations endorsed by the US Surgeon General'
+    },
+    {
+        'img': 'steps_walking_2.png',
+        'content': 'People who accumulate at least 10,000 steps per day have less body fat and lower blood pressure than their less active counterparts.'
+    },
+    {
+        'img': 'steps_walking_3.jpg',
+        'content': '<ol>'
+                   '<li>"Sedentary" lifestyle indicates < 5,000 steps/day.</li>'
+                   '<li>"Low active" lifestyle indicates 5,000 - 7,499 steps/day.</li>'
+                   '<li>"Somewhat active" lifestyle indicates 7,500 - 9,999 steps/day.</li>'
+                   '<li>"Active" people are identified who take 10,000 steps/day.</li>'
+                   '<li>Individual who takes more than 12,500 steps/day tend to have a "Highly active" lifestyle.</li></ol>'
+    }
 ]
 
 

@@ -44,7 +44,7 @@
         <div class="card-body collapse show">
             {% if steps_list %}
                 <div class="chart-container">
-                    <canvas id="mySteps"></canvas>
+                    <canvas id="mySteps" height="200px"></canvas>
                 </div>
             {% else %}
                 <div class="alert alert-warning" role="alert">
@@ -80,7 +80,9 @@
                                 //data: [8000, 250, 7200]
                                 label: '',
                                 backgroundColor: '#dd7e77',
-                                pointRadius: 6,
+                                borderColor: '#f06270',
+                                pointRadius: 0,
+                                borderWidth: 1.5,
                             }
                         ]
                     },

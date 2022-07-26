@@ -3,12 +3,7 @@ from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 
-from .models import ContactUs
-
-
-class AboutTemplateView(LoginRequiredMixin, TemplateView):
-    """ About templateview. """
-    template_name = 'about/index.html'
+from aboutus.models import ContactUs
 
 
 class ContactUsCreateView(LoginRequiredMixin, CreateView):

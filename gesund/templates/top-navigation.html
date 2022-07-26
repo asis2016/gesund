@@ -93,9 +93,7 @@
 
     <div class="btn-group" id="menu-profile">
         <a href="#"
-           class="{% active_link 'profile-index' 'active' %}
-                    {% active_link 'goals' 'active' %}
-                    {% active_link 'history-index' 'active' %}"
+           class="{% active_link 'profile-index' 'active' %}{% active_link 'goals-index' 'active' %}{% active_link 'history-index' 'active' %}{% active_link 'password_change' 'active' %}"
            data-bs-toggle="dropdown">
             <i class="fa-solid fa-circle-user" aria-expanded="false"></i>
         </a>
@@ -123,9 +121,6 @@
                     <i class="fa-solid fa-clock-rotate-left"></i>
                     <span class="px-1">History</span>
                 </a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="#"></a>
             </li>
             <li>
                 <hr class="dropdown-divider">
