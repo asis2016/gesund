@@ -1,14 +1,22 @@
-from rest_framework import serializers
+from aboutus.models import ContactUs
+from accounts.models import UserSignLog
 from calories.models import CalorieCategory, CalorieFoodDetail, CalorieIntake
 from challenges.models import Challenge
-from pomodoros.models import Pomodoro
-from profiles.models import Profile
 from goals.models import Goals
 from history.models import History
+from pomodoros.models import Pomodoro
+from profiles.models import Profile
+from rest_framework import serializers
 from steps.models import Steps
 from water_intake.models import WaterIntake
 from weights.models import Weight
 from xps.models import XP
+
+
+class ContactUsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactUs
+        fields = '__all__'
 
 
 class FoodCategorySerializer(serializers.ModelSerializer):
@@ -68,6 +76,12 @@ class HistorySerializer(serializers.ModelSerializer):
 class StepsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Steps
+        fields = '__all__'
+
+
+class UserSignLogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSignLog
         fields = '__all__'
 
 

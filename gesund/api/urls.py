@@ -1,7 +1,11 @@
 from django.urls import path
+
 from .views import *
 
 urlpatterns = [
+
+    # about us > contact us
+    path('contact-us/', ContactUsListAPIView.as_view()),
 
     # food
     path('food-categories/', FoodCategoriesListAPIView.as_view()),
@@ -32,6 +36,9 @@ urlpatterns = [
     path('steps/', StepsListCreateAPIView.as_view()),
     path('steps/<int:pk>/', StepsRetrieveUpdateDestroyAPIView.as_view()),
 
+    # steps
+    path('user-sign-log/', UserSignLogListAPIView.as_view()),
+
     # water intake
     path('water-intake/', WaterIntakeListCreateAPIView.as_view()),
     path('water-intake/<int:pk>/', WaterIntakeRetrieveUpdateDestroyAPIView.as_view()),
@@ -42,4 +49,5 @@ urlpatterns = [
 
     # xps
     path('xps/', XPListAPIView.as_view()),
+    path('xp/<int:pk>/', XPRetrieveUpdateDestroyAPIView.as_view()),
 ]

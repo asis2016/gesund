@@ -9,7 +9,7 @@ DID_YOU_KNOW = {
             'content': 'Individuals should accumulate at least 30 minutes of moderate-intensity activity (i.e., brisk walking) on a daily basis <i>(Public health recommendations endorsed by the US Surgeon General)</i>.'
         },
         {
-            'img': 'steps_walking_2.png',
+            'img': 'steps_walking_2.jpg',
             'content': 'People who accumulate at least 10,000 steps per day have less body fat and lower blood pressure than their less active counterparts.'
         },
         {
