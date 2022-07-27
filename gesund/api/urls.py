@@ -4,6 +4,9 @@ from .views import *
 
 urlpatterns = [
 
+    # echo
+    path('echo/', hello_world),
+
     # about us > contact us
     path('contact-us/', ContactUsListAPIView.as_view()),
 
