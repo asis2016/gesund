@@ -2,6 +2,58 @@
 
 This project is carried out as the master thesis at University of Koblenz-Landau.
 
+## Project organization
+
+```
+.
+├── aboutus
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   ├── models.py
+│   ├── __pycache__
+│   ├── signals.py
+│   ├── templates
+│   ├── tests.py
+│   ├── urls.py
+│   └── views
+...
+├── accounts
+├── api
+├── calories
+├── challenges
+├── dashboard
+├── exports
+├── gesund_projekt
+├── goals
+├── history
+├── leaderboards
+├── manage.py
+├── passenger_wsgi.py.bak
+├── pomodoros
+├── postpilottest
+├── profiles
+├── requirements.txt
+├── static
+├── staticfiles
+├── steps
+├── templates
+├── tree
+├── utils
+├── venv
+├── water_intake
+├── weights
+└── xps
+
+```
+## Installation
+
+```shell
+$ mkdir gesund_project
+$ cd gesund_project
+```
+
 ## Initial setup
 
 ```shell
@@ -1384,6 +1436,18 @@ www.youtube.com
 Check this [quick start guide (.pdf)](./resources/quick_start_guide.pdf) that gives basic guidelines on how to user the
 app.
 
+
+## Feedback
+
+If you have any feedback, please reach out to the author at info@amaharjan.online
+
+## Contributing
+
+Contributions are always welcome! please contact the author at info@amaharjan.online
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 # References
 
