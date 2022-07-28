@@ -33,5 +33,26 @@ DID_YOU_KNOW = {
             'content': '<p><i>Fig. x Water intake requirements across the lifespan. Columns with dashed horizontal lines illustrate necessities for females.</i></p>'
                        '<p>In the majority, an everyday water intake of 3.7 L for adult men and 2.7 L for adult women meet the daily water needs.</p>'
         }
+    ],
+    'food': [
+        {
+            'img': 'food_1.jpg',
+            'content': '<p><b>Limit salt intake</b></p>'
+                       '<p>Salt consumption of less than 5 gm per day helps prevent hypertension and reduce heart disease '
+                       'risk and stroke in the adult population. <a href="https://apps.who.int/iris/bitstream/handle/10665/325828/EMROPUB_2019_en_23536.pdf">Reference: Healthy diet, WHO</a></p>'
+
+        },
+        {
+            'img': 'food_2.jpg',
+            'content': '<p>WHO recommendation on a healthy diet for adults:</p>'
+                       '<ul>'
+                       '<li>Eat fruits, vegetables, legumes, nuts, and whole grains (unprocessed) daily.</li>'
+                       '<li>Eat at least five portions of fruits and vegetables daily (at least 400 gm).</li>'
+                       '<li>Limit total energy intake from fats to less than 30%.</li>'
+                       '<li>Limit salt to less than 5g per day.</li>'
+                       '</ul>'
+                       '<p><a href="https://apps.who.int/iris/bitstream/handle/10665/325828/EMROPUB_2019_en_23536.pdf">Reference: Healthy diet, WHO</a></p>'
+        },
+
     ]
 }
