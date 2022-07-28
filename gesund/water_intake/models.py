@@ -6,8 +6,8 @@ from django.urls import reverse
 class WaterIntake(models.Model):
     """ Water intake model (daily) in liters. """
     id = models.AutoField(primary_key=True, editable=False)
-    datestamp = models.DateField(blank=True)
-    drink_progress = models.FloatField(blank=True)
+    datestamp = models.DateField()
+    drink_progress = models.FloatField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def get_average(self):
