@@ -4,334 +4,161 @@ This project is carried out as the master thesis at University of Koblenz-Landau
 
 ## Project organization
 
-```
-.
-├── aboutus
-│   ├── admin.py
-│   ├── apps.py
-│   ├── __init__.py
-│   ├── migrations
-│   ├── models.py
-│   ├── __pycache__
-│   ├── signals.py
-│   ├── templates
-│   ├── tests.py
-│   ├── urls.py
-│   └── views
-...
-├── accounts
-├── api
-├── calories
-├── challenges
-├── dashboard
-├── exports
-├── gesund_projekt
-├── goals
-├── history
-├── leaderboards
-├── manage.py
-├── passenger_wsgi.py.bak
-├── pomodoros
-├── postpilottest
-├── profiles
-├── requirements.txt
-├── static
-├── staticfiles
-├── steps
-├── templates
-├── tree
-├── utils
-├── venv
-├── water_intake
-├── weights
-└── xps
+## Tech stack
 
-```
+1. [Python 3.8.10](https://www.python.org/downloads/release/python-3810/)
+2. [Django 4.0.6](https://docs.djangoproject.com/en/4.0/releases/4.0.6/)
+3. [MySQL 8.0.29](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-29.html)
+4. [Shell Scripts](https://www.gnu.org/software/bash/manual/html_node/Shell-Scripts.html)
+5. [Bootstrap v5.2](https://getbootstrap.com/docs/5.2/getting-started/download/)
+6. [jQuery 3.6.0](https://blog.jquery.com/2021/03/02/jquery-3-6-0-released/)
+
 ## Installation
+
+**GIT Clone from Github**
+
+First step is to make a directory.
 
 ```shell
 $ mkdir gesund_project
 $ cd gesund_project
 ```
 
-## Initial setup
+Then, clone the [Gesund App repository](https://github.com/asis2016/gesund) from the GitHub.
 
 ```shell
-$ mkdir gesund && cd gesund
-$ pipenv install django==4.0.1 --python 3
-$ pipenv shell
-
-(gesund) $ python3 manage.py runserver
+gesund_project $ git clone https://github.com/asis2016/gesund.git .
+gesund_project $ cd gesund
 ```
 
-## Django REST framework
+**Python VENV**
+
+Install and activate [Python virtual environments](https://docs.python.org/3/tutorial/venv.html). And activate it.
 
 ```shell
-(gesund) $ pipenv install djangorestframework==3.13.1
+gesund_project/gesund $ python3 -m venv venv
+gesund_project/gesund $ source venv/bin/activate
 ```
 
-### update `./gesund_projekt/settings.py`
-
-```python
-INSTALLED_APPS = [
-    ...
-    ###
-    'rest_framework',
-]
-```
-
-## Migration
+Once it has been activated, install `requirements.txt`.
 
 ```shell
-(gesund) $ python3 manage.py showmigrations
-(gesund) $ python3 manage.py makemigrations <app_name>
-(gesund) $ python3 manage.py migrate
+(venv) gesund_project/gesund $ pip install -r requirements.txt
 ```
 
-## Admin page
+**MySQL database**
 
-http://localhost:8000/admin
+The Gesund App requires MySQL database. Hence, you should create:
 
-## Create superuser
+1. MySQL Database: `gesund`
+2. MySQL username: `your_username`
+3. MySQL password: `your_password`
+
+**Configure `.env` file**
 
 ```shell
-(gesund) $ python3 manage.py createsuperuser
+(venv) gesund_project/gesund $ touch .env
 ```
 
-## Creating an app
-
-### recipes app
-
-```shell
-(gesund) $ python3 manage.py startapp recipes
 ```
-
-Update `INSTALLED_APPS` from `./gesund_projekt/settings.py`
-
-```python
-INSTALLED_APPS = [
-    ...
-    ###
-    'rest_framework',
-
-    ###
-    'recipes.apps.RecipesConfig',
-]
-```
-
-### recipes app models
-
-```python
-# recipes/models.py
-from django.db import models
-
-
-class Recipe(models.Model):
-    title = models.CharField(max_length=200)
-    calorie = models.IntegerField()
-    cook_level = models.CharField(max_length=15)
-    content = models.TextField(blank=True)
-
-    def __str__(self):
-        return f'{self.title} - {self.calorie} Cal - {self.cook_level}'
-```
-
-Make migrations.
-
-Update `admin.py`
-
-```python
-from django.contrib import admin
-from .models import Recipe
-
-admin.site.register(Recipe)
-```
-
-Check if http://127.0.0.1:8000/admin/recipes/ is working.
-
-## URLs setup
-
-1. Update `gesund_projekt/urls.py`
-
-```python
-urlpatterns = [
-    ...,
-    path('api/v1/', include('recipes.urls')),
-]
-```
-
-2. Create `recipes/urls.py`
-
-```python
-from django.urls import path
-from .views import RecipeList, RecipeDetail
-
-urlpatterns = [
-    path('<uuid:id>/', RecipeDetail.as_view()),
-    path('', RecipeList.as_view())
-]
-```
-
-3. Add `recipes/serializers.py`
-
-```python
-from rest_framework import serializers
-from .models import Recipe
-
-
-class RecipeSerializer(serializers.ModelSerializer):
-    class Meta:
-        fields = ('__all__')
-        model = Recipe
-```
-
-4. Update `recipes/views.py`
-
-```python
-from rest_framework import generics
-from .models import Recipe
-from .serializers import RecipeSerializer
-
-
-class RecipeList(generics.ListCreateAPIView):
-    queryset = Recipe.objects.all()
-    serializer_class = RecipeSerializer
-
-
-class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Recipe.objects.all()
-    serializer_class = RecipeSerializer
-```
-
-Restart the server and browse > http://127.0.0.1:8000/api/v1/ and http://127.0.0.1:8000/api/v1/uuid
-
-## settings.py
-
-### `.env` file
-
-```
-API_URL='http://192.168.2.110:8000/api/v1/'
-
-# ENVIRONMENT='prod'
-DB_DATABASE=''
-DB_USER=''
-DB_PASS=''
-ALLOWED_HOSTS_ENV=''
+# LOCAL
+ENVIRONMENT='local'
+REST_API_URL='localhost:8000/api/v1'
+REST_API_BEARER_TOKEN=''
+DB_DATABASE='gesund'
+DB_USER='your_mysql_username'
+DB_PASS='your_mysql_password'
+ALLOWED_HOSTS_ENV='localhost 127.0.0.1 *'
+CORS_ORIGIN_WHITELIST_ENV='http://localhost:8000 http://127.0.0.1:8000'
 
 # EMAIL
-EMAIL_HOST=''
+EMAIL_HOST='your_email_host'
 EMAIL_PORT=''
-EMAIL_HOST_USER=''
+EMAIL_HOST_USER='noreply@your_email_host'
 EMAIL_HOST_PASSWORD=''
-DEFAULT_FROM_EMAIL=''
+DEFAULT_FROM_EMAIL='noreply@your_email_host'
+RECEIVE_EMAIL_AT='info@your_email_host'
 ```
 
-# Database
+**Start migration process**
 
-Following represents database models from the project.
+```shell
+(venv) gesund_project/gesund $ python manage.py showmigrations
+(venv) gesund_project/gesund $ python manage.py makemigrations
+(venv) gesund_project/gesund $ python manage.py migrate
+```
 
-## activity
+**Create Django superuser**
 
-| PK   | id (1,1)         |
-|:-----|:-----------------|
-|      | datestamp (Date) |
-|      | todo             |
-| FK   | author           |
+```shell
+(venv) gesund_project/gesund $ python manage.py createsuperuser
 
-## calorie
+Username: djangoadmin
+Email address: admin@example.com
+Password: dj4n604dm1n
+```
 
-### CalorieCategory
+**Runserver**
 
-| PK   | id (1,1)            |
-|:-----|:--------------------|
-|      | category (Char)     |
-|      | status (Boolean)    |
-| FK   | author              |
+```shell
+(venv) gesund_project/gesund $ python manage.py runserver 0.0.0.0:8000
+```
 
-### CalorieFoodDetail
+Your development server must be running at [http://0.0.0.0:8000/](http://0.0.0.0:8000/).
 
-| PK   | id (1,1)            |
-|:-----|:--------------------|
-|      | food (Char)         |
-|      | description (Text)  |
-|      | calories (Float)    |
-|      | protein (Float)     |
-|      | fat (Float)         |
-|      | carb (Float)        |
-|      | sugar (Float)       |
-|      | fiber (Float)       |
-|      | status (Boolean)    |
-| FK   | CalorieCategory     |
+**Validate admin page**
 
-### CalorieIntake
+Validate the admin page by going to [http://0.0.0.0:8000/admin](http://0.0.0.0:8000/admin). And provide the
+following credentials:
 
-| PK   | id (1,1)                 |
-|:-----|:-------------------------|
-|      | datestamp (Date)         |
-| FK   | food (CalorieFoodDetail) |
-| FK   | author                   |
+`username`: `djangoadmin`
 
-## challenge
+`password`: `dj4n604dm1n`
 
-| PK   | id (1,1)               |
-|:-----|:-----------------------|
-|      | start_date (DateTime)  |
-|      | challenge (Char)       |
-|      | status (Text)          |
-| FK   | author                 |
+**Update bearer token**
 
-## pomodoro
+Bearer token is used as a authentication mechanism for REST API. Now, update your `.env`:
 
-| PK   | id (1,1)                 |
-|:-----|:-------------------------|
-|      | datestamp (Date)         |
-|      | pomodoro_minutes (Float) |
-|      | break_minutes (Float)    |
-|      | remarks (Text)           |
-| FK   | author                   |
+```shell
+(venv) gesund_project/gesund $ printf '%s' 'djangoadmin:dj4n604dm1n' | base64
+```
 
-## profile
+```
+ZGphbmdvYWRtaW46ZGo0bjYwNGRtMW4=
+```
 
-| PK   | id (1,1)                        |
-|:-----|:--------------------------------|
-|      | dob (Date)                      |
-|      | city (Char)                     |
-|      | gender (Char)                   |
-|      | height (Float)                  |
-|      | daily_calorie_goal (Float)      |
-|      | daily_step_goal (Float)         |
-|      | daily_water_intake_goal (Float) |
-| FK   | author                          |
+```shell
+(venv) gesund_project/gesund $ vi .env
 
-## steps
+---
+REST_API_URL='localhost:8000/api/v1'
+REST_API_BEARER_TOKEN='ZGphbmdvYWRtaW46ZGo0bjYwNGRtMW4=' #new
+---
+```
 
-| PK   | id (1,1)             |
-|:-----|:---------------------|
-|      | datestamp (Date)     |
-|      | step_count (Integer) |
-| FK   | author               |
+**Is your REST API working?**
 
-## waterintake
+Let's check if it is working:
 
-| PK   | id (1,1)               |
-|:-----|:-----------------------|
-|      | datestamp (Date)       |
-|      | drink_progress (Float) |
-| FK   | author                 |
+```shell
+curl --location --request GET 'http://127.0.0.1:8000/api/v1/echo/' \
+--header 'Authorization: Basic ZGphbmdvYWRtaW46ZGo0bjYwNGRtMW4='
+```
 
-## weight
+You should receive response:
 
-| PK   | id (1,1)         |
-|:-----|:-----------------|
-|      | datestamp (Date) |
-|      | weight (Float)   |
-| FK   | author           |
+```
+{"message":"Hello, world!"}
+```
 
-## Database diagram
+## Database
 
-![Database diagram](screenshots/database-diagram.png)
+Following represents ER diagram from the project.
 
-# REST API
+![Database diagram](./resources/images/erd.svg)
+
+
+## REST API
 
 Basic Auth is used as Authorization mechanism.
 
@@ -340,581 +167,9 @@ username: 'admin'
 password: '*****'
 ```
 
-## about_us
+### Steps
 
-### Get all contact us
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/contact-us/`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves all contact us records that users sent.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/contact-us/'
-```
-
-## accounts
-
-### Get all user sign log
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/user-sign-log/`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The system retrieves all users' login behavior, i.e., signs in or signs off status.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/user-sign-log/'
-```
-
-## food
-
-### Get all food categories
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/food-categories/`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves all food categories.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/food-categories/'
-```
-
-### Get food category by id
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/food-category/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves food category by id.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/food-category/2/'
-```
-
-### Get all food calories
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/food-calories`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves all food calories information.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/food-calories'
-```
-
-### Get food calories information by id
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/food-calories/:id`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** Retrieves food calories information by id.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/food-calories/1000'
-```
-
-### Get food intake calories
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/calories-intake/`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves all users' food intake.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/calories-intake/'
-```
-
-### Get food intake calories by id
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/calories-intake/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves a specific user's food intake by food intake id.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/calories-intake/1/'
-```
-
-### Add food intake
-
-**HTTP Method:** `POST`
-
-**Endpoint:** `http://localhost:8000/api/v1/calories-intake/`
-
-**Body** raw:
-
-```json
-{
-  "datestamp": "2012-12-12",
-  "food": "Chicken",
-  "consume": 250,
-  "description": "chicken meat cooked.",
-  "calories": 1234,
-  "protein": 123,
-  "fat": 10,
-  "carb": 10,
-  "sugar": 0.1,
-  "fiber": 0.1,
-  "food_detail_ref": null,
-  "author": 1
-}
-```
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint records a specific user's food intake.
-
-**cURL example request:**
-
-```shell
-curl --location --request POST 'http://localhost:8000/api/v1/calories-intake/' \
---data-raw '{
-    "datestamp": "2012-12-12",
-    "food": "Chicken",
-    "consume": 250,
-    "description": "chicken meat cooked.",
-    "calories": 1234,
-    "protein": 123,
-    "fat": 10,
-    "carb": 10,
-    "sugar": 0.1,
-    "fiber": 0.1,
-    "food_detail_ref": null,
-    "author": 1
-}'
-```
-
-### Update food intake
-
-**HTTP Method:** `PUT`
-
-**Endpoint:** `http://localhost:8000/api/v1/calories-intake/:id/`
-
-**Path variables:** `id`
-
-**Body** raw:
-
-```json
-{
-  "datestamp": "2012-12-12",
-  "food": "Chicken",
-  "consume": 100,
-  "description": "chicken meat cooked.",
-  "calories": 1,
-  "protein": 1,
-  "fat": 1,
-  "carb": 1,
-  "sugar": 0.1,
-  "fiber": 0.1,
-  "food_detail_ref": null,
-  "author": 1
-}
-```
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint updates a specific user's food intake by food intake id.
-
-**cURL example request:**
-
-```shell
-curl --location --request PUT 'http://localhost:8000/api/v1/calories-intake/1/' \
---data-raw '{
-    "datestamp": "2012-12-12",
-    "food": "Chicken",
-    "consume": 100,
-    "description": "chicken meat cooked.",
-    "calories": 1,
-    "protein": 1,
-    "fat": 1,
-    "carb": 1,
-    "sugar": 0.1,
-    "fiber": 0.1,
-    "food_detail_ref": null,
-    "author": 1
-}'
-```
-
-### Delete food intake
-
-**HTTP Method:** `DELETE`
-
-**Endpoint:** `http://localhost:8000/api/v1/calories-intake/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint deletes a specific user's food intake by food intake id.
-
-**cURL example request:**
-
-```shell
-curl --location --request DELETE 'http://localhost:8000/api/v1/calories-intake/1/'
-```
-
-## goals
-
-### Get all goals
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/goals/`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves all users' goals.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/goals/'
-```
-
-### Get goals by id
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/goals/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves a specific user's goals by goals id.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/goals/1/'
-```
-
-### Update goals by id
-
-**HTTP Method:** `PUT`
-
-**Endpoint:** `http://localhost:8000/api/v1/goals/:id/`
-
-**Path variables:** `id`
-
-**Body** raw:
-
-```json
-{
-  "calories": 1234,
-  "steps": 1234,
-  "water": 1.2,
-  "weight": 67,
-  "author": 1
-}
-```
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint updates a specific user's goals by goals id.
-
-**cURL example request:**
-
-```shell
-curl --location --request PUT 'http://localhost:8000/api/v1/goals/1/' \
---data-raw '{
-    "calories": 1234,
-    "steps": 1234,
-    "water": 1.2,
-    "weight": 67,
-    "author": 1
-}'
-```
-
-## history
-
-### Get all history
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/history/`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves all users' history.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/history/'
-```
-
-### Get history by id
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/history/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves a specific user's history by history id.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/history/1/'
-```
-
-## pomodoro
-
-### Get all pomodoro
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/pomodoro/`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves all users' pomodoro.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/pomodoro/'
-```
-
-### Get pomodoro by id
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/pomodoro/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves a specific user's pomodoro by pomodoro id.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/pomodoro/1/'
-```
-
-### Add pomodoro
-
-**HTTP Method:** `POST`
-
-**Endpoint:** `http://localhost:8000/api/v1/pomodoro/`
-
-**Path variables:** `id`
-
-**Body** raw:
-
-```json
- {
-  "datestamp": "2022-06-16",
-  "pomodoro": 100,
-  "short_break": 0,
-  "long_break": 0,
-  "remarks": "new pomodoro",
-  "author": 1
-}
-```
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint records a specific user's pomodoro.
-
-**cURL example request:**
-
-```shell
-curl --location --request POST 'http://localhost:8000/api/v1/pomodoro/' \
---data-raw '    {
-        "datestamp": "2022-06-16",
-        "pomodoro": 100,
-        "short_break": 0,
-        "long_break": 0,
-        "remarks": "new pomodoro",
-        "author": 1
-    }'
-```
-
-### Update pomodoro
-
-**HTTP Method:** `PUT`
-
-**Endpoint:** `http://localhost:8000/api/v1/pomodoro/:id/`
-
-**Path variables:** `id`
-
-**Body** raw:
-
-```json
-{
-  "datestamp": "2022-06-16",
-  "pomodoro": 1000,
-  "short_break": 10,
-  "long_break": 10,
-  "remarks": "new pomodoro, not that new.",
-  "author": 1
-}
-```
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint updates a specific user's pomodoro by pomodoro id.
-
-**cURL example request:**
-
-```shell
-curl --location --request PUT 'http://localhost:8000/api/v1/pomodoro/1/' \
---data-raw '    {
-        "datestamp": "2022-06-16",
-        "pomodoro": 1000,
-        "short_break": 10,
-        "long_break": 10,
-        "remarks": "new pomodoro, not that new.",
-        "author": 1
-    }'
-```
-
-### Delete pomodoro
-
-**HTTP Method:** `DELETE`
-
-**Endpoint:** `http://localhost:8000/api/v1/pomodoro/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint deletes a specific user's pomodoro by pomodoro id.
-
-**cURL example request:**
-
-```shell
-curl --location --request DELETE 'http://localhost:8000/api/v1/pomodoro/1/'
-```
-
-## profile
-
-### Get all profiles
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/profile/`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves all users' profile.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/profile/'
-```
-
-### Get profile by id
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/profile/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves a specific user's profile by profile id.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/profile/2/'
-```
-
-### Update profile
-
-**HTTP Method:** `PUT`
-
-**Endpoint:** `http://localhost:8000/api/v1/profile/:id/`
-
-**Path variables:** `id`
-
-**Body** raw:
-
-```json
-{
-  "name": "John Doe",
-  "dob": "2000-01-01",
-  "gender": "M",
-  "height": 175,
-  "author": 1
-}
-```
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint updates a specific user's profile by profile id.
-
-**cURL example request:**
-
-```shell
-curl --location --request PUT 'http://localhost:8000/api/v1/profile/1/' \
---data-raw '{
-    "name": "John Doe",
-    "dob": "2000-01-01",
-    "gender": "M",
-    "height": 175,
-    "author": 1
-}'
-```
-
-## steps
-
-### Get all steps
+#### Get all steps
 
 **HTTP Method:** `GET`
 
@@ -948,7 +203,7 @@ curl --location --request GET 'http://localhost:8000/api/v1/steps/'
 curl --location --request GET 'http://localhost:8000/api/v1/steps/1/'
 ```
 
-### Add steps
+#### Add steps
 
 **HTTP Method:** `POST`
 
@@ -981,7 +236,7 @@ curl --location --request POST 'http://localhost:8000/api/v1/steps/' \
 }'
 ```
 
-### Update steps
+#### Update steps
 
 **HTTP Method:** `PUT`
 
@@ -1014,7 +269,7 @@ curl --location --request PUT 'http://localhost:8000/api/v1/steps/2/' \
 }'
 ```
 
-### Delete steps
+#### Delete steps
 
 **HTTP Method:** `DELETE`
 
@@ -1032,344 +287,22 @@ curl --location --request PUT 'http://localhost:8000/api/v1/steps/2/' \
 curl --location --request DELETE 'http://localhost:8000/api/v1/steps/2/'
 ```
 
-## water_intake
+For complete REST API Endpoints, refer to [rest_api_complete.md](./docs/rest_api_complete.md)
 
-### Get all water intake
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/water-intake/`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves all users' water intake.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/water-intake/'
-```
-
-### Get water intake by id
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/water-intake/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves a specific user's water intake by water intake id.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/water-intake/1/'
-```
-
-### Add water intake
-
-**HTTP Method:** `POST`
-
-**Endpoint:** `http://localhost:8000/api/v1/water-intake/`
-
-**Body** raw:
-
-```json
-{
-  "datestamp": "2012-12-12",
-  "drink_progress": 1.5,
-  "author": 1
-}
-```
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint records a specific user's water intake.
-
-**cURL example request:**
-
-```shell
-curl --location --request POST 'http://localhost:8000/api/v1/water-intake/' \
---data-raw '{
-    "datestamp": "2012-12-12",
-    "drink_progress": 1.5,
-    "author": 1
-}'
-```
-
-### Update water intake
-
-**HTTP Method:** `PUT`
-
-**Endpoint:** `http://localhost:8000/api/v1/water-intake/:id/`
-
-**Path variables:** `id`
-
-**Body** raw:
-
-```json
-{
-  "datestamp": "2012-12-12",
-  "drink_progress": 1.5,
-  "author": 1
-}
-```
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint updates a specific user's water intake by water intake id.
-
-**cURL example request:**
-
-```shell
-curl --location --request PUT 'http://localhost:8000/api/v1/water-intake/1/' \
---data-raw '{
-    "datestamp": "2012-12-12",
-    "drink_progress": 1.5,
-    "author": 1
-}'
-```
-
-### Delete water intake
-
-**HTTP Method:** `DELETE`
-
-**Endpoint:** `http://localhost:8000/api/v1/water-intake/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint deletes a specific user's water intake by water intake id.
-
-**cURL example request:**
-
-```shell
-curl --location --request DELETE 'http://localhost:8000/api/v1/water-intake/1/'
-```
-
-## weights
-
-### Get weights
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/weights/`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves all users' weight.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/weights/'
-```
-
-### Get weight by id
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/weight/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves a specific user's weight by weight id.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/weight/1/'
-```
-
-### Add weight
-
-**HTTP Method:** `POST`
-
-**Endpoint:** `http://localhost:8000/api/v1/weights/`
-
-**Body** raw:
-
-```json
-{
-  "datestamp": "2012-12-12",
-  "weight": 70,
-  "author": 1
-}
-```
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint records a specific user's weight.
-
-**cURL example request:**
-
-```shell
-curl --location --request POST 'http://localhost:8000/api/v1/weights/' \
---data-raw '{
-    "datestamp": "2012-12-12",
-    "weight": 70,
-    "author": 1
-}'
-```
-
-### Update weight
-
-**HTTP Method:** `PUT`
-
-**Endpoint:** `http://localhost:8000/api/v1/weight/:id/`
-
-**Path variables:** `id`
-
-**Body** raw:
-
-```json
-{
-  "datestamp": "2012-12-12",
-  "weight": 60.0,
-  "author": 1
-}
-```
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint updates a specific user's weight by weight id.
-
-**cURL example request:**
-
-```shell
-curl --location --request PUT 'http://localhost:8000/api/v1/weight/1/' \
---data-raw '
-{
-    "datestamp": "2012-12-12",
-    "weight": 60.0,
-    "author": 1
-}'
-```
-
-### Delete weight
-
-**HTTP Method:** `DELETE`
-
-**Endpoint:** `http://localhost:8000/api/v1/weight/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint deletes a specific user's weight by weight id.
-
-**cURL example request:**
-
-```shell
-curl --location --request DELETE 'http://localhost:8000/api/v1/weight/1/'
-```
-
-## xps
-
-### Get all XPs
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/xps/`
-
-**Path variables:** not required
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves all users' XP.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/xps/'
-```
-
-### Get XP by id
-
-**HTTP Method:** `GET`
-
-**Endpoint:** `http://localhost:8000/api/v1/xp/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint retrieves XP by XP id.
-
-**cURL example request:**
-
-```shell
-curl --location --request GET 'http://localhost:8000/api/v1/xp/1/'
-```
-
-### Update XP
-
-**HTTP Method:** `PUT`
-
-**Endpoint:** `http://localhost:8000/api/v1/xps/:id`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint updates a specific user's XP by XP id.
-
-**Body** raw:
-
-```json
-{
-  "xp": 123456,
-  "author": 2
-}
-```
-
-**cURL example request:**
-
-```shell
-curl --location --request PUT 'http://localhost:8000/api/v1/xps/1' \
---data-raw '{
-    "xp": 123456,
-    "author": 2
-}'
-```
-
-### Delete XP
-
-**HTTP Method:** `DELETE`
-
-**Endpoint:** `http://localhost:8000/api/v1/xp/:id/`
-
-**Path variables:** `id`
-
-**Authorization:** `Basic Auth`
-
-**Description:** The endpoint deletes a specific user's XP by XP id.
-
-**cURL example request:**
-
-```shell
-curl --location --request DELETE 'http://localhost:8000/api/v1/xp/1/'
-```
-
-## Postman
+### Postman
 
 Postman collection is provided on [resources/gesund_postman_collection.json](./resources/gesund_postman_collection.json)
 . You can download the software from [https://www.postman.com/downloads/](https://www.postman.com/downloads/).
 
 Once you have installed Postman, you must import this `gesund_postman_collection.json` into Postman.
 
-### Postman runner
+#### Postman runner
 
 The collection runner allows developers to run the Gesund App REST API requests in a collection. Moreover, it logs the
 request's test result. The detailed article can be found on
 the [official website](https://learning.postman.com/docs/running-collections/intro-to-collection-runs/).
 
-### Running Newman[^1]
+#### Running Newman[^1]
 
 Newman is a command-line collection runner for Postman, which helps developers to run requests and tests directly from
 CLI.
@@ -1382,18 +315,65 @@ $ npm install -g newman
 $ newman run resources/gesund_postman_collection.json
 ```
 
-# User flow
+## Tests
+
+"Code without tests is broken by design." - Jacob Kaplan-Moss
+
+What is automated test?
+
+To run the all the test cases in the Gesund app:
+
+```shell
+(venv) gesund_project/gesund $ python manage.py test
+```
+
+result:
+
+```shell
+Found 29 test(s).
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+0
+.............................
+----------------------------------------------------------------------
+Ran 29 tests in 15.098s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+To run specific app test, for an example `steps` app:
+
+```shell
+(venv) gesund_project/gesund $ python manage.py test steps
+```
+
+result:
+
+```shell
+Found 3 test(s).
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+...
+----------------------------------------------------------------------
+Ran 3 tests in 1.534s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+## User flow
 
 User flow is used for describing the process of interaction between a user and the website. The following image presents
 the 'flow' from the Gesund App entry point until the final action, i.e., Logging out.
 
-![sitemap](./resources/user_flow.svg)
+![sitemap](./resources/images/user_flow.svg)
 
 <p align="center">
 Figure. User flow of the Gesund app (own representation).
 </p>
 
-## Example of the user flow
+### Example of the user flow
 
 A simplified example of setting the goal in the app would be:
 
@@ -1410,30 +390,30 @@ successful response.
 
 Reference: https://xd.adobe.com/ideas/process/user-research/user-journey-vs-user-flow/
 
-# Sitemap
+## Sitemap
 
 <p>
 A sitemap is a collection of pages on a website. In a simple form, it is a map of the website. Draw.io was used to
 create the visual sitemap of the Gesund app.
 </p>
 
-![sitemap](./resources/sitemap.svg)
+![sitemap](./resources/images/sitemap.svg)
 
 <p align="center">
     <i>Figure. Visual sitemap of the Gesund app (own representation).</i>
 </p>
 
-# End-user documentation
+## End-user documentation
 
 This documentation is intended for end-users. It explains the most straightforward way a user can start using the Gesund
 App.
 
-To set up a new account, please follow this video instruction.
+To set up a new account, please follow this video inst  ruction.
 
 todo:
 www.youtube.com
 
-Check this [quick start guide (.pdf)](./resources/quick_start_guide.pdf) that gives basic guidelines on how to user the
+Check this [quick start guide (.pdf)](./docs/quick_start_guide.pdf) that gives basic guidelines on how to user the
 app.
 
 
@@ -1447,7 +427,7 @@ Contributions are always welcome! please contact the author at info@amaharjan.on
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](./LICENSE)
 
 # References
 
@@ -1463,6 +443,9 @@ Contributions are always welcome! please contact the author at info@amaharjan.on
 
 ## Icons
 
+- <a href='https://www.freepik.com/vectors/dairy-free'>Dairy free vector created by macrovector - www.freepik.com</a>
+- <a href='https://www.freepik.com/vectors/vegan'>Vegan vector created by studiogstock - www.freepik.com</a>
+- <a href="https://www.vecteezy.com/free-vector/salt">Salt Vectors by Vecteezy</a>
 - <a href='https://www.freepik.com/vectors/tiny'>Tiny vector created by pch.vector - www.freepik.com</a>
 - <a href='https://www.freepik.com/vectors/drink-water'>Drink water vector created by pch.vector - www.freepik.com</a>
 - <a href='https://www.freepik.com/vectors/people-walking'>People walking vector created by storyset

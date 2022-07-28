@@ -53,6 +53,12 @@ DID_YOU_KNOW = {
                        '</ul>'
                        '<p><a href="https://apps.who.int/iris/bitstream/handle/10665/325828/EMROPUB_2019_en_23536.pdf">Reference: Healthy diet, WHO</a></p>'
         },
-
+        {
+            'img': 'food_sugarfree_3.jpg',
+            'content': '<p class="mt-2">The <b>free sugar</b> intake should be reduced throughout the life course.</p>'
+                       '<p>Consuming free sugars increases tooth decay. Foods and drinks that contain high free sugars lead to overweight and obesity.</p>'
+                       '<p>Therefore, replace sugary snacks with fresh fruits and raw vegetables.'
+                       ' <a href="https://apps.who.int/iris/bitstream/handle/10665/325828/EMROPUB_2019_en_23536.pdf">Reference: Healthy diet, WHO</a></p>'
+        }
     ]
 }

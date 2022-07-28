@@ -1,6 +1,5 @@
 .idea/
 resources/
-read-the-docs/
 gesund/.env
 /gesund/.env.server
 /gesund/venv/

@@ -1,6 +1,9 @@
-from django.test import TransactionTestCase
 from django.contrib.auth import get_user_model
+from django.test import TransactionTestCase
 from django.urls import reverse
+
+from .models import CalorieCategory
+from .models import CalorieFoodDetail
 from .models import CalorieIntake
 
 
@@ -13,6 +16,27 @@ class CalorieIntakeTest(TransactionTestCase):
             email='test@email.com',
             password='secret'
         )
+
+        # create food_category
+        self.food_category = CalorieCategory.objects.create(
+            category='food abc category',
+            status=1
+        )
+
+        # create food
+        self.food = CalorieFoodDetail.objects.create(
+            food='food abc',
+            description='food abc description',
+            calories=1000,
+            protein=800,
+            fat=100,
+            carb=100,
+            sugar=0,
+            fiber=0,
+            status=1,
+            category=self.food_category
+        )
+
         self.calorie_intake = CalorieIntake.objects.create(
             datestamp='2012-12-12',
             food='pasta',
@@ -25,7 +49,7 @@ class CalorieIntakeTest(TransactionTestCase):
             sugar=0,
             fiber=0,
             author=self.user,
-            food_detail_ref=1000
+            food_detail_ref=self.food
         )
 
     def user_loggedin_instance(self):
@@ -44,7 +68,7 @@ class CalorieIntakeTest(TransactionTestCase):
         self.assertEqual(self.calorie_intake.sugar, 0)
         self.assertEqual(self.calorie_intake.fiber, 0)
         self.assertEqual(self.calorie_intake.author, self.user)
-        self.assertEqual(self.calorie_intake.food_detail_ref, 1000)
+        self.assertEqual(self.calorie_intake.food_detail_ref, self.food)
 
     def test_calorieintake_listview(self):
         """ for listview. """
@@ -61,4 +85,4 @@ class CalorieIntakeTest(TransactionTestCase):
         self.assertTemplateUsed(self.client.get(reverse('delete-calorie-intake', args='1')), 'calories/delete.html')
         self.assertTemplateUsed(
             self.client.get(reverse('calorie-intake-datestamp-collection-index', args=['2012-12-12'])),
-            'calories/index-datestamp-collection.html')
+            'calories/index_datestamp_collection.html')
