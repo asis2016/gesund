@@ -12,6 +12,12 @@
       text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
   }
+
+  .card {
+    .card-footer {
+      height: 40px;
+    }
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -45,8 +51,6 @@
 
     #dashboard-steps {
       .card-body {
-        padding: 0;
-
         .alert {
           margin: 1rem;
         }
@@ -136,13 +140,6 @@
     #dashboard-history {
       margin-top: 1.5rem !important;
     }
-
-    .card {
-      .card-footer {
-        height: 45px;
-      }
-    }
-
   }
 }
 

@@ -13,7 +13,7 @@
         <div class="row">
             <!-- Daily goals -->
             <div class="col-lg-7 mt-5" id="dashboard-daily-goals">
-                {% include 'dashboard/daily-goals.html' %}
+                {% include 'dashboard/daily_goals.html' %}
             </div>
             <!-- BMI -->
             <div class="col-lg-5 col-weight-info mt-5" id="dashboard-bmi">
@@ -40,20 +40,69 @@
             <div class="col-lg-6 mt-5" id="dashboard-steps">
                 {% include 'dashboard/steps.html' %}
             </div>
+            <!--Pomodoro-->
+            <div class="col-lg-6 mt-5" id="dashboard-pomodoro">
+                {% include 'dashboard/pomodoros.html' %}
+            </div>
+        </div>
+
+        <div class="row">
             <!-- Date history -->
             <div class="col-lg-6 mt-5" id="dashboard-history">
                 {% include 'dashboard/date-history.html' %}
             </div>
         </div>
 
-        <div class="row">
-            <!--Pomodoro-->
-            <div class="col-lg-6 mt-5 d-none" id="dashboard-pomodoro">
-                {% include 'dashboard/pomodoros.html' %}
-            </div>
-        </div>
-
         <div class="mt-5"></div>
     </div>
+
+    {# todo: refactor #}
+    <style>
+        .sparkline-dashboard {
+            text-align: center;
+            margin: 1rem 0rem;
+        }
+    </style>
 {% endblock main %}
+
+{% block scripts %}
+    {% if calories_list %}
+        <script>
+            const STEPS_SPARKLINE_LIST = [{% for i in calories_list %}{{ i.total_calories }}, {% endfor %}]
+            let sparklineCalories = new Sparkline($('.sparkline-calories')[0], {
+                width: 250,
+                height: 100,
+                lineColor: '#92c1dc',
+                endColor: '#92c1dc'
+            })
+            sparklineCalories.draw(STEPS_SPARKLINE_LIST)
+        </script>
+    {% endif %}
+
+    {% if pomodoro_list %}
+        <script>
+            const POMODORO_SPARKLINE_LIST = [{% for i in pomodoro_list %}{{ i.total_pomodoro }}, {% endfor %}]
+            let sparklinePomodoro = new Sparkline($('.sparkline-pomodoro')[0], {
+                width: 250,
+                height: 100,
+                lineColor: '#92c1dc',
+                endColor: '#92c1dc'
+            })
+            sparklinePomodoro.draw(POMODORO_SPARKLINE_LIST)
+        </script>
+    {% endif %}
+
+    {% if steps_list %}
+        <script>
+            const CALORIES_SPARKLINE_LIST = [{% for i in steps_list %}{{ i.step_count }}, {% endfor %}]
+            let sparklineSteps = new Sparkline($('.sparkline-steps')[0], {
+                width: 250,
+                height: 100,
+                lineColor: '#92c1dc',
+                endColor: '#92c1dc'
+            })
+            sparklineSteps.draw(CALORIES_SPARKLINE_LIST)
+        </script>
+    {% endif %}
+{% endblock scripts %}
 

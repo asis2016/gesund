@@ -21,8 +21,7 @@
                 <ul aria-labelledby="dropdown_steps_menu"
                     class="dropdown-menu">
                     <li class="d-flex">
-                        <a class="dropdown-item"
-                           href="{% url 'add-steps' %}">
+                        <a class="dropdown-item" href="{% url 'add-steps' %}">
                             <i class="fa-solid fa-circle-plus"></i>
                             <span class="p-2">Add new</span>
                         </a>
@@ -42,10 +41,32 @@
     <!-- steps_card_content -->
     <div class="collapse show" id="steps_card_content">
         <div class="card-body collapse show">
+            <!-- chart -->
+            <div class="sparkline-dashboard sparkline-steps"></div>
+
             {% if steps_list %}
-                <div class="chart-container">
-                    <canvas id="mySteps" height="200px"></canvas>
-                </div>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>steps</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for steps in steps_list %}
+                        {% if forloop.counter <= 3 %}
+                            <tr>
+                                <td>
+                                    {{ steps.datestamp|date:"Y-m-d" }}
+                                </td>
+                                <td>
+                                    {{ steps.step_count }}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
             {% else %}
                 <div class="alert alert-warning" role="alert">
                     <p class="mb-0">
@@ -64,52 +85,3 @@
     </div>
     <!-- ends steps_card_content -->
 </div>
-
-{% block scripts %}
-    {% if steps_list %}
-        <script>
-            const mySteps = new Chart(
-                document.getElementById('mySteps'),
-                {
-                    type: 'line',
-                    data: {
-                        labels: [{% for i in steps_list %}'{{ i.datestamp|date:"Y-m-d" }}', {% endfor %}],
-                        datasets: [
-                            {
-                                data: [{% for i in steps_list %}{{ i.step_count }}, {% endfor %}],
-                                //data: [8000, 250, 7200]
-                                label: '',
-                                backgroundColor: '#dd7e77',
-                                borderColor: '#f06270',
-                                pointRadius: 0,
-                                borderWidth: 1.5,
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        tooltips: {
-                            enabled: false,
-                            display: false,
-                        },
-                        plugins: {
-                            legend: {
-                                display: false,
-                            },
-                            title: {
-                                display: false,
-                            }
-                        },
-                        scales: {
-                            x: {
-                                ticks: {
-                                    display: false
-                                }
-                            }
-                        },
-                    }
-                }
-            );
-        </script>
-    {% endif %}
-{% endblock scripts %}

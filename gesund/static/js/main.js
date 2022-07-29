@@ -1,3 +1,7 @@
+/*!
+ * Gesund App
+ */
+
 $(function () {
 
     $("#id_datestamp").datepicker({

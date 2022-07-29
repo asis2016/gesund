@@ -15,8 +15,8 @@
     <!-- daily_goals_card_content -->
     <div class="collapse show" id="daily_goals_card_content">
         <div class="card-body collapse show">
-            {% if goals_daily %}
-                {% for i in goals_daily %}
+            {% if daily_goals %}
+                {% for i in daily_goals %}
                     <div class="pb-3">
                         <p class="d-flex justify-content-between align-items-center">
                             {{ i.2 }} <i style="font-size:0.8rem;">{{ i.0 }}%</i>

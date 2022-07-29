@@ -365,6 +365,9 @@ main .data-table-list tbody tr td {
   font-weight: 300;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+#dashboard-container .card .card-footer {
+  height: 40px;
+}
 
 @media screen and (max-width: 767px) {
   #dashboard-container .alert-warning {
@@ -384,9 +387,6 @@ main .data-table-list tbody tr td {
   }
   #dashboard-container #dashboard-history .card-body .table {
     margin-bottom: 0;
-  }
-  #dashboard-container #dashboard-steps .card-body {
-    padding: 0;
   }
   #dashboard-container #dashboard-steps .card-body .alert {
     margin: 1rem;
@@ -454,9 +454,6 @@ main .data-table-list tbody tr td {
 #dashboard-container #dashboard-pomodoro,
 #dashboard-container #dashboard-history {
     margin-top: 1.5rem !important;
-  }
-  #dashboard-container .card .card-footer {
-    height: 45px;
   }
 }
 @media screen and (min-width: 768px) {

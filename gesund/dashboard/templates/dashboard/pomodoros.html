@@ -1,53 +1,64 @@
 <div class="card">
     <div class="card-header card-header-menu">
-        <h6>Pomodoro (7 records)</h6>
+        <h6>Pomodoro</h6>
         <div class="d-flex">
             <span class="minimize">
-                <a data-bs-target="#pomodoro_card_content" data-bs-toggle="collapse">
+                <a href="#pomodoro_card_content" role="button" data-bs-toggle="collapse"
+                   data-bs-target="#pomodoro_card_content"
+                   aria-expanded="false" aria-controls="pomodoro_card_content">
                     <i class="fa-solid fa-circle-minus"></i>
                 </a>
             </span>
             <div class="dropdown">
-                <i aria-expanded="false"
-                   class="fa-solid fa-circle-chevron-down"
-                   data-bs-toggle="dropdown"
+                <a href="#"
+                   role="button"
                    id="dropdown_pomodoro_menu"
-                   role="button"></i>
-                <ul aria-labelledby="dropdown_pomodoro_menu" class="dropdown-menu">
+                   aria-expanded="false"
+                   data-bs-toggle="dropdown"
+                   class="text-white">
+                    <i class="fa-solid fa-circle-chevron-down"></i>
+                </a>
+                <ul aria-labelledby="dropdown_pomodoro_menu"
+                    class="dropdown-menu">
                     <li class="d-flex">
                         <a class="dropdown-item" href="{% url 'add-pomodoro' %}">
                             <i class="fa-solid fa-circle-plus"></i>
                             <span class="p-2">Add new</span>
                         </a>
                     </li>
-                    {% if pomodoro_list_chart %}
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                <i class="fa-solid fa-cloud-arrow-down"></i>
-                                <span class="px-2">Export records (7 records)</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                <i class="fa-solid fa-share-nodes"></i>
-                                <span class="px-2">
-                                    Share your progress
-                                </span>
-                            </a>
-                        </li>
-                    {% endif %}
                 </ul>
             </div>
         </div>
     </div>
 
-    {#card body & card footer#}
     <div class="collapse show" id="pomodoro_card_content">
         <div class="card-body collapse show">
-            {% if pomodoro_list_chart %}
-                <div>
-                    <canvas id="myPomodoro"></canvas>
-                </div>
+            <!-- chart -->
+            <div class="sparkline-dashboard sparkline-pomodoro"></div>
+
+            {% if pomodoro_list %}
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>pomodoro</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in pomodoro_list %}
+                        {% if forloop.counter <= 3 %}
+                            <tr>
+                                <td>
+                                    {{ i.datestamp|date:"Y-m-d" }}
+                                </td>
+                                <td>
+                                    {{ i.total_pomodoro }}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
             {% else %}
                 <div class="alert alert-warning" role="alert">
                     <p class="mb-0">
@@ -57,7 +68,7 @@
             {% endif %}
         </div>
 
-        {% if pomodoro_list_chart %}
+        {% if pomodoro_list %}
             <div class="card-footer">
                 <div class="float-end">
                     <a href="{% url 'pomodoro-index' %}">View all</a>
@@ -66,37 +77,3 @@
         {% endif %}
     </div>
 </div>
-
-{% block scripts %}
-
-    <script>
-        const labels = [{% for i in pomodoro_list_chart %}'{{ i.datestamp|date:"Y-m-d" }}', {% endfor %}];
-
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Pomodoro(minutes)',
-                backgroundColor: '#6fbf73',
-                data: [{% for i in pomodoro_list_chart %}{{ i.short_break }}, {% endfor %}],
-            },
-                {
-                    label: 'Break taken(minutes)',
-                    backgroundColor: '#ffee33',
-                    data: [{% for i in pomodoro_list_chart %}{{ i.break_minutes }}, {% endfor %}],
-                }
-            ]
-        };
-
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {}
-        };
-
-        const myPomodoro = new Chart(
-            document.getElementById('myPomodoro'),
-            config
-        );
-    </script>
-
-{% endblock scripts %}
