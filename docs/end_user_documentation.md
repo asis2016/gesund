@@ -1,31 +1,3 @@
-## User flow
-
-User flow is used for describing the process of interaction between a user and the website. The following image presents
-the 'flow' from the Gesund App entry point until the final action, i.e., Logging out.
-
-![sitemap](./resources/images/user_flow.svg)
-
-<p align="center">
-Figure. User flow of the Gesund app (own representation).
-</p>
-
-### Example of the user flow
-
-A simplified example of setting the goal in the app would be:
-
-1. The user logs in successfully.
-2. From the Dashboard page, the user clicks on the Profile menu.
-3. From the menu, the user navigates towards the My Goals page.
-4. On the page, the user can view her current Goals.
-5. By clicking on Update your goals, she is then sent to the Goals update page.
-6. Now, she will set her goals by providing relevant information.
-7. Finally, she sees the confirmation message.
-
-Above mentioned example of a user flow is called a 'happy path,' which means a simplified version of the user flow has a
-successful response.
-
-Reference: https://xd.adobe.com/ideas/process/user-research/user-journey-vs-user-flow/
-
 ## Sitemap
 
 <p>
@@ -41,15 +13,57 @@ create the visual sitemap of the Gesund app.
 
 ## End-user documentation
 
-This documentation is intended for end-users. It explains the most straightforward way a user can start using the Gesund
-App.
+This documentation is intended for end-users. It explains the most straightforward way the user can start using the
+Gesund App.
 
-To set up a new account, please follow this video inst  ruction.
+**Login page**
 
-todo:
-www.youtube.com
+<p style="text-align:center;">
+<img src="./resources/images/login.png" alt="login page" height="500px" style="border:1px solid #cecece">
+</p>
 
-Check this [quick start guide (.pdf)](./docs/quick_start_guide.pdf) that gives basic guidelines on how to user the
+- When the Gesund App starts, it will redirect to the login page.
+- If the user is new to the app, he/she can sign up by clicking `Sign up now!`.
+- After successful login, the user is redirected to the `Dashboard`.
+
+**Sign up**
+
+- When the user successfully signs up for the Gesund app, they will receive an automatic email from the system.
+
+<p style="text-align:center;">
+<img src="./resources/images/sign_up_successful_email.png" alt="sign up successful" height="500px" style="border:1px solid #cecece">
+</p>
+
+Now, to get started with the app, the user must follow two steps below:
+
+1. The user must update their goals (i.e., calories, steps, water, and weight).
+
+2. And their profile.
+
+**Quick start guide**
+
+The [quick start guide (.pdf)](./docs/quick_start_guide.pdf) gives a basic guidelines on how to use the
 app.
 
+<p style="text-align:center;">
+<img src="./resources/images/quick_start_guide.png" alt="quick start guide" height="500px" 
+style="border:1px solid #cecece">
+</p>
+
+**Instruction on using a `steps` `feature`**
+
+Most "features" on the app are represented in four forms, i.e.,  **Creating**, **Reading**, **Updating**,
+or **Deleting** a resource.
+
+- By clicking number **1**, the user can add their steps.
+- Number **2** shows randomized "tips/hints".
+- **3**, where the user records their steps by clicking `Save changes`, and the user is redirected to
+  the [ListView](https://docs.djangoproject.com/en/4.0/ref/class-based-views/generic-display/) page (**4**).
+- **5** - The user gets successful notification and they are [rewarded by the system](#).
+- **6** - To update existing steps record.
+- **7** - To delete existing steps record.
+
+<p style="text-align:center;">
+<img src="./resources/images/steps_user_flow.svg" alt="quick start guide" height="100%">
+</p>
 

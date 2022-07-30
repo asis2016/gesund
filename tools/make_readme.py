@@ -11,6 +11,8 @@ list_md = [
     'database',
     'rest_api',
     'tests',
+
+    'user_flow',
     'end_user_documentation',
     'references'
 ]

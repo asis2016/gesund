@@ -9,6 +9,7 @@ list_drawio = [
     'erd.drawio',
     'sitemap.drawio',
     'user_flow.drawio',
+    'steps_user_flow.drawio',
 ]
 
 
