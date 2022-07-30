@@ -86,11 +86,17 @@ body {
     padding-top: 4px;
   }
 
-  #password-reset .container,
+  #login .container,
+#password-reset .container,
 #password-reset-done .container,
 #password-reset-confirm .container,
 #password-reset-complete .container {
     padding-top: 1rem;
+  }
+
+  #login {
+    display: flex;
+    align-items: center;
   }
 }
 /* @media screen and (min-width: 768px) -------------------------------------------------------------------------- */
