@@ -1,4 +1,17 @@
-# Introduction
+# Table of contents
+
+[Introduction]()
+
+- [Project organization](#)
+- [Tech stack](#)
+- [Installation](#)
+    - [GIT clone](#)
+    - [Python VENV](#)
+    - [MySQL Server](#)
+- [Tests](#tests)
+- [End-user documentation](#end-user-documentation)
+
+## Introduction
 
 This project is carried out as the master thesis at University of Koblenz-Landau.
 
@@ -362,6 +375,55 @@ OK
 Destroying test database for alias 'default'...
 ```
 
+## UML use case diagram
+
+![sitemap](./resources/images/uml_use_case_diagram.svg)
+
+## Wireframes
+
+### Login or Sign up
+
+![login or Sign up](./resources/images/wireframe_sm_login_sign_up.svg)
+
+
+### Dashboard
+
+![dashboard](./resources/images/wireframe_sm_dashboard.svg)
+
+### Profile
+
+![profile](./resources/images/wireframe_sm_profile.svg)
+
+### Food intake
+
+![food intake](./resources/images/wireframe_sm_food_intake.svg)
+
+### Steps
+
+![steps](./resources/images/wireframe_sm_steps.svg)
+
+
+### Water intake
+
+![water intake](./resources/images/wireframe_sm_water_intake.svg)
+
+### Weights
+
+![weights](./resources/images/wireframe_sm_weight.svg)
+
+### About us
+
+![about us](./resources/images/wireframe_sm_about_us.svg)
+
+![](./resources/images/)
+
+
+
+wireframe_sm_water_intake.drawio
+wireframe_sm_weight.drawio
+
+
+
 ## User flow
 
 User flow is used for describing the process of interaction between a user and the website. The following image presents
@@ -388,7 +450,8 @@ A simplified example of setting the goal in the app would be:
 Above mentioned example of a user flow is called a 'happy path,' which means a simplified version of the user flow has a
 successful response.
 
-Reference: https://xd.adobe.com/ideas/process/user-research/user-journey-vs-user-flow/## Sitemap
+Reference: https://xd.adobe.com/ideas/process/user-research/user-journey-vs-user-flow/
+## Sitemap
 
 <p>
 A sitemap is a collection of pages on a website. In a simple form, it is a map of the website. Draw.io was used to
@@ -456,6 +519,7 @@ or **Deleting** a resource.
 <p style="text-align:center;">
 <img src="./resources/images/steps_user_flow.svg" alt="quick start guide" height="100%">
 </p>
+
 ## Feedback
 
 If you have any feedback, please reach out to the author at info@amaharjan.online

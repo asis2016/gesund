@@ -1,4 +1,17 @@
-# Introduction
+# Table of contents
+
+[Introduction]()
+
+- [Project organization](#)
+- [Tech stack](#)
+- [Installation](#)
+    - [GIT clone](#)
+    - [Python VENV](#)
+    - [MySQL Server](#)
+- [Tests](#tests)
+- [End-user documentation](#end-user-documentation)
+
+## Introduction
 
 This project is carried out as the master thesis at University of Koblenz-Landau.
 

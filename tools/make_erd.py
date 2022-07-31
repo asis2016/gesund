@@ -6,10 +6,22 @@ _LOC = '../resources/drawio'
 _OUT = '../resources/images'
 
 list_drawio = [
-    'erd.drawio',
-    'sitemap.drawio',
-    'user_flow.drawio',
-    'steps_user_flow.drawio',
+    #'erd.drawio',
+    #'sitemap.drawio',
+    #'user_flow.drawio',
+    #'steps_user_flow.drawio',
+    #'uml_use_case_diagram.drawio',
+    
+    'wireframe_sm_login_sign_up.drawio',
+    'wireframe_sm_dashboard.drawio',
+    'wireframe_sm_profile.drawio',
+
+    'wireframe_sm_food_intake.drawio',
+    'wireframe_sm_steps.drawio',
+    'wireframe_sm_water_intake.drawio',
+    'wireframe_sm_weight.drawio',
+
+    'wireframe_sm_about_us.drawio'
 ]
 
 
