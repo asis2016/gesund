@@ -216,9 +216,12 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="card-footer">
+                            <!-- food_detail_ref-->
+                            <input type="text" name="food_detail_ref" value="{{ calories_obj.food_detail_ref.id }}"
+                                   class="d-none">
+                            <!-- -->
                             <button class="btn btn-warning" type="submit">
                                 <i class="fa-solid fa-pen-to-square"></i>
                                 <span class="p-2">Update changes</span>
@@ -246,75 +249,70 @@
 
 {% block scripts %}
     <script>
-        $(document).ready(function () {
+        $(document).ready(() => {
             const REST_API_URL = '{{ REST_API_URL }}'
-            const id = {{ calories_obj.id }};
-            const food_id = {{ calories_obj.food_detail_ref }};
-            let calories = '';
-            let protein = '';
-            let fat = '';
-            let carb = '';
-            let sugar = '';
-            let fiber = '';
-            let description = '';
+            const id = '{{ calories_obj.id }}'
+            let calories = ''
+            let protein = ''
+            let fat = ''
+            let carb = ''
+            let sugar = ''
+            let fiber = ''
+            let description = ''
 
             /**
              * Document ready load ajax!
              * */
             $.ajax({
                 //url:  + "food-calories/" + food_id,
-                url: `${REST_API_URL}/food-calories/${food_id}`,
+                url: `${REST_API_URL}/food-calories/${id}`,
                 type: "GET",
-                success: function (response) {
-                    calories = response.calories;
-                    protein = response.protein;
-                    fat = response.fat;
-                    carb = response.carb;
-                    sugar = response.sugar;
-                    fiber = response.fiber;
+                success: (response) => {
+                    calories = response.calories
+                    protein = response.protein
+                    fat = response.fat
+                    carb = response.carb
+                    sugar = response.sugar
+                    fiber = response.fiber
                 }
-            });
+            })
 
             /**
              * Updating consumption per gm.
              * */
-            $("#id_consume").keyup(function () {
+            $("#id_consume").keyup(() => {
+                consume = $("#id_consume").val()
 
-                consume = $("#id_consume").val();
-                console.log(consume)
-
-                // calculate consumption
-                function calc(qty) {
-                    return ((qty / 100) * consume).toFixed(2);
+                /**
+                 * calculate consumption */
+                const calcConsumption = (qty) => {
+                    return ((qty / 100) * consume).toFixed(2)
                 }
 
-                $("#id_calories").val(calc(calories));
-                $("#id_protein").val(calc(protein));
-                $("#id_fat").val(calc(fat));
-                $("#id_carb").val(calc(carb));
-                $("#id_sugar").val(calc(sugar));
-                $("#id_fiber").val(calc(fiber));
-            });
+                $("#id_calories").val(calcConsumption(calories))
+                $("#id_protein").val(calcConsumption(protein))
+                $("#id_fat").val(calcConsumption(fat))
+                $("#id_carb").val(calcConsumption(carb))
+                $("#id_sugar").val(calcConsumption(sugar))
+                $("#id_fiber").val(calcConsumption(fiber))
+            })
 
             // Clear
-            $("#clear-search").click(function () {
-                console.log('clicking...');
-                $("#id_search").val('');
-                $("#id_search-label").text('');
-                $("#id_id").val('');
-                $("#id_description").text('');
-                $("#id_calories").val('');
-                $("#id_protein").val('');
-                $("#id_fat").val('');
-                $("#id_carb").val('');
-                $("#id_sugar").val('');
-                $("#id_fiber").val('');
-                $("#id_category").val('');
-                return false;
-            });
-
-        });
-
-
+            $("#clear-search").click(() => {
+                console.log('clicking...')
+                $("#id_search").val('')
+                $("#id_search-label").text('')
+                $("#id_id").val('')
+                $("#id_description").text('')
+                $("#id_calories").val('')
+                $("#id_protein").val('')
+                $("#id_fat").val('')
+                $("#id_carb").val('')
+                $("#id_sugar").val('')
+                $("#id_fiber").val('')
+                $("#id_category").val('')
+                return false
+            })
+        })
     </script>
 {% endblock scripts %}

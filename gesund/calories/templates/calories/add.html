@@ -270,129 +270,125 @@
 {% block scripts %}
     <script>
         const REST_API_URL = '{{ REST_API_URL }}'
-
-        let id = '';
-        let food = '';
-        let calories = '';
-        let protein = '';
-        let fat = '';
-        let carb = '';
-        let sugar = '';
-        let fiber = '';
-        let description = '';
-        let consume = '';
+        let id = ''
+        let food = ''
+        let calories = ''
+        let protein = ''
+        let fat = ''
+        let carb = ''
+        let sugar = ''
+        let fiber = ''
+        let description = ''
+        let consume = ''
 
         /**
          * datestamp equals today's date.
          */
-        $("#id_datestamp").val(get_today);
-        $("#search_term").focus();
+        $("#id_datestamp").val(get_today)
+        $("#search_term").focus()
 
         /**
          * Search result clicked!
          */
-        function search_clicked(id) {
+        const startSearch = (id) => {
             $.ajax({
                 url: `${REST_API_URL}/food-calories/${id}`,
                 type: "GET",
                 contentType: "application/json",
                 dataType: "JSON",
-                success: function (response) {
-                    food = response.food;
-                    calories = response.calories;
-                    protein = response.protein;
-                    fat = response.fat;
-                    carb = response.carb;
-                    sugar = response.sugar;
-                    fiber = response.fiber;
-                    description = response.description;
+                success: (response) => {
+                    food = response.food
+                    calories = response.calories
+                    protein = response.protein
+                    fat = response.fat
+                    carb = response.carb
+                    sugar = response.sugar
+                    fiber = response.fiber
+                    description = response.description
 
                     // Fill up form elements.
-                    $("#id_food_intake").val(description);
-                    $("#id_food").val(id);
-                    $("#id_description").val(description);
+                    $("#id_food_intake").val(description)
+                    $("#id_food").val(id)
+                    $("#id_description").val(description)
 
                     // Fill up modal-food-info elements.
-                    $("#food-modalinfo").text(food);
-                    $("#id-modalinfo").text(id);
-                    $("#modal-food-searchinfo").text(food);
-                    $("#calories-modalinfo").text(calories);
-                    $("#protein-modalinfo").text(protein);
-                    $("#fat-modalinfo").text(fat);
-                    $("#carb-modalinfo").text(carb);
-                    $("#sugar-modalinfo").text(sugar);
-                    $("#fiber-modalinfo").text(fiber);
-
-
-                    $("#description-modalinfo").text(description);
+                    $("#food-modalinfo").text(food)
+                    $("#id-modalinfo").text(id)
+                    $("#modal-food-searchinfo").text(food)
+                    $("#calories-modalinfo").text(calories)
+                    $("#protein-modalinfo").text(protein)
+                    $("#fat-modalinfo").text(fat)
+                    $("#carb-modalinfo").text(carb)
+                    $("#sugar-modalinfo").text(sugar)
+                    $("#fiber-modalinfo").text(fiber)
+                    $("#description-modalinfo").text(description)
                 }
-            });
+            })
 
-            $("#modal-food-search").modal("hide");
-            $("#id_consume").focus();
+            $("#modal-food-search").modal("hide")
+            $("#id_consume").focus()
         }
 
         /**
          * Updating consumption per gm.
          * */
-        $("#id_consume").keyup(function () {
+        $("#id_consume").keyup(() => {
 
-            consume = $("#id_consume").val();
+            consume = $("#id_consume").val()
 
-            // calculate consumption
-            function calc(qty) {
-                return ((qty / 100) * consume).toFixed(2);
+            /**
+             * calculate consumption */
+            const calcConsumption = (qty) => {
+                return ((qty / 100) * consume).toFixed(2)
             }
 
-            $("#id_calories").val(calc(calories));
-            $("#id_protein").val(calc(protein));
-            $("#id_fat").val(calc(fat));
-            $("#id_carb").val(calc(carb));
-            $("#id_sugar").val(calc(sugar));
-            $("#id_fiber").val(calc(fiber));
-        });
+            $("#id_calories").val(calcConsumption(calories))
+            $("#id_protein").val(calcConsumption(protein))
+            $("#id_fat").val(calcConsumption(fat))
+            $("#id_carb").val(calcConsumption(carb))
+            $("#id_sugar").val(calcConsumption(sugar))
+            $("#id_fiber").val(calcConsumption(fiber))
+        })
 
         /**
          * Search food.
          * */
-        $("#search").click(function () {
-            let search_term = $("#search_term").val();
+        $("#search").click(() => {
+            let search_term = $("#search_term").val()
             $.ajax({
                 url: `${REST_API_URL}/food-calories/?search=${search_term}`,
                 type: "GET",
                 contentType: "application/json",
                 dataType: "JSON",
-                success: function (response) {
-                    let innerHTML = '';
+                success: (response) => {
+                    let innerHTML = ''
 
                     for (let i = 0; i < response.length; i++) {
-                        innerHTML += "<a href='#' class='list-group-item list-group-item-action' onclick='search_clicked(" + response[i].id + ")'>" + response[i].food + "</a>";
+                        innerHTML += "<a href='#' class='list-group-item list-group-item-action' onclick='startSearch(" + response[i].id + ")'>" + response[i].description + "</a>"
                     }
 
-                    $("#modal-content").html(innerHTML);
+                    $("#modal-content").html(innerHTML)
                 }
-            });
+            })
 
             // modal pop-up
-            $("#modal-food-search").modal("show");
-        });
+            $("#modal-food-search").modal("show")
+        })
 
         // Clear
-        $("#clear-search").click(function () {
-            console.log("clicking...");
+        $("#clear-search").click(() => {
             $("#id_search").val("")
             $("#id_search-label").text("")
-            $("#id_id").val('');
+            $("#id_id").val('')
             $("#id_description").text("")
-            $("#id_calories").val('');
-            $("#id_protein").val('');
-            $("#id_fat").val('');
-            $("#id_carb").val('');
-            $("#id_sugar").val('');
-            $("#id_fiber").val('');
-            $("#id_category").val('');
-            return false;
-        });
-
+            $("#id_calories").val('')
+            $("#id_protein").val('')
+            $("#id_fat").val('')
+            $("#id_carb").val('')
+            $("#id_sugar").val('')
+            $("#id_fiber").val('')
+            $("#id_category").val('')
+            return false
+        })
     </script>
 {% endblock scripts %}

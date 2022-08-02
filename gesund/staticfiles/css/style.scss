@@ -68,6 +68,25 @@ main {
   overflow-y: auto;
 }
 
+/* #main-toast -------------------------------------- */
+#main-toast {
+  position: fixed;
+  z-index: 9999;
+  bottom: 5px;
+  right: 5px;
+
+  .toast {
+    max-width: 280px;
+    border: 0;
+  }
+
+  .toast-body {
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+}
+
 /* @media screen and (max-width: 767px) -------------------------------------- */
 @media screen and (max-width: 767px) {
   #ui-datepicker-div {

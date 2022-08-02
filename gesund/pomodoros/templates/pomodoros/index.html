@@ -91,7 +91,7 @@
                         <h5 class="mb-0">Did you know?</h5>
                     </div>
                     <div class="card-body">
-                        <img src="{% static '/images/'  %}{{ did_you_know.img }}"
+                        <img src="{% static '/images/' %}{{ did_you_know.img }}"
                              class="img-fluid"
                              alt="Did you know?">
                         <p class="mb-0">
@@ -103,47 +103,9 @@
         </div>
         <!-- ends .row-second -->
 
-        <!-- .row-third -->
-        {% if pomodoro_list %}
-            <div class="row mt-4 mb-4 row-third">
-                <div class="col-lg-8">
-                    <div class="card">
-                        <div class="card-header card-header-menu">
-                            Pomodoro history
-                        </div>
-                        <div class="card-body">
-                            <canvas id="myPomodoro"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-        <!-- ends .row-third -->
-
         <div class="spacer mb-4"></div>
     </div>
 
     <!-- Modal -->
     {% include './modal_pomodoro_info.html' %}
 {% endblock main %}
-
-{% block scripts %}
-    <script>
-        const myPomodoro = new Chart(
-            document.getElementById('myPomodoro'),
-            {
-                type: 'line',
-                data: {
-                    labels: [{% for i in pomodoro_list_chart %}'{{ i.datestamp|date:"Y-m-d" }}', {% endfor %}],
-                    datasets: [{
-                        label: '',
-                        backgroundColor: '#90EE90',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: [{% for i in pomodoro_list_chart %}{{ i.short_break }}, {% endfor %}],
-                    }]
-                },
-                options: {}
-            }
-        );
-    </script>
-{% endblock scripts %}

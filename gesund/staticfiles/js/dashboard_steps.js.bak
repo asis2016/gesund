@@ -1,0 +1,47 @@
+<div class="chart-container">
+    <canvas id="mySteps" height="200px"></canvas>
+</div>
+
+
+const mySteps = new Chart(
+                document.getElementById('mySteps'),
+                {
+                    type: 'line',
+                    data: {
+                        labels: [{% for i in steps_list %}'{{ i.datestamp|date:"Y-m-d" }}', {% endfor %}],
+                        datasets: [
+                            {
+                                data: [{% for i in steps_list %}{{ i.step_count }}, {% endfor %}],
+                                //data: [8000, 250, 7200]
+                                label: '',
+                                backgroundColor: '#dd7e77',
+                                borderColor: '#f06270',
+                                pointRadius: 0,
+                                borderWidth: 1.5,
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        tooltips: {
+                            enabled: false,
+                            display: false,
+                        },
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
+                            title: {
+                                display: false,
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    display: false
+                                }
+                            }
+                        },
+                    }
+                }
+            );

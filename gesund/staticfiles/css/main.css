@@ -66,6 +66,22 @@ main .data-table-list tbody tr td {
   overflow-y: auto;
 }
 
+/* #main-toast -------------------------------------- */
+#main-toast {
+  position: fixed;
+  z-index: 9999;
+  bottom: 5px;
+  right: 5px;
+}
+#main-toast .toast {
+  max-width: 280px;
+  border: 0;
+}
+#main-toast .toast-body {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
 /* @media screen and (max-width: 767px) -------------------------------------- */
 @media screen and (max-width: 767px) {
   #ui-datepicker-div {
@@ -275,7 +291,8 @@ main .data-table-list tbody tr td {
   }
 
   #sidebar-sm {
-    width: 75px;
+    /*width: 75px;*/
+    width: 85px;
   }
   #sidebar-sm .logo {
     height: 50px;
@@ -348,6 +365,9 @@ main .data-table-list tbody tr td {
   font-weight: 300;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+#dashboard-container .card .card-footer {
+  height: 40px;
+}
 
 @media screen and (max-width: 767px) {
   #dashboard-container .alert-warning {
@@ -367,9 +387,6 @@ main .data-table-list tbody tr td {
   }
   #dashboard-container #dashboard-history .card-body .table {
     margin-bottom: 0;
-  }
-  #dashboard-container #dashboard-steps .card-body {
-    padding: 0;
   }
   #dashboard-container #dashboard-steps .card-body .alert {
     margin: 1rem;
@@ -437,9 +454,6 @@ main .data-table-list tbody tr td {
 #dashboard-container #dashboard-pomodoro,
 #dashboard-container #dashboard-history {
     margin-top: 1.5rem !important;
-  }
-  #dashboard-container .card .card-footer {
-    height: 45px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -811,7 +825,7 @@ main .data-table-list tbody tr td {
   float: left;
   border: 1px solid #d4d4d4;
   border-radius: 2px;
-  padding: 20px;
+  padding: 10px;
   position: relative;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);

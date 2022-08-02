@@ -55,14 +55,6 @@
 
         <div class="mt-5"></div>
     </div>
-
-    {# todo: refactor #}
-    <style>
-        .sparkline-dashboard {
-            text-align: center;
-            margin: 1rem 0rem;
-        }
-    </style>
 {% endblock main %}
 
 {% block scripts %}
@@ -70,7 +62,7 @@
         <script>
             const STEPS_SPARKLINE_LIST = [{% for i in calories_list %}{{ i.total_calories }}, {% endfor %}]
             let sparklineCalories = new Sparkline($('.sparkline-calories')[0], {
-                width: 250,
+                width: 180,
                 height: 100,
                 lineColor: '#92c1dc',
                 endColor: '#92c1dc'
@@ -83,7 +75,7 @@
         <script>
             const POMODORO_SPARKLINE_LIST = [{% for i in pomodoro_list %}{{ i.total_pomodoro }}, {% endfor %}]
             let sparklinePomodoro = new Sparkline($('.sparkline-pomodoro')[0], {
-                width: 250,
+                width: 180,
                 height: 100,
                 lineColor: '#92c1dc',
                 endColor: '#92c1dc'
@@ -96,7 +88,7 @@
         <script>
             const CALORIES_SPARKLINE_LIST = [{% for i in steps_list %}{{ i.step_count }}, {% endfor %}]
             let sparklineSteps = new Sparkline($('.sparkline-steps')[0], {
-                width: 250,
+                width: 180,
                 height: 100,
                 lineColor: '#92c1dc',
                 endColor: '#92c1dc'

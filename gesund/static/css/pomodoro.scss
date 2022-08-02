@@ -200,6 +200,23 @@
     .go-back-sm {
       display: block;
     }
+
+    .row-second {
+      .card-second {
+        .card-body {
+          display: flex;
+          justify-content: space-between;
+
+          div:first-child {
+
+          }
+
+          div:last-child {
+            margin-top: 0 !important;
+          }
+        }
+      }
+    }
   }
 
   .pomodoro-container-detail {

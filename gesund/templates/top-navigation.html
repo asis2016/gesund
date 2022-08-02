@@ -1,4 +1,6 @@
 {% load active_link_tags %}
+{% load static %}
+
 <!-- Top navigation LG-->
 <nav class="navbar navbar-expand navbar-light mb-4" id="top-navigation-lg">
     <ul class="navbar-nav">
@@ -11,7 +13,7 @@
             <a href="{% url 'contact-us' %}" class="nav-link">Contact us</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Privacy policy</a>
+            <a href="{% static 'docs/privacy_policy.html' %}" class="nav-link">Privacy policy</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{% url 'export-my-data' %}" class="nav-link">Export my data</a>

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block main %}
     <div class="container-fluid" id="profile-container">
         <!-- toast -->
@@ -82,7 +83,7 @@
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span>Birth date</span>
-                                    <span>{{ i.dob }}</span>
+                                    <span>{{ i.dob|date:'Y-m-d' }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span>Gender</span>

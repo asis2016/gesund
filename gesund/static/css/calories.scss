@@ -52,10 +52,6 @@
 
             .card-footer {
             }
-
-            .list-group {
-              overflow: hidden;
-            }
           }
 
         }
@@ -110,6 +106,11 @@
       #modal-food-search {
         .modal-body {
           padding: 0;
+
+          .list-group {
+            overflow: hidden;
+            border-radius: 0 !important;
+          }
         }
 
         .modal-close {

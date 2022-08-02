@@ -72,19 +72,7 @@
                     {# --- Footer ends --- #}
                 </div>
 
-                {# todo: refactor #}
-                <div class="card mt-3">
-                    <div class="card-header">
-                        <b>Stats</b>
-                    </div>
-                    <div class="card-body">
-                        {{ total_pomodoro }}
-
-                    </div>
-                </div>
-
-                {# todo: refactor#}
-                <div class="card mt-3">
+                <div class="card mt-3 card-second">
                     <div class="card-body p-2 w-100">
                         {# add new #}
                         <div>
@@ -125,24 +113,3 @@
         <div class="spacer mb-4"></div>
     </div>
 {% endblock main %}
-
-{% block scripts %}
-    <script>
-        const myPomodoro = new Chart(
-            document.getElementById('myPomodoro'),
-            {
-                type: 'line',
-                data: {
-                    labels: [{% for i in pomodoro_list_chart %}'{{ i.datestamp|date:"Y-m-d" }}', {% endfor %}],
-                    datasets: [{
-                        label: '',
-                        backgroundColor: '#90EE90',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: [{% for i in pomodoro_list_chart %}{{ i.short_break }}, {% endfor %}],
-                    }]
-                },
-                options: {}
-            }
-        );
-    </script>
-{% endblock scripts %}

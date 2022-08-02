@@ -100,7 +100,7 @@
                         <h5 class="mb-0">Did you know?</h5>
                     </div>
                     <div class="card-body">
-                        <img src="{% static '/images/'  %}{{ did_you_know.img }}"
+                        <img src="{% static '/images/' %}{{ did_you_know.img }}"
                              class="img-fluid"
                              alt="Did you know?">
                         <p class="mb-0">
@@ -114,4 +114,21 @@
 
         <div class="spacer mb-4"></div>
     </div>
+
+
+
 {% endblock main %}
+
+{% block scripts %}
+    {% if steps_list_chart_not_possbile %}
+        <script>
+            const CALORIES_SPARKLINE_LIST = [{% for i in steps_list %}{{ i.step_count }}, {% endfor %}]
+            let sparklineSteps = new Sparkline($('.sparkline-steps')[0], {
+                width: 220,
+                lineColor: '#92c1dc',
+                endColor: '#92c1dc'
+            })
+            sparklineSteps.draw(CALORIES_SPARKLINE_LIST)
+        </script>
+    {% endif %}
+{% endblock scripts %}
