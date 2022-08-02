@@ -41,5 +41,4 @@ def history_calories_delete(sender, instance, **kwargs):
 def create_calories_xp(sender, instance, created, **kwargs):
     """ Creates XP after creating calories instance. """
     if created:
-        cal = int(instance.calories)
-        XP.objects.create(xp=cal, author=instance.author)
+        XP.objects.create(xp=1, author=instance.author)

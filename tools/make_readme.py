@@ -7,6 +7,9 @@ OUTPUT_MD = '../README.md'
 
 list_md = [
     'introduction',
+
+    'docker',
+
     'database',
     'rest_api',
     'tests',
@@ -14,6 +17,7 @@ list_md = [
     'uml_use_case_diagram',
     
     'wireframe',
+    'mockup',
     
     'user_flow',
     'end_user_documentation',

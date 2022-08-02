@@ -1,6 +1,7 @@
-from django.test import TransactionTestCase
 from django.contrib.auth import get_user_model
+from django.test import TransactionTestCase
 from django.urls import reverse
+
 from .models import XP
 
 
@@ -15,7 +16,7 @@ class XPModelTest(TransactionTestCase):
         )
 
         self.xp = XP.objects.create(
-            xp=1000,
+            xp=1,
             author=self.user
         )
 

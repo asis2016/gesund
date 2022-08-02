@@ -36,5 +36,4 @@ def history_pomodoro_delete(sender, instance, **kwargs):
 def create_pomodoro_xp(sender, instance, created, **kwargs):
     if created:
         """ Creates XP after creating pomodoro instance. """
-        # 1 pomodoro = 25 minutes = 25 xps
-        XP.objects.create(xp=25, author=instance.author)
+        XP.objects.create(xp=1, author=instance.author)

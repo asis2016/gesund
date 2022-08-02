@@ -6,6 +6,6 @@ from xps.models import XP
 
 @receiver(post_save, sender=User)
 def create_xps(sender, instance, created, **kwargs):
-    """ User earns 1000 XP when they sign up. """
+    """ User earns 1 XP when they sign up. """
     if created:
-        XP.objects.create(xp=1000, author=instance)
+        XP.objects.create(xp=1, author=instance)

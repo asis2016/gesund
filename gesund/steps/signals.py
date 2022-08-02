@@ -1,8 +1,9 @@
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from .models import Steps
-from xps.models import XP
 from history.models import History
+from xps.models import XP
+
+from .models import Steps
 
 
 @receiver(post_save, sender=Steps)
@@ -43,4 +44,4 @@ def history_steps_delete(sender, instance, **kwargs):
 def create_steps_xp(sender, instance, created, **kwargs):
     if created:
         """ Creates XP after creating steps instance. """
-        XP.objects.create(xp=instance.step_count, author=instance.author)
+        XP.objects.create(xp=1, author=instance.author)

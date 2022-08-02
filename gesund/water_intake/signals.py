@@ -41,5 +41,5 @@ def history_water_intake_delete(sender, instance, **kwargs):
 def create_water_intake(sender, instance, created, **kwargs):
     """ Creates XP after creating water_intake instance. """
     if created:
-        ml = int(instance.drink_progress * 1000)
-        XP.objects.create(xp=ml, author=instance.author)
+        #ml = int(instance.drink_progress * 1000)
+        XP.objects.create(xp=1, author=instance.author)
