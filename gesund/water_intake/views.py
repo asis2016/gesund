@@ -35,7 +35,8 @@ class WaterIntakeCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView)
     model = WaterIntake
     template_name = 'water_intake/add.html'
     fields = ('datestamp', 'drink_progress')
-    success_message = 'Water intake successfully.'
+    success_message = '<p class="mb-0">Water intake successfully.</p>' \
+                      '<p class="mb-0">1 XP rewarded!</p>'
 
     def form_valid(self, form):
         form.instance.author = self.request.user

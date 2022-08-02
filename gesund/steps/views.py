@@ -34,7 +34,8 @@ class StepsCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Steps
     template_name = 'steps/add.html'
     fields = ('datestamp', 'step_count')
-    success_message = 'Steps added successfully.'
+    success_message = '<p class="mb-0">Steps added successfully.</p>' \
+                      '<p class="mb-0">1 XP rewarded!</p>'
 
     def form_valid(self, form):
         form.instance.author = self.request.user

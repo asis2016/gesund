@@ -9,7 +9,8 @@ class CalorieIntakeCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateVie
     """ Create calorie intake. """
     model = CalorieIntake
     template_name = 'calories/add.html'
-    success_message = 'Food intake successfully.'
+    success_message = '<p class="mb-0">Food intake successfully.</p>' \
+                      '<p class="mb-0">1 XP rewarded!</p>'
     fields = ('datestamp', 'food', 'consume', 'calories', 'protein', 'fat', 'carb', 'sugar', 'fiber', 'food_detail_ref',
               'description')
 

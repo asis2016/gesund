@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import XPsTemplateView
+
+from .views import XPsListView
 
 urlpatterns = [
-    path('', XPsTemplateView.as_view(), name='xps-index')
+    path('', XPsListView.as_view(), name='xps-index')
 ]
