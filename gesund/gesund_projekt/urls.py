@@ -32,5 +32,5 @@ urlpatterns = [
     #
 ]
 
-#handler404 = "dashboard.views.error_404"
-#handler500 = "dashboard.views.error_500"
+handler404 = "dashboard.views.error_404"
+handler500 = "dashboard.views.error_500"

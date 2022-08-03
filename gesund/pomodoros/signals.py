@@ -34,6 +34,11 @@ def history_pomodoro_delete(sender, instance, **kwargs):
 
 @receiver(post_save, sender=Pomodoro)
 def create_pomodoro_xp(sender, instance, created, **kwargs):
+    """ Creates XP after creating pomodoro instance. """
     if created:
-        """ Creates XP after creating pomodoro instance. """
-        XP.objects.create(xp=1, author=instance.author)
+        XP.objects.create(xp=1, author=instance.author, referer_app_id=f'pomodoro_{instance.id}')
+
+
+@receiver(post_delete, sender=Pomodoro)
+def delete_pomodoro_xp(sender, instance, **kwargs):
+    XP.objects.filter(referer_app_id=f'pomodoro_{instance.id}').delete()

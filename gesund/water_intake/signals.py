@@ -1,8 +1,9 @@
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from .models import WaterIntake
-from xps.models import XP
 from history.models import History
+from xps.models import XP
+
+from .models import WaterIntake
 
 
 @receiver(post_save, sender=WaterIntake)
@@ -41,5 +42,10 @@ def history_water_intake_delete(sender, instance, **kwargs):
 def create_water_intake(sender, instance, created, **kwargs):
     """ Creates XP after creating water_intake instance. """
     if created:
-        #ml = int(instance.drink_progress * 1000)
-        XP.objects.create(xp=1, author=instance.author)
+        # ml = int(instance.drink_progress * 1000)
+        XP.objects.create(xp=1, author=instance.author, referer_app_id=f'water_intake_{instance.id}')
+
+
+@receiver(post_delete, sender=WaterIntake)
+def delete_water_intake_xp(sender, instance, **kwargs):
+    XP.objects.filter(referer_app_id=f'water_intake_{instance.id}').delete()

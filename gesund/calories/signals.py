@@ -1,8 +1,9 @@
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from xps.models import XP
-from .models import CalorieIntake
 from history.models import History
+from xps.models import XP
+
+from .models import CalorieIntake
 
 
 @receiver(post_save, sender=CalorieIntake)
@@ -41,4 +42,9 @@ def history_calories_delete(sender, instance, **kwargs):
 def create_calories_xp(sender, instance, created, **kwargs):
     """ Creates XP after creating calories instance. """
     if created:
-        XP.objects.create(xp=1, author=instance.author)
+        XP.objects.create(xp=1, author=instance.author, referer_app_id=f'calories_{instance.id}')
+
+
+@receiver(post_delete, sender=CalorieIntake)
+def delete_calories_xp(sender, instance, **kwargs):
+    XP.objects.filter(referer_app_id=f'calories_{instance.id}').delete()

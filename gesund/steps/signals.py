@@ -42,6 +42,11 @@ def history_steps_delete(sender, instance, **kwargs):
 
 @receiver(post_save, sender=Steps)
 def create_steps_xp(sender, instance, created, **kwargs):
+    """ Creates XP after creating steps instance. """
     if created:
-        """ Creates XP after creating steps instance. """
-        XP.objects.create(xp=1, author=instance.author)
+        XP.objects.create(xp=1, author=instance.author, referer_app_id=f'steps_{instance.id}')
+
+
+@receiver(post_delete, sender=Steps)
+def delete_steps_xp(sender, instance, **kwargs):
+    XP.objects.filter(referer_app_id=f'steps_{instance.id}').delete()
