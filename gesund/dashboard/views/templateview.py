@@ -9,6 +9,7 @@ from .pomodoro import get_pomodoro_list
 from .quick_stats import get_quick_stats
 from .steps import get_steps_list
 from .water_intake import get_water_intake
+from .water_intake import get_last_progress
 from .weights import get_weight_list
 
 
@@ -22,6 +23,8 @@ class DashboardTemplateview(LoginRequiredMixin, TemplateView):
         context['calories_list'] = get_calorie_intake(self.request.user)
         context['steps_list'] = get_steps_list(self.request.user)
         context['water_intake_list'] = get_water_intake(self.request.user)
+        context['water_intake_last_progress'] = get_last_progress(self.request.user)
+
 
         bmi = get_bmi(self.request.user)
         context['bmi'] = bmi

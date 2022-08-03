@@ -13,24 +13,23 @@ SECRET_KEY = 'django-insecure-!#y+jr)c0jd!h))mt=w@a07k5cmx47ls*#0hssnteiie*xod+5
 
 #
 load_dotenv('.env')
+ENVIRONMENT = os.environ.get('ENVIRONMENT')
 REST_API_URL = os.environ.get('REST_API_URL')
+DB_HOST = os.environ.get('DB_HOST')
 DB_DATABASE = os.environ.get('DB_DATABASE')
+DB_PORT = os.environ.get('DB_PORT')
 DB_USER = os.environ.get('DB_USER')
 DB_PASS = os.environ.get('DB_PASS')
 REST_API_BEARER_TOKEN = os.environ.get('REST_API_BEARER_TOKEN')
 CORS_ORIGIN_WHITELIST_ENV = os.environ.get('CORS_ORIGIN_WHITELIST_ENV')
-ENVIRONMENT = os.environ.get('ENVIRONMENT')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# if ENVIRONMENT == 'prod':
-#     DEBUG = False
-# else:
-#     DEBUG = True
-
-DEBUG = True
+if ENVIRONMENT == 'prod':
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS_ENV').split()
-# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -64,15 +63,12 @@ INSTALLED_APPS = [
     'water_intake.apps.WaterIntakeConfig',
     'weights.apps.WeightsConfig',
     'xps.apps.XpsConfig',
-    # 'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 
-    #
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 
     'django.middleware.common.CommonMiddleware',
@@ -114,8 +110,8 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
         'NAME': DB_DATABASE,
         'USER': DB_USER,
         'PASSWORD': DB_PASS,
@@ -172,16 +168,18 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# if ENVIRONMENT == 'prod':
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+if ENVIRONMENT == 'prod':
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # for prod
+
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #
@@ -204,7 +202,6 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 # EMAIL_USE_TLS = True
 EMAIL_USE_SSL = True
-#
 RECEIVE_EMAIL_AT = os.environ.get('RECEIVE_EMAIL_AT')
 
 #

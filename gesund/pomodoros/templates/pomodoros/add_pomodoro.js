@@ -27,7 +27,7 @@ const pomodoroAlert = (status) => {
 
     if (status === "success") {
         alertStatus = "alert-success"
-        msg = "Nice! One pomodoro completed."
+        msg = "Nice! 1 pomodoro added."
     }
 
     const _HTML = `<div class="alert ${alertStatus}" role="alert"><p class="m-0">${msg}</p></div>`

@@ -377,6 +377,29 @@ main .data-table-list tbody tr td {
   text-align: center;
   margin: 1rem 0rem;
 }
+#dashboard-container .water-bottle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+#dashboard-container .water-bottle .bottle {
+  height: 150px;
+  width: 66px;
+  z-index: 11;
+  position: relative;
+}
+#dashboard-container .water-bottle .bottle .drink-badge {
+  position: absolute;
+}
+#dashboard-container .water-bottle .drink-progress-fill {
+  width: 66px;
+  background: #8fbfde;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
 
 @media screen and (max-width: 767px) {
   #dashboard-container .alert-warning {

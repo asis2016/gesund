@@ -40,7 +40,7 @@ class StepsCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
                       '<p class="mb-0">1 XP rewarded!</p>'
 
     def get_success_message(self, cleaned_data):
-        return messages.success(self.request, 'updated', extra_tags='bg-success')
+        return messages.success(self.request, self.success_message, extra_tags='bg-success')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -53,10 +53,9 @@ class StepsUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     context_object_name = 'steps_obj'
     template_name = 'steps/update.html'
     fields = ('datestamp', 'step_count')
-    success_message = ''
 
     def get_success_message(self, cleaned_data):
-        return messages.success(self.request, 'updated', extra_tags='bg-warning')
+        return messages.success(self.request, 'Steps updated successfully.', extra_tags='bg-warning')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -70,7 +69,5 @@ class StepsDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     template_name = 'steps/delete.html'
     success_url = reverse_lazy('steps-index')
 
-    success_message = ''
-
     def get_success_message(self, cleaned_data):
-        return messages.error(self.request, 'delete', extra_tags='bg-danger')
+        return messages.error(self.request, 'Steps record deleted!', extra_tags='bg-danger')

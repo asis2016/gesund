@@ -26,7 +26,7 @@
 
         <div class="row">
             <!--Calories-->
-            <div class="col-lg-6 mt-5" id="dashboard-calories">
+            <div class="col-lg-6 mt-5 d-none" id="dashboard-calories">
                 {% include 'dashboard/calories.html' %}
             </div>
             <!--Water-->
@@ -96,5 +96,39 @@
             sparklineSteps.draw(CALORIES_SPARKLINE_LIST)
         </script>
     {% endif %}
-{% endblock scripts %}
 
+    {% if water_intake_last_progress %}
+        <script>
+            /**
+             * Draw bottle: Daily water goal vs today's water goal.
+             * */
+            const DAILY_GOAL =
+            {{ water_intake_last_progress.0.0 }}
+            const LAST_DRINK =
+            {{ water_intake_last_progress.0.1 }}
+
+            const drawBottle = (dailyGoal, lastDrink) => {
+                drinkProgress = ((lastDrink / dailyGoal) * 100).toFixed(2)
+
+                $(".water-bottle .bottle").css({
+                    "background": `url('{% static 'images/bottle.png' %}')`,
+                    "background-size": "contain",
+                    "background-repeat": "no-repeat",
+                })
+
+                // 27px and 10px are gutter height.
+                $(".water-bottle .drink-progress-fill").css({
+                    height: `calc(${drinkProgress}% - 27px)`
+                })
+
+                $(".water-bottle .drink-badge").css({
+                    bottom: `calc(${drinkProgress}% - 27px - 10px)`,
+                    left: "80px"
+                })
+                $(".water-bottle .drink-badge").text(`${drinkProgress}%`)
+            }
+
+            drawBottle(DAILY_GOAL, LAST_DRINK)
+        </script>
+    {% endif %}
+{% endblock scripts %}

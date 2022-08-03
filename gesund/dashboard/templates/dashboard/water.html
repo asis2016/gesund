@@ -1,3 +1,4 @@
+{% load static %}
 <div class="card">
     <div class="card-header card-header-menu">
         <h6>Water intake</h6>
@@ -41,9 +42,20 @@
             </div>
         </div>
     </div>
+
     <!-- water_card_content -->
     <div class="collapse show" id="water_card_content">
         <div class="card-body collapse show">
+
+            {% if water_intake_last_progress %}
+                <div class="water-bottle">
+                    <div class="bottle">
+                        <span class="badge bg-primary drink-badge"></span>
+                    </div>
+                    <span class="drink-progress-fill"></span>
+                </div>
+            {% endif %}
+
             {% if water_intake_list %}
                 <table class="table table-hover">
                     <thead>

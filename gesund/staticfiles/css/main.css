@@ -106,6 +106,10 @@ main .data-table-list tbody tr td {
     font-size: 3.5rem;
   }
 }
+.modal-info .modal-body {
+  padding: 10px;
+}
+
 /* about-container -------------------------------------------------------------------------- */
 #about-container p {
   text-align: justify;
@@ -161,9 +165,6 @@ main .data-table-list tbody tr td {
   #calories-container .row-second .col-first .card .card-body .alert {
     margin: 1rem;
   }
-  #calories-container .row-second .col-first .card .card-body .list-group {
-    overflow: hidden;
-  }
   #calories-container .row-second .col-second {
     margin-top: 1rem !important;
   }
@@ -194,6 +195,10 @@ main .data-table-list tbody tr td {
   }
   #calories-container.calories-container-add #modal-food-search .modal-body, #calories-container.calories-container-update #modal-food-search .modal-body {
     padding: 0;
+  }
+  #calories-container.calories-container-add #modal-food-search .modal-body .list-group, #calories-container.calories-container-update #modal-food-search .modal-body .list-group {
+    overflow: hidden;
+    border-radius: 0 !important;
   }
   #calories-container.calories-container-add #modal-food-search .modal-close, #calories-container.calories-container-update #modal-food-search .modal-close {
     position: absolute;
@@ -296,7 +301,7 @@ main .data-table-list tbody tr td {
   }
   #sidebar-sm .logo {
     height: 50px;
-    padding-left: 6px;
+    padding-left: 12px;
     margin-top: 5px !important;
   }
   #sidebar-sm ul {
@@ -367,6 +372,33 @@ main .data-table-list tbody tr td {
 }
 #dashboard-container .card .card-footer {
   height: 40px;
+}
+#dashboard-container .sparkline-dashboard {
+  text-align: center;
+  margin: 1rem 0rem;
+}
+#dashboard-container .water-bottle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+#dashboard-container .water-bottle .bottle {
+  height: 150px;
+  width: 66px;
+  z-index: 11;
+  position: relative;
+}
+#dashboard-container .water-bottle .bottle .drink-badge {
+  position: absolute;
+}
+#dashboard-container .water-bottle .drink-progress-fill {
+  width: 66px;
+  background: #8fbfde;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
 }
 
 @media screen and (max-width: 767px) {
@@ -749,6 +781,13 @@ main .data-table-list tbody tr td {
   }
   .list-by-date-pomodoro-container .go-back-sm {
     display: block;
+  }
+  .list-by-date-pomodoro-container .row-second .card-second .card-body {
+    display: flex;
+    justify-content: space-between;
+  }
+  .list-by-date-pomodoro-container .row-second .card-second .card-body div:last-child {
+    margin-top: 0 !important;
   }
 
   .pomodoro-container-detail .btn-danger {

@@ -18,6 +18,39 @@
       height: 40px;
     }
   }
+
+  .sparkline-dashboard {
+    text-align: center;
+    margin: 1rem 0rem;
+  }
+
+  .water-bottle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    .bottle {
+      height: 150px;
+      width: 66px;
+      z-index: 11;
+      position: relative;
+
+      .drink-badge {
+        position: absolute;
+      }
+    }
+
+    .drink-progress-fill {
+      width: 66px;
+      background: #8fbfde;
+      position: absolute;
+      bottom: 0;
+      z-index: 1;
+    }
+  }
+
 }
 
 @media screen and (max-width: 767px) {
@@ -68,6 +101,7 @@
         .table {
           margin-bottom: 0;
         }
+
       }
     }
 

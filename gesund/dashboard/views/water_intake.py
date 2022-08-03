@@ -19,5 +19,18 @@ def get_water_intake(author):
     return daily_water_intake
 
 
+def get_last_progress(author):
+    """ Get last drinking progress for drawBottle(). """
+    last_progress = []
+
+    if WaterIntake.objects.all().filter(author=author):
+        goal = Goals.objects.filter(author=author).last().water
+        last_drink = WaterIntake.objects.filter(author=author).last().drink_progress
+        last_progress.append([goal, last_drink])
+
+    return last_progress
+
+
 if __name__ == '__main__':
     get_water_intake(sys.argv)
+    get_last_progress(sys.argv)

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
@@ -42,21 +43,27 @@ class WeightCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class WeightUpdateView(LoginRequiredMixin, UpdateView):
+class WeightUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """ Update weight. """
     model = Weight
     context_object_name = 'weight_obj'
     template_name = 'weights/update.html'
     fields = ('datestamp', 'weight')
 
+    def get_success_message(self, cleaned_data):
+        return messages.success(self.request, 'Weight updated successfully.', extra_tags='bg-warning')
+
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
 
-class WeightDeleteView(LoginRequiredMixin, DeleteView):
+class WeightDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     """ Delete weight. """
     model = Weight
     context_object_name = 'weight_obj'
     template_name = 'weights/delete.html'
     success_url = reverse_lazy('weight-index')
+
+    def get_success_message(self, cleaned_data):
+        return messages.success(self.request, 'Weight record deleted!', extra_tags='bg-danger')

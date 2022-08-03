@@ -1,5 +1,6 @@
 from calories.models import CalorieIntake
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView
@@ -11,6 +12,10 @@ class CalorieIntakeCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateVie
     template_name = 'calories/add.html'
     success_message = '<p class="mb-0">Food intake successfully.</p>' \
                       '<p class="mb-0">1 XP rewarded!</p>'
+
+    def get_success_message(self, cleaned_data):
+        return messages.success(self.request, self.success_message, extra_tags='bg-success')
+
     fields = ('datestamp', 'food', 'consume', 'calories', 'protein', 'fat', 'carb', 'sugar', 'fiber', 'food_detail_ref',
               'description')
 

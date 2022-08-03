@@ -38,18 +38,24 @@ class WaterIntakeCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView)
     success_message = '<p class="mb-0">Water intake successfully.</p>' \
                       '<p class="mb-0">1 XP rewarded!</p>'
 
+    def get_success_message(self, cleaned_data):
+        return messages.success(self.request, self.success_message, extra_tags='bg-success')
+
     def form_valid(self, form):
         form.instance.author = self.request.user
         messages.success(self.request, 'SAVED!')
         return super().form_valid(form)
 
 
-class WaterIntakeUpdateView(LoginRequiredMixin, UpdateView):
+class WaterIntakeUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """ Update water intake. """
     model = WaterIntake
     context_object_name = 'water_obj'
     template_name = 'water_intake/update.html'
     fields = ['datestamp', 'drink_progress']
+
+    def get_success_message(self, cleaned_data):
+        return messages.success(self.request, 'Water intake updated successfully.', extra_tags='bg-warning')
 
     def dispatch(self, request, *args, **kwargs):
         """ make user only this user is allowed! """
@@ -63,9 +69,12 @@ class WaterIntakeUpdateView(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
-class WaterIntakeDeleteView(LoginRequiredMixin, DeleteView):
+class WaterIntakeDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     """ Delete water intake. """
     model = WaterIntake
     context_object_name = 'water_obj'
     template_name = 'water_intake/delete.html'
     success_url = reverse_lazy('water-index')
+
+    def get_success_message(self, cleaned_data):
+        return messages.success(self.request, 'Water intake record deleted!', extra_tags='bg-danger')
