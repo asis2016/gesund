@@ -111,10 +111,6 @@ main .data-table-list tbody tr td {
 }
 
 /* about-container -------------------------------------------------------------------------- */
-#about-container p {
-  text-align: justify;
-}
-
 @media screen and (max-width: 767px) {
   #contactus-container .row-first nav {
     display: none;
@@ -989,6 +985,10 @@ main .data-table-list tbody tr td {
 @media screen and (max-width: 767px) {
   .col-page-header nav {
     display: none;
+  }
+
+  .col-lg-8 {
+    margin-top: 0 !important;
   }
 }
 /* leaderboards-container -------------------------------------------------------------------------- */

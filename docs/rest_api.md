@@ -1,5 +1,8 @@
 ## REST API
 
+todo: what is rest api?
+todo: where it has been used?
+
 Basic Auth is used as Authorization mechanism.
 
 ```

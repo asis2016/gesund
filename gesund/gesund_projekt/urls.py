@@ -25,7 +25,7 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     path('steps/', include('steps.urls')),
     path('steps/', include('steps.urls')),
-    path('water-tracker/', include('water_intake.urls')),
+    path('water-intake/', include('water_intake.urls')),
     path('weight/', include('weights.urls')),
     path('xps/', include('xps.urls')),
 

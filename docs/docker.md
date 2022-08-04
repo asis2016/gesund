@@ -206,40 +206,4 @@ mysql> show databases;
 +--------------------+
 5 rows in set (0.00 sec)
 ```
-
-```shell
-mysql > use gesund;
-mysql > show tables;
-
-+-----------------------------+
-| Tables_in_gesund            |
-+-----------------------------+
-| aboutus_contactus           |
-| accounts_usersignlog        |
-| auth_group                  |
-| auth_group_permissions      |
-| auth_permission             |
-| auth_user                   |
-| auth_user_groups            |
-| auth_user_user_permissions  |
-| calories_caloriecategory    |
-| calories_caloriefooddetail  |
-| calories_calorieintake      |
-| challenges_challenge        |
-| django_admin_log            |
-| django_content_type         |
-| django_migrations           |
-| django_session              |
-| goals_goals                 |
-| history_history             |
-| pomodoros_pomodoro          |
-| postpilottest_postpilottest |
-| profiles_profile            |
-| steps_steps                 |
-| water_intake_waterintake    |
-| weights_weight              |
-| xps_xp                      |
-+-----------------------------+
-25 rows in set (0.00 sec)
-```
  

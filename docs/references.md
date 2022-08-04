@@ -8,7 +8,7 @@ Contributions are always welcome! please contact the author at info@amaharjan.on
 
 ## License
 
-[MIT](./LICENSE)
+This project is licensed under the [MIT license](./LICENSE).
 
 # References
 

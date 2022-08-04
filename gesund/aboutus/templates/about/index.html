@@ -5,37 +5,34 @@
     <div class="container-fluid" id="about-container">
         <div class="row">
             <div class="col">
-                <h1>About Gesund App</h1>
+                <h1>About the Gesund App</h1>
                 <p>
-                    This project is carried out as master thesis at university of koblenz-landau.
+                    This project is part of a master's thesis at the <a href="https://www.uni-koblenz-landau.de/en">University
+                    of Koblenz-Landau</a>.
                 </p>
                 <p>
-                    <a href="{% url 'contact-us' %}">Contact us if you have any questions.</a>
+                    Useful links:
                 </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <p>
-                    <a href="{% static 'docs/privacy_policy.html' %}">Privacy policy</a>
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <p>
-                    <a href="{% static 'docs/disclaimer.html' %}">Disclaimer</a>
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <p>
-                    <a href="{% static 'docs/license.html' %}">License</a>
-                </p>
+                <ul>
+                    <li>
+                        <a href="https://github.com/asis2016">Author</a>
+                    </li>
+                    <li>
+                        <a href="{% static 'docs/quick_start_guide.pdf' %}">Quick start guide</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contact-us' %}">Contact us</a>
+                    </li>
+                    <li>
+                        <a href="{% static 'docs/privacy_policy.html' %}">Privacy policy</a>
+                    </li>
+                    <li>
+                        <a href="{% static 'docs/disclaimer.html' %}">Disclaimer</a>
+                    </li>
+                    <li>
+                        <a href="{% static 'docs/license.html' %}">Project license</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

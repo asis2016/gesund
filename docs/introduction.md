@@ -1,16 +1,3 @@
-# Table of contents
-
-[Introduction]()
-
-- [Project organization](#)
-- [Tech stack](#)
-- [Installation](#)
-    - [GIT clone](#)
-    - [Python VENV](#)
-    - [MySQL Server](#)
-- [Tests](#tests)
-- [End-user documentation](#end-user-documentation)
-
 ## Introduction
 
 This project is carried out as the master thesis at University of Koblenz-Landau.
@@ -59,7 +46,7 @@ Once it has been activated, install `requirements.txt`.
 (venv) gesund_project/gesund $ pip install -r requirements.txt
 ```
 
-**MySQL database**
+### MySQL database
 
 The Gesund App requires MySQL database. Hence, you should create:
 
@@ -67,7 +54,13 @@ The Gesund App requires MySQL database. Hence, you should create:
 2. MySQL username: `your_username`
 3. MySQL password: `your_password`
 
-**Configure `.env` file**
+#### phpMyAdmin
+
+todo: step-by-step phpMyAdmin `gesund` setup
+
+### `.env` file
+
+The project depends on .env file.
 
 ```shell
 (venv) gesund_project/gesund $ touch .env

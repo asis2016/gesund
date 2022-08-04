@@ -6,15 +6,16 @@ _LOC = '../docs'
 OUTPUT_MD = '../README.md'
 
 list_md = [
+    'toc',
     'introduction',
-
     'docker',
 
+    'uml_use_case_diagram',
     'database',
     'rest_api',
     'tests',
 
-    'uml_use_case_diagram',
+
     
     'wireframe',
     'mockup',

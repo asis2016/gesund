@@ -270,11 +270,6 @@ text: 363D47
   z-index: 400;
 }
 
-/* about-container -------------------------------------------------------------------------- */
-#about-container p {
-  text-align: justify;
-}
-
 /* history -------------------------------------------------------------------------- */
 .bg-CREATE, .bg-REWARDED {
   background: #198754 !important;

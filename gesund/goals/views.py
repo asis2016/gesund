@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import TemplateView
@@ -22,7 +23,9 @@ class GoalsUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     context_object_name = 'goals_obj'
     template_name = 'goals/update.html'
     fields = ('calories', 'steps', 'water', 'weight',)
-    success_message = 'Goals updated successfully.'
+
+    def get_success_message(self, cleaned_data):
+        return messages.success(self.request, 'Goals updated successfully.', extra_tags='bg-warning')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
