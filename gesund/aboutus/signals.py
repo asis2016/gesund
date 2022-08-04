@@ -22,7 +22,8 @@ def history_contactus_create(sender, instance, created, **kwargs):
 def send_email(sender, instance, created, **kwargs):
     """ Sends email after ContactUs instance created. """
     if created:
-        _from = instance.author.email
+        author_email = instance.author.email
+        _from = settings.NOREPLY_EMAIL
         _to = settings.RECEIVE_EMAIL_AT
         _date = instance.datestamp
         email_subject = 'You have received an email'
@@ -30,7 +31,7 @@ def send_email(sender, instance, created, **kwargs):
         contact_message = instance.message
 
         text_content = 'This is an important message.'
-        html_content = f'<p>Hi there,</p><p>Email from: {_from}</p><p>Datetime: {_date}</p><p>Subject: {contact_subject}</p><p>Message: {contact_message}</p>'
+        html_content = f'<p>Hi there,</p><p>Email from: {author_email}</p><p>Datetime: {_date}</p><p>Subject: {contact_subject}</p><p>Message: {contact_message}</p>'
 
         msg = EmailMultiAlternatives(email_subject, text_content, _from, [_to])
         msg.attach_alternative(html_content, "text/html")
