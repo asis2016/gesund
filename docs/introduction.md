@@ -164,3 +164,15 @@ You should receive response:
 {"message":"Hello, world!"}
 ```
 
+### site.webmanifest
+
+Change `start_url` to a relevant URL.
+
+```shell
+{
+  "name": "Gesund APP",
+  "short_name": "GA",
+  "start_url": "http://192.168.2.110:8000/",
+  ....
+}
+```
