@@ -11,9 +11,9 @@ from django.template.loader import get_template
 def send_email(sender, instance, created, **kwargs):
     """ Sends email after account is created. """
     if created:
-        subject = 'Thank you for registering with Gesund App'
-        from_email = settings.EMAIL_HOST_USER
-        to = instance.email
+        subject = 'Thank you for registering with the Gesund App.'
+        _from = settings.DEFAULT_FROM_EMAIL
+        _to = instance.email
 
         try:
             d = {
@@ -26,7 +26,7 @@ def send_email(sender, instance, created, **kwargs):
             text_content = plaintext.render(d)  # 'This is an important message.'
             html_content = htmly.render(d)  # '<p>This is an <strong>important</strong> message.</p>'
 
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+            msg = EmailMultiAlternatives(subject, text_content, _from, [_to])
             msg.attach_alternative(html_content, "text/html")
 
             msg.send()
@@ -47,7 +47,6 @@ def send_email(sender, instance, created, **kwargs):
 #         #           ['receiver@email.com']
 #         #           )
 
-#         print('yoyoyo')
 #         send_mail(
 #             'Thank you for registering with Gesund App',
 #             f'Dear {instance.username}, bla bla bla.',
