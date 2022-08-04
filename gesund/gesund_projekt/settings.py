@@ -203,6 +203,7 @@ DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 # EMAIL_USE_TLS = True
 EMAIL_USE_SSL = True
 RECEIVE_EMAIL_AT = os.environ.get('RECEIVE_EMAIL_AT')
+NOREPLY_EMAIL = os.environ.get('NOREPLY_EMAIL')
 
 #
 handler404 = 'dashboard.views.error_404'
