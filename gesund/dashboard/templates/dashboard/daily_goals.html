@@ -15,6 +15,36 @@
     <!-- daily_goals_card_content -->
     <div class="collapse show" id="daily_goals_card_content">
         <div class="card-body collapse show">
+
+            {% if daily_goals_food_intake %}
+                <div class="calories-daily-goal">
+                    <svg class="progress-ring" width="150" height="150">
+                        <circle class="progress-circle"
+                                stroke="#cecece "
+                                stroke-width="5"
+                                fill="#f4f6f9"
+                                r="52"
+                                cx="75"
+                                cy="75"/>
+                    </svg>
+                    <img src="{% static 'images/apple.png' %}" height="50px" width="50px" alt="apple">
+                </div>
+
+                {% with cal=daily_goals_food_intake.0.0 %}
+                    {% if cal > 100 %}
+                        <p class="text-center text-danger">
+                            <i> Food overate: {{ cal }}% </i>
+                        </p>
+                    {% else %}
+                        <p class="text-center">
+                            <i> Food ate: {{ cal }}% </i>
+                        </p>
+                    {% endif %}
+
+                {% endwith %}
+                <hr>
+            {% endif %}
+
             {% if daily_goals %}
                 {% for i in daily_goals %}
                     <div class="pb-3">
@@ -40,6 +70,7 @@
                     </p>
                 </div>
             {% endif %}
+
         </div>
     </div>
     <!-- ends daily_goals_card_content -->

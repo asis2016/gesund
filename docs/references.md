@@ -23,6 +23,8 @@ This project is licensed under the [MIT license](./LICENSE).
 - Go back: `<i class="fa-solid fa-angle-left"></i>`
 
 ## Icons
+
+- <a href="https://www.flaticon.com/free-icons/fruit" title="fruit icons">Fruit icons created by Freepik - Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/bottle" title="bottle icons">Bottle icons created by Vitaly Gorbachev - Flaticon</a>
 - <a href='https://www.freepik.com/vectors/dairy-free'>Dairy free vector created by macrovector - www.freepik.com</a>
 - <a href='https://www.freepik.com/vectors/vegan'>Vegan vector created by studiogstock - www.freepik.com</a>

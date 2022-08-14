@@ -4,12 +4,13 @@ from utils import get_bmi, get_bmi_interpretation
 
 from .calorie_intake import get_calorie_intake
 from .daily_goals import get_daily_goals
+from .daily_goals_food_intake import get_daily_goals_food_intake
 from .goals_reminder import GoalsReminder
 from .pomodoro import get_pomodoro_list
 from .quick_stats import get_quick_stats
 from .steps import get_steps_list
-from .water_intake import get_water_intake
 from .water_intake import get_last_progress
+from .water_intake import get_water_intake
 from .weights import get_weight_list
 
 
@@ -25,13 +26,13 @@ class DashboardTemplateview(LoginRequiredMixin, TemplateView):
         context['water_intake_list'] = get_water_intake(self.request.user)
         context['water_intake_last_progress'] = get_last_progress(self.request.user)
 
-
         bmi = get_bmi(self.request.user)
         context['bmi'] = bmi
         context['bmi_interpretation'] = get_bmi_interpretation(bmi)
         context['weight_list'] = get_weight_list(self.request.user)
 
         context['daily_goals'] = get_daily_goals(self.request.user)
+        context['daily_goals_food_intake'] = get_daily_goals_food_intake(self.request.user)
         context['pomodoro_list'] = get_pomodoro_list(self.request.user)
 
         # Goals

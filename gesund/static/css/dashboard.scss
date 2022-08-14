@@ -1,4 +1,5 @@
 /* dashboard -------------------------------------------------------------------------- */
+
 #dashboard-container {
   #daily_goals_card_content,
   #water_card_content {
@@ -22,6 +23,28 @@
   .sparkline-dashboard {
     text-align: center;
     margin: 1rem 0rem;
+  }
+
+  .calories-daily-goal {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .progress-circle {
+      stroke: green;
+      transition: 0.35s stroke-dashoffset;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+
+    svg {
+      position: relative;
+    }
+
+    img {
+      position: absolute;
+    }
   }
 
   .water-bottle {

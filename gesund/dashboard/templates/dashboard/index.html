@@ -131,4 +131,30 @@
             drawBottle(DAILY_GOAL, LAST_DRINK)
         </script>
     {% endif %}
+
+    <script>
+        let circle = document.querySelector('circle')
+        let radius = circle.r.baseVal.value
+        let circumference = radius * 2 * Math.PI
+
+        circle.style.strokeDasharray = `${circumference} ${circumference}`
+        circle.style.strokeDashoffset = `${circumference}`
+
+        const setProgress = (percent) => {
+            let offset = 0
+
+            if (percent < 100) {
+                offset = circumference - percent / 100 * circumference
+            }
+
+            circle.style.strokeDashoffset = offset
+
+            if (percent > 100) {
+                circle.style.fill = "#dd414599"
+                circle.style.stroke = "#dd4145"
+            }
+        }
+
+        setProgress({{ daily_goals_food_intake.0.0 }})
+    </script>
 {% endblock scripts %}

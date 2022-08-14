@@ -71,7 +71,8 @@ mysql> show tables;
 | xps_xp                                                                                    | The table manages users' experience points (xps).                                                                                                                                                                                                                                                                                                                                                   | /xps/                                                                                                                                                              |
 | aboutus_contactus                                                                         | The table consists of the users' messages sent to the admin.                                                                                                                                                                                                                                                                                                                                        | /about/contact-us/                                                                                                                                                 | 
 | history_history                                                                           | The table provides a summary of actions taken by the user. The activities include: CREATE a resource, UPDATE the resource, DELETE the resource, and REWARD by the system.                                                                                                                                                                                                                           | /history/                                                                                                                                                          |
-| accounts_usersignlog                                                                      | The table logs users' login and logout activity. **Note:** only the Gesund App admin has access to view for analysis purposes.                                                                                                                                                                                                                                                                      | NA                                                                                                                                                                 |
+| accounts_usersignlog                                                                      | The table logs users' login and logout activity. **
+Note:** only the Gesund App admin has access to view for analysis purposes.                                                                                                                                                                                                                                                                      | NA                                                                                                                                                                 |
 
 <p align="center">
 <i>Table:todo Tables of the Gesund App database in logical order.</i>
@@ -79,25 +80,347 @@ mysql> show tables;
 
 ### Table details
 
-This table details section provides facts about the table and its associated fields. One way to see the detail is through the following command:
+This table details section provides facts about the table and its associated fields. One way to see the detail is
+through the following command:
 
 ```shell
 mysql > describe <table_name>;
 ```
 
-For instance, describing xps_xp table:
+#### Table: aboutus_contactus
+
+For instance, describe aboutus_contactus table:
 
 ```mysql
-mysql > describe xps_xp;
-+-----------+------+------+-----+---------+----------------+ 
-| Field     | Type | Null | Key | Default | Extra          | 
-+-----------+------+------+-----+---------+----------------+ 
-| id        | int  | NO   | PRI | NULL    | auto_increment | 
-| xp        | int  | YES  |     | NULL    |                | 
-| author_id | int  | NO   | MUL | NULL    |                | 
-| datestamp | date | NO   |     | NULL    |                | 
-+-----------+------+------+-----+---------+----------------+ 
-4 rows in set (0,00 sec)
+mysql > describe aboutus_contactus;
+
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int          | NO   | PRI | NULL    | auto_increment |
+| datestamp | date         | NO   |     | NULL    |                |
+| subject   | varchar(100) | NO   |     | NULL    |                |
+| message   | longtext     | NO   |     | NULL    |                |
+| author_id | int          | NO   | MUL | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+```
+
+#### Table: accounts_usersignlog
+
+```mysql
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int         | NO   | PRI | NULL    | auto_increment |
+| datestamp  | datetime(6) | NO   |     | NULL    |                |
+| log_status | varchar(10) | NO   |     | NULL    |                |
+| author_id  | int         | NO   | MUL | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+```
+
+#### Table: auth_group
+
+```mysql
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(150) | NO   | UNI | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+```
+
+#### Table: auth_group_permissions
+
+```mysql
++---------------+--------+------+-----+---------+----------------+
+| Field         | Type   | Null | Key | Default | Extra          |
++---------------+--------+------+-----+---------+----------------+
+| id            | bigint | NO   | PRI | NULL    | auto_increment |
+| group_id      | int    | NO   | MUL | NULL    |                |
+| permission_id | int    | NO   | MUL | NULL    |                |
++---------------+--------+------+-----+---------+----------------+
+```
+
+#### Table: auth_user
+
+```mysql
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | int          | NO   | PRI | NULL    | auto_increment |
+| password     | varchar(128) | NO   |     | NULL    |                |
+| last_login   | datetime(6)  | YES  |     | NULL    |                |
+| is_superuser | tinyint(1)   | NO   |     | NULL    |                |
+| username     | varchar(150) | NO   | UNI | NULL    |                |
+| first_name   | varchar(150) | NO   |     | NULL    |                |
+| last_name    | varchar(150) | NO   |     | NULL    |                |
+| email        | varchar(254) | NO   |     | NULL    |                |
+| is_staff     | tinyint(1)   | NO   |     | NULL    |                |
+| is_active    | tinyint(1)   | NO   |     | NULL    |                |
+| date_joined  | datetime(6)  | NO   |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+```
+
+#### Table: auth_user_groups
+
+```mysql
++----------+--------+------+-----+---------+----------------+
+| Field    | Type   | Null | Key | Default | Extra          |
++----------+--------+------+-----+---------+----------------+
+| id       | bigint | NO   | PRI | NULL    | auto_increment |
+| user_id  | int    | NO   | MUL | NULL    |                |
+| group_id | int    | NO   | MUL | NULL    |                |
++----------+--------+------+-----+---------+----------------+
+```
+
+#### Table: auth_user_user_permissions
+
+```mysql
++---------------+--------+------+-----+---------+----------------+
+| Field         | Type   | Null | Key | Default | Extra          |
++---------------+--------+------+-----+---------+----------------+
+| id            | bigint | NO   | PRI | NULL    | auto_increment |
+| user_id       | int    | NO   | MUL | NULL    |                |
+| permission_id | int    | NO   | MUL | NULL    |                |
++---------------+--------+------+-----+---------+----------------+
+```
+
+#### Table: calories_caloriecategory
+
+```mysql
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int          | NO   | PRI | NULL    | auto_increment |
+| category | varchar(100) | NO   |     | NULL    |                |
+| status   | tinyint(1)   | NO   |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+```
+
+#### Table: calories_caloriefooddetail
+
+```mysql
++-------------+------------+------+-----+---------+----------------+
+| Field       | Type       | Null | Key | Default | Extra          |
++-------------+------------+------+-----+---------+----------------+
+| id          | int        | NO   | PRI | NULL    | auto_increment |
+| food        | longtext   | NO   |     | NULL    |                |
+| description | longtext   | NO   |     | NULL    |                |
+| calories    | double     | NO   |     | NULL    |                |
+| protein     | double     | NO   |     | NULL    |                |
+| fat         | double     | NO   |     | NULL    |                |
+| carb        | double     | NO   |     | NULL    |                |
+| sugar       | double     | NO   |     | NULL    |                |
+| fiber       | double     | NO   |     | NULL    |                |
+| status      | tinyint(1) | NO   |     | NULL    |                |
+| category_id | int        | NO   | MUL | NULL    |                |
++-------------+------------+------+-----+---------+----------------+
+```
+
+#### Table: calories_calorieintake
+
+```mysql
++--------------------+----------+------+-----+---------+----------------+
+| Field              | Type     | Null | Key | Default | Extra          |
++--------------------+----------+------+-----+---------+----------------+
+| id                 | int      | NO   | PRI | NULL    | auto_increment |
+| datestamp          | date     | NO   |     | NULL    |                |
+| consume            | double   | NO   |     | NULL    |                |
+| author_id          | int      | NO   | MUL | NULL    |                |
+| food               | longtext | NO   |     | NULL    |                |
+| calories           | double   | NO   |     | NULL    |                |
+| carb               | double   | NO   |     | NULL    |                |
+| description        | longtext | YES  |     | NULL    |                |
+| fat                | double   | NO   |     | NULL    |                |
+| fiber              | double   | NO   |     | NULL    |                |
+| food_detail_ref_id | int      | NO   | MUL | NULL    |                |
+| protein            | double   | NO   |     | NULL    |                |
+| sugar              | double   | NO   |     | NULL    |                |
++--------------------+----------+------+-----+---------+----------------+
+```
+
+#### Table: challenges_challenge
+
+```mysql
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int         | NO   | PRI | NULL    | auto_increment |
+| start_date | datetime(6) | NO   |     | NULL    |                |
+| challenge  | varchar(15) | NO   |     | NULL    |                |
+| status     | tinyint(1)  | NO   |     | NULL    |                |
+| author_id  | int         | NO   | MUL | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+```
+
+#### Table: django_admin_log
+
+```mysql
++-----------------+-------------------+------+-----+---------+----------------+
+| Field           | Type              | Null | Key | Default | Extra          |
++-----------------+-------------------+------+-----+---------+----------------+
+| id              | int               | NO   | PRI | NULL    | auto_increment |
+| action_time     | datetime(6)       | NO   |     | NULL    |                |
+| object_id       | longtext          | YES  |     | NULL    |                |
+| object_repr     | varchar(200)      | NO   |     | NULL    |                |
+| action_flag     | smallint unsigned | NO   |     | NULL    |                |
+| change_message  | longtext          | NO   |     | NULL    |                |
+| content_type_id | int               | YES  | MUL | NULL    |                |
+| user_id         | int               | NO   | MUL | NULL    |                |
++-----------------+-------------------+------+-----+---------+----------------+
+```
+
+#### Table: django_content_type
+
+```mysql
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int          | NO   | PRI | NULL    | auto_increment |
+| app_label | varchar(100) | NO   | MUL | NULL    |                |
+| model     | varchar(100) | NO   |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+```
+
+#### Table: django_migrations
+
+```mysql
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | bigint       | NO   | PRI | NULL    | auto_increment |
+| app     | varchar(255) | NO   |     | NULL    |                |
+| name    | varchar(255) | NO   |     | NULL    |                |
+| applied | datetime(6)  | NO   |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+```
+
+#### Table: django_session
+
+```mysql
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| session_key  | varchar(40) | NO   | PRI | NULL    |       |
+| session_data | longtext    | NO   |     | NULL    |       |
+| expire_date  | datetime(6) | NO   | MUL | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+```
+
+#### Table: goals_goals
+
+```mysql
++-----------+--------+------+-----+---------+----------------+
+| Field     | Type   | Null | Key | Default | Extra          |
++-----------+--------+------+-----+---------+----------------+
+| id        | int    | NO   | PRI | NULL    | auto_increment |
+| water     | double | NO   |     | NULL    |                |
+| calories  | double | NO   |     | NULL    |                |
+| steps     | double | NO   |     | NULL    |                |
+| author_id | int    | NO   | MUL | NULL    |                |
+| weight    | double | NO   |     | NULL    |                |
+| pomodoro  | double | NO   |     | NULL    |                |
++-----------+--------+------+-----+---------+----------------+
+```
+
+#### Table: history_history
+
+```mysql
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int         | NO   | PRI | NULL    | auto_increment |
+| datestamp   | datetime(6) | NO   |     | NULL    |                |
+| app         | varchar(20) | NO   |     | NULL    |                |
+| action      | varchar(10) | NO   |     | NULL    |                |
+| description | longtext    | YES  |     | NULL    |                |
+| author_id   | int         | NO   | MUL | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+```
+
+#### Table: pomodoros_pomodoro
+
+```mysql
++-------------+----------+------+-----+---------+----------------+
+| Field       | Type     | Null | Key | Default | Extra          |
++-------------+----------+------+-----+---------+----------------+
+| id          | int      | NO   | PRI | NULL    | auto_increment |
+| author_id   | int      | NO   | MUL | NULL    |                |
+| remarks     | longtext | YES  |     | NULL    |                |
+| long_break  | int      | YES  |     | NULL    |                |
+| pomodoro    | int      | YES  |     | NULL    |                |
+| short_break | int      | YES  |     | NULL    |                |
+| datestamp   | date     | NO   |     | NULL    |                |
+| timestamp   | time(6)  | NO   |     | NULL    |                |
++-------------+----------+------+-----+---------+----------------+
+```
+
+#### Table: profiles_profile
+
+```mysql
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int          | NO   | PRI | NULL    | auto_increment |
+| dob       | date         | YES  |     | NULL    |                |
+| gender    | varchar(1)   | YES  |     | NULL    |                |
+| height    | double       | YES  |     | NULL    |                |
+| author_id | int          | NO   | MUL | NULL    |                |
+| name      | varchar(200) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+```
+
+#### Table: steps_steps
+
+```mysql
++------------+------+------+-----+---------+----------------+
+| Field      | Type | Null | Key | Default | Extra          |
++------------+------+------+-----+---------+----------------+
+| id         | int  | NO   | PRI | NULL    | auto_increment |
+| datestamp  | date | NO   |     | NULL    |                |
+| step_count | int  | NO   |     | NULL    |                |
+| author_id  | int  | NO   | MUL | NULL    |                |
++------------+------+------+-----+---------+----------------+
+```
+
+#### Table: water_intake_waterintake
+
+```mysql
++----------------+--------+------+-----+---------+----------------+
+| Field          | Type   | Null | Key | Default | Extra          |
++----------------+--------+------+-----+---------+----------------+
+| id             | int    | NO   | PRI | NULL    | auto_increment |
+| datestamp      | date   | NO   |     | NULL    |                |
+| drink_progress | double | NO   |     | NULL    |                |
+| author_id      | int    | NO   | MUL | NULL    |                |
++----------------+--------+------+-----+---------+----------------+
+```
+
+#### Table: weights_weight
+
+```mysql
++-----------+--------+------+-----+---------+----------------+
+| Field     | Type   | Null | Key | Default | Extra          |
++-----------+--------+------+-----+---------+----------------+
+| id        | int    | NO   | PRI | NULL    | auto_increment |
+| datestamp | date   | NO   |     | NULL    |                |
+| weight    | double | NO   |     | NULL    |                |
+| author_id | int    | NO   | MUL | NULL    |                |
++-----------+--------+------+-----+---------+----------------+
+```
+
+#### Table: xps_xp
+
+```mysql
++----------------+----------+------+-----+---------+----------------+
+| Field          | Type     | Null | Key | Default | Extra          |
++----------------+----------+------+-----+---------+----------------+
+| id             | int      | NO   | PRI | NULL    | auto_increment |
+| xp             | int      | YES  |     | NULL    |                |
+| author_id      | int      | NO   | MUL | NULL    |                |
+| datestamp      | date     | NO   |     | NULL    |                |
+| referer_app_id | longtext | YES  |     | NULL    |                |
++----------------+----------+------+-----+---------+----------------+
 ```
 
 ### Dummy data setup

@@ -43,6 +43,25 @@
                                            value="{{ goals_obj.calories }}">
                                 </div>
                             </div>
+
+                            <div class="form-group row mt-3">
+                                <label class="col-sm-4 col-form-label" for="id_pomodoro">
+                                    Pomodoro
+                                </label>
+                                <div class="col-sm-6">
+                                    <input class="form-control"
+                                           id="id_pomodoro"
+                                           name="pomodoro"
+                                           required
+                                           type="number"
+                                           step="1"
+                                           value="{{ goals_obj.pomodoro }}" aria-describedby="pomodoro_help">
+                                    <div id="pomodoro_help" class="form-text">
+                                        1 pomodoro equals 25 minutes.
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-group row mt-3">
                                 <label class="col-sm-4 col-form-label" for="id_steps">
                                     Steps

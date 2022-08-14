@@ -4,8 +4,8 @@ from .views import PomodoroDetailView, PomodoroListView, PomodoroCreateTemplateV
 
 urlpatterns = [
     path('add/', PomodoroCreateTemplateView.as_view(), name='add-pomodoro'),
-    path('detail/<int:pk>', PomodoroDetailView.as_view(), name='detail-pomodoro'),
-    path('pomodoro-datestamp-collection/<str:datestamp>', PomodoroListViewByDate.as_view(),
+    path('<int:pk>/detail/', PomodoroDetailView.as_view(), name='detail-pomodoro'),
+    path('pomodoro-datestamp-collection/<str:datestamp>/', PomodoroListViewByDate.as_view(),
          name='pomodoro-datestamp-collection'),
     path('', PomodoroListView.as_view(), name='pomodoro-index'),
 ]

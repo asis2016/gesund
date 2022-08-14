@@ -1,12 +1,13 @@
 from django.conf import settings
-from django.urls import reverse
 from django.db import models
+from django.urls import reverse
 
 
 class Goals(models.Model):
     """ Goals model. """
     id = models.AutoField(primary_key=True, editable=False)
     calories = models.FloatField(blank=True, default=0.0)
+    pomodoro = models.FloatField(blank=True, default=0.0)
     steps = models.FloatField(blank=True, default=0.0)
     water = models.FloatField(blank=True, default=0.0)
     weight = models.FloatField(blank=True, default=0.0)

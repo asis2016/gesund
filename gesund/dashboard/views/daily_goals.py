@@ -1,6 +1,6 @@
-from calories.models import CalorieIntake
 from django.db.models import Sum
 from goals.models import Goals
+from pomodoros.models import Pomodoro
 from steps.models import Steps
 from utils import progress_level_percentage
 from water_intake.models import WaterIntake
@@ -11,14 +11,14 @@ def get_daily_goals(author):
     daily_goals = []
     goals = Goals.objects.filter(author=author).last()
 
-    # Calories
-    if CalorieIntake.objects.filter(author=author):
-        calories_obj = CalorieIntake.objects.filter(author=author).values('datestamp').annotate(
-            total_calories=Sum('calories')).order_by('-datestamp')[:1]
-        calories_obj_list = list(calories_obj)
-        goal_reach = round((calories_obj_list[0]['total_calories'] / goals.calories) * 100, 2)
+    # Pomodoro
+    if Pomodoro.objects.filter(author=author):
+        pomodoro_obj = Pomodoro.objects.filter(author=author).values('datestamp').annotate(
+            total_pomodoro=Sum('pomodoro')).order_by('-datestamp')[:1]
+        pomodoro_obj_list = list(pomodoro_obj)
+        goal_reach = round((pomodoro_obj_list[0]['total_pomodoro'] / goals.pomodoro) * 100, 2)
         p = progress_level_percentage(goal_reach)
-        daily_goals.append([goal_reach, p, 'Calories'])
+        daily_goals.append([goal_reach, p, 'Pomodoro'])
 
     # Steps
     steps_obj = Steps.objects.filter(author=author).last()
@@ -33,8 +33,7 @@ def get_daily_goals(author):
         goal_reach = round((water_obj.drink_progress / goals.water) * 100, 2)
         p = progress_level_percentage(goal_reach)
         daily_goals.append([goal_reach, p, 'Water intake'])
-    else:
-        print(0)
+
     return daily_goals
 
 

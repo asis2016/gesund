@@ -34,6 +34,29 @@
         <div class="row row-second">
             <!-- col first -->
             <div class="col-lg-8 mt-4 col-first">
+
+                <!-- cp: calories progress -->
+                {% with cp=daily_goals_food_intake %}
+                    {% if cp %}
+                        <div class="card mb-3">
+                            <div class="card-body p-3">
+                                <div>
+                                    <p class="d-flex justify-content-between align-items-center">
+                                        Last progress <i style="font-size:0.8rem;">{{ cp.0.0 }}% reached.</i>
+                                    </p>
+                                    <div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-success {% if cp.0.0 > 100 %}bg-danger{% endif %}"
+                                                 role="progressbar" style="width: {{ cp.0.0 }}%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
                 <div class="card">
                     <div class="card-header card-header-menu justify-content-end">
                         <a class="btn btn-primary btn-sm" href="{% url 'add-calorie-intake' %}">

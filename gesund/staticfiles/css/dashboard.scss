@@ -1,4 +1,5 @@
 /* dashboard -------------------------------------------------------------------------- */
+
 #dashboard-container {
   #daily_goals_card_content,
   #water_card_content {
@@ -24,7 +25,7 @@
     margin: 1rem 0rem;
   }
 
-  .water-bottle {
+  .water-bottle{
     position: relative;
     display: flex;
     justify-content: center;

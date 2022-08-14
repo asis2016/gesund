@@ -22,7 +22,7 @@ class GoalsUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Goals
     context_object_name = 'goals_obj'
     template_name = 'goals/update.html'
-    fields = ('calories', 'steps', 'water', 'weight',)
+    fields = ('calories', 'pomodoro', 'steps', 'water', 'weight',)
 
     def get_success_message(self, cleaned_data):
         return messages.success(self.request, 'Goals updated successfully.', extra_tags='bg-warning')

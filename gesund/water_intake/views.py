@@ -8,6 +8,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from utils import DID_YOU_KNOW
 
+from .daily_goals_water_intake import get_daily_goals_water_intake
 from .models import WaterIntake
 
 
@@ -27,6 +28,7 @@ class WaterListView(LoginRequiredMixin, ListView):
         context['water_intake_list_chart'] = WaterIntake.objects.all().filter(author=self.request.user).order_by(
             'datestamp')
         context['did_you_know'] = random.choice(DID_YOU_KNOW['water'])
+        context['daily_goals_water_intake'] = get_daily_goals_water_intake(self.request.user)
         return context
 
 

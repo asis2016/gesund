@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from utils import DID_YOU_KNOW
+from .daily_goals_steps import get_daily_goals_steps
 
 from .models import Steps
 
@@ -27,6 +28,7 @@ class StepsListView(LoginRequiredMixin, ListView):
 
         context['did_you_know'] = random.choice(DID_YOU_KNOW['steps'])
         context['steps_list_chart'] = Steps.objects.all().filter(author=self.request.user).order_by('-datestamp')
+        context['daily_goals_steps'] = get_daily_goals_steps(self.request.user)
 
         return context
 
