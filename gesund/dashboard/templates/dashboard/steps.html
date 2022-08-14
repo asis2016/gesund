@@ -41,10 +41,10 @@
     <!-- steps_card_content -->
     <div class="collapse show" id="steps_card_content">
         <div class="card-body collapse show">
-            <!-- chart -->
-            <div class="sparkline-dashboard sparkline-steps"></div>
-
             {% if steps_list %}
+                <!-- chart -->
+                <div class="sparkline-dashboard sparkline-steps"></div>
+
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -68,8 +68,8 @@
                     </tbody>
                 </table>
             {% else %}
-                <div class="alert alert-warning" role="alert">
-                    <p class="mb-0">
+                <div class="alert alert-warning m-0" role="alert">
+                    <p class="m-0">
                         No records found. Start tracking your steps.
                     </p>
                 </div>
