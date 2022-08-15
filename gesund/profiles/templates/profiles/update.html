@@ -70,11 +70,15 @@
                                 </label>
                                 <div class="col-sm-6">
                                     <input class="form-control"
-                                           id="id_datestamp"
+                                           id="id_datestamps"
                                            name="dob"
                                            required
                                            type="text"
-                                           value="{{ profile_obj.dob }}">
+                                           value="{{ profile_obj.dob|date:" Y-m-d" }}"
+                                           aria-describedby="datestampHelp">
+                                    <small id="datestampHelp" class="form-text text-muted">
+                                        e.g., 1990-01-01
+                                    </small>
                                 </div>
                             </div>
                             <!-- height -->
