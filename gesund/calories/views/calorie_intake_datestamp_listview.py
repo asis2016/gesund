@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
 from utils import DID_YOU_KNOW
 from .daily_goals_food_intake import get_daily_goals_food_intake
-
+from goals.models import Goals
 from calories.models import CalorieIntake
 
 
@@ -24,4 +24,5 @@ class CaloriesIntakeDatestampListView(LoginRequiredMixin, ListView):
         context = super(CaloriesIntakeDatestampListView, self).get_context_data(*args, **kwargs)
         context['did_you_know'] = random.choice(DID_YOU_KNOW['food'])
         context['daily_goals_food_intake'] = get_daily_goals_food_intake(self.request.user)
+        context['goals_object_calories'] = Goals.objects.all().filter(author=self.request.user).last().calories
         return context

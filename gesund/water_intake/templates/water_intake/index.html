@@ -55,71 +55,80 @@
                     {% endif %}
                 {% endwith %}
 
-                <div class="card">
-                    <div class="card-header card-header-menu justify-content-end">
-                        <a class="btn btn-primary btn-sm" href="{% url 'add-water-progress' %}">
-                            <i class="fa-solid fa-circle-plus"></i>
-                            <span class="p-2">Add water intake</span>
-                        </a>
-                    </div>
-                    {# --- Card body starts --- #}
-                    <div class="card-body">
-                        {% if water_intake_list %}
-                            <table class="table table-striped table-hover data-table-list mb-0">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Date</th>
-                                    <th>L</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for i in water_intake_list %}
+                {% if goals_object_water_intake != 0 %}
+                    <div class="card">
+                        <div class="card-header card-header-menu justify-content-end">
+                            <a class="btn btn-primary btn-sm" href="{% url 'add-water-progress' %}">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <span class="p-2">Add water intake</span>
+                            </a>
+                        </div>
+                        {# --- Card body starts --- #}
+                        <div class="card-body">
+                            {% if water_intake_list %}
+                                <table class="table table-striped table-hover data-table-list mb-0">
+                                    <thead>
                                     <tr>
-                                        <td>{{ i.id }}</td>
-                                        <td>
+                                        <th>#</th>
+                                        <th>Date</th>
+                                        <th>L</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in water_intake_list %}
+                                        <tr>
+                                            <td>{{ i.id }}</td>
+                                            <td>
                                             <span class="datestamp">
                                                 {{ i.datestamp|date:"Y-m-d" }}
                                             </span>
-                                        </td>
-                                        <td>
-                                            {{ i.drink_progress }} <span>ltrs</span>
-                                        </td>
-                                        <td>
-                                            <div class="float-end">
-                                                <a class="btn btn-warning btn-sm"
-                                                   href="{% url 'update-water-progress' i.pk %}">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
-                                                    <span class="px-1">Update</span>
-                                                </a>
-                                                <a class="btn btn-danger btn-sm ml-2"
-                                                   href="{% url 'delete-water-progress' i.pk %}">
-                                                    <i class="fa-solid fa-trash-can"></i>
-                                                    <span class="px-1">Delete</span>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        {% else %}
-                            <div class="alert alert-warning" role="alert">
-                                <p class="mb-0">
-                                    No records found. Start adding your water intake.
-                                </p>
+                                            </td>
+                                            <td>
+                                                {{ i.drink_progress }} <span>ltrs</span>
+                                            </td>
+                                            <td>
+                                                <div class="float-end">
+                                                    <a class="btn btn-warning btn-sm"
+                                                       href="{% url 'update-water-progress' i.pk %}">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                        <span class="px-1">Update</span>
+                                                    </a>
+                                                    <a class="btn btn-danger btn-sm ml-2"
+                                                       href="{% url 'delete-water-progress' i.pk %}">
+                                                        <i class="fa-solid fa-trash-can"></i>
+                                                        <span class="px-1">Delete</span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            {% else %}
+                                <div class="alert alert-warning" role="alert">
+                                    <p class="mb-0">
+                                        No records found. Start adding your water intake.
+                                    </p>
+                                </div>
+                            {% endif %}
+                        </div>
+                        {# --- Card body ends --- #}
+                        {# --- Card footer starts --- #}
+                        {% if water_intake_list %}
+                            <div class="card-footer">
+                                {% include 'pagination.html' %}
                             </div>
                         {% endif %}
+                        {# --- Footer ends --- #}
                     </div>
-                    {# --- Card body ends --- #}
-                    {# --- Card footer starts --- #}
-                    {% if water_intake_list %}
-                        <div class="card-footer">
-                            {% include 'pagination.html' %}
-                        </div>
-                    {% endif %}
-                    {# --- Footer ends --- #}
-                </div>
+                {% else %}
+                    <div class="alert alert-danger mb-0" role="alert">
+                        <p class="mb-0">
+                            No water goal found.
+                            Please update your goal from <a href="{% url 'goals-index' %}">here</a>.
+                        </p>
+                    </div>
+                {% endif %}
             </div>
 
             <div class="col-lg-4 mt-4 col-second">
@@ -128,7 +137,7 @@
                         <h5 class="mb-0">Did you know?</h5>
                     </div>
                     <div class="card-body">
-                        <img src="{% static '/images/'  %}{{ did_you_know.img }}"
+                        <img src="{% static '/images/' %}{{ did_you_know.img }}"
                              class="img-fluid"
                              alt="Did you know?">
                         <p class="mb-0">

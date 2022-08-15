@@ -4,6 +4,8 @@ from django.views.generic import ListView
 from pomodoros.models import Pomodoro
 from utils import DID_YOU_KNOW
 
+from goals.models import Goals
+
 from .daily_goals_pomodoro import get_daily_goals_pomodoro
 
 
@@ -27,4 +29,5 @@ class PomodoroListView(LoginRequiredMixin, ListView):
             'datestamp')
         context['did_you_know'] = random.choice(DID_YOU_KNOW['pomodoro'])
         context['daily_goals_pomodoro'] = get_daily_goals_pomodoro(self.request.user)
+        context['goals_object_pomodoro'] = Goals.objects.all().filter(author=self.request.user).last().pomodoro
         return context

@@ -5,6 +5,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
+from goals.models import Goals
+
 from .models import Weight
 
 
@@ -22,6 +24,8 @@ class WeightListView(LoginRequiredMixin, ListView):
         context = super(WeightListView, self).get_context_data(**kwargs)
         context['weight_list_chart'] = Weight.objects.all().filter(author=self.request.user).order_by(
             'datestamp')
+
+        context['goals_object_weight'] = Goals.objects.all().filter(author=self.request.user).last().weight
 
         # todo: context random messages
         context['random_message'] = {

@@ -1,7 +1,7 @@
 {
   "name": "Gesund APP",
   "short_name": "GA",
-  "start_url": "http://localhost:8000/",
+  "start_url": "https://gesund.amaharjan.online/",
   "display": "standalone",
   "background_color": "#fff",
   "description": "Gesund App is carried out as part of the master thesis at the University of Koblenz-Landau.",
