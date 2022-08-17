@@ -102,13 +102,20 @@
             /**
              * Draw bottle: Daily water goal vs today's water goal.
              * */
-            const DAILY_GOAL =
-            {{ water_intake_last_progress.0.0 }}
-            const LAST_DRINK =
-            {{ water_intake_last_progress.0.1 }}
+            const DAILY_GOAL = {{ water_intake_last_progress.0.0 }}
+            const LAST_DRINK = {{ water_intake_last_progress.0.1 }}
 
             const drawBottle = (dailyGoal, lastDrink) => {
-                drinkProgress = ((lastDrink / dailyGoal) * 100).toFixed(2)
+
+                let PreDrinkProgress = ((lastDrink / dailyGoal) * 100).toFixed(2)
+                let PreDrinkProgressPercent = ((lastDrink / dailyGoal) * 100).toFixed(2)
+                let drinkProgress = ''
+
+                if (PreDrinkProgress > 100){
+                    drinkProgress = 100
+                } else {
+                    drinkProgress = PreDrinkProgress
+                }
 
                 $(".water-bottle .bottle").css({
                     "background": `url('{% static 'images/bottle.png' %}')`,
@@ -125,7 +132,7 @@
                     bottom: `calc(${drinkProgress}% - 27px - 10px)`,
                     left: "80px"
                 })
-                $(".water-bottle .drink-badge").text(`${drinkProgress}%`)
+                $(".water-bottle .drink-badge").text(`${PreDrinkProgressPercent}%`)
             }
 
             drawBottle(DAILY_GOAL, LAST_DRINK)
