@@ -1,5 +1,5 @@
 .idea/
-resources/
+resources_local/
 gesund/.env
 /gesund/.env.server
 /gesund/venv/
