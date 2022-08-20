@@ -2,13 +2,20 @@
 
 import os
 
-_LOC = '../docs'
+_LOC = '../resources/markdown'
 OUTPUT_MD = '../README.md'
 
 list_md = [
     'toc',
+
     'introduction',
     'docker',
+
+
+    'user_flow',
+    'wireframe',
+    'mockup',
+    'sitemap',
 
     'uml_use_case_diagram',
     'database',
@@ -17,11 +24,12 @@ list_md = [
 
 
     
-    'wireframe',
-    'mockup',
+
+
     
-    'user_flow',
+
     'end_user_documentation',
+    'legal',
     'references'
 ]
 

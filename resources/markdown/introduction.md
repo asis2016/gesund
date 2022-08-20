@@ -1,6 +1,3 @@
-## Introduction
-
-This project is carried out as the master thesis at University of Koblenz-Landau.
 
 ## Project organization
 
@@ -169,3 +166,4 @@ Change `start_url` to a relevant URL.
   ....
 }
 ```
+

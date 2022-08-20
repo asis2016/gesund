@@ -1,6 +1,14 @@
-# Table of contents
+# Introduction
 
-[Introduction]()
+The Gesund App (hereinafter "APP") is a <i>Self-management Gamification Web Application</i> developed as a master thesis
+project at the
+University of Koblenz-Landau.
+
+The thesis is titled 'Introducing Gamification to overcome employee's health-related risks in work from home (WfH)
+settings'. In short, the intervention is trying to find out if the APP is helpful for employees to overcome
+health-related risks in their remote work setting.
+
+## Table of contents (WIP)
 
 - [Project organization](#)
 - [Tech stack](#)
@@ -15,11 +23,17 @@
     - [Table details](#table-details)
     - [Dummy data setup](#dummy-data-setup)
 - [Tests](#tests)
+- [Deployment](#deployments)
 - [End-user documentation](#end-user-documentation)
+- [Feedback](#feedback)
+- [Contributing](#contributing)
+- "Legal"
+    - [Disclaimer](#disclaimer)
+    - [License](#license)
+    - [Privacy Policy](#privacy-policy)
+- [References](#references)
+- [Images, vectors, or icons](#images-vectors-or-icons)
 
-## Introduction
-
-This project is carried out as the master thesis at University of Koblenz-Landau.
 
 ## Project organization
 
@@ -187,7 +201,9 @@ Change `start_url` to a relevant URL.
   "start_url": "http://192.168.2.110:8000/",
   ....
 }
-```## Or, use **Docker**
+```
+
+## Or, use **Docker**
 
 ```shell
 $ mkdir gesund_docker
@@ -395,7 +411,131 @@ mysql> show databases;
 +--------------------+
 5 rows in set (0.00 sec)
 ```
- ## UML use case diagram
+ ## User flow
+
+User flow is used for describing the process of interaction between a user and the website. The following image presents
+the 'flow' from the Gesund App entry point until the final action, i.e., Logging out.
+
+![sitemap](./resources/images/user_flow.svg)
+
+<p align="center">
+Figure. User flow of the Gesund app (own representation).
+</p>
+
+### Example of the user flow
+
+A simplified example of setting the goal in the app would be:
+
+1. The user logs in successfully.
+2. From the Dashboard page, the user clicks on the Profile menu.
+3. From the menu, the user navigates towards the My Goals page.
+4. On the page, the user can view her current Goals.
+5. By clicking on Update your goals, she is then sent to the Goals update page.
+6. Now, she will set her goals by providing relevant information.
+7. Finally, she sees the confirmation message.
+
+Above mentioned example of a user flow is called a 'happy path,' which means a simplified version of the user flow has a
+successful response.
+
+Reference: ## Wireframes
+
+### Login or Sign up
+
+![login or Sign up](./resources/images/wireframe_sm_login_sign_up.svg)
+
+
+### Dashboard
+
+![dashboard](./resources/images/wireframe_sm_dashboard.svg)
+
+### Profile
+
+![profile](./resources/images/wireframe_sm_profile.svg)
+
+### Food intake
+
+![food intake](./resources/images/wireframe_sm_food_intake.svg)
+
+### Steps
+
+![steps](./resources/images/wireframe_sm_steps.svg)
+
+
+### Water intake
+
+![water intake](./resources/images/wireframe_sm_water_intake.svg)
+
+### Weights
+
+![weights](./resources/images/wireframe_sm_weight.svg)
+
+### About us
+
+![about us](./resources/images/wireframe_sm_about_us.svg)
+
+![](./resources/images/)
+
+
+
+wireframe_sm_water_intake.drawio
+wireframe_sm_weight.drawio
+
+
+
+## Mockup
+
+### Login system
+
+![login system](./resources/images/mockup_sm_login_signup.svg)
+
+### Dashboard
+
+![dashboard](./resources/images/mockup_sm_dashboard.svg)
+
+### Profile
+
+![profile](./resources/images/mockup_sm_profile.svg)
+
+### Food intake
+
+![food intake](./resources/images/mockup_sm_food_intake.svg)
+
+### Pomodoro
+
+![pomodoro](./resources/images/mockup_sm_pomodoro.svg)
+
+### Steps
+
+![steps](./resources/images/mockup_sm_steps.svg)
+
+### Water
+
+![water](./resources/images/mockup_sm_water_intake.svg)
+
+### Weight
+
+![weight](./resources/images/mockup_sm_weight.svg)
+
+### About
+
+![about](./resources/images/mockup_sm_about.svg)
+
+
+
+## Sitemap
+
+<p>
+A sitemap is a collection of pages on a website. In a simple form, it is a map of the website. Draw.io was used to
+create the visual sitemap of the Gesund app.
+</p>
+
+![sitemap](./resources/images/sitemap.svg)
+
+<p align="center">
+    <i>Figure. Visual sitemap of the Gesund app (own representation).</i>
+</p>
+
+## UML use case diagram
 
 ![sitemap](./resources/images/uml_use_case_diagram.svg)
 
@@ -1054,129 +1194,6 @@ OK
 Destroying test database for alias 'default'...
 ```
 
-## Wireframes
-
-### Login or Sign up
-
-![login or Sign up](./resources/images/wireframe_sm_login_sign_up.svg)
-
-
-### Dashboard
-
-![dashboard](./resources/images/wireframe_sm_dashboard.svg)
-
-### Profile
-
-![profile](./resources/images/wireframe_sm_profile.svg)
-
-### Food intake
-
-![food intake](./resources/images/wireframe_sm_food_intake.svg)
-
-### Steps
-
-![steps](./resources/images/wireframe_sm_steps.svg)
-
-
-### Water intake
-
-![water intake](./resources/images/wireframe_sm_water_intake.svg)
-
-### Weights
-
-![weights](./resources/images/wireframe_sm_weight.svg)
-
-### About us
-
-![about us](./resources/images/wireframe_sm_about_us.svg)
-
-![](./resources/images/)
-
-
-
-wireframe_sm_water_intake.drawio
-wireframe_sm_weight.drawio
-
-
-
-## Mockup
-
-### Login system
-
-![login system](./resources/images/mockup_sm_login_signup.svg)
-
-### Dashboard
-
-![dashboard](./resources/images/mockup_sm_dashboard.svg)
-
-### Profile
-
-![profile](./resources/images/mockup_sm_profile.svg)
-
-### Food intake
-
-![food intake](./resources/images/mockup_sm_food_intake.svg)
-
-### Pomodoro
-
-![pomodoro](./resources/images/mockup_sm_pomodoro.svg)
-
-### Steps
-
-![steps](./resources/images/mockup_sm_steps.svg)
-
-### Water
-
-![water](./resources/images/mockup_sm_water_intake.svg)
-
-### Weight
-
-![weight](./resources/images/mockup_sm_weight.svg)
-
-### About
-
-![about](./resources/images/mockup_sm_about.svg)
-
-
-## User flow
-
-User flow is used for describing the process of interaction between a user and the website. The following image presents
-the 'flow' from the Gesund App entry point until the final action, i.e., Logging out.
-
-![sitemap](./resources/images/user_flow.svg)
-
-<p align="center">
-Figure. User flow of the Gesund app (own representation).
-</p>
-
-### Example of the user flow
-
-A simplified example of setting the goal in the app would be:
-
-1. The user logs in successfully.
-2. From the Dashboard page, the user clicks on the Profile menu.
-3. From the menu, the user navigates towards the My Goals page.
-4. On the page, the user can view her current Goals.
-5. By clicking on Update your goals, she is then sent to the Goals update page.
-6. Now, she will set her goals by providing relevant information.
-7. Finally, she sees the confirmation message.
-
-Above mentioned example of a user flow is called a 'happy path,' which means a simplified version of the user flow has a
-successful response.
-
-Reference: https://xd.adobe.com/ideas/process/user-research/user-journey-vs-user-flow/
-## Sitemap
-
-<p>
-A sitemap is a collection of pages on a website. In a simple form, it is a map of the website. Draw.io was used to
-create the visual sitemap of the Gesund app.
-</p>
-
-![sitemap](./resources/images/sitemap.svg)
-
-<p align="center">
-    <i>Figure. Visual sitemap of the Gesund app (own representation).</i>
-</p>
 
 ## End-user documentation
 
@@ -1234,6 +1251,8 @@ or **Deleting** a resource.
 <img src="./resources/images/steps_user_flow.svg" alt="quick start guide" height="100%">
 </p>
 
+
+
 ## Feedback
 
 If you have any feedback, please reach out to the author at info@amaharjan.online
@@ -1242,57 +1261,84 @@ If you have any feedback, please reach out to the author at info@amaharjan.onlin
 
 Contributions are always welcome! please contact the author at info@amaharjan.online
 
+### Disclaimer
+
+<p>
+    The information provided by the author(s) on <a href="https://github.com/asis2016/gesund">https://github.com/asis2016/gesund</a> the APP
+    is for general informational purposes only. All information on the Web App is provided in good faith. However, we
+    make no representation or warranty of any kind, express or implied, regarding the accuracy,
+    adequacy, validity, reliability, availability, or completeness of any information on the Web App.
+</p>
+<p>
+    No content on this Web App, regardless of date, regardless of "features", should ever be used as a
+    replacement for direct
+    medical
+    advice from your doctor or other qualified clinicians.
+</p>
+<p>
+    UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED
+    AS
+    A RESULT OF THE USE OF THE WEB APP OR RELIANCE ON ANY INFORMATION PROVIDED ON THE WEB APP.
+</p>
+<p>
+    YOUR USE OF THE WEB APP AND YOUR RELIANCE ON ANY INFORMATION ON THE WEB APP IS SOLELY AT YOUR OWN
+    RISK.
+</p>
+
 ## License
 
 This project is licensed under the [MIT license](./LICENSE).
 
+## Privacy Policy
+
+General Data Protection Regulation (GDPR) was applied during the APP pilot test period.
+
+
+
+
+
+
+
+
 # References
 
-[^1]: https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/
+- [CLI with Postman Newman](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)
+- [User flow](https://xd.adobe.com/ideas/process/user-research/user-journey-vs-user-flow/)
 
-## FontAwesome 5.0
+## Images, vectors, or icons
 
-- Save: `<i class="fa-solid fa-floppy-disk"></i>`
-- Update:
-- Delete:  `<i class="fa-solid fa-trash-can"></i>`
-- List:
-- Go back: `<i class="fa-solid fa-angle-left"></i>`
-
-## Icons
-
+- [https://undraw.co/](https://undraw.co/)
 - <a href="https://www.flaticon.com/free-icons/fruit" title="fruit icons">Fruit icons created by Freepik - Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/bottle" title="bottle icons">Bottle icons created by Vitaly Gorbachev - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/bottle" title="bottle icons">Bottle icons created by Vitaly Gorbachev -
+  Flaticon</a>
 - <a href='https://www.freepik.com/vectors/dairy-free'>Dairy free vector created by macrovector - www.freepik.com</a>
 - <a href='https://www.freepik.com/vectors/vegan'>Vegan vector created by studiogstock - www.freepik.com</a>
 - <a href="https://www.vecteezy.com/free-vector/salt">Salt Vectors by Vecteezy</a>
 - <a href='https://www.freepik.com/vectors/tiny'>Tiny vector created by pch.vector - www.freepik.com</a>
 - <a href='https://www.freepik.com/vectors/drink-water'>Drink water vector created by pch.vector - www.freepik.com</a>
-- <a href='https://www.freepik.com/vectors/people-walking'>People walking vector created by storyset
-    - www.freepik.com</a>
+- <a href='https://www.freepik.com/vectors/people-walking'>People walking vector created by
+  storyset, www.freepik.com</a>
 - <a href="https://www.freepik.com/vectors/trekking">Trekking vector created by pch.vector - www.freepik.com</a>
-- https://undraw.co/
 - Illustration by <a href="https://icons8.com/illustrations/author/292791">Anna Golde</a>
   from <a href="https://icons8.com/illustrations">Ouch!</a>
 - <a href="https://www.flaticon.com/free-icons/cigarette" title="cigarette icons">Cigarette icons created by Freepik -
   Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/beer" title="beer icons">Beer icons created by Freepik - Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/sugar-cube" title="sugar cube icons">Sugar cube icons created by Freepik
-    - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/sugar-cube" title="sugar cube icons">Sugar cube icons created by Freepik,
+  Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/burger" title="burger icons">Burger icons created by Freepik -
   Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/chocolate" title="chocolate icons">Chocolate icons created by Freepik -
   Flaticon</a>
-
 - Illustration by <a href="https://icons8.com/illustrations/author/Go8GMpKPAq1W">Polina Makeeva</a>
   from <a href="https://icons8.com/illustrations">Ouch!</a>
-
 - <a href="https://www.flaticon.com/de/kostenlose-icons/profil" title="profil Icons">Profil Icons erstellt von Freepik -
   Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/tomato" title="tomato icons">Tomato icons created by Pixel perfect -
   Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/calories" title="calories icons">Calories icons created by Freepik -
   Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/walking" title="walking icons">Walking icons created by Freepik -
+- <a href="https://www.flaticon.com/free-icons/walking" title="walking icons">Walking icons created by Freepik,
   Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/timer" title="timer icons">Timer icons created by Freepik - Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/water" title="water icons">Water icons created by Freepik - Flaticon</a>

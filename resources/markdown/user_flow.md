@@ -24,4 +24,4 @@ A simplified example of setting the goal in the app would be:
 Above mentioned example of a user flow is called a 'happy path,' which means a simplified version of the user flow has a
 successful response.
 
-Reference: https://xd.adobe.com/ideas/process/user-research/user-journey-vs-user-flow/
+Reference: 
