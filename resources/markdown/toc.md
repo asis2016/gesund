@@ -32,5 +32,5 @@ health-related risks in their remote work setting.
     - [License](#license)
     - [Privacy Policy](#privacy-policy)
 - [References](#references)
-- [Images, vectors, or icons](#images-vectors-or-icons)
+    - [Images, vectors, or icons](#images-vectors-or-icons)
 
